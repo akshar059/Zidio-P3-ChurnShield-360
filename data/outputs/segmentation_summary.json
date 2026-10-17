@@ -1,0 +1,79 @@
+{
+  "best_k": 5,
+  "k_evaluations": [
+    {
+      "k": 2,
+      "inertia": 142100.0,
+      "silhouette_score": 0.442
+    },
+    {
+      "k": 3,
+      "inertia": 118400.0,
+      "silhouette_score": 0.481
+    },
+    {
+      "k": 4,
+      "inertia": 95200.0,
+      "silhouette_score": 0.518
+    },
+    {
+      "k": 5,
+      "inertia": 78400.0,
+      "silhouette_score": 0.564
+    },
+    {
+      "k": 6,
+      "inertia": 69200.0,
+      "silhouette_score": 0.491
+    }
+  ],
+  "cluster_names": {
+    "0": "Champions & High CLV",
+    "1": "Loyal Regulars",
+    "2": "Recent Promising Buyers",
+    "3": "Need Attention / Lapsing",
+    "4": "At Risk / Hibernating"
+  },
+  "segment_stats": [
+    {
+      "kmeans_segment": "Champions & High CLV",
+      "customer_count": 3120,
+      "avg_spend": 385.4,
+      "avg_orders": 3.2,
+      "avg_recency": 38.2,
+      "avg_review": 4.82
+    },
+    {
+      "kmeans_segment": "Loyal Regulars",
+      "customer_count": 5840,
+      "avg_spend": 215.8,
+      "avg_orders": 2.1,
+      "avg_recency": 64.5,
+      "avg_review": 4.54
+    },
+    {
+      "kmeans_segment": "Recent Promising Buyers",
+      "customer_count": 7240,
+      "avg_spend": 135.2,
+      "avg_orders": 1.2,
+      "avg_recency": 45.8,
+      "avg_review": 4.28
+    },
+    {
+      "kmeans_segment": "Need Attention / Lapsing",
+      "customer_count": 5180,
+      "avg_spend": 128.6,
+      "avg_orders": 1.1,
+      "avg_recency": 118.4,
+      "avg_review": 3.42
+    },
+    {
+      "kmeans_segment": "At Risk / Hibernating",
+      "customer_count": 3620,
+      "avg_spend": 110.5,
+      "avg_orders": 1.0,
+      "avg_recency": 248.6,
+      "avg_review": 2.85
+    }
+  ]
+}

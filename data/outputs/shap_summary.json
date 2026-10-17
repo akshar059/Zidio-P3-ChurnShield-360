@@ -1,0 +1,77 @@
+[
+  {
+    "feature": "recency_days",
+    "mean_abs_shap": 0.3005,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "avg_product_price",
+    "mean_abs_shap": 0.2827,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "customer_health_score",
+    "mean_abs_shap": 0.277,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "avg_delivery_delay",
+    "mean_abs_shap": 0.2455,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "avg_delivery_days",
+    "mean_abs_shap": 0.2311,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "total_spend",
+    "mean_abs_shap": 0.1734,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "customer_state_RJ",
+    "mean_abs_shap": 0.142,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "average_order_value",
+    "mean_abs_shap": 0.1406,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "avg_installments",
+    "mean_abs_shap": 0.1131,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "spend_90d",
+    "mean_abs_shap": 0.0731,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "customer_state_RS",
+    "mean_abs_shap": 0.0618,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "customer_state_MG",
+    "mean_abs_shap": 0.0575,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "customer_state_SP",
+    "mean_abs_shap": 0.0537,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "voucher_ratio",
+    "mean_abs_shap": 0.0492,
+    "impact_direction": "Positive correlation with churn risk"
+  },
+  {
+    "feature": "favorite_category_garden_tools",
+    "mean_abs_shap": 0.0383,
+    "impact_direction": "Positive correlation with churn risk"
+  }
+]

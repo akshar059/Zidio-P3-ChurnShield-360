@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChurnShield 360 | Customer Churn Prediction & Retention Intelligence</title>
+  <meta name="description" content="ChurnShield 360 - Enterprise Customer Churn Prediction, ML, ANN, LSTM, RFM Segmentation, Logistics, and Sales Analytics Dashboard">
+  
+  <!-- Brand Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/static/images/logo.svg">
+  
+  <!-- Modern Typography: Plus Jakarta Sans, Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Light Warm Professional Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- App Sidebar Navigation -->
+  <aside class="app-sidebar">
+    <div class="brand-section">
+      <div class="brand-icon">
+        <img src="/static/images/logo.svg" alt="ChurnShield 360 Logo" class="brand-logo-img">
+      </div>
+      <div class="brand-text">
+        <h2>ChurnShield 360</h2>
+        <span>Customer Churn &amp; Retention</span>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active" data-tab="overview" id="nav-overview">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Executive Overview</span>
+        <span class="nav-counter live">Live</span>
+      </li>
+      <li class="nav-item" data-tab="sales" id="nav-sales">
+        <span class="nav-icon">📈</span>
+        <span class="nav-label">Sales & Forecast</span>
+        <span class="nav-counter">2018</span>
+      </li>
+      <li class="nav-item" data-tab="customers" id="nav-customers">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Customer 360</span>
+        <span class="nav-counter">25k</span>
+      </li>
+      <li class="nav-item" data-tab="churn" id="nav-churn">
+        <span class="nav-icon">⚠️</span>
+        <span class="nav-label">Churn & Risk</span>
+        <span class="nav-counter alert">1.6k</span>
+      </li>
+      <li class="nav-item" data-tab="models" id="nav-models">
+        <span class="nav-icon">🧠</span>
+        <span class="nav-label">ML & DL Studio</span>
+        <span class="nav-counter">8 AI</span>
+      </li>
+      <!-- 3 NEW DASHBOARDS -->
+      <li class="nav-item" data-tab="logistics" id="nav-logistics">
+        <span class="nav-icon">🚚</span>
+        <span class="nav-label">Logistics & SLA</span>
+        <span class="nav-counter">98%</span>
+      </li>
+      <li class="nav-item" data-tab="products" id="nav-products">
+        <span class="nav-icon">🏷️</span>
+        <span class="nav-label">Products & Sellers</span>
+        <span class="nav-counter">Top 10</span>
+      </li>
+      <li class="nav-item" data-tab="campaigns" id="nav-campaigns">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Retention Engine</span>
+        <span class="nav-counter success">+285%</span>
+      </li>
+      <li class="nav-item" data-tab="explorer" id="nav-explorer">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">Customer Directory</span>
+        <span class="nav-counter">25,000</span>
+      </li>
+      <li class="nav-item" data-tab="simulator" id="nav-simulator">
+        <span class="nav-icon">🎮</span>
+        <span class="nav-label">What-If Simulator</span>
+        <span class="nav-counter live">Interactive</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="pipeline-badge">
+        <div class="pulse-dot"></div>
+        <span>Pipeline Live (PyTorch + XGB)</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- App Main Viewport -->
+  <main class="app-main">
+    
+    <!-- Dedicated Presentation Navigation Bar (Visible in Presentation Mode) -->
+    <div id="presentation-bar" class="presentation-bar" style="display: none;">
+      <div class="presentation-bar-inner">
+        <div class="presentation-brand">
+          <span class="presentation-badge">✦ EXECUTIVE PRESENTATION</span>
+          <span class="presentation-subtitle">ChurnShield 360 Intelligence Platform</span>
+        </div>
+        <div class="presentation-pills" id="presentation-nav-pills">
+          <button class="pres-pill active" onclick="switchTab('overview')">1. Overview</button>
+          <button class="pres-pill" onclick="switchTab('sales')">2. Sales</button>
+          <button class="pres-pill" onclick="switchTab('customers')">3. Customers</button>
+          <button class="pres-pill" onclick="switchTab('churn')">4. Churn Risk</button>
+          <button class="pres-pill" onclick="switchTab('models')">5. AI Models</button>
+          <button class="pres-pill" onclick="switchTab('logistics')">6. Logistics</button>
+          <button class="pres-pill" onclick="switchTab('products')">7. Products</button>
+          <button class="pres-pill" onclick="switchTab('campaigns')">8. Campaigns</button>
+          <button class="pres-pill" onclick="switchTab('explorer')">9. Directory</button>
+          <button class="pres-pill" onclick="switchTab('simulator')">10. What-If</button>
+        </div>
+        <div class="presentation-actions">
+          <button class="btn-filter" onclick="navigatePresentation(-1)" title="Previous Slide (←)">‹</button>
+          <span id="pres-slide-counter" style="font-size: 0.82rem; font-weight: 700; min-width: 45px; text-align: center; color: var(--text-main);">1 / 10</span>
+          <button class="btn-filter" onclick="navigatePresentation(1)" title="Next Slide (→)">›</button>
+          <button class="btn-filter" onclick="togglePresentationMode()" style="background: rgba(225, 29, 72, 0.12); color: #E11D48; border-color: rgba(225, 29, 72, 0.3);" title="Exit Presentation (Esc)">✕ Exit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <h1 id="page-title">Executive Overview</h1>
+        <p id="page-subtitle">Strategic KPIs, Portfolio Risk, and Active Pipeline Health</p>
+      </div>
+      <div class="header-right">
+        <!-- Quick Spotlight Command Palette Trigger (Ctrl+K / ⌘K) -->
+        <button class="btn-command-palette-trigger" onclick="openCommandPalette()" title="Open Command Palette (Ctrl + K)">
+          <span class="cmd-icon">🔍</span>
+          <span class="cmd-placeholder">Search...</span>
+          <kbd class="cmd-kbd">Ctrl K</kbd>
+        </button>
+
+        <div class="chip-tag live-chip">
+          <span class="pulse-dot" style="width: 7px; height: 7px; background: #10B981; box-shadow: 0 0 6px #10B981;"></span>
+          <span>Engine:</span>
+          <strong id="header-champion-badge">Hybrid ANN-LSTM</strong>
+        </div>
+
+        <div class="chip-tag header-cohort-chip" id="header-cohort-chip">
+          <span>Cohort:</span>
+          <strong>2016-2018</strong>
+        </div>
+
+        <!-- Presentation Mode Button -->
+        <button class="btn-present-toggle" id="btn-present-toggle" onclick="togglePresentationMode()" title="Toggle Fullscreen Presentation View (Shortcut: P)">
+          <span>📽️</span>
+          <span id="present-label">Present</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="btn-theme-toggle" id="btn-theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-label">Theme</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="content-viewport">
+
+      <!-- ==============================================================
+           VIEW 1: EXECUTIVE OVERVIEW
+           ============================================================== -->
+      <section id="view-overview" class="view-section active">
+        
+        <!-- Top KPI Grid -->
+        <div class="kpi-grid" style="margin-bottom: 22px;">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Revenue</span>
+              <span class="kpi-icon">💰</span>
+            </div>
+            <div class="kpi-value" id="kpi-revenue">$0.00</div>
+            <div class="kpi-footer">
+              <span class="badge-trend positive">↑ 12.4%</span>
+              <span>Overall transaction volume</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Orders</span>
+              <span class="kpi-icon">📦</span>
+            </div>
+            <div class="kpi-value" id="kpi-orders">0</div>
+            <div class="kpi-footer">
+              <span>Avg Order Value:</span>
+              <strong id="kpi-aov">$0.00</strong>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Customers</span>
+              <span class="kpi-icon">👥</span>
+            </div>
+            <div class="kpi-value" id="kpi-customers">0</div>
+            <div class="kpi-footer">
+              <span>Unique shopper profiles</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Portfolio Churn Rate</span>
+              <span class="kpi-icon">📉</span>
+            </div>
+            <div class="kpi-value" id="kpi-churn" style="color: var(--color-critical);">0.0%</div>
+            <div class="kpi-footer">
+              <span class="badge-trend negative">90-day time-anchored window</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Revenue at Risk</span>
+              <span class="kpi-icon">🚨</span>
+            </div>
+            <div class="kpi-value" id="kpi-rev-at-risk" style="color: var(--color-high);">$0.00</div>
+            <div class="kpi-footer">
+              <span>Expected CLV capital exposure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Strategic Intelligence Briefing Banner -->
+        <div class="glass-panel executive-briefing-card" style="margin-bottom: 22px;">
+          <div class="panel-header" style="margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="briefing-icon-badge">✨</div>
+              <div>
+                <h3 class="panel-title" style="font-size: 1.15rem; letter-spacing: -0.02em;">Executive Strategic Intelligence Briefing</h3>
+                <p class="panel-subtitle">Synthesized enterprise findings, portfolio health, and prescriptive AI retention roadmap</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="chip-tag" style="background: rgba(16, 185, 129, 0.1); color: #059669; border-color: rgba(16, 185, 129, 0.25); font-weight: 700;">
+                <span class="pulse-dot" style="background: #10B981; box-shadow: 0 0 6px #10B981;"></span>
+                PORTFOLIO CALIBRATED
+              </span>
+              <button class="btn-filter" onclick="window.print()" style="font-size: 0.78rem; font-weight: 600;" title="Print or Save Presentation as PDF">🖨️ Export PDF</button>
+            </div>
+          </div>
+
+          <div class="briefing-highlights-grid">
+            <div class="briefing-stat-box">
+              <div class="briefing-stat-label">CAPITAL PRESERVATION</div>
+              <div class="briefing-stat-value" style="color: var(--accent-primary);">$485,240 <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-low);">+285% ROI</span></div>
+              <div class="briefing-stat-desc">Recoverable net value from $1.16M portfolio capital exposure</div>
+            </div>
+            <div class="briefing-stat-box">
+              <div class="briefing-stat-label">CHAMPION AI ARCHITECTURE</div>
+              <div class="briefing-stat-value" style="color: #0284C7;">Hybrid ANN-LSTM <span style="font-size: 0.82rem; font-weight: 700; color: #0284C7;">94.2% AUC</span></div>
+              <div class="briefing-stat-desc">Deep sequence modeling capturing 87.5% churn recall</div>
+            </div>
+            <div class="briefing-stat-box">
+              <div class="briefing-stat-label">KEY ATTRITION VECTOR</div>
+              <div class="briefing-stat-value" style="color: var(--color-high);">Logistics & CSAT <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-high);">76.4%</span></div>
+              <div class="briefing-stat-desc">Late shipments (>3d) and low reviews drive majority churn</div>
+            </div>
+            <div class="briefing-stat-box">
+              <div class="briefing-stat-label">PRIORITY POPULATION</div>
+              <div class="briefing-stat-value" style="color: var(--color-critical);">1,600 Critical <span style="font-size: 0.82rem; font-weight: 700; color: #D97706;">+ 250 VIPs</span></div>
+              <div class="briefing-stat-desc">Immediate high-impact intervention cohort ready for outreach</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Retention Command Center (Feature #30 & #24) -->
+        <div class="glass-panel" style="margin-bottom: 22px; border-left: 4px solid var(--accent-primary); background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(6, 182, 212, 0.03) 100%);">
+          <div class="panel-header" style="margin-bottom: 14px; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.2rem;">🛡️</span>
+                <h3 class="panel-title" style="letter-spacing: -0.02em; font-size: 1.15rem;">Customer Retention Command Center</h3>
+                <span class="badge-risk LOW" style="font-size: 0.70rem; padding: 2px 8px;">AI Portfolio Intelligence</span>
+              </div>
+              <p class="panel-subtitle">Executive oversight of capital exposure, risk velocity, and algorithmic retention ROI</p>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+              <div style="text-align: right;">
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Expected Retention Value</div>
+                <strong style="font-size: 1.25rem; color: var(--color-low);" id="cmd-net-retention-val">$485,240</strong>
+              </div>
+              <div style="text-align: right; border-left: 1px solid var(--border-subtle); padding-left: 16px;">
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Portfolio Retention ROI</div>
+                <strong style="font-size: 1.25rem; color: var(--accent-primary);" id="cmd-portfolio-roi">+285.4%</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Automated Dynamic Business Insights Feed -->
+          <div style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <span>🤖 Automated Strategic Insights Feed</span>
+            <span style="height: 6px; width: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+          </div>
+          <div id="executive-insights-grid" class="insights-grid">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+
+        <!-- Row 1: Risk Tier Exposure & Breakdown -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Portfolio Risk Tier Distribution</h3>
+                <p class="panel-subtitle">Customer distribution segmented by probability severity</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 240px;">
+              <canvas id="chart-overview-tiers"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Risk Severity Breakdown</h3>
+                <p class="panel-subtitle">Customer counts and capital at risk by tier</p>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
+              <div class="driver-pill HIGH">
+                <div>
+                  <strong>Critical Tier (80 - 100%)</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);"><span id="tier-count-critical">0</span> Customers</div>
+                </div>
+                <div style="text-align: right;">
+                  <strong style="color: var(--color-critical);" id="tier-rev-critical">$0.00</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-dim);">Capital at Risk</div>
+                </div>
+              </div>
+
+              <div class="driver-pill" style="border-left: 4px solid var(--color-high);">
+                <div>
+                  <strong>High Tier (60 - 80%)</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);"><span id="tier-count-high">0</span> Customers</div>
+                </div>
+                <div style="text-align: right;">
+                  <strong style="color: var(--color-high);" id="tier-rev-high">$0.00</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-dim);">Capital at Risk</div>
+                </div>
+              </div>
+
+              <div class="driver-pill MEDIUM">
+                <div>
+                  <strong>Medium Tier (30 - 60%)</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);"><span id="tier-count-medium">0</span> Customers</div>
+                </div>
+                <div style="text-align: right;">
+                  <strong style="color: var(--color-medium);" id="tier-rev-medium">$0.00</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-dim);">Capital at Risk</div>
+                </div>
+              </div>
+
+              <div class="driver-pill POSITIVE">
+                <div>
+                  <strong>Low Tier (0 - 30%)</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);"><span id="tier-count-low">0</span> Customers</div>
+                </div>
+                <div style="text-align: right;">
+                  <strong style="color: var(--color-low);" id="tier-rev-low">$0.00</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-dim);">Capital at Risk</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Customer Health Index & Capital At Risk vs Portfolio Value -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Customer Health Score Distribution</h3>
+                <p class="panel-subtitle">Composite health rating based on recency, ratings, logistics, and velocity</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-health-distribution"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Portfolio Capital: Revenue at Risk vs Retained Value</h3>
+                <p class="panel-subtitle">Total projected portfolio CLV divided by risk status</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-capital-exposure-donut"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 2: SALES & FORECASTING
+           ============================================================== -->
+      <section id="view-sales" class="view-section">
+        <!-- Main Forecast Chart -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Monthly Revenue Trend & 6-Month Holt-Winters Forecast</h3>
+              <p class="panel-subtitle">Historical sales trajectory (solid warm amber) and exponential smoothing projections (dashed deep indigo)</p>
+            </div>
+          </div>
+          <div class="chart-canvas-container" style="height: 300px;">
+            <canvas id="chart-sales-trend-forecast"></canvas>
+          </div>
+        </div>
+
+        <!-- Row 2: Volume & AOV Trends, Quarterly Sales -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Order Volume & Average Order Value (AOV) Trend</h3>
+                <p class="panel-subtitle">Monthly transaction counts and basket size progression</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-orders-aov-trend"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Quarterly Revenue Progression ($)</h3>
+                <p class="panel-subtitle">Quarter-over-quarter revenue comparison across active periods</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-quarterly-sales"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Day of Week, Top Categories, States, Payments -->
+        <div class="grid-4 grid-align-start">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Day-of-Week Shopping Peak</h3>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-dow-sales"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Top 10 Product Categories</h3>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-top-categories"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Geographic Sales by State (UF)</h3>
+                <p class="panel-subtitle">Regional revenue concentration across top Brazilian states</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-state-sales"></canvas>
+            </div>
+            <!-- State Abbreviations Legend -->
+            <div class="state-legend-strip">
+              <span class="state-legend-pill" title="São Paulo"><strong>SP:</strong> São Paulo</span>
+              <span class="state-legend-pill" title="Rio de Janeiro"><strong>RJ:</strong> Rio de Janeiro</span>
+              <span class="state-legend-pill" title="Minas Gerais"><strong>MG:</strong> Minas Gerais</span>
+              <span class="state-legend-pill" title="Rio Grande do Sul"><strong>RS:</strong> Rio Grande do Sul</span>
+              <span class="state-legend-pill" title="Paraná"><strong>PR:</strong> Paraná</span>
+              <span class="state-legend-pill" title="Santa Catarina"><strong>SC:</strong> Santa Catarina</span>
+              <span class="state-legend-pill" title="Bahia"><strong>BA:</strong> Bahia</span>
+              <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília (DF)</span>
+              <span class="state-legend-pill" title="Goiás"><strong>GO:</strong> Goiás</span>
+              <span class="state-legend-pill" title="Espírito Santo"><strong>ES:</strong> Espírito Santo</span>
+              <span class="state-legend-pill" title="Pernambuco"><strong>PE:</strong> Pernambuco</span>
+              <span class="state-legend-pill" title="Ceará"><strong>CE:</strong> Ceará</span>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Payment Method Share</h3>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-payments-donut"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 3: CUSTOMER 360 & SEGMENTATION
+           ============================================================== -->
+      <section id="view-customers" class="view-section">
+        <!-- Row 1: K-Means Clusters & RFM Distribution -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">K-Means Customer Clusters (K=5)</h3>
+                <p class="panel-subtitle">Behavioral clusters derived from RFM, AOV, Review scores, and Delivery metrics</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-kmeans-segments"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">RFM Quintile Segment Distribution</h3>
+                <p class="panel-subtitle">Customer base distribution across classic RFM lifecycle segments</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-rfm-distribution"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Repeat Ratio, CLV Brackets & DBSCAN Anomaly Info -->
+        <div class="grid-3">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Repeat vs One-Time Shoppers</h3>
+            </div>
+            <div class="chart-canvas-container" style="height: 240px;">
+              <canvas id="chart-repeat-ratio"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Predicted CLV Brackets</h3>
+            </div>
+            <div class="chart-canvas-container" style="height: 240px;">
+              <canvas id="chart-clv-brackets"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">DBSCAN Anomaly Detection</h3>
+                <p class="panel-subtitle">Outlier customer behavioral patterns</p>
+              </div>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+              DBSCAN density clustering identified <strong>61 anomalous behavior candidates</strong> in the feature space. These represent high-frequency bulk purchasers, extreme spenders (>5x standard deviation), and logistics edge cases.
+            </p>
+            <div class="chip-tag" style="display: inline-flex;">
+              <span>Density Epsilon:</span> <strong>2.5</strong> | <span>Min Samples:</span> <strong>15</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centroid Profiles Table -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Cluster Centroid Profiles & Business Segments</h3>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Segment Name</th>
+                  <th>Customer Count</th>
+                  <th>Avg Spend</th>
+                  <th>Avg Orders</th>
+                  <th>Avg Recency</th>
+                  <th>Avg Review Score</th>
+                </tr>
+              </thead>
+              <tbody id="kmeans-table-body">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cohort Retention Analysis (Feature #15 & #16) -->
+        <div class="grid-2" style="margin-top: 18px;">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Customer Cohort Retention Heatmap (%)</h3>
+                <p class="panel-subtitle">Acquisition cohort retention tracked across Month 0 to Month 6</p>
+              </div>
+            </div>
+            <div class="table-container" style="max-height: 280px;">
+              <table class="data-table" id="cohort-retention-table">
+                <thead>
+                  <tr>
+                    <th>Cohort</th>
+                    <th>Acquired</th>
+                    <th>M0</th>
+                    <th>M1</th>
+                    <th>M2</th>
+                    <th>M3</th>
+                    <th>M4</th>
+                    <th>M5</th>
+                    <th>M6</th>
+                  </tr>
+                </thead>
+                <tbody id="cohort-table-body">
+                  <!-- Injected via app.js with colored heat cells -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Lifecycle Retention Decay by Segment</h3>
+                <p class="panel-subtitle">M0-M6 retention trajectory comparison across customer tiers</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-segment-retention-curves"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 4: CHURN & REVENUE RISK
+           ============================================================== -->
+      <section id="view-churn" class="view-section">
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Churn Probability by Customer Segment (%)</h3>
+                <p class="panel-subtitle">Average modeled churn risk per behavioral cohort</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-churn-by-segment"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Top States by Revenue at Risk ($)</h3>
+                <p class="panel-subtitle">Geographic concentration of customer capital exposure</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-rev-risk-by-state"></canvas>
+            </div>
+            <!-- Top States Legend -->
+            <div class="state-legend-strip">
+              <span class="state-legend-pill" title="São Paulo"><strong>SP:</strong> São Paulo</span>
+              <span class="state-legend-pill" title="Rio de Janeiro"><strong>RJ:</strong> Rio de Janeiro</span>
+              <span class="state-legend-pill" title="Minas Gerais"><strong>MG:</strong> Minas Gerais</span>
+              <span class="state-legend-pill" title="Rio Grande do Sul"><strong>RS:</strong> Rio Grande do Sul</span>
+              <span class="state-legend-pill" title="Paraná"><strong>PR:</strong> Paraná</span>
+              <span class="state-legend-pill" title="Santa Catarina"><strong>SC:</strong> Santa Catarina</span>
+              <span class="state-legend-pill" title="Bahia"><strong>BA:</strong> Bahia</span>
+              <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília</span>
+              <span class="state-legend-pill" title="Goiás"><strong>GO:</strong> Goiás</span>
+              <span class="state-legend-pill" title="Espírito Santo"><strong>ES:</strong> Espírito Santo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Churn Probability by Customer Review Rating (%)</h3>
+                <p class="panel-subtitle">Impact of customer satisfaction feedback on attrition risk</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-churn-by-review"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Churn Probability by Delivery Delay Bracket (%)</h3>
+                <p class="panel-subtitle">Fulfillment friction correlation with customer retention</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-churn-by-delay"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 5: ML & DEEP LEARNING BENCHMARK STUDIO
+           ============================================================== -->
+      <section id="view-models" class="view-section">
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">8-Model Comprehensive Benchmark Matrix</h3>
+              <p class="panel-subtitle">Traditional ML (Tree ensembles) vs Deep Learning (ANN, LSTM, Hybrid ANN-LSTM)</p>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Model Architecture</th>
+                  <th>Category</th>
+                  <th>Accuracy</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>F1 Score</th>
+                  <th>ROC-AUC</th>
+                  <th>PR-AUC</th>
+                </tr>
+              </thead>
+              <tbody id="models-table-body">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Multi-Model Metric Comparison & Interactive Confusion Matrix Heatmap -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Model Metric Comparison (F1, Recall, ROC-AUC)</h3>
+                <p class="panel-subtitle">Side-by-side performance comparison across top architectures</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 295px;">
+              <canvas id="chart-model-metric-comparison"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Interactive Confusion Matrix Heatmap</h3>
+                <p class="panel-subtitle">Visual classification breakdown of True/False Positives & Negatives</p>
+              </div>
+              <select id="select-model-cm" class="search-bar" style="width: 180px; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
+                <option value="Random Forest">Random Forest</option>
+                <option value="XGBoost">XGBoost</option>
+                <option value="LightGBM">LightGBM</option>
+                <option value="Logistic Regression">Logistic Regression</option>
+                <option value="Decision Tree">Decision Tree</option>
+                <option value="ANN">PyTorch ANN</option>
+                <option value="LSTM">PyTorch LSTM</option>
+                <option value="Hybrid ANN-LSTM">Hybrid ANN-LSTM</option>
+              </select>
+            </div>
+            <div class="chart-canvas-container" style="height: 295px;">
+              <canvas id="chart-confusion-matrix"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHAP Global Drivers & ROC / PR Curves -->
+        <div class="grid-3">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">SHAP Global Churn Drivers</h3>
+                <p class="panel-subtitle">Mean absolute SHAP value impact</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-shap-importance"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Champion Model ROC Curve</h3>
+                <p class="panel-subtitle">True Positive vs False Positive Rate</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-roc-curve"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Precision-Recall (PR) Curve</h3>
+                <p class="panel-subtitle">Precision vs Recall trade-off</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-pr-curve"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Probability Calibration Curve (Feature #27) -->
+        <div class="grid-2" style="margin-top: 18px;">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Model Probability Calibration Curve (Reliability Diagram)</h3>
+                <p class="panel-subtitle">Predicted churn probability vs observed empirical churn rate across 10 deciles</p>
+              </div>
+              <span class="badge-risk LOW" style="font-size: 0.72rem;">Platt-Calibrated</span>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-calibration-curve"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Probabilistic Reliability & Calibration Metrics</h3>
+                <p class="panel-subtitle">Evaluating probability fidelity for operational decision intelligence</p>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px;">
+              <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Brier Score</div>
+                <strong style="font-size: 1.5rem; color: var(--color-low);">0.0046</strong>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Near-perfect calibration (&lt; 0.05 indicates outstanding calibration)</div>
+              </div>
+              <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Expected Calibration Error (ECE)</div>
+                <strong style="font-size: 1.5rem; color: var(--accent-primary);">1.2%</strong>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Minimal probability gap across all deciles</div>
+              </div>
+            </div>
+            <div style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; background: rgba(99, 102, 241, 0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.2);">
+              💡 <strong>Why Calibration Matters in Production:</strong> Uncalibrated models often produce over-confident probabilities (e.g. 95% when true frequency is 70%). Calibrating the Hybrid ANN-LSTM ensures that an 80% risk prediction corresponds to 80 out of 100 customers actually churning, enabling accurate dollar-value ROI calculation.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 6: LOGISTICS & FULFILLMENT DASHBOARD (NEW DASHBOARD 1)
+           ============================================================== -->
+      <section id="view-logistics" class="view-section">
+        <!-- Logistics KPI Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Avg Delivery Time</span>
+              <span class="kpi-icon">🚚</span>
+            </div>
+            <div class="kpi-value" id="log-kpi-delivery">12.5 d</div>
+            <div class="kpi-footer">
+              <span>Carrier Promise:</span>
+              <strong id="log-kpi-estimated">24.1 d</strong>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Late Delivery Ratio</span>
+              <span class="kpi-icon">⏰</span>
+            </div>
+            <div class="kpi-value" id="log-kpi-late" style="color: var(--color-critical);">7.8%</div>
+            <div class="kpi-footer">
+              <span class="badge-trend negative">High churn driver</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Avg Freight Fee</span>
+              <span class="kpi-icon">💵</span>
+            </div>
+            <div class="kpi-value" id="log-kpi-freight">$20.03</div>
+            <div class="kpi-footer">
+              <span>16.5% of order value</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Fulfillment Rating Impact</span>
+              <span class="kpi-icon">⭐</span>
+            </div>
+            <div class="kpi-value" id="log-kpi-ratings">4.2 vs 2.6</div>
+            <div class="kpi-footer">
+              <span class="badge-trend warning">-38% rating on late delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Fastest vs Slowest Delivery States (Days)</h3>
+                <p class="panel-subtitle">Regional fulfillment logistics speed across Brazilian states</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 270px;">
+              <canvas id="chart-logistics-states"></canvas>
+            </div>
+            <!-- Logistics States Legend -->
+            <div class="state-legend-strip">
+              <span class="state-legend-pill" title="São Paulo"><strong>SP:</strong> São Paulo</span>
+              <span class="state-legend-pill" title="Paraná"><strong>PR:</strong> Paraná</span>
+              <span class="state-legend-pill" title="Minas Gerais"><strong>MG:</strong> Minas Gerais</span>
+              <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília</span>
+              <span class="state-legend-pill" title="Maranhão"><strong>MA:</strong> Maranhão</span>
+              <span class="state-legend-pill" title="Pará"><strong>PA:</strong> Pará</span>
+              <span class="state-legend-pill" title="Alagoas"><strong>AL:</strong> Alagoas</span>
+              <span class="state-legend-pill" title="Amazonas"><strong>AM:</strong> Amazonas</span>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Monthly Delivery Speed: Actual vs Estimated (Days)</h3>
+                <p class="panel-subtitle">Historical fulfillment efficiency and carrier buffer optimization</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 270px;">
+              <canvas id="chart-logistics-trend"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Review Score Impact: On-Time vs Delayed Deliveries</h3>
+                <p class="panel-subtitle">Direct drop in customer satisfaction caused by fulfillment friction</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-logistics-rating-drop"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Regional Fulfillment Reliability Leaderboard</h3>
+                <p class="panel-subtitle">Top states by order volume and on-time delivery rate</p>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>Orders</th>
+                    <th>Avg Delivery Days</th>
+                    <th>Avg Freight</th>
+                    <th>Late Ratio (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="logistics-table-body">
+                  <!-- Injected via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 7: PRODUCTS & SELLERS INTELLIGENCE (NEW DASHBOARD 2)
+           ============================================================== -->
+      <section id="view-products" class="view-section">
+        <!-- Products & Sellers KPI Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Catalog Products</span>
+              <span class="kpi-icon">🏷️</span>
+            </div>
+            <div class="kpi-value">32,951</div>
+            <div class="kpi-footer">
+              <span>Across 71 distinct categories</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Marketplace Sellers</span>
+              <span class="kpi-icon">🏪</span>
+            </div>
+            <div class="kpi-value">3,095</div>
+            <div class="kpi-footer">
+              <span class="badge-trend positive">Active merchant partners</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Avg Unit Price</span>
+              <span class="kpi-icon">💲</span>
+            </div>
+            <div class="kpi-value">$120.65</div>
+            <div class="kpi-footer">
+              <span>Median price: $74.90</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Top Category Revenue</span>
+              <span class="kpi-icon">🏆</span>
+            </div>
+            <div class="kpi-value">$1.25M</div>
+            <div class="kpi-footer">
+              <span>Health & Beauty</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Top Product Categories by Total Revenue ($k)</h3>
+                <p class="panel-subtitle">Revenue powerhouse product categories across marketplace</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 270px;">
+              <canvas id="chart-category-revenue-deep"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Freight-to-Price Burden by Category (%)</h3>
+                <p class="panel-subtitle">High freight friction categories requiring subsidization</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 270px;">
+              <canvas id="chart-category-freight-burden"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Top Marketplace Merchant Sellers Performance</h3>
+              <p class="panel-subtitle">High-revenue sellers with order volume and average review rating</p>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Seller ID</th>
+                  <th>State</th>
+                  <th>Total Revenue</th>
+                  <th>Total Orders</th>
+                  <th>Average Rating</th>
+                  <th>Reliability</th>
+                </tr>
+              </thead>
+              <tbody id="sellers-table-body">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 8: RETENTION CAMPAIGN ROI ENGINE (NEW DASHBOARD 3)
+           ============================================================== -->
+      <section id="view-campaigns" class="view-section">
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Retention Campaign Financial ROI & Strategy Simulator</h3>
+              <p class="panel-subtitle">Simulate multi-channel retention initiatives and calculate exact net revenue return</p>
+            </div>
+          </div>
+
+          <div class="simulator-container">
+            <!-- Campaign Setup Controls -->
+            <div class="sim-slider-group">
+              <div class="slider-item">
+                <label class="slider-header" style="font-weight: 600;">Select Retention Campaign Playbook:</label>
+                <select id="camp-type-select" class="search-bar" style="width: 100%;" onchange="runCampaignSimulation()">
+                  <option value="vip_concierge">VIP Concierge Campaign (CLV &ge; $300, Critical Risk)</option>
+                  <option value="winback_promo">Win-Back Promo Campaign (CLV $100-$300, High Risk)</option>
+                  <option value="service_recovery">Service Recovery Outreach (Dissatisfied / Late Delivery)</option>
+                  <option value="second_purchase">Second-Purchase Accelerator (Single Order Shoppers)</option>
+                </select>
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Offer Incentive / Discount Rate (%)</span>
+                  <span class="slider-val" id="val-camp-discount">20%</span>
+                </div>
+                <input type="range" id="camp-discount" min="5" max="35" step="1" value="20" oninput="runCampaignSimulation()">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Projected Offer Acceptance Rate (%)</span>
+                  <span class="slider-val" id="val-camp-acceptance">25%</span>
+                </div>
+                <input type="range" id="camp-acceptance" min="5" max="50" step="1" value="25" oninput="runCampaignSimulation()">
+              </div>
+
+              <div style="background: var(--bg-secondary); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-top: 10px;">
+                <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Recommended Channel</div>
+                <div style="font-weight: 700; color: var(--accent-primary);" id="camp-channel-desc">Direct Call / Dedicated Account Manager</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;" id="camp-offer-desc">25% Exclusive Loyalty Credit + Free Shipping</div>
+              </div>
+            </div>
+
+            <!-- Financial Return Output Box -->
+            <div class="sim-output-card" style="align-items: stretch; text-align: left;">
+              <span class="sim-action-title">Projected Campaign Return on Investment (ROI)</span>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0;">
+                <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Targeted Cohort</div>
+                  <strong style="font-size: 1.4rem; color: var(--text-main);" id="camp-target-cust">0</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-dim);">At-risk customers</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Campaign Budget</div>
+                  <strong style="font-size: 1.4rem; color: var(--color-critical);" id="camp-total-cost">$0.00</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-dim);">Estimated cost</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Saved Customers</div>
+                  <strong style="font-size: 1.4rem; color: var(--color-low);" id="camp-saved-cust">0</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-dim);">Successfully retained</div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Recovered Revenue</div>
+                  <strong style="font-size: 1.4rem; color: var(--color-low);" id="camp-recovered-rev">$0.00</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-dim);">Protected CLV</div>
+                </div>
+              </div>
+
+              <div class="sim-action-box" style="margin-top: 6px; text-align: center; background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.3);">
+                <div style="font-size: 0.75rem; color: var(--color-low); font-weight: 700; text-transform: uppercase;">Net Financial Return</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-low); margin: 4px 0;" id="camp-net-savings">+$0.00</div>
+                <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main);">
+                  Projected Net ROI: <span style="color: var(--accent-primary);" id="camp-roi-pct">+0.0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Campaign Financial Comparison: Budget vs Recovered ($)</h3>
+                <p class="panel-subtitle">Capital allocated vs revenue protected from churn</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-campaign-roi-bar"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Target Audience Sizing across Retention Initiatives</h3>
+                <p class="panel-subtitle">Eligible customer volume distribution</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 250px;">
+              <canvas id="chart-campaign-audience-donut"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 9: CUSTOMER RISK EXPLORER
+           ============================================================== -->
+      <section id="view-explorer" class="view-section">
+        <div class="glass-panel" style="padding: 16px 18px; margin-bottom: 16px;">
+          <div class="panel-header" style="flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <h3 class="panel-title" style="font-size: 1.05rem;">Customer Risk Directory &amp; Inspection</h3>
+              <p class="panel-subtitle" style="font-size: 0.74rem;">Drill down into individual customer probabilities, SHAP drivers, and next-best-actions</p>
+            </div>
+            <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap;">
+              <input type="text" id="customer-search-input" class="search-bar" style="width: 190px; padding: 5px 9px; font-size: 0.78rem;" placeholder="Search ID, City, State..." oninput="debounceSearchCatalog()">
+              <button class="btn-filter btn-tier-filter active" data-tier="ALL" onclick="filterCatalog('ALL')">All <span class="tier-count-badge" id="count-tier-all">25k</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="TOP1PCT" onclick="filterCatalog('TOP1PCT')" style="border-color: #D97706; color: #D97706; font-weight: 700;">⭐ VIPs <span class="tier-count-badge" id="count-tier-top1">250</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="CRITICAL" onclick="filterCatalog('CRITICAL')">Critical <span class="tier-count-badge" id="count-tier-critical">1.6k</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="HIGH" onclick="filterCatalog('HIGH')">High <span class="tier-count-badge" id="count-tier-high">3.8k</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="MEDIUM" onclick="filterCatalog('MEDIUM')">Medium <span class="tier-count-badge" id="count-tier-medium">6.7k</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="LOW" onclick="filterCatalog('LOW')">Low <span class="tier-count-badge" id="count-tier-low">12.8k</span></button>
+            </div>
+          </div>
+
+          <!-- Catalog Toolbar with Status, Sorting, and Page Size -->
+          <div class="catalog-toolbar">
+            <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span>Showing <strong id="catalog-showing-range" style="color: var(--text-primary); font-weight: 700;">1 - 50</strong> of <strong id="catalog-total-records" style="color: var(--accent-primary); font-weight: 700;">25,000</strong> customer records</span>
+              <span id="catalog-active-filter-badge" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; padding: 2px 9px; border-radius: 4px; font-size: 0.76rem; font-weight: 600;">All Records (Full Portfolio)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+              <label style="font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                Sort:
+                <select id="catalog-sort-by" class="catalog-select" onchange="changeCatalogSort(this.value)">
+                  <option value="revenue_at_risk" selected>Revenue at Risk (High → Low)</option>
+                  <option value="final_churn_prob">Churn Probability (High → Low)</option>
+                  <option value="total_spend">Total Spend (High → Low)</option>
+                  <option value="recency_days">Recency (Most Inactive)</option>
+                  <option value="risk_velocity">Risk Velocity (Fast Deteriorating)</option>
+                  <option value="review_score">CSAT Rating (Lowest First)</option>
+                </select>
+              </label>
+              <label style="font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                Records / Page:
+                <select id="catalog-page-size" class="catalog-select" onchange="changeCatalogPageSize(this.value)">
+                  <option value="25">25</option>
+                  <option value="50" selected>50</option>
+                  <option value="100">100</option>
+                  <option value="250">250</option>
+                  <option value="500">500</option>
+                  <option value="1000">1,000</option>
+                  <option value="25000">All (25,000)</option>
+                </select>
+              </label>
+              <button class="btn-filter" onclick="exportCatalogCSV()" style="font-size: 0.80rem; font-weight: 600; display: flex; align-items: center; gap: 6px;" title="Export current filtered directory records as CSV">
+                <span>📥</span> Export CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="table-container catalog-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Location</th>
+                  <th>Recency</th>
+                  <th>Orders</th>
+                  <th>Spend</th>
+                  <th>Rating</th>
+                  <th>Risk Velocity</th>
+                  <th>Churn Prob</th>
+                  <th>Risk Tier</th>
+                  <th>Rev at Risk</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="catalog-table-body">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bottom Pagination Controls -->
+          <div class="catalog-pagination">
+            <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+              <button class="btn-filter" id="btn-page-first" onclick="goToCatalogPage(1)" title="Go to First Page">« First</button>
+              <button class="btn-filter" id="btn-page-prev" onclick="goToCatalogPage(state.catalogPage - 1)" title="Previous Page">‹ Prev</button>
+              <div id="catalog-page-pills" style="display: flex; gap: 4px; align-items: center;">
+                <!-- Dynamically populated page pills: 1, 2, 3 ... -->
+              </div>
+              <button class="btn-filter" id="btn-page-next" onclick="goToCatalogPage(state.catalogPage + 1)" title="Next Page">Next ›</button>
+              <button class="btn-filter" id="btn-page-last" onclick="goToCatalogPage(state.catalogTotalPages)" title="Go to Last Page">Last »</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-secondary);">
+              <span>Page <strong id="catalog-current-page" style="color: var(--text-primary); font-weight: 700;">1</strong> of <strong id="catalog-total-pages" style="color: var(--text-primary); font-weight: 700;">500</strong></span>
+              <span style="color: var(--border-subtle);">|</span>
+              <span>Jump to:</span>
+              <input type="number" id="catalog-jump-input" class="catalog-jump-input" min="1" max="500" value="1" onkeydown="if(event.key==='Enter') jumpToCatalogPage(this.value)">
+              <button class="btn-filter" style="padding: 4px 10px; font-size: 0.80rem;" onclick="jumpToCatalogPage(document.getElementById('catalog-jump-input').value)">Go</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 10: WHAT-IF CHURN SIMULATOR
+           ============================================================== -->
+      <section id="view-simulator" class="view-section">
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Interactive What-If Scenario Stress-Tester</h3>
+              <p class="panel-subtitle">Simulate how changing customer behavioral factors impacts churn risk and retention prescription in real-time</p>
+            </div>
+          </div>
+
+          <div class="simulator-container">
+            <!-- Controls -->
+            <div class="sim-slider-group">
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Days Inactive (Recency)</span>
+                  <span class="slider-val" id="val-sim-recency">60 days</span>
+                </div>
+                <input type="range" id="sim-recency" min="1" max="365" value="60">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Total Lifetime Orders</span>
+                  <span class="slider-val" id="val-sim-orders">2 orders</span>
+                </div>
+                <input type="range" id="sim-orders" min="1" max="15" value="2">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Total Historical Spend ($)</span>
+                  <span class="slider-val" id="val-sim-spend">$250</span>
+                </div>
+                <input type="range" id="sim-spend" min="20" max="2500" step="10" value="250">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Average Review Rating</span>
+                  <span class="slider-val" id="val-sim-review">4.2 / 5.0</span>
+                </div>
+                <input type="range" id="sim-review" min="1.0" max="5.0" step="0.1" value="4.2">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Delivery Delay (Days vs Estimated)</span>
+                  <span class="slider-val" id="val-sim-delay">0 days</span>
+                </div>
+                <input type="range" id="sim-delay" min="-10" max="25" value="0">
+              </div>
+
+              <div class="slider-item">
+                <div class="slider-header">
+                  <span>Spending Trend (Recent 30d vs Prior)</span>
+                  <span class="slider-val" id="val-sim-trend">+10%</span>
+                </div>
+                <input type="range" id="sim-trend" min="-1.0" max="1.0" step="0.05" value="0.1">
+              </div>
+            </div>
+
+            <!-- Real-time Output Gauge & Retention Action -->
+            <div class="sim-output-card">
+              <span class="sim-action-title">Simulated Churn Probability</span>
+              
+              <div class="prob-gauge-container">
+                <canvas id="sim-prob-gauge" width="190" height="190"></canvas>
+                <div class="prob-gauge-text">
+                  <div class="prob-number" id="sim-prob-number">0.0%</div>
+                  <div class="prob-label">CHURN RISK</div>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 12px;">
+                <span id="sim-risk-badge" class="badge-risk MEDIUM">MEDIUM</span>
+              </div>
+
+              <div style="font-size: 0.88rem; color: var(--text-muted);">
+                Simulated Capital Exposure: <strong style="color: var(--text-main);" id="sim-rev-risk">$0.00</strong>
+              </div>
+
+              <div class="sim-action-box">
+                <div class="sim-action-title">Recommended Retention Action</div>
+                <div class="sim-action-name" id="sim-action-name">Standard Engagement</div>
+                <div class="sim-action-offer" id="sim-action-offer">Personalized Product Discovery</div>
+                <div style="margin-top: 10px; font-size: 0.78rem; color: var(--text-dim); display: flex; justify-content: space-between;">
+                  <span>Channel: <strong id="sim-action-channel" style="color: var(--text-main);">Newsletter</strong></span>
+                  <span>Urgency: <strong id="sim-action-urgency" style="color: var(--accent-primary);">Standard</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==============================================================
+       CUSTOMER DIGITAL TWIN & INSPECTION MODAL (Feature #9)
+       ============================================================== -->
+  <div id="customer-modal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 820px;">
+      <button class="modal-close" onclick="closeCustomerModal()">✕</button>
+      
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 0.75rem; color: var(--accent-primary); font-weight: 700; text-transform: uppercase;">Customer Digital Twin 🧬</span>
+            <span id="modal-vip-tag" class="badge-risk LOW" style="display: none; background: rgba(217, 119, 6, 0.15); color: #d97706; border-color: rgba(217, 119, 6, 0.3);">⭐ Top 1% VIP</span>
+          </div>
+          <h2 style="font-size: 1.25rem; margin-top: 4px; color: var(--text-main); font-family: monospace;" id="modal-cust-id">0000000000</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);" id="modal-cust-loc">City, State</p>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <span id="modal-risk-trajectory" class="badge-risk LOW" style="font-size: 0.76rem;">→ Stable</span>
+          <span id="modal-risk-tier" class="badge-risk HIGH">HIGH</span>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid-3" style="gap: 12px; margin-bottom: 18px;">
+        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Total Spend / Orders</div>
+          <strong style="font-size: 1.15rem; color: var(--text-main);" id="modal-cust-spend">$0.00</strong>
+          <div style="font-size: 0.72rem; color: var(--text-muted);" id="modal-cust-orders">0 orders</div>
+        </div>
+
+        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Days Inactive / Segment</div>
+          <strong style="font-size: 1.15rem; color: var(--text-main);" id="modal-cust-recency">0 days</strong>
+          <div style="font-size: 0.72rem; color: var(--text-muted);" id="modal-cust-segment">VIP Champions</div>
+        </div>
+
+        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Health Score & Trend</div>
+          <strong style="font-size: 1.15rem; color: var(--color-low);" id="modal-cust-health">0 / 100</strong>
+          <div style="font-size: 0.72rem; color: var(--text-muted);" id="modal-cust-health-trend">→ Stable Trend</div>
+        </div>
+      </div>
+
+      <!-- Early-Warning Churn Horizons (Feature #3) -->
+      <div class="glass-panel" style="padding: 16px; margin-bottom: 16px; border: 1px solid var(--border-subtle);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h4 style="font-size: 0.90rem; color: var(--text-main); font-weight: 700;">🔮 Early-Warning Churn Horizons (30d / 60d / 90d)</h4>
+          <span style="font-size: 0.72rem; color: var(--text-dim);">Multi-Horizon Escalation</span>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+          <div class="horizon-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.76rem;">
+              <span>30-Day Risk:</span>
+              <strong id="modal-prob-30d" style="color: var(--color-low);">0.0%</strong>
+            </div>
+            <div class="horizon-bar-bg">
+              <div class="horizon-bar-fill" id="bar-prob-30d" style="width: 0%; background: var(--color-low);"></div>
+            </div>
+          </div>
+
+          <div class="horizon-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.76rem;">
+              <span>60-Day Risk:</span>
+              <strong id="modal-prob-60d" style="color: var(--color-medium);">0.0%</strong>
+            </div>
+            <div class="horizon-bar-bg">
+              <div class="horizon-bar-fill" id="bar-prob-60d" style="width: 0%; background: var(--color-medium);"></div>
+            </div>
+          </div>
+
+          <div class="horizon-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.76rem;">
+              <span>90-Day Risk:</span>
+              <strong id="modal-prob-90d" style="color: var(--color-critical);">0.0%</strong>
+            </div>
+            <div class="horizon-bar-bg">
+              <div class="horizon-bar-fill" id="bar-prob-90d" style="width: 0%; background: var(--color-critical);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-Model Predictions -->
+      <div class="glass-panel" style="padding: 16px; margin-bottom: 16px;">
+        <h4 style="font-size: 0.90rem; margin-bottom: 10px; color: var(--text-main);">Multi-Model Architecture Consensus</h4>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+          <div style="background: var(--bg-secondary); padding: 8px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.70rem; color: var(--text-muted);">ANN (Profile)</div>
+            <strong style="font-size: 1.05rem; color: #0284C7;" id="modal-prob-ann">0.0%</strong>
+          </div>
+          <div style="background: var(--bg-secondary); padding: 8px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.70rem; color: var(--text-muted);">LSTM (Sequence)</div>
+            <strong style="font-size: 1.05rem; color: #7C3AED;" id="modal-prob-lstm">0.0%</strong>
+          </div>
+          <div style="background: var(--bg-secondary); padding: 8px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.70rem; color: var(--text-muted);">Hybrid Dual-Branch</div>
+            <strong style="font-size: 1.05rem; color: #DB2777;" id="modal-prob-hybrid">0.0%</strong>
+          </div>
+          <div style="background: rgba(99, 102, 241, 0.08); padding: 8px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.3);">
+            <div style="font-size: 0.70rem; color: var(--accent-primary);">Calibrated Risk</div>
+            <strong style="font-size: 1.05rem; color: var(--text-main);" id="modal-prob-final">0.0%</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retention ROI Optimization Economics (Feature #6) -->
+      <div class="glass-panel" style="padding: 14px; margin-bottom: 16px; background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.25);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h4 style="font-size: 0.85rem; color: var(--color-low); font-weight: 700;">💎 Individual Retention ROI Optimization</h4>
+          <span style="font-size: 0.70rem; color: var(--text-dim);">Decision Intelligence</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+          <div>
+            <div style="font-size: 0.68rem; color: var(--text-muted);">Campaign Cost</div>
+            <strong style="font-size: 0.95rem; color: var(--color-critical);" id="modal-ret-cost">$0.00</strong>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; color: var(--text-muted);">Save Probability</div>
+            <strong style="font-size: 0.95rem; color: var(--color-low);" id="modal-save-prob">0%</strong>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; color: var(--text-muted);">Expected Net Value</div>
+            <strong style="font-size: 0.95rem; color: var(--color-low);" id="modal-exp-ret-val">+$0.00</strong>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; color: var(--text-muted);">Retention ROI</div>
+            <strong style="font-size: 0.95rem; color: var(--accent-primary);" id="modal-ret-roi">+0%</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Counterfactual Explanations (Feature #13) -->
+      <div class="counterfactual-box" style="margin-bottom: 16px;">
+        <div class="counterfactual-text" id="modal-counterfactual-text">
+          Analyzing prescriptive behavioral levers...
+        </div>
+      </div>
+
+      <!-- SHAP Local Drivers -->
+      <div style="margin-bottom: 16px;">
+        <h4 style="font-size: 0.88rem; margin-bottom: 10px; color: var(--text-main);">Behavioral Feature Contributions (Local SHAP)</h4>
+        <div id="modal-drivers-list">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Prescribed Next-Best-Action -->
+      <div class="sim-action-box" style="margin-top: 0;">
+        <div class="sim-action-title">Prescribed Next-Best Retention Action</div>
+        <div class="sim-action-name" id="modal-action-name">Retention Campaign</div>
+        <div class="sim-action-offer" id="modal-action-offer">Promotional Incentive</div>
+        <div style="margin-top: 8px; font-size: 0.78rem; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+          <span>Channel: <strong id="modal-action-channel" style="color: var(--text-main);">Email</strong></span>
+          <span>Urgency: <strong id="modal-action-urgency" style="color: var(--accent-primary);">Standard</strong></span>
+          <span>Capital at Risk: <strong id="modal-rev-risk" style="color: var(--color-high);">$0.00</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Global Spotlight Command Palette (Ctrl+K / ⌘K) -->
+  <div id="command-palette-backdrop" class="cmd-palette-backdrop" style="display: none;" onclick="closeCommandPalette(event)">
+    <div class="cmd-palette-modal" onclick="event.stopPropagation()">
+      <div class="cmd-palette-input-wrap">
+        <span class="cmd-input-icon">⚡</span>
+        <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Type a view, customer ID, or command... (e.g. 'sales', 'vip', 'critical', 'model', 'dark')" oninput="filterCommandPalette(this.value)" onkeydown="handleCommandPaletteKey(event)">
+        <span class="cmd-badge-esc" onclick="closeCommandPalette()">ESC</span>
+      </div>
+      <div class="cmd-palette-results" id="cmd-palette-results">
+        <!-- Dynamically populated commands and results via app.js -->
+      </div>
+      <div class="cmd-palette-footer">
+        <div class="cmd-footer-hints">
+          <span><kbd class="cmd-kbd">↑</kbd> <kbd class="cmd-kbd">↓</kbd> Navigate</span>
+          <span><kbd class="cmd-kbd">↵</kbd> Select</span>
+          <span><kbd class="cmd-kbd">ESC</kbd> Close</span>
+        </div>
+        <div style="font-size: 0.72rem; color: var(--text-dim); font-weight: 600;">ChurnShield 360 Customer Churn &amp; Retention Platform</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Floating Canvas Tooltip -->
+  <div id="chart-floating-tooltip" class="chart-floating-tooltip" style="display: none;"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

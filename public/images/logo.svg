@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="retentionLoop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="customerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="pulseLineGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+    <filter id="pulseGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Retention Loop Arrow -->
+  <!-- Arc from angle ~80 to ~40 degrees with arrowhead -->
+  <path d="M 50 14 A 36 36 0 1 1 20 68" 
+        stroke="url(#retentionLoop)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+  <!-- Returning Retention Arrow Tail & Head -->
+  <path d="M 20 68 A 36 36 0 0 1 45 14" 
+        stroke="url(#retentionLoop)" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.45" />
+  <!-- Arrowhead at top (pointing clockwise) -->
+  <polygon points="50,6 64,14 50,22 53,14" fill="#10B981" />
+
+  <!-- Customer Head Silhouette -->
+  <circle cx="50" cy="38" r="8" fill="url(#customerGrad)" />
+
+  <!-- Customer Torso Silhouette -->
+  <path d="M34 68 C34 52 42 49 50 49 C58 49 66 52 66 68 Z" 
+        fill="url(#customerGrad)" opacity="0.85" />
+
+  <!-- Customer Embracing Protection Arms / Shield Arc -->
+  <path d="M30 65 C26 58 27 50 31 46" 
+        stroke="url(#customerGrad)" stroke-width="3" stroke-linecap="round" fill="none" />
+  <path d="M70 65 C74 58 73 50 69 46" 
+        stroke="url(#customerGrad)" stroke-width="3" stroke-linecap="round" fill="none" />
+
+  <!-- Churn Risk / Health Lifeline Pulse (Passing through customer core) -->
+  <path d="M 12 55 L 34 55 L 42 43 L 48 67 L 54 41 L 60 61 L 66 55 L 88 55" 
+        stroke="url(#pulseLineGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#pulseGlow)" />
+
+  <!-- Pulse Core Node -->
+  <circle cx="50" cy="55" r="3.5" fill="#FFFFFF" stroke="#06B6D4" stroke-width="1.5" />
+</svg>
