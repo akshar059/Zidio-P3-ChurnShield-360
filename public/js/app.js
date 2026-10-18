@@ -529,8 +529,22 @@ function renderSales() {
 
   // Chart 7: Payment Breakdown Donut
   const payments = sales.payment_breakdown || [];
+  const formatPaymentName = (type = "") => {
+    const key = String(type).toLowerCase().trim();
+    const map = {
+      "credit_card": "Credit Card",
+      "credit card": "Credit Card",
+      "boleto": "Bank Slip",
+      "bank_slip": "Bank Slip",
+      "debit_card": "Debit Card",
+      "debit card": "Debit Card",
+      "voucher": "Voucher",
+      "not_defined": "Other"
+    };
+    return map[key] || key.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  };
   MiniCharts.drawDonutChart("chart-payments-donut", {
-    labels: payments.map(p => p.payment_type.replace(/_/g, " ")),
+    labels: payments.map(p => formatPaymentName(p.payment_type)),
     data: payments.map(p => p.total_value),
     colors: ["#C2410C", "#D97706", "#0D9488", "#4338CA"],
     centerText: `$${((sales.kpis?.total_revenue || 0) / 1000000).toFixed(1)}M`,

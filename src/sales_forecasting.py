@@ -74,12 +74,20 @@ def run_sales_analytics_and_forecasting(master_sales: pd.DataFrame, forecast_per
     ).reset_index().sort_values("revenue", ascending=False).head(12)
     sales_by_state_records = sales_by_state.round({"revenue": 2}).to_dict(orient="records")
 
-    # Payment Methods
+    # Payment Methods (Translated to English)
     if "payment_type" in df.columns:
-        payment_breakdown = df.groupby("payment_type").agg(
+        payment_map = {
+            "credit_card": "Credit Card",
+            "boleto": "Bank Slip",
+            "debit_card": "Debit Card",
+            "voucher": "Voucher"
+        }
+        df_pay = df.copy()
+        df_pay["payment_display"] = df_pay["payment_type"].map(payment_map).fillna(df_pay["payment_type"])
+        payment_breakdown = df_pay.groupby("payment_display").agg(
             total_value=("price", "sum"),
             transactions=("order_id", "nunique")
-        ).reset_index().sort_values("total_value", ascending=False)
+        ).reset_index().rename(columns={"payment_display": "payment_type"}).sort_values("total_value", ascending=False)
         payment_records = payment_breakdown.round({"total_value": 2}).to_dict(orient="records")
     else:
         payment_records = []

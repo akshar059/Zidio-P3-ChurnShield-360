@@ -395,7 +395,8 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "transactions": 75623
       },
       {
-        "payment_type": "boleto",
+        "payment_type": "bank_slip",
+        "payment_name": "Bank Slip",
         "total_value": 2391525.66,
         "transactions": 19614
       },
