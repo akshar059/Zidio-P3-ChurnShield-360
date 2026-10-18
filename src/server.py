@@ -783,6 +783,12 @@ def predict_churn_simulation(data: WhatIfPredictionRequest):
 # Mount static frontend
 if PUBLIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(PUBLIC_DIR)), name="static")
+    if (PUBLIC_DIR / "css").exists():
+        app.mount("/css", StaticFiles(directory=str(PUBLIC_DIR / "css")), name="css")
+    if (PUBLIC_DIR / "js").exists():
+        app.mount("/js", StaticFiles(directory=str(PUBLIC_DIR / "js")), name="js")
+    if (PUBLIC_DIR / "images").exists():
+        app.mount("/images", StaticFiles(directory=str(PUBLIC_DIR / "images")), name="images")
 
 @app.get("/")
 def serve_index():

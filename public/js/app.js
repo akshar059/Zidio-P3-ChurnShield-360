@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNavigation();
   initSimulator();
+  initStateFromFallback();
+  renderAllViews();
   loadAllData();
 });
 
@@ -180,79 +182,93 @@ function switchTab(tabName) {
 }
 
 // -------------------------------------------------------------
-// 3. API Data Fetching
+// 3. Fallback Data Hydration & API Data Fetching
 // -------------------------------------------------------------
+
+function initStateFromFallback() {
+  const fb = window.CHURNSHIELD_FALLBACK_DATA || {};
+  if (fb.overview && !state.overviewData) state.overviewData = fb.overview;
+  if (fb.executive_insights && !state.executiveInsightsData) state.executiveInsightsData = fb.executive_insights;
+  if (fb.sales && !state.salesData) state.salesData = fb.sales;
+  if (fb.customers && !state.customersData) state.customersData = fb.customers;
+  if (fb.churn && !state.churnData) state.churnData = fb.churn;
+  if (fb.models && !state.modelsData) state.modelsData = fb.models;
+  if (fb.logistics && !state.logisticsData) state.logisticsData = fb.logistics;
+  if (fb.sellers_products && !state.productsData) state.productsData = fb.sellers_products;
+  if (fb.campaigns && !state.campaignsData) state.campaignsData = fb.campaigns;
+  if (fb.cohorts && !state.cohortData) state.cohortData = fb.cohorts;
+  if (fb.calibration && !state.calibrationData) state.calibrationData = fb.calibration;
+  if (fb.catalog?.records && !state.catalogData) {
+    state.catalogData = fb.catalog.records;
+    state.catalogTotal = fb.catalog.total || 25000;
+    state.catalogPage = fb.catalog.page || 1;
+    state.catalogTotalPages = fb.catalog.total_pages || 500;
+    if (fb.catalog.tier_counts) updateTierCountBadges(fb.catalog.tier_counts);
+  }
+}
+
+function renderAllViews() {
+  const safeExec = (name, fn) => {
+    try { fn(); } catch (e) { console.error(`Error rendering ${name}:`, e); }
+  };
+  safeExec("Overview", renderOverview);
+  safeExec("Sales", renderSales);
+  safeExec("Customers", renderCustomers);
+  safeExec("Churn", renderChurn);
+  safeExec("Models", renderModels);
+  safeExec("Logistics", renderLogistics);
+  safeExec("Products", renderProducts);
+  safeExec("Campaigns", renderCampaigns);
+  safeExec("Catalog", () => {
+    renderCatalog();
+    renderCatalogPagination();
+  });
+}
+
 async function loadAllData() {
   try {
-    // Stage 1: Load Executive Overview & Insights immediately for instant UI display
-    Promise.all([
-      fetch("/api/overview").then(r => r.json()).catch(() => ({})),
-      fetch("/api/executive-insights").then(r => r.json()).catch(() => ({}))
-    ]).then(([overview, execInsights]) => {
-      state.overviewData = overview;
-      state.executiveInsightsData = execInsights;
-      try { renderOverview(); } catch (e) { console.error("Error rendering Overview early:", e); }
-    });
+    const fetchJson = (url, fallback = null) =>
+      fetch(url)
+        .then(r => r.ok ? r.json() : fallback)
+        .catch(() => fallback);
 
-    // Stage 2: Load the full analytical suite in parallel
     const [overview, sales, customers, churn, models, logistics, products, campaigns, catalog, execInsights, cohorts, calibration] = await Promise.all([
-      fetch("/api/overview").then(r => r.json()).catch(() => ({})),
-      fetch("/api/sales").then(r => r.json()).catch(() => ({})),
-      fetch("/api/customers").then(r => r.json()).catch(() => ({})),
-      fetch("/api/churn").then(r => r.json()).catch(() => ({})),
-      fetch("/api/models").then(r => r.json()).catch(() => ({})),
-      fetch("/api/logistics").then(r => r.json()).catch(() => ({})),
-      fetch("/api/sellers-products").then(r => r.json()).catch(() => ({})),
-      fetch("/api/campaigns").then(r => r.json()).catch(() => ({})),
-      fetch("/api/customers-catalog?limit=50").then(r => r.json()).catch(() => ({})),
-      fetch("/api/executive-insights").then(r => r.json()).catch(() => ({})),
-      fetch("/api/cohort-retention").then(r => r.json()).catch(() => ({})),
-      fetch("/api/calibration-curve").then(r => r.json()).catch(() => ({}))
+      fetchJson("/api/overview", state.overviewData),
+      fetchJson("/api/sales", state.salesData),
+      fetchJson("/api/customers", state.customersData),
+      fetchJson("/api/churn", state.churnData),
+      fetchJson("/api/models", state.modelsData),
+      fetchJson("/api/logistics", state.logisticsData),
+      fetchJson("/api/sellers-products", state.productsData),
+      fetchJson("/api/campaigns", state.campaignsData),
+      fetchJson("/api/customers-catalog?limit=50", null),
+      fetchJson("/api/executive-insights", state.executiveInsightsData),
+      fetchJson("/api/cohort-retention", state.cohortData),
+      fetchJson("/api/calibration-curve", state.calibrationData)
     ]);
 
-    state.overviewData = overview;
-    state.salesData = sales;
-    state.customersData = customers;
-    state.churnData = churn;
-    state.modelsData = models;
-    state.logisticsData = logistics;
-    state.productsData = products;
-    state.campaignsData = campaigns;
+    if (overview) state.overviewData = overview;
+    if (sales) state.salesData = sales;
+    if (customers) state.customersData = customers;
+    if (churn) state.churnData = churn;
+    if (models) state.modelsData = models;
+    if (logistics) state.logisticsData = logistics;
+    if (products) state.productsData = products;
+    if (campaigns) state.campaignsData = campaigns;
     if (catalog && catalog.records) {
       state.catalogData = catalog.records;
       state.catalogTotal = catalog.total;
       state.catalogPage = catalog.page;
       state.catalogTotalPages = catalog.total_pages;
       if (catalog.tier_counts) updateTierCountBadges(catalog.tier_counts);
-    } else {
-      state.catalogData = Array.isArray(catalog) ? catalog : [];
-      state.catalogTotal = state.catalogData.length;
-      state.catalogTotalPages = 1;
     }
-    state.executiveInsightsData = execInsights;
-    state.cohortData = cohorts;
-    state.calibrationData = calibration;
+    if (execInsights) state.executiveInsightsData = execInsights;
+    if (cohorts) state.cohortData = cohorts;
+    if (calibration) state.calibrationData = calibration;
 
-    // Safely render each dashboard tab
-    const safeExec = (name, fn) => {
-      try { fn(); } catch (e) { console.error(`Error rendering ${name}:`, e); }
-    };
-
-    safeExec("Overview", renderOverview);
-    safeExec("Sales", renderSales);
-    safeExec("Customers", renderCustomers);
-    safeExec("Churn", renderChurn);
-    safeExec("Models", renderModels);
-    safeExec("Logistics", renderLogistics);
-    safeExec("Products", renderProducts);
-    safeExec("Campaigns", renderCampaigns);
-    safeExec("Catalog", () => {
-      renderCatalog();
-      renderCatalogPagination();
-    });
-
+    renderAllViews();
   } catch (err) {
-    console.error("Error fetching API data:", err);
+    console.warn("Backend API not reachable; operating on calibrated offline snapshot.", err);
   }
 }
 
