@@ -1,13 +1,16 @@
 # 🛡️ ChurnShield 360
 ### Enterprise Customer Churn Prediction, Revenue at Risk Modeling & Retention Intelligence Platform
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://zidio-p3-churnshield-360.onrender.com)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-EB5424?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)
 [![LightGBM](https://img.shields.io/badge/LightGBM-2E7D32?style=for-the-badge&logo=lightgbm&logoColor=white)](https://lightgbm.readthedocs.io/)
-[![Render](https://img.shields.io/badge/Render-Deploy%20Ready-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://render.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+
+> 🌐 **Live Interactive Platform**: [https://zidio-p3-churnshield-360.onrender.com](https://zidio-p3-churnshield-360.onrender.com)  
+> 📖 **Interactive API Documentation (Swagger)**: [https://zidio-p3-churnshield-360.onrender.com/docs](https://zidio-p3-churnshield-360.onrender.com/docs)
 
 ---
 
@@ -241,7 +244,11 @@ Once initialized, access the platform in your browser:
 
 ## 🌐 Cloud Deployment (Render)
 
-This repository includes a native [`render.yaml`](file:///d:/DEGREE/course%20&%20virtual%20internship/zidio%20internship/project-3/render.yaml) blueprint for one-click deployment on [Render](https://render.com/).
+The platform is deployed live in production on Render:
+- 🚀 **Live Production URL**: **[https://zidio-p3-churnshield-360.onrender.com](https://zidio-p3-churnshield-360.onrender.com)**
+- 📖 **Live Swagger API Documentation**: **[https://zidio-p3-churnshield-360.onrender.com/docs](https://zidio-p3-churnshield-360.onrender.com/docs)**
+
+This repository includes a native [`render.yaml`](file:///d:/DEGREE/course%20&%20virtual%20internship/zidio%20internship/project-3/render.yaml) blueprint for automated continuous deployment:
 
 ### Option A: Automatic Blueprint Deployment
 1. Log in to [Render Dashboard](https://dashboard.render.com/).
