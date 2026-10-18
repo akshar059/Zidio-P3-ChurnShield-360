@@ -128,19 +128,42 @@ class MiniCharts {
 
     const xAxisLabel = options.xAxisLabel || options.xLabel || "";
     const yAxisLabel = options.yAxisLabel || options.yLabel || "";
-
-    const padding = { 
-      top: 28, 
-      right: 30, 
-      bottom: xAxisLabel ? 48 : 38, 
-      left: yAxisLabel ? 74 : 65 
-    };
-    const chartW = width - padding.left - padding.right;
-    const chartH = height - padding.top - padding.bottom;
-
     const labels = options.labels || [];
     const datasets = options.datasets || [];
     if (!labels.length || !datasets.length) return;
+
+    // Measure Legend Requirements & Safety Gap from Y-Axis
+    ctx.font = "9.5px Inter, sans-serif";
+    const legendItems = [];
+    datasets.forEach(ds => {
+      if (!ds.label) return;
+      const textW = ctx.measureText(ds.label).width;
+      const itemW = textW + 28; // 12px swatch line + 6px dot + padding
+      legendItems.push({ ds, textW, itemW });
+    });
+
+    const hasLegend = legendItems.length > 0;
+    const paddingLeft = yAxisLabel ? 76 : 66;
+    const paddingRight = 24;
+    const minLegendX = paddingLeft + 18; // Guaranteed minimum safety gap from Y-axis
+    const availableLegendW = width - paddingRight - minLegendX;
+    const totalLegendW = legendItems.reduce((acc, it) => acc + it.itemW + 12, -12);
+    const isMultiRowLegend = hasLegend && (totalLegendW > availableLegendW || (legendItems.length >= 3 && width < 560));
+
+    // Dynamic top padding to guarantee generous vertical gap above Y-axis tick mark
+    let topPad = 26;
+    if (hasLegend) {
+      topPad = isMultiRowLegend ? 54 : 38;
+    }
+
+    const padding = { 
+      top: topPad, 
+      right: paddingRight, 
+      bottom: xAxisLabel ? 48 : 38, 
+      left: paddingLeft 
+    };
+    const chartW = width - padding.left - padding.right;
+    const chartH = height - padding.top - padding.bottom;
 
     let minY = Infinity;
     let maxY = -Infinity;
@@ -281,38 +304,84 @@ class MiniCharts {
       }
     });
 
-    // Draw Top Legend for Line Chart
-    let curLegendX = width - padding.right;
-    ctx.textAlign = "right";
-    ctx.font = "10px Inter, sans-serif";
-    datasets.slice().reverse().forEach(ds => {
-      if (!ds.label) return;
-      ctx.fillStyle = theme.text;
-      ctx.fillText(ds.label, curLegendX, 15);
-      const textW = ctx.measureText(ds.label).width;
+    // Draw Top Legend for Line Chart with guaranteed gap from Y-axis
+    if (hasLegend) {
+      ctx.font = "9.5px Inter, sans-serif";
 
-      const swatchX = curLegendX - textW - 10;
-      const swatchY = 12;
-      ctx.strokeStyle = ds.color || "#C2410C";
-      ctx.lineWidth = 2.5;
-      if (ds.dashed) {
-        ctx.setLineDash([3, 3]);
+      if (isMultiRowLegend) {
+        // Multi-row legend: distribute items evenly across 2 rows
+        const half = Math.ceil(legendItems.length / 2);
+        const row1 = legendItems.slice(0, half);
+        const row2 = legendItems.slice(half);
+
+        const drawLegendRow = (items, yCenter) => {
+          let curX = width - padding.right;
+          ctx.textAlign = "right";
+          ctx.textBaseline = "middle";
+
+          items.slice().reverse().forEach(({ ds, textW }) => {
+            ctx.fillStyle = theme.text;
+            ctx.fillText(ds.label, curX, yCenter);
+
+            const swatchX = curX - textW - 8;
+            ctx.strokeStyle = ds.color || "#C2410C";
+            ctx.lineWidth = 2.2;
+            if (ds.dashed) {
+              ctx.setLineDash([3, 3]);
+            } else {
+              ctx.setLineDash([]);
+            }
+            ctx.beginPath();
+            ctx.moveTo(swatchX - 12, yCenter);
+            ctx.lineTo(swatchX, yCenter);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = ds.color || "#C2410C";
+            ctx.beginPath();
+            ctx.arc(swatchX - 6, yCenter, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            curX = swatchX - 18;
+          });
+        };
+
+        drawLegendRow(row1, 13);
+        drawLegendRow(row2, 28);
       } else {
-        ctx.setLineDash([]);
+        // Single-row legend aligned from right with guaranteed Y-axis safety margin
+        let curX = width - padding.right;
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+
+        legendItems.slice().reverse().forEach(({ ds, textW }) => {
+          ctx.fillStyle = theme.text;
+          ctx.fillText(ds.label, curX, 16);
+
+          const swatchX = curX - textW - 8;
+          const swatchY = 16;
+          ctx.strokeStyle = ds.color || "#C2410C";
+          ctx.lineWidth = 2.2;
+          if (ds.dashed) {
+            ctx.setLineDash([3, 3]);
+          } else {
+            ctx.setLineDash([]);
+          }
+          ctx.beginPath();
+          ctx.moveTo(swatchX - 12, swatchY);
+          ctx.lineTo(swatchX, swatchY);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = ds.color || "#C2410C";
+          ctx.beginPath();
+          ctx.arc(swatchX - 6, swatchY, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          curX = swatchX - 20;
+        });
       }
-      ctx.beginPath();
-      ctx.moveTo(swatchX - 12, swatchY);
-      ctx.lineTo(swatchX, swatchY);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      ctx.fillStyle = ds.color || "#C2410C";
-      ctx.beginPath();
-      ctx.arc(swatchX - 6, swatchY, 2.5, 0, Math.PI * 2);
-      ctx.fill();
-
-      curLegendX -= (textW + 28);
-    });
+    }
 
     // Render Y-Axis Title (Rotated)
     if (yAxisLabel) {
@@ -481,7 +550,7 @@ class MiniCharts {
     } else {
       const paddingLeft = yAxisLabel ? 76 : 58;
       const paddingRight = 20;
-      const topPad = legendText ? 30 : 22;
+      const topPad = legendText ? 36 : 22;
       const chartW = width - paddingLeft - paddingRight;
       const step = chartW / Math.max(labels.length, 1);
 
@@ -517,7 +586,7 @@ class MiniCharts {
         ctx.textAlign = "right";
         ctx.textBaseline = "middle";
         ctx.fillStyle = theme.text;
-        ctx.fillText(legendText, width - padding.right, 14);
+        ctx.fillText(legendText, width - padding.right, 16);
         const textW = ctx.measureText(legendText).width;
 
         const grad = ctx.createLinearGradient(0, 0, 10, 0);
@@ -525,7 +594,7 @@ class MiniCharts {
         grad.addColorStop(1, options.colorEnd || "#EA580C");
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(width - padding.right - textW - 13, 9, 9, 9, 2);
+        ctx.roundRect(width - padding.right - textW - 13, 11, 9, 9, 2);
         ctx.fill();
       }
 
