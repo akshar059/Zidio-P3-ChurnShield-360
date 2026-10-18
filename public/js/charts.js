@@ -829,7 +829,7 @@ class MiniCharts {
     ctx.clearRect(0, 0, width, height);
 
     const hasLegend = labels && labels.length > 0;
-    const isWide = width >= 260;
+    const isWide = width >= 340;
     const cx = (hasLegend && isWide) ? Math.min(width * 0.34, 105) : width / 2;
     const cy = (hasLegend && !isWide) ? (height * 0.38) : (height / 2);
     const outerR = (hasLegend && isWide)
@@ -864,7 +864,7 @@ class MiniCharts {
     ctx.font = "9.5px Inter, sans-serif";
     ctx.fillText(options.centerLabel || "TOTAL", cx, cy + 13);
 
-    // Draw Right-Side Legend
+    // Draw Legend
     if (hasLegend) {
       if (isWide) {
         const legendX = cx + outerR + 18;
@@ -896,21 +896,67 @@ class MiniCharts {
           ctx.fillText(`${pct}%`, width - 10, y);
         });
       } else {
-        const startY = height - 22;
-        const itemW = width / labels.length;
-        labels.forEach((lbl, i) => {
-          const x = i * itemW + itemW / 2;
-          ctx.fillStyle = colors[i % colors.length];
-          ctx.beginPath();
-          ctx.arc(x - 20, startY, 3.5, 0, Math.PI * 2);
-          ctx.fill();
+        // Bottom Legend: Clean, non-overlapping measured layout
+        ctx.font = "9.5px Inter, sans-serif";
+        const isMultiRow = labels.length >= 4 && width < 380;
+        
+        if (isMultiRow) {
+          const cols = 2;
+          const rows = Math.ceil(labels.length / cols);
+          const rowH = 18;
+          const startY = height - (rows * rowH) + 2;
 
-          ctx.fillStyle = theme.text;
-          ctx.font = "9px Inter, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(lbl, x, startY);
-        });
+          labels.forEach((lbl, i) => {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const colCenterX = (col === 0) ? (width * 0.28) : (width * 0.72);
+            const y = startY + row * rowH;
+
+            const textW = ctx.measureText(lbl).width;
+            const dotR = 3.5;
+            const gap = 6;
+            const totalItemW = dotR * 2 + gap + textW;
+            const startX = Math.round(colCenterX - totalItemW / 2);
+
+            // Draw Dot
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.beginPath();
+            ctx.arc(startX + dotR, y, dotR, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw Label
+            ctx.fillStyle = theme.text;
+            ctx.font = "9.5px Inter, sans-serif";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(lbl, startX + dotR * 2 + gap, y);
+          });
+        } else {
+          const startY = height - 16;
+          const itemW = width / labels.length;
+
+          labels.forEach((lbl, i) => {
+            const centerX = i * itemW + itemW / 2;
+            const textW = ctx.measureText(lbl).width;
+            const dotR = 3.5;
+            const gap = 6;
+            const totalItemW = dotR * 2 + gap + textW;
+            const startX = Math.round(centerX - totalItemW / 2);
+
+            // Draw Dot
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.beginPath();
+            ctx.arc(startX + dotR, startY, dotR, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw Label
+            ctx.fillStyle = theme.text;
+            ctx.font = "9.5px Inter, sans-serif";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(lbl, startX + dotR * 2 + gap, startY);
+          });
+        }
       }
     }
 
