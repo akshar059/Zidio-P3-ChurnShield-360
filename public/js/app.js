@@ -20,9 +20,9 @@ const state = {
   catalogData: null,
   selectedCustomer: null,
   catalogPage: 1,
-  catalogLimit: 25,
+  catalogLimit: 15,
   catalogTotal: 25000,
-  catalogTotalPages: 1000,
+  catalogTotalPages: 1667,
   catalogTier: "ALL",
   catalogSearch: "",
   catalogSortBy: "revenue_at_risk",
@@ -147,6 +147,12 @@ function switchTab(tabName) {
   document.querySelectorAll(".view-section").forEach(sec => {
     sec.classList.toggle("active", sec.id === `view-${tabName}`);
   });
+
+  if (tabName === "explorer") {
+    document.body.classList.add("view-explorer-active");
+  } else {
+    document.body.classList.remove("view-explorer-active");
+  }
 
   // Sync presentation nav pills
   document.querySelectorAll(".pres-pill").forEach(pill => {
@@ -1231,7 +1237,7 @@ function changeCatalogSort(sortBy) {
 }
 
 function changeCatalogPageSize(size) {
-  state.catalogLimit = parseInt(size, 10) || 25;
+  state.catalogLimit = parseInt(size, 10) || 15;
   state.catalogPage = 1;
   fetchAndRenderCatalog();
 }
@@ -1364,7 +1370,7 @@ function renderCatalogPagination() {
   const total = state.catalogTotal || 0;
   const page = state.catalogPage || 1;
   const totalPages = Math.max(1, state.catalogTotalPages || 1);
-  const limit = state.catalogLimit || 25;
+  const limit = state.catalogLimit || 15;
 
   const startRecord = total === 0 ? 0 : (page - 1) * limit + 1;
   const endRecord = Math.min(page * limit, total);

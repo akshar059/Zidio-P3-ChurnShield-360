@@ -800,7 +800,11 @@ if PUBLIC_DIR.exists():
 def serve_index():
     index_file = PUBLIC_DIR / "index.html"
     if index_file.exists():
-        return FileResponse(index_file)
+        response = FileResponse(index_file)
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
     return {"message": "Customer Churn API is active. Frontend is building."}
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Light Warm Professional Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2.2">
 </head>
 <body>
 
@@ -1234,7 +1234,7 @@
           <!-- Catalog Toolbar with Status, Sorting, and Page Size -->
           <div class="catalog-toolbar">
             <div class="catalog-status-group">
-              <span>Showing <strong id="catalog-showing-range" style="color: var(--text-primary); font-weight: 700;">1 - 25</strong> of <strong id="catalog-total-records" style="color: var(--accent-primary); font-weight: 700;">25,000</strong> customer records</span>
+              <span>Showing <strong id="catalog-showing-range" style="color: var(--text-primary); font-weight: 700;">1 - 15</strong> of <strong id="catalog-total-records" style="color: var(--accent-primary); font-weight: 700;">25,000</strong> customer records</span>
               <span id="catalog-active-filter-badge" class="catalog-filter-badge">All Records (Full Portfolio)</span>
             </div>
             <div class="catalog-controls-group">
@@ -1252,8 +1252,8 @@
               <label class="catalog-control-label">
                 <span>Records / Page:</span>
                 <select id="catalog-page-size" class="catalog-select" onchange="changeCatalogPageSize(this.value)">
-                  <option value="15">15</option>
-                  <option value="25" selected>25</option>
+                  <option value="15" selected>15</option>
+                  <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
                   <option value="250">250</option>
@@ -1302,11 +1302,11 @@
               <button class="btn-filter btn-page-nav" id="btn-page-last" onclick="goToCatalogPage(state.catalogTotalPages)" title="Go to Last Page">Last »</button>
             </div>
             <div class="pagination-right">
-              <span>Page <strong id="catalog-current-page" style="color: var(--text-primary); font-weight: 700;">1</strong> of <strong id="catalog-total-pages" style="color: var(--text-primary); font-weight: 700;">1,000</strong></span>
+              <span>Page <strong id="catalog-current-page" style="color: var(--text-primary); font-weight: 700;">1</strong> of <strong id="catalog-total-pages" style="color: var(--text-primary); font-weight: 700;">1,667</strong></span>
               <span class="pagination-divider">|</span>
               <label class="pagination-jump-label">
                 <span>Jump to:</span>
-                <input type="number" id="catalog-jump-input" class="catalog-jump-input" min="1" max="1000" value="1" onkeydown="if(event.key==='Enter') jumpToCatalogPage(this.value)">
+                <input type="number" id="catalog-jump-input" class="catalog-jump-input" min="1" max="1667" value="1" onkeydown="if(event.key==='Enter') jumpToCatalogPage(this.value)">
                 <button class="btn-filter btn-jump-go" onclick="jumpToCatalogPage(document.getElementById('catalog-jump-input').value)">Go</button>
               </label>
             </div>
@@ -1605,8 +1605,8 @@
   <div id="chart-floating-tooltip" class="chart-floating-tooltip" style="display: none;"></div>
 
   <!-- Scripts -->
-  <script src="js/dashboard-data.js"></script>
-  <script src="js/charts.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/dashboard-data.js?v=2.2"></script>
+  <script src="js/charts.js?v=2.2"></script>
+  <script src="js/app.js?v=2.2"></script>
 </body>
 </html>
