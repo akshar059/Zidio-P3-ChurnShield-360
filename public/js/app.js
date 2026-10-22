@@ -20,9 +20,9 @@ const state = {
   catalogData: null,
   selectedCustomer: null,
   catalogPage: 1,
-  catalogLimit: 50,
+  catalogLimit: 25,
   catalogTotal: 25000,
-  catalogTotalPages: 500,
+  catalogTotalPages: 1000,
   catalogTier: "ALL",
   catalogSearch: "",
   catalogSortBy: "revenue_at_risk",
@@ -1231,7 +1231,7 @@ function changeCatalogSort(sortBy) {
 }
 
 function changeCatalogPageSize(size) {
-  state.catalogLimit = parseInt(size, 10) || 50;
+  state.catalogLimit = parseInt(size, 10) || 25;
   state.catalogPage = 1;
   fetchAndRenderCatalog();
 }
@@ -1325,32 +1325,35 @@ function renderCatalog() {
     const revRisk = Number(c.revenue_at_risk || 0);
     const isTop1 = Boolean(c.is_top_1pct);
     const vel = Number(c.risk_velocity || 0);
-    const traj = c.risk_trajectory || (vel >= 18 ? "🚨 Rapidly Deteriorating" : (vel >= 5 ? "↑ Increasing" : (vel <= -5 ? "↓ Improving" : "→ Stable")));
-    const velColor = traj.includes("Rapidly") ? "var(--color-critical)" : (vel >= 5 ? "var(--color-medium)" : (vel <= -5 ? "var(--color-low)" : "var(--text-muted)"));
+    const traj = vel >= 18 ? `🚨 Rapid (+${Math.round(vel)}%)`
+               : (vel >= 5 ? `↑ Rising (+${Math.round(vel)}%)`
+               : (vel <= -5 ? `↓ Easing (${Math.round(vel)}%)`
+               : `→ Stable`));
+    const velColor = traj.includes("Rapid") ? "var(--color-critical)" : (vel >= 5 ? "var(--color-medium)" : (vel <= -5 ? "var(--color-low)" : "var(--text-muted)"));
     const starColor = score >= 4.0 ? "#D97706" : (score <= 2.5 ? "var(--color-critical)" : "var(--text-muted)");
 
     return `
       <tr class="${isTop1 ? 'vip-row' : ''}">
         <td>
-          <code style="font-weight: 600; font-size: 0.75rem;" title="${custId}">${custId.substring(0, 8)}…</code>
+          <code style="font-weight: 600; font-size: 0.74rem;" title="${custId}">${custId.substring(0, 8)}…</code>
           <button class="btn-copy-id" onclick="copyCustomerId('${custId}', this)" title="Copy Customer ID">📋</button>
-          ${isTop1 ? '<span style="display: inline-block; background: rgba(217,119,6,0.15); color: #D97706; font-size: 0.65rem; padding: 1px 5px; border-radius: 3px; font-weight: 700; margin-left: 2px;">VIP</span>' : ''}
+          ${isTop1 ? '<span style="display: inline-block; background: rgba(217,119,6,0.15); color: #D97706; font-size: 0.64rem; padding: 1px 4px; border-radius: 3px; font-weight: 700; margin-left: 2px;">VIP</span>' : ''}
         </td>
-        <td><span class="location-tag" style="max-width: 105px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle;" title="${c.city || 'N/A'}, ${c.state || ''}">${c.city || 'N/A'}, ${c.state || ''}</span></td>
+        <td><span class="location-tag" style="max-width: 95px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle;" title="${c.city || 'N/A'}, ${c.state || ''}">${c.city || 'N/A'}, ${c.state || ''}</span></td>
         <td>${c.recency_days != null ? c.recency_days : 0}d</td>
         <td>${c.total_orders != null ? c.total_orders : 1}</td>
         <td>$${Math.round(spend).toLocaleString('en-US')}</td>
         <td><span style="font-weight: 700; color: ${starColor};">${score.toFixed(1)}★</span></td>
         <td>
-          <span style="font-size: 0.72rem; font-weight: 700; color: ${velColor}; white-space: nowrap;" title="Velocity: ${vel > 0 ? '+' : ''}${vel}%">
+          <span style="font-size: 0.72rem; font-weight: 700; color: ${velColor}; white-space: nowrap;" title="Velocity: ${vel > 0 ? '+' : ''}${vel.toFixed(1)}%">
             ${traj}
           </span>
         </td>
         <td><strong>${(prob * 100).toFixed(0)}%</strong></td>
-        <td><span class="badge-risk ${c.risk_tier || 'CRITICAL'}" style="padding: 2px 7px; font-size: 0.68rem;">${c.risk_tier || 'CRITICAL'}</span></td>
+        <td><span class="badge-risk ${c.risk_tier || 'CRITICAL'}" style="padding: 2px 6px; font-size: 0.66rem;">${c.risk_tier || 'CRITICAL'}</span></td>
         <td><strong style="color: var(--color-critical);">$${Math.round(revRisk).toLocaleString('en-US')}</strong></td>
-        <td>
-          <button class="btn-filter" style="padding: 3px 8px; font-size: 0.74rem;" onclick="openCustomerDetail('${custId}')">Inspect</button>
+        <td style="text-align: center;">
+          <button class="btn-filter" style="padding: 3px 7px; font-size: 0.72rem;" onclick="openCustomerDetail('${custId}')">Inspect</button>
         </td>
       </tr>
     `;
@@ -1361,7 +1364,7 @@ function renderCatalogPagination() {
   const total = state.catalogTotal || 0;
   const page = state.catalogPage || 1;
   const totalPages = Math.max(1, state.catalogTotalPages || 1);
-  const limit = state.catalogLimit || 50;
+  const limit = state.catalogLimit || 25;
 
   const startRecord = total === 0 ? 0 : (page - 1) * limit + 1;
   const endRecord = Math.min(page * limit, total);

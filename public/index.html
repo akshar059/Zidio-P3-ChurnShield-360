@@ -1214,32 +1214,32 @@
            VIEW 9: CUSTOMER RISK EXPLORER
            ============================================================== -->
       <section id="view-explorer" class="view-section">
-        <div class="glass-panel" style="padding: 16px 18px; margin-bottom: 16px;">
-          <div class="panel-header" style="flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+        <div class="glass-panel explorer-panel">
+          <div class="panel-header explorer-panel-header">
             <div>
-              <h3 class="panel-title" style="font-size: 1.05rem;">Customer Risk Directory &amp; Inspection</h3>
-              <p class="panel-subtitle" style="font-size: 0.74rem;">Drill down into individual customer probabilities, SHAP drivers, and next-best-actions</p>
+              <h3 class="panel-title" style="font-size: 1.02rem;">Customer Risk Directory &amp; Inspection</h3>
+              <p class="panel-subtitle" style="font-size: 0.73rem;">Drill down into individual customer probabilities, SHAP drivers, and next-best-actions</p>
             </div>
-            <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap;">
-              <input type="text" id="customer-search-input" class="search-bar" style="width: 190px; padding: 5px 9px; font-size: 0.78rem;" placeholder="Search ID, City, State..." oninput="debounceSearchCatalog()">
-              <button class="btn-filter btn-tier-filter active" data-tier="ALL" onclick="filterCatalog('ALL')">All <span class="tier-count-badge" id="count-tier-all">25k</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="TOP1PCT" onclick="filterCatalog('TOP1PCT')" style="border-color: #D97706; color: #D97706; font-weight: 700;">⭐ VIPs <span class="tier-count-badge" id="count-tier-top1">250</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="CRITICAL" onclick="filterCatalog('CRITICAL')">Critical <span class="tier-count-badge" id="count-tier-critical">1.6k</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="HIGH" onclick="filterCatalog('HIGH')">High <span class="tier-count-badge" id="count-tier-high">3.8k</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="MEDIUM" onclick="filterCatalog('MEDIUM')">Medium <span class="tier-count-badge" id="count-tier-medium">6.7k</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="LOW" onclick="filterCatalog('LOW')">Low <span class="tier-count-badge" id="count-tier-low">12.8k</span></button>
+            <div class="explorer-filters-group">
+              <input type="text" id="customer-search-input" class="search-bar" style="width: 165px; padding: 4px 8px; font-size: 0.76rem;" placeholder="Search ID, City, State..." oninput="debounceSearchCatalog()">
+              <button class="btn-filter btn-tier-filter active" data-tier="ALL" onclick="filterCatalog('ALL')">All <span class="tier-count-badge" id="count-tier-all">25,000</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="TOP1PCT" onclick="filterCatalog('TOP1PCT')" style="border-color: #D97706; color: #D97706; font-weight: 700;">⭐ VIPs <span class="tier-count-badge" id="count-tier-top1">251</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="CRITICAL" onclick="filterCatalog('CRITICAL')">Critical <span class="tier-count-badge" id="count-tier-critical">1,074</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="HIGH" onclick="filterCatalog('HIGH')">High <span class="tier-count-badge" id="count-tier-high">2,657</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="MEDIUM" onclick="filterCatalog('MEDIUM')">Medium <span class="tier-count-badge" id="count-tier-medium">7,302</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="LOW" onclick="filterCatalog('LOW')">Low <span class="tier-count-badge" id="count-tier-low">13,967</span></button>
             </div>
           </div>
 
           <!-- Catalog Toolbar with Status, Sorting, and Page Size -->
           <div class="catalog-toolbar">
-            <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-              <span>Showing <strong id="catalog-showing-range" style="color: var(--text-primary); font-weight: 700;">1 - 50</strong> of <strong id="catalog-total-records" style="color: var(--accent-primary); font-weight: 700;">25,000</strong> customer records</span>
-              <span id="catalog-active-filter-badge" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; padding: 2px 9px; border-radius: 4px; font-size: 0.76rem; font-weight: 600;">All Records (Full Portfolio)</span>
+            <div class="catalog-status-group">
+              <span>Showing <strong id="catalog-showing-range" style="color: var(--text-primary); font-weight: 700;">1 - 25</strong> of <strong id="catalog-total-records" style="color: var(--accent-primary); font-weight: 700;">25,000</strong> customer records</span>
+              <span id="catalog-active-filter-badge" class="catalog-filter-badge">All Records (Full Portfolio)</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-              <label style="font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-                Sort:
+            <div class="catalog-controls-group">
+              <label class="catalog-control-label">
+                <span>Sort:</span>
                 <select id="catalog-sort-by" class="catalog-select" onchange="changeCatalogSort(this.value)">
                   <option value="revenue_at_risk" selected>Revenue at Risk (High → Low)</option>
                   <option value="final_churn_prob">Churn Probability (High → Low)</option>
@@ -1249,19 +1249,19 @@
                   <option value="review_score">CSAT Rating (Lowest First)</option>
                 </select>
               </label>
-              <label style="font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-                Records / Page:
+              <label class="catalog-control-label">
+                <span>Records / Page:</span>
                 <select id="catalog-page-size" class="catalog-select" onchange="changeCatalogPageSize(this.value)">
-                  <option value="25">25</option>
-                  <option value="50" selected>50</option>
+                  <option value="15">15</option>
+                  <option value="25" selected>25</option>
+                  <option value="50">50</option>
                   <option value="100">100</option>
                   <option value="250">250</option>
                   <option value="500">500</option>
-                  <option value="1000">1,000</option>
                   <option value="25000">All (25,000)</option>
                 </select>
               </label>
-              <button class="btn-filter" onclick="exportCatalogCSV()" style="font-size: 0.80rem; font-weight: 600; display: flex; align-items: center; gap: 6px;" title="Export current filtered directory records as CSV">
+              <button class="btn-filter btn-export-csv" onclick="exportCatalogCSV()" title="Export current filtered directory records as CSV">
                 <span>📥</span> Export CSV
               </button>
             </div>
@@ -1271,8 +1271,8 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Customer ID</th>
-                  <th>Location</th>
+                  <th style="min-width: 105px;">Customer ID</th>
+                  <th style="min-width: 95px;">Location</th>
                   <th>Recency</th>
                   <th>Orders</th>
                   <th>Spend</th>
@@ -1280,8 +1280,8 @@
                   <th>Risk Velocity</th>
                   <th>Churn Prob</th>
                   <th>Risk Tier</th>
-                  <th title="Revenue at Risk is calculated as Predicted Lifetime Value (CLV) multiplied by Churn Risk Probability">Rev at Risk (CLV × Risk) ℹ️</th>
-                  <th>Action</th>
+                  <th title="Revenue at Risk is calculated as Predicted Lifetime Value (CLV) multiplied by Churn Risk Probability">Rev at Risk ℹ️</th>
+                  <th style="text-align: center; min-width: 65px;">Action</th>
                 </tr>
               </thead>
               <tbody id="catalog-table-body">
@@ -1292,21 +1292,23 @@
 
           <!-- Bottom Pagination Controls -->
           <div class="catalog-pagination">
-            <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-              <button class="btn-filter" id="btn-page-first" onclick="goToCatalogPage(1)" title="Go to First Page">« First</button>
-              <button class="btn-filter" id="btn-page-prev" onclick="goToCatalogPage(state.catalogPage - 1)" title="Previous Page">‹ Prev</button>
-              <div id="catalog-page-pills" style="display: flex; gap: 4px; align-items: center;">
+            <div class="pagination-left">
+              <button class="btn-filter btn-page-nav" id="btn-page-first" onclick="goToCatalogPage(1)" title="Go to First Page">« First</button>
+              <button class="btn-filter btn-page-nav" id="btn-page-prev" onclick="goToCatalogPage(state.catalogPage - 1)" title="Previous Page">‹ Prev</button>
+              <div id="catalog-page-pills" class="page-pills-container">
                 <!-- Dynamically populated page pills: 1, 2, 3 ... -->
               </div>
-              <button class="btn-filter" id="btn-page-next" onclick="goToCatalogPage(state.catalogPage + 1)" title="Next Page">Next ›</button>
-              <button class="btn-filter" id="btn-page-last" onclick="goToCatalogPage(state.catalogTotalPages)" title="Go to Last Page">Last »</button>
+              <button class="btn-filter btn-page-nav" id="btn-page-next" onclick="goToCatalogPage(state.catalogPage + 1)" title="Next Page">Next ›</button>
+              <button class="btn-filter btn-page-nav" id="btn-page-last" onclick="goToCatalogPage(state.catalogTotalPages)" title="Go to Last Page">Last »</button>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-secondary);">
-              <span>Page <strong id="catalog-current-page" style="color: var(--text-primary); font-weight: 700;">1</strong> of <strong id="catalog-total-pages" style="color: var(--text-primary); font-weight: 700;">500</strong></span>
-              <span style="color: var(--border-subtle);">|</span>
-              <span>Jump to:</span>
-              <input type="number" id="catalog-jump-input" class="catalog-jump-input" min="1" max="500" value="1" onkeydown="if(event.key==='Enter') jumpToCatalogPage(this.value)">
-              <button class="btn-filter" style="padding: 4px 10px; font-size: 0.80rem;" onclick="jumpToCatalogPage(document.getElementById('catalog-jump-input').value)">Go</button>
+            <div class="pagination-right">
+              <span>Page <strong id="catalog-current-page" style="color: var(--text-primary); font-weight: 700;">1</strong> of <strong id="catalog-total-pages" style="color: var(--text-primary); font-weight: 700;">1,000</strong></span>
+              <span class="pagination-divider">|</span>
+              <label class="pagination-jump-label">
+                <span>Jump to:</span>
+                <input type="number" id="catalog-jump-input" class="catalog-jump-input" min="1" max="1000" value="1" onkeydown="if(event.key==='Enter') jumpToCatalogPage(this.value)">
+                <button class="btn-filter btn-jump-go" onclick="jumpToCatalogPage(document.getElementById('catalog-jump-input').value)">Go</button>
+              </label>
             </div>
           </div>
         </div>
