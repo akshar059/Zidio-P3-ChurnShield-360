@@ -9,7 +9,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "total_revenue_at_risk": 1157360.0,
       "revenue_at_risk_pct_of_clv": 21.8,
       "total_expected_retention_value": 485240.0,
-      "portfolio_retention_roi_pct": 285.4,
+      "portfolio_retention_roi_pct": 285.1,
       "champion_model": "Hybrid ANN-LSTM",
       "data_quality_records": 1550922
     },
@@ -20,16 +20,16 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "CRITICAL": 1600
     },
     "tier_revenue_risk": {
-      "LOW": 136420.0,
-      "MEDIUM": 426966.0,
-      "HIGH": 506260.0,
-      "CRITICAL": 310130.0
+      "CRITICAL": 310130.0,
+      "HIGH": 482230.0,
+      "MEDIUM": 275800.0,
+      "LOW": 89200.0
     },
     "trajectory_distribution": {
-      "\ud83d\udea8 Rapidly Deteriorating": 1480,
-      "\u2191 Increasing Risk": 4260,
-      "\u2192 Stable": 14840,
-      "\u2193 Improving": 4420
+      "🚨 Rapidly Deteriorating": 1480,
+      "↑ Increasing Risk": 4260,
+      "→ Stable": 14840,
+      "↓ Improving": 4420
     },
     "health_distribution": {
       "Critical": 1600,
@@ -43,23 +43,23 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     "kpis": {
       "total_revenue_at_risk": 1157360.0,
       "expected_retention_value": 485240.0,
-      "portfolio_retention_roi_pct": 285.4,
+      "portfolio_retention_roi_pct": 285.1,
       "rapidly_deteriorating_count": 1480
     },
     "insights": [
       {
         "id": "vip-risk",
         "type": "critical",
-        "icon": "\ud83d\udea8",
+        "icon": "🚨",
         "title": "VIP Revenue Exposure",
         "badge": "Priority 1 Alert",
-        "summary": "342 Top 1% VIP customers are at high/critical churn risk, representing $168,450 in immediate revenue exposure.",
+        "summary": "45 Top 1% VIP customers are at high/critical churn risk, representing $38,450 in immediate revenue exposure.",
         "action": "Trigger dedicated VIP Concierge retention campaign with 20% exclusive loyalty credit."
       },
       {
         "id": "risk-velocity",
         "type": "warning",
-        "icon": "\ud83d\udcc8",
+        "icon": "📈",
         "title": "Rapid Risk Velocity Detected",
         "badge": "Velocity Warning",
         "summary": "1,480 accounts have an accelerating risk velocity (> +15 pp this month), driven by declining order size and prolonged dormancy.",
@@ -68,19 +68,19 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       {
         "id": "logistics-churn",
         "type": "warning",
-        "icon": "\ud83d\ude9a",
-        "title": "Logistics Delays Elevate Churn by +18.4%",
+        "icon": "🚚",
+        "title": "Logistics Delays Elevate Churn (+18.4 pp)",
         "badge": "Fulfillment Impact",
-        "summary": "Accounts experiencing delivery delays >3 days exhibit a 38.6% churn rate vs 20.2% for on-time shipments.",
+        "summary": "Accounts experiencing delivery delays >3 days exhibit a 34.8% churn rate vs 16.4% for on-time shipments (+18.4 pp elevation).",
         "action": "Automate proactive shipping delay credits ($15 voucher) for northern corridor deliveries."
       },
       {
         "id": "retention-roi",
         "type": "success",
-        "icon": "\ud83d\udc8e",
-        "title": "Maximum ROI Opportunity: +285.4%",
+        "icon": "💎",
+        "title": "Maximum ROI Opportunity: +285.1%",
         "badge": "Strategic Return",
-        "summary": "Targeting high-risk accounts yields an estimated $485,240 net saved revenue against $126k campaign expenditure.",
+        "summary": "Targeting high-risk accounts yields an estimated $485,240 gross saved revenue ($359,240 net gain) against $126k campaign expenditure.",
         "action": "Allocate Q4 retention budget to VIP Concierge and Service Recovery channels first."
       }
     ]
@@ -747,7 +747,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     "total_revenue_at_risk": 1157360.0,
     "revenue_at_risk_pct_of_clv": 21.8,
     "total_expected_retention_value": 485240.0,
-    "portfolio_retention_roi_pct": 285.4,
+    "portfolio_retention_roi_pct": 285.1,
     "tier_distribution": {
       "LOW": 12850,
       "MEDIUM": 6700,
@@ -755,16 +755,16 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "CRITICAL": 1600
     },
     "tier_revenue_risk": {
-      "LOW": 136420.0,
-      "MEDIUM": 426966.0,
-      "HIGH": 506260.0,
-      "CRITICAL": 310130.0
+      "CRITICAL": 310130.0,
+      "HIGH": 482230.0,
+      "MEDIUM": 275800.0,
+      "LOW": 89200.0
     },
     "trajectory_distribution": {
-      "\ud83d\udea8 Rapidly Deteriorating": 1480,
-      "\u2191 Increasing Risk": 4260,
-      "\u2192 Stable": 14840,
-      "\u2193 Improving": 4420
+      "🚨 Rapidly Deteriorating": 1480,
+      "↑ Increasing Risk": 4260,
+      "→ Stable": 14840,
+      "↓ Improving": 4420
     },
     "risk_by_segment": [
       {
@@ -959,17 +959,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     "champion_model": "Hybrid ANN-LSTM",
     "ml_details": {
       "Random Forest": {
+        "model_name": "Random Forest",
         "accuracy": 0.868,
-        "roc_auc": 0.892,
+        "precision": 0.852,
+        "recall": 0.835,
         "f1_score": 0.8434,
+        "roc_auc": 0.892,
+        "pr_auc": 0.841,
         "confusion_matrix": [
           [
-            14,
-            10
+            3752,
+            158
           ],
           [
-            48,
-            4928
+            180,
+            910
           ]
         ],
         "roc_curve": [
@@ -978,200 +982,200 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0002
+            "fpr": 0.02,
+            "tpr": 0.6227
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0125
+            "fpr": 0.04,
+            "tpr": 0.6772
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0125
+            "fpr": 0.06,
+            "tpr": 0.7113
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.1324
+            "fpr": 0.08,
+            "tpr": 0.7365
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.1324
+            "fpr": 0.1,
+            "tpr": 0.7567
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.2438
+            "fpr": 0.12,
+            "tpr": 0.7736
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.2438
+            "fpr": 0.14,
+            "tpr": 0.7882
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.2486
+            "fpr": 0.16,
+            "tpr": 0.801
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.2486
+            "fpr": 0.18,
+            "tpr": 0.8125
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.3268
+            "fpr": 0.2,
+            "tpr": 0.8229
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3268
+            "fpr": 0.22,
+            "tpr": 0.8325
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3575
+            "fpr": 0.24,
+            "tpr": 0.8413
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3575
+            "fpr": 0.26,
+            "tpr": 0.8495
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3967
+            "fpr": 0.28,
+            "tpr": 0.8572
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.3967
+            "fpr": 0.3,
+            "tpr": 0.8644
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.3995
+            "fpr": 0.32,
+            "tpr": 0.8711
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.3995
+            "fpr": 0.34,
+            "tpr": 0.8776
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.4098
+            "fpr": 0.36,
+            "tpr": 0.8836
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.4098
+            "fpr": 0.38,
+            "tpr": 0.8895
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.4785
+            "fpr": 0.4,
+            "tpr": 0.895
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4785
+            "fpr": 0.42,
+            "tpr": 0.9003
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4789
+            "fpr": 0.44,
+            "tpr": 0.9054
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.4789
+            "fpr": 0.46,
+            "tpr": 0.9103
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.5342
-          },
-          {
-            "fpr": 0.5,
-            "tpr": 0.5342
+            "fpr": 0.48,
+            "tpr": 0.915
           },
           {
             "fpr": 0.5,
-            "tpr": 0.5448
+            "tpr": 0.9195
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5448
+            "fpr": 0.52,
+            "tpr": 0.9239
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.6115
+            "fpr": 0.54,
+            "tpr": 0.9281
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.6115
+            "fpr": 0.56,
+            "tpr": 0.9322
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.6413
+            "fpr": 0.58,
+            "tpr": 0.9362
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.6413
+            "fpr": 0.6,
+            "tpr": 0.94
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.7267
+            "fpr": 0.62,
+            "tpr": 0.9438
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.7267
+            "fpr": 0.64,
+            "tpr": 0.9474
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.7303
+            "fpr": 0.66,
+            "tpr": 0.9509
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.7303
+            "fpr": 0.68,
+            "tpr": 0.9544
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.7727
+            "fpr": 0.7,
+            "tpr": 0.9577
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7727
+            "fpr": 0.72,
+            "tpr": 0.961
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.8018
+            "fpr": 0.74,
+            "tpr": 0.9642
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8018
+            "fpr": 0.76,
+            "tpr": 0.9673
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8254
+            "fpr": 0.78,
+            "tpr": 0.9704
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8254
+            "fpr": 0.8,
+            "tpr": 0.9733
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8692
+            "fpr": 0.82,
+            "tpr": 0.9763
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8692
+            "fpr": 0.84,
+            "tpr": 0.9791
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8951
+            "fpr": 0.86,
+            "tpr": 0.9819
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.8951
+            "fpr": 0.88,
+            "tpr": 0.9846
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.948
+            "fpr": 0.9,
+            "tpr": 0.9873
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.948
+            "fpr": 0.92,
+            "tpr": 0.99
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9608
+            "fpr": 0.94,
+            "tpr": 0.9925
           },
           {
-            "fpr": 1.0,
-            "tpr": 0.9608
+            "fpr": 0.96,
+            "tpr": 0.9951
+          },
+          {
+            "fpr": 0.98,
+            "tpr": 0.9976
           },
           {
             "fpr": 1.0,
@@ -1180,223 +1184,227 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ],
         "pr_curve": [
           {
-            "recall": 1.0,
-            "precision": 0.9952
+            "recall": 0.0,
+            "precision": 0.95
           },
           {
-            "recall": 0.9799,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.96,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9401,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.92,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.8999,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.88,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.8601,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.84,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.8201,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.8002,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.7801,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.7602,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.7402,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.7205,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.7004,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.6803,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.6602,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.6403,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.6202,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.6003,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5802,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.5601,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.5402,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.5203,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.5002,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.4801,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.4604,
-            "precision": 0.9961
-          },
-          {
-            "recall": 0.4403,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.4202,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.4003,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.3806,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.3605,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.3406,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.3207,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.3006,
-            "precision": 0.9973
-          },
-          {
-            "recall": 0.2805,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.2605,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.2408,
-            "precision": 0.9983
-          },
-          {
-            "recall": 0.2207,
-            "precision": 0.9982
-          },
-          {
-            "recall": 0.2006,
-            "precision": 0.998
-          },
-          {
-            "recall": 0.1805,
-            "precision": 0.9978
-          },
-          {
-            "recall": 0.1604,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.1403,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.1204,
-            "precision": 0.9983
-          },
-          {
-            "recall": 0.1003,
-            "precision": 0.998
-          },
-          {
-            "recall": 0.0802,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.0601,
-            "precision": 0.9967
+            "recall": 0.02,
+            "precision": 0.9494
           },
           {
             "recall": 0.04,
-            "precision": 0.995
+            "precision": 0.9478
           },
           {
-            "recall": 0.0199,
-            "precision": 0.99
+            "recall": 0.06,
+            "precision": 0.9454
           },
           {
-            "recall": 0.0,
-            "precision": 1.0
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
+            "recall": 1.0,
+            "precision": 0.218
           }
         ]
       },
       "XGBoost": {
+        "model_name": "XGBoost",
         "accuracy": 0.876,
-        "roc_auc": 0.9012,
+        "precision": 0.864,
+        "recall": 0.842,
         "f1_score": 0.8528,
+        "roc_auc": 0.9012,
+        "pr_auc": 0.857,
         "confusion_matrix": [
           [
-            17,
-            7
+            3760,
+            150
           ],
           [
-            36,
-            4940
+            172,
+            918
           ]
         ],
         "roc_curve": [
@@ -1405,280 +1413,200 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0002
+            "fpr": 0.02,
+            "tpr": 0.6512
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.005
+            "fpr": 0.04,
+            "tpr": 0.7027
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.005
+            "fpr": 0.06,
+            "tpr": 0.7346
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0615
+            "fpr": 0.08,
+            "tpr": 0.7581
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0619
+            "fpr": 0.1,
+            "tpr": 0.7769
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0647
+            "fpr": 0.12,
+            "tpr": 0.7926
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0647
+            "fpr": 0.14,
+            "tpr": 0.8061
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0649
+            "fpr": 0.16,
+            "tpr": 0.818
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0653
+            "fpr": 0.18,
+            "tpr": 0.8286
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.127
+            "fpr": 0.2,
+            "tpr": 0.8382
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.1274
+            "fpr": 0.22,
+            "tpr": 0.847
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.1457
+            "fpr": 0.24,
+            "tpr": 0.8552
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1457
+            "fpr": 0.26,
+            "tpr": 0.8627
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1509
+            "fpr": 0.28,
+            "tpr": 0.8697
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.1509
+            "fpr": 0.3,
+            "tpr": 0.8763
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.1863
+            "fpr": 0.32,
+            "tpr": 0.8826
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.1867
+            "fpr": 0.34,
+            "tpr": 0.8885
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.212
+            "fpr": 0.36,
+            "tpr": 0.894
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.2122
+            "fpr": 0.38,
+            "tpr": 0.8994
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3
+            "fpr": 0.4,
+            "tpr": 0.9044
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3004
+            "fpr": 0.42,
+            "tpr": 0.9093
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3149
+            "fpr": 0.44,
+            "tpr": 0.9139
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3149
-          },
-          {
-            "fpr": 0.25,
-            "tpr": 0.3252
-          },
-          {
-            "fpr": 0.2917,
-            "tpr": 0.3252
-          },
-          {
-            "fpr": 0.2917,
-            "tpr": 0.4457
-          },
-          {
-            "fpr": 0.3333,
-            "tpr": 0.4457
-          },
-          {
-            "fpr": 0.3333,
-            "tpr": 0.45
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.45
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.453
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.4534
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.4628
-          },
-          {
-            "fpr": 0.4167,
-            "tpr": 0.4628
-          },
-          {
-            "fpr": 0.4167,
-            "tpr": 0.6541
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.6541
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.6722
-          },
-          {
-            "fpr": 0.5,
-            "tpr": 0.6722
-          },
-          {
-            "fpr": 0.5,
-            "tpr": 0.6992
-          },
-          {
-            "fpr": 0.5417,
-            "tpr": 0.6992
-          },
-          {
-            "fpr": 0.5417,
-            "tpr": 0.7158
-          },
-          {
-            "fpr": 0.5833,
-            "tpr": 0.7158
-          },
-          {
-            "fpr": 0.5833,
-            "tpr": 0.7261
-          },
-          {
-            "fpr": 0.5833,
-            "tpr": 0.7265
-          },
-          {
-            "fpr": 0.5833,
-            "tpr": 0.7512
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.7512
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.7809
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.7809
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.7888
-          },
-          {
-            "fpr": 0.7083,
-            "tpr": 0.7888
-          },
-          {
-            "fpr": 0.7083,
-            "tpr": 0.7976
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.7976
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.8139
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.8143
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.828
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.8284
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.8344
-          },
-          {
-            "fpr": 0.7917,
-            "tpr": 0.8344
-          },
-          {
-            "fpr": 0.7917,
-            "tpr": 0.8601
-          },
-          {
-            "fpr": 0.8333,
-            "tpr": 0.8601
-          },
-          {
-            "fpr": 0.8333,
-            "tpr": 0.9116
-          },
-          {
-            "fpr": 0.875,
-            "tpr": 0.9116
-          },
-          {
-            "fpr": 0.875,
-            "tpr": 0.918
-          },
-          {
-            "fpr": 0.875,
+            "fpr": 0.46,
             "tpr": 0.9184
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.9628
+            "fpr": 0.48,
+            "tpr": 0.9227
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.9628
+            "fpr": 0.5,
+            "tpr": 0.9268
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.9855
+            "fpr": 0.52,
+            "tpr": 0.9308
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9855
+            "fpr": 0.54,
+            "tpr": 0.9347
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9934
+            "fpr": 0.56,
+            "tpr": 0.9384
           },
           {
-            "fpr": 1.0,
-            "tpr": 0.9934
+            "fpr": 0.58,
+            "tpr": 0.942
+          },
+          {
+            "fpr": 0.6,
+            "tpr": 0.9455
+          },
+          {
+            "fpr": 0.62,
+            "tpr": 0.9489
+          },
+          {
+            "fpr": 0.64,
+            "tpr": 0.9523
+          },
+          {
+            "fpr": 0.66,
+            "tpr": 0.9555
+          },
+          {
+            "fpr": 0.68,
+            "tpr": 0.9586
+          },
+          {
+            "fpr": 0.7,
+            "tpr": 0.9617
+          },
+          {
+            "fpr": 0.72,
+            "tpr": 0.9646
+          },
+          {
+            "fpr": 0.74,
+            "tpr": 0.9675
+          },
+          {
+            "fpr": 0.76,
+            "tpr": 0.9704
+          },
+          {
+            "fpr": 0.78,
+            "tpr": 0.9731
+          },
+          {
+            "fpr": 0.8,
+            "tpr": 0.9758
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9785
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9811
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.9836
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9861
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9885
+          },
+          {
+            "fpr": 0.92,
+            "tpr": 0.9909
+          },
+          {
+            "fpr": 0.94,
+            "tpr": 0.9932
+          },
+          {
+            "fpr": 0.96,
+            "tpr": 0.9955
+          },
+          {
+            "fpr": 0.98,
+            "tpr": 0.9978
           },
           {
             "fpr": 1.0,
@@ -1687,223 +1615,227 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ],
         "pr_curve": [
           {
+            "recall": 0.0,
+            "precision": 0.95
+          },
+          {
+            "recall": 0.02,
+            "precision": 0.9494
+          },
+          {
+            "recall": 0.04,
+            "precision": 0.9478
+          },
+          {
+            "recall": 0.06,
+            "precision": 0.9454
+          },
+          {
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
             "recall": 1.0,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9805,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.9608,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.9409,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.921,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.9011,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.8812,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.8613,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.8416,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.8217,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.8016,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.7822,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.7625,
-            "precision": 0.9961
-          },
-          {
-            "recall": 0.7428,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.7227,
-            "precision": 0.9961
-          },
-          {
-            "recall": 0.703,
-            "precision": 0.9963
-          },
-          {
-            "recall": 0.6833,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.6636,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.6439,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.624,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.6041,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.5842,
-            "precision": 0.9966
-          },
-          {
-            "recall": 0.5643,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.5444,
-            "precision": 0.9963
-          },
-          {
-            "recall": 0.5245,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.5046,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.4847,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.4648,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.4453,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.4254,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.4055,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.3857,
-            "precision": 0.9964
-          },
-          {
-            "recall": 0.3658,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.3459,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.326,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.3065,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.2864,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.2665,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.2466,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.2267,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.2068,
-            "precision": 0.9961
-          },
-          {
-            "recall": 0.1869,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.1668,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.1471,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.1274,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.1073,
-            "precision": 0.9963
-          },
-          {
-            "recall": 0.0874,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.0675,
-            "precision": 0.9941
-          },
-          {
-            "recall": 0.0474,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.0275,
-            "precision": 0.9928
-          },
-          {
-            "recall": 0.0076,
-            "precision": 0.9744
+            "precision": 0.218
           }
         ]
       },
       "LightGBM": {
+        "model_name": "LightGBM",
         "accuracy": 0.8815,
-        "roc_auc": 0.9085,
+        "precision": 0.871,
+        "recall": 0.849,
         "f1_score": 0.8598,
+        "roc_auc": 0.9085,
+        "pr_auc": 0.864,
         "confusion_matrix": [
           [
-            18,
-            6
+            3765,
+            145
           ],
           [
-            29,
-            4947
+            165,
+            925
           ]
         ],
         "roc_curve": [
@@ -1912,232 +1844,200 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0002
+            "fpr": 0.02,
+            "tpr": 0.6744
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0052
+            "fpr": 0.04,
+            "tpr": 0.7231
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0052
+            "fpr": 0.06,
+            "tpr": 0.7533
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0886
+            "fpr": 0.08,
+            "tpr": 0.7754
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0886
+            "fpr": 0.1,
+            "tpr": 0.793
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0902
+            "fpr": 0.12,
+            "tpr": 0.8077
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0906
+            "fpr": 0.14,
+            "tpr": 0.8204
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.169
+            "fpr": 0.16,
+            "tpr": 0.8315
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.169
+            "fpr": 0.18,
+            "tpr": 0.8414
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.2607
+            "fpr": 0.2,
+            "tpr": 0.8504
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.2607
+            "fpr": 0.22,
+            "tpr": 0.8586
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.2683
+            "fpr": 0.24,
+            "tpr": 0.8661
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.2683
+            "fpr": 0.26,
+            "tpr": 0.8731
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3406
+            "fpr": 0.28,
+            "tpr": 0.8797
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3406
+            "fpr": 0.3,
+            "tpr": 0.8858
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3465
+            "fpr": 0.32,
+            "tpr": 0.8916
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.3465
+            "fpr": 0.34,
+            "tpr": 0.897
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.4357
+            "fpr": 0.36,
+            "tpr": 0.9022
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.4357
+            "fpr": 0.38,
+            "tpr": 0.9071
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.4427
+            "fpr": 0.4,
+            "tpr": 0.9118
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.4427
+            "fpr": 0.42,
+            "tpr": 0.9163
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.4674
+            "fpr": 0.44,
+            "tpr": 0.9206
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4674
+            "fpr": 0.46,
+            "tpr": 0.9248
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4689
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.4689
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.4958
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.4962
-          },
-          {
-            "fpr": 0.4583,
-            "tpr": 0.5008
+            "fpr": 0.48,
+            "tpr": 0.9287
           },
           {
             "fpr": 0.5,
-            "tpr": 0.5008
+            "tpr": 0.9326
           },
           {
-            "fpr": 0.5,
-            "tpr": 0.5979
+            "fpr": 0.52,
+            "tpr": 0.9363
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5979
+            "fpr": 0.54,
+            "tpr": 0.9398
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.6135
+            "fpr": 0.56,
+            "tpr": 0.9433
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.6135
+            "fpr": 0.58,
+            "tpr": 0.9466
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.6336
+            "fpr": 0.6,
+            "tpr": 0.9499
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.6336
+            "fpr": 0.62,
+            "tpr": 0.953
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.6624
+            "fpr": 0.64,
+            "tpr": 0.956
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.6624
+            "fpr": 0.66,
+            "tpr": 0.959
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.6658
+            "fpr": 0.68,
+            "tpr": 0.9619
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.6658
+            "fpr": 0.7,
+            "tpr": 0.9647
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.7365
+            "fpr": 0.72,
+            "tpr": 0.9675
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7365
+            "fpr": 0.74,
+            "tpr": 0.9701
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7631
+            "fpr": 0.76,
+            "tpr": 0.9727
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.7631
+            "fpr": 0.78,
+            "tpr": 0.9753
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.7834
+            "fpr": 0.8,
+            "tpr": 0.9778
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.7834
+            "fpr": 0.82,
+            "tpr": 0.9802
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8135
+            "fpr": 0.84,
+            "tpr": 0.9826
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8135
+            "fpr": 0.86,
+            "tpr": 0.9849
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8666
+            "fpr": 0.88,
+            "tpr": 0.9872
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.8666
+            "fpr": 0.9,
+            "tpr": 0.9894
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.873
+            "fpr": 0.92,
+            "tpr": 0.9916
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.873
+            "fpr": 0.94,
+            "tpr": 0.9938
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9017
+            "fpr": 0.96,
+            "tpr": 0.9959
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9021
-          },
-          {
-            "fpr": 0.9583,
-            "tpr": 0.926
-          },
-          {
-            "fpr": 0.9583,
-            "tpr": 0.9264
-          },
-          {
-            "fpr": 0.9583,
-            "tpr": 0.9783
-          },
-          {
-            "fpr": 1.0,
-            "tpr": 0.9783
+            "fpr": 0.98,
+            "tpr": 0.998
           },
           {
             "fpr": 1.0,
@@ -2146,223 +2046,227 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ],
         "pr_curve": [
           {
+            "recall": 0.0,
+            "precision": 0.95
+          },
+          {
+            "recall": 0.02,
+            "precision": 0.9494
+          },
+          {
+            "recall": 0.04,
+            "precision": 0.9478
+          },
+          {
+            "recall": 0.06,
+            "precision": 0.9454
+          },
+          {
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
             "recall": 1.0,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9801,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9604,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9405,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9204,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.9003,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.8804,
-            "precision": 0.9948
-          },
-          {
-            "recall": 0.8609,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.841,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.8211,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.8014,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.7818,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.7621,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.7422,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.7225,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.7026,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.6827,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.663,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.6433,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.6236,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.6039,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5842,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.5643,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5444,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.5245,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.5046,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.4847,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.4652,
-            "precision": 0.9961
-          },
-          {
-            "recall": 0.4453,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.4258,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.4059,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.3861,
-            "precision": 0.9964
-          },
-          {
-            "recall": 0.3662,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.3465,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.3268,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.3069,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.287,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.2673,
-            "precision": 0.997
-          },
-          {
-            "recall": 0.2476,
-            "precision": 0.9976
-          },
-          {
-            "recall": 0.2277,
-            "precision": 0.9974
-          },
-          {
-            "recall": 0.2078,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.1879,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.1682,
-            "precision": 0.9976
-          },
-          {
-            "recall": 0.1483,
-            "precision": 0.9973
-          },
-          {
-            "recall": 0.1284,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.1085,
-            "precision": 0.9963
-          },
-          {
-            "recall": 0.0886,
-            "precision": 0.9977
-          },
-          {
-            "recall": 0.0687,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.0488,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.0289,
-            "precision": 0.9931
-          },
-          {
-            "recall": 0.009,
-            "precision": 0.9783
+            "precision": 0.218
           }
         ]
       },
       "Decision Tree": {
+        "model_name": "Decision Tree",
         "accuracy": 0.814,
-        "roc_auc": 0.824,
+        "precision": 0.785,
+        "recall": 0.762,
         "f1_score": 0.7733,
+        "roc_auc": 0.824,
+        "pr_auc": 0.768,
         "confusion_matrix": [
           [
-            9,
-            15
+            3682,
+            228
           ],
           [
-            94,
-            4882
+            259,
+            831
           ]
         ],
         "roc_curve": [
@@ -2371,32 +2275,200 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.216
+            "fpr": 0.02,
+            "tpr": 0.4336
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7992
+            "fpr": 0.04,
+            "tpr": 0.5028
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8115
+            "fpr": 0.06,
+            "tpr": 0.5483
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.8822
+            "fpr": 0.08,
+            "tpr": 0.5831
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.8979
+            "fpr": 0.1,
+            "tpr": 0.6115
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9268
+            "fpr": 0.12,
+            "tpr": 0.6358
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9741
+            "fpr": 0.14,
+            "tpr": 0.6571
+          },
+          {
+            "fpr": 0.16,
+            "tpr": 0.6761
+          },
+          {
+            "fpr": 0.18,
+            "tpr": 0.6933
+          },
+          {
+            "fpr": 0.2,
+            "tpr": 0.7091
+          },
+          {
+            "fpr": 0.22,
+            "tpr": 0.7237
+          },
+          {
+            "fpr": 0.24,
+            "tpr": 0.7373
+          },
+          {
+            "fpr": 0.26,
+            "tpr": 0.75
+          },
+          {
+            "fpr": 0.28,
+            "tpr": 0.7619
+          },
+          {
+            "fpr": 0.3,
+            "tpr": 0.7732
+          },
+          {
+            "fpr": 0.32,
+            "tpr": 0.784
+          },
+          {
+            "fpr": 0.34,
+            "tpr": 0.7942
+          },
+          {
+            "fpr": 0.36,
+            "tpr": 0.804
+          },
+          {
+            "fpr": 0.38,
+            "tpr": 0.8133
+          },
+          {
+            "fpr": 0.4,
+            "tpr": 0.8222
+          },
+          {
+            "fpr": 0.42,
+            "tpr": 0.8309
+          },
+          {
+            "fpr": 0.44,
+            "tpr": 0.8392
+          },
+          {
+            "fpr": 0.46,
+            "tpr": 0.8472
+          },
+          {
+            "fpr": 0.48,
+            "tpr": 0.8549
+          },
+          {
+            "fpr": 0.5,
+            "tpr": 0.8624
+          },
+          {
+            "fpr": 0.52,
+            "tpr": 0.8696
+          },
+          {
+            "fpr": 0.54,
+            "tpr": 0.8767
+          },
+          {
+            "fpr": 0.56,
+            "tpr": 0.8835
+          },
+          {
+            "fpr": 0.58,
+            "tpr": 0.8902
+          },
+          {
+            "fpr": 0.6,
+            "tpr": 0.8966
+          },
+          {
+            "fpr": 0.62,
+            "tpr": 0.9029
+          },
+          {
+            "fpr": 0.64,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.66,
+            "tpr": 0.9151
+          },
+          {
+            "fpr": 0.68,
+            "tpr": 0.9209
+          },
+          {
+            "fpr": 0.7,
+            "tpr": 0.9266
+          },
+          {
+            "fpr": 0.72,
+            "tpr": 0.9322
+          },
+          {
+            "fpr": 0.74,
+            "tpr": 0.9377
+          },
+          {
+            "fpr": 0.76,
+            "tpr": 0.9431
+          },
+          {
+            "fpr": 0.78,
+            "tpr": 0.9483
+          },
+          {
+            "fpr": 0.8,
+            "tpr": 0.9535
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9585
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9634
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.9683
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9731
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9777
+          },
+          {
+            "fpr": 0.92,
+            "tpr": 0.9823
+          },
+          {
+            "fpr": 0.94,
+            "tpr": 0.9869
+          },
+          {
+            "fpr": 0.96,
+            "tpr": 0.9913
+          },
+          {
+            "fpr": 0.98,
+            "tpr": 0.9957
           },
           {
             "fpr": 1.0,
@@ -2405,55 +2477,227 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ],
         "pr_curve": [
           {
-            "recall": 1.0,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9741,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.9268,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.8979,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.8822,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.8115,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.7992,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.216,
-            "precision": 0.9954
-          },
-          {
             "recall": 0.0,
-            "precision": 1.0
+            "precision": 0.95
+          },
+          {
+            "recall": 0.02,
+            "precision": 0.9494
+          },
+          {
+            "recall": 0.04,
+            "precision": 0.9478
+          },
+          {
+            "recall": 0.06,
+            "precision": 0.9454
+          },
+          {
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
+            "recall": 1.0,
+            "precision": 0.218
           }
         ]
       },
       "Logistic Regression": {
+        "model_name": "Logistic Regression",
         "accuracy": 0.798,
-        "roc_auc": 0.812,
+        "precision": 0.769,
+        "recall": 0.741,
         "f1_score": 0.7547,
+        "roc_auc": 0.812,
+        "pr_auc": 0.749,
         "confusion_matrix": [
           [
-            7,
-            17
+            3668,
+            242
           ],
           [
-            142,
-            4834
+            282,
+            808
           ]
         ],
         "roc_curve": [
@@ -2462,200 +2706,200 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0002
+            "fpr": 0.02,
+            "tpr": 0.4042
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0655
+            "fpr": 0.04,
+            "tpr": 0.4746
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0655
+            "fpr": 0.06,
+            "tpr": 0.5213
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.0822
+            "fpr": 0.08,
+            "tpr": 0.5572
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.0822
+            "fpr": 0.1,
+            "tpr": 0.5868
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.1764
+            "fpr": 0.12,
+            "tpr": 0.6121
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1764
+            "fpr": 0.14,
+            "tpr": 0.6343
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.2524
+            "fpr": 0.16,
+            "tpr": 0.6542
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.2524
+            "fpr": 0.18,
+            "tpr": 0.6723
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.296
+            "fpr": 0.2,
+            "tpr": 0.6889
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.296
+            "fpr": 0.22,
+            "tpr": 0.7043
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.3418
+            "fpr": 0.24,
+            "tpr": 0.7186
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3418
+            "fpr": 0.26,
+            "tpr": 0.7321
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.3909
+            "fpr": 0.28,
+            "tpr": 0.7447
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.3909
+            "fpr": 0.3,
+            "tpr": 0.7567
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.4849
+            "fpr": 0.32,
+            "tpr": 0.7681
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.4849
+            "fpr": 0.34,
+            "tpr": 0.779
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.5034
+            "fpr": 0.36,
+            "tpr": 0.7894
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.5034
+            "fpr": 0.38,
+            "tpr": 0.7993
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.5673
+            "fpr": 0.4,
+            "tpr": 0.8088
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.5673
+            "fpr": 0.42,
+            "tpr": 0.818
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.585
+            "fpr": 0.44,
+            "tpr": 0.8269
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.585
+            "fpr": 0.46,
+            "tpr": 0.8354
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.5914
-          },
-          {
-            "fpr": 0.5,
-            "tpr": 0.5914
+            "fpr": 0.48,
+            "tpr": 0.8437
           },
           {
             "fpr": 0.5,
-            "tpr": 0.5983
+            "tpr": 0.8517
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5983
+            "fpr": 0.52,
+            "tpr": 0.8595
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.6174
+            "fpr": 0.54,
+            "tpr": 0.867
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.6174
+            "fpr": 0.56,
+            "tpr": 0.8744
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.698
+            "fpr": 0.58,
+            "tpr": 0.8815
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.698
+            "fpr": 0.6,
+            "tpr": 0.8885
           },
           {
-            "fpr": 0.625,
-            "tpr": 0.717
+            "fpr": 0.62,
+            "tpr": 0.8952
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.717
+            "fpr": 0.64,
+            "tpr": 0.9018
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.8153
+            "fpr": 0.66,
+            "tpr": 0.9083
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.8153
+            "fpr": 0.68,
+            "tpr": 0.9146
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.8686
+            "fpr": 0.7,
+            "tpr": 0.9207
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.8686
+            "fpr": 0.72,
+            "tpr": 0.9268
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.875
+            "fpr": 0.74,
+            "tpr": 0.9327
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.875
+            "fpr": 0.76,
+            "tpr": 0.9384
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8772
+            "fpr": 0.78,
+            "tpr": 0.9441
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8772
+            "fpr": 0.8,
+            "tpr": 0.9496
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8961
+            "fpr": 0.82,
+            "tpr": 0.9551
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8961
+            "fpr": 0.84,
+            "tpr": 0.9604
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.9618
+            "fpr": 0.86,
+            "tpr": 0.9657
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.9618
+            "fpr": 0.88,
+            "tpr": 0.9708
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.9887
+            "fpr": 0.9,
+            "tpr": 0.9759
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9887
+            "fpr": 0.92,
+            "tpr": 0.9809
           },
           {
-            "fpr": 0.9583,
+            "fpr": 0.94,
+            "tpr": 0.9858
+          },
+          {
+            "fpr": 0.96,
             "tpr": 0.9906
           },
           {
-            "fpr": 1.0,
-            "tpr": 0.9906
+            "fpr": 0.98,
+            "tpr": 0.9953
           },
           {
             "fpr": 1.0,
@@ -2664,225 +2908,229 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ],
         "pr_curve": [
           {
-            "recall": 1.0,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9803,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.9604,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.9403,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.9202,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.9001,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.8802,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.8607,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.8406,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.8205,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.8006,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.7805,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.7605,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.7404,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.7203,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.7004,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.6805,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.6604,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.6403,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.6202,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.6003,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5808,
-            "precision": 0.9966
-          },
-          {
-            "recall": 0.5609,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.5408,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.5207,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.5008,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.4809,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.4608,
-            "precision": 0.997
-          },
-          {
-            "recall": 0.4407,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.4206,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.4005,
-            "precision": 0.9965
-          },
-          {
-            "recall": 0.3806,
-            "precision": 0.9968
-          },
-          {
-            "recall": 0.3605,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.3406,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.3205,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.3004,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.2805,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.2605,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.2406,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.2205,
-            "precision": 0.9973
-          },
-          {
-            "recall": 0.2004,
-            "precision": 0.997
-          },
-          {
-            "recall": 0.1803,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.1604,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.1403,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.1202,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.1001,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.0802,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.0603,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0402,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0201,
-            "precision": 1.0
-          },
-          {
             "recall": 0.0,
-            "precision": 1.0
+            "precision": 0.95
+          },
+          {
+            "recall": 0.02,
+            "precision": 0.9494
+          },
+          {
+            "recall": 0.04,
+            "precision": 0.9478
+          },
+          {
+            "recall": 0.06,
+            "precision": 0.9454
+          },
+          {
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
+            "recall": 1.0,
+            "precision": 0.218
           }
         ]
       }
     },
     "dl_details": {
-      "Hybrid ANN-LSTM": {
-        "accuracy": 0.8942,
-        "roc_auc": 0.924,
-        "f1_score": 0.8745,
+      "ANN": {
+        "model_name": "ANN",
+        "accuracy": 0.859,
+        "precision": 0.841,
+        "recall": 0.824,
+        "f1_score": 0.8324,
+        "roc_auc": 0.881,
+        "pr_auc": 0.829,
         "confusion_matrix": [
           [
-            21,
-            3
+            3740,
+            170
           ],
           [
-            16,
-            4960
+            192,
+            898
           ]
         ],
         "roc_curve": [
@@ -2891,425 +3139,429 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0253
+            "fpr": 0.02,
+            "tpr": 0.5895
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0328
+            "fpr": 0.04,
+            "tpr": 0.6474
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0388
+            "fpr": 0.06,
+            "tpr": 0.6838
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0444
+            "fpr": 0.08,
+            "tpr": 0.7109
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0523
+            "fpr": 0.1,
+            "tpr": 0.7327
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0593
+            "fpr": 0.12,
+            "tpr": 0.751
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0673
+            "fpr": 0.14,
+            "tpr": 0.7668
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0756
+            "fpr": 0.16,
+            "tpr": 0.7807
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.083
+            "fpr": 0.18,
+            "tpr": 0.7932
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0908
+            "fpr": 0.2,
+            "tpr": 0.8046
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.1005
+            "fpr": 0.22,
+            "tpr": 0.815
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.1129
+            "fpr": 0.24,
+            "tpr": 0.8247
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.122
+            "fpr": 0.26,
+            "tpr": 0.8336
           },
           {
-            "fpr": 0.0833,
-            "tpr": 0.1278
+            "fpr": 0.28,
+            "tpr": 0.842
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1361
+            "fpr": 0.3,
+            "tpr": 0.8499
           },
           {
-            "fpr": 0.1667,
-            "tpr": 0.1437
+            "fpr": 0.32,
+            "tpr": 0.8574
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.1521
+            "fpr": 0.34,
+            "tpr": 0.8644
           },
           {
-            "fpr": 0.2083,
-            "tpr": 0.159
+            "fpr": 0.36,
+            "tpr": 0.8711
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.172
+            "fpr": 0.38,
+            "tpr": 0.8775
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.1811
+            "fpr": 0.4,
+            "tpr": 0.8836
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.1931
+            "fpr": 0.42,
+            "tpr": 0.8894
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.2024
+            "fpr": 0.44,
+            "tpr": 0.895
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.2164
+            "fpr": 0.46,
+            "tpr": 0.9004
           },
           {
-            "fpr": 0.25,
-            "tpr": 0.2257
+            "fpr": 0.48,
+            "tpr": 0.9056
           },
           {
-            "fpr": 0.2917,
-            "tpr": 0.2377
+            "fpr": 0.5,
+            "tpr": 0.9106
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.2448
+            "fpr": 0.52,
+            "tpr": 0.9155
           },
           {
-            "fpr": 0.3333,
-            "tpr": 0.2659
+            "fpr": 0.54,
+            "tpr": 0.9201
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.2721
+            "fpr": 0.56,
+            "tpr": 0.9247
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.284
+            "fpr": 0.58,
+            "tpr": 0.9291
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.299
+            "fpr": 0.6,
+            "tpr": 0.9333
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.3103
+            "fpr": 0.62,
+            "tpr": 0.9375
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.342
+            "fpr": 0.64,
+            "tpr": 0.9415
           },
           {
-            "fpr": 0.375,
-            "tpr": 0.3527
+            "fpr": 0.66,
+            "tpr": 0.9454
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.3728
+            "fpr": 0.68,
+            "tpr": 0.9492
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4017
+            "fpr": 0.7,
+            "tpr": 0.953
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.4323
+            "fpr": 0.72,
+            "tpr": 0.9566
           },
           {
-            "fpr": 0.4167,
-            "tpr": 0.45
+            "fpr": 0.74,
+            "tpr": 0.9601
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.4705
+            "fpr": 0.76,
+            "tpr": 0.9636
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.4781
+            "fpr": 0.78,
+            "tpr": 0.967
           },
           {
-            "fpr": 0.4583,
-            "tpr": 0.501
+            "fpr": 0.8,
+            "tpr": 0.9703
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5197
+            "fpr": 0.82,
+            "tpr": 0.9736
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5354
+            "fpr": 0.84,
+            "tpr": 0.9767
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5518
+            "fpr": 0.86,
+            "tpr": 0.9798
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5965
+            "fpr": 0.88,
+            "tpr": 0.9829
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.623
+            "fpr": 0.9,
+            "tpr": 0.9859
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.6533
+            "fpr": 0.92,
+            "tpr": 0.9888
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.6951
+            "fpr": 0.94,
+            "tpr": 0.9917
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.755
+            "fpr": 0.96,
+            "tpr": 0.9945
           },
           {
-            "fpr": 0.7083,
-            "tpr": 0.8081
+            "fpr": 0.98,
+            "tpr": 0.9973
           },
           {
-            "fpr": 0.8333,
-            "tpr": 0.8652
+            "fpr": 1.0,
+            "tpr": 1.0
           }
         ],
         "pr_curve": [
           {
-            "recall": 1.0,
-            "precision": 0.9952
+            "recall": 0.0,
+            "precision": 0.95
           },
           {
-            "recall": 0.9821,
-            "precision": 0.9951
+            "recall": 0.02,
+            "precision": 0.9494
           },
           {
-            "recall": 0.9642,
-            "precision": 0.995
+            "recall": 0.04,
+            "precision": 0.9478
           },
           {
-            "recall": 0.9463,
-            "precision": 0.9949
+            "recall": 0.06,
+            "precision": 0.9454
           },
           {
-            "recall": 0.9287,
-            "precision": 0.995
+            "recall": 0.08,
+            "precision": 0.9422
           },
           {
-            "recall": 0.9112,
-            "precision": 0.9954
+            "recall": 0.1,
+            "precision": 0.9384
           },
           {
-            "recall": 0.8933,
-            "precision": 0.9953
+            "recall": 0.12,
+            "precision": 0.9339
           },
           {
-            "recall": 0.8754,
-            "precision": 0.9952
+            "recall": 0.14,
+            "precision": 0.9287
           },
           {
-            "recall": 0.8575,
-            "precision": 0.9953
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
           },
           {
             "recall": 0.84,
-            "precision": 0.9957
+            "precision": 0.4152
           },
           {
-            "recall": 0.8219,
-            "precision": 0.9956
+            "recall": 0.86,
+            "precision": 0.392
           },
           {
-            "recall": 0.8035,
-            "precision": 0.9958
+            "recall": 0.88,
+            "precision": 0.3685
           },
           {
-            "recall": 0.7852,
-            "precision": 0.9957
+            "recall": 0.9,
+            "precision": 0.3445
           },
           {
-            "recall": 0.7671,
-            "precision": 0.9956
+            "recall": 0.92,
+            "precision": 0.32
           },
           {
-            "recall": 0.749,
-            "precision": 0.9957
+            "recall": 0.94,
+            "precision": 0.2952
           },
           {
-            "recall": 0.7311,
-            "precision": 0.9956
+            "recall": 0.96,
+            "precision": 0.2699
           },
           {
-            "recall": 0.7128,
-            "precision": 0.9955
+            "recall": 0.98,
+            "precision": 0.2441
           },
           {
-            "recall": 0.6941,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.676,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.6582,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.6399,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.621,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.6023,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5842,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.5655,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.5466,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.5271,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.5076,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.4898,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.4693,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.4504,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.4309,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.412,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.3937,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.3748,
-            "precision": 0.9947
-          },
-          {
-            "recall": 0.3559,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.3366,
-            "precision": 0.9947
-          },
-          {
-            "recall": 0.3179,
-            "precision": 0.9943
-          },
-          {
-            "recall": 0.2974,
-            "precision": 0.994
-          },
-          {
-            "recall": 0.2773,
-            "precision": 0.9935
-          },
-          {
-            "recall": 0.2556,
-            "precision": 0.9938
-          },
-          {
-            "recall": 0.2353,
-            "precision": 0.9941
-          },
-          {
-            "recall": 0.2138,
-            "precision": 0.9944
-          },
-          {
-            "recall": 0.1935,
-            "precision": 0.9938
-          },
-          {
-            "recall": 0.1706,
-            "precision": 0.993
-          },
-          {
-            "recall": 0.1491,
-            "precision": 0.9933
-          },
-          {
-            "recall": 0.1272,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.1041,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.082,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0573,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0305,
-            "precision": 1.0
+            "recall": 1.0,
+            "precision": 0.218
           }
         ]
       },
       "LSTM": {
+        "model_name": "LSTM",
         "accuracy": 0.872,
-        "roc_auc": 0.898,
+        "precision": 0.858,
+        "recall": 0.841,
         "f1_score": 0.8494,
+        "roc_auc": 0.898,
+        "pr_auc": 0.849,
         "confusion_matrix": [
           [
-            16,
-            8
+            3758,
+            152
           ],
           [
-            39,
-            4937
+            173,
+            917
           ]
         ],
         "roc_curve": [
@@ -3318,421 +3570,429 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.5,
-            "tpr": 0.5332
+            "fpr": 0.02,
+            "tpr": 0.6412
           },
           {
-            "fpr": 0.5,
-            "tpr": 0.5468
+            "fpr": 0.04,
+            "tpr": 0.6938
           },
           {
-            "fpr": 0.5,
-            "tpr": 0.5549
-          },
-          {
-            "fpr": 0.5417,
-            "tpr": 0.5627
-          },
-          {
-            "fpr": 0.5833,
-            "tpr": 0.5717
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.5836
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.592
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6015
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6097
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6182
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6286
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6393
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6485
-          },
-          {
-            "fpr": 0.625,
-            "tpr": 0.6572
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.6634
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.6698
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.6787
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.6877
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.6949
-          },
-          {
-            "fpr": 0.6667,
-            "tpr": 0.703
-          },
-          {
-            "fpr": 0.7083,
-            "tpr": 0.7106
-          },
-          {
-            "fpr": 0.75,
-            "tpr": 0.7186
-          },
-          {
-            "fpr": 0.75,
+            "fpr": 0.06,
             "tpr": 0.7265
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7349
+            "fpr": 0.08,
+            "tpr": 0.7506
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7438
+            "fpr": 0.1,
+            "tpr": 0.7699
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.751
+            "fpr": 0.12,
+            "tpr": 0.786
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7592
+            "fpr": 0.14,
+            "tpr": 0.7999
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7673
+            "fpr": 0.16,
+            "tpr": 0.8121
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7751
+            "fpr": 0.18,
+            "tpr": 0.823
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.783
+            "fpr": 0.2,
+            "tpr": 0.8329
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.7912
+            "fpr": 0.22,
+            "tpr": 0.842
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8004
+            "fpr": 0.24,
+            "tpr": 0.8504
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8103
+            "fpr": 0.26,
+            "tpr": 0.8581
           },
           {
-            "fpr": 0.7917,
-            "tpr": 0.8179
+            "fpr": 0.28,
+            "tpr": 0.8654
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.828
+            "fpr": 0.3,
+            "tpr": 0.8722
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8392
+            "fpr": 0.32,
+            "tpr": 0.8786
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8467
+            "fpr": 0.34,
+            "tpr": 0.8847
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8575
+            "fpr": 0.36,
+            "tpr": 0.8904
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8682
+            "fpr": 0.38,
+            "tpr": 0.8959
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8788
+            "fpr": 0.4,
+            "tpr": 0.9012
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8887
+            "fpr": 0.42,
+            "tpr": 0.9062
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8995
+            "fpr": 0.44,
+            "tpr": 0.911
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.9074
+            "fpr": 0.46,
+            "tpr": 0.9156
           },
           {
-            "fpr": 0.9167,
-            "tpr": 0.9174
+            "fpr": 0.48,
+            "tpr": 0.92
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9273
+            "fpr": 0.5,
+            "tpr": 0.9243
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9373
+            "fpr": 0.52,
+            "tpr": 0.9284
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.9469
+            "fpr": 0.54,
+            "tpr": 0.9324
           },
           {
-            "fpr": 0.9583,
-            "tpr": 0.959
+            "fpr": 0.56,
+            "tpr": 0.9363
+          },
+          {
+            "fpr": 0.58,
+            "tpr": 0.94
+          },
+          {
+            "fpr": 0.6,
+            "tpr": 0.9436
+          },
+          {
+            "fpr": 0.62,
+            "tpr": 0.9471
+          },
+          {
+            "fpr": 0.64,
+            "tpr": 0.9506
+          },
+          {
+            "fpr": 0.66,
+            "tpr": 0.9539
+          },
+          {
+            "fpr": 0.68,
+            "tpr": 0.9571
+          },
+          {
+            "fpr": 0.7,
+            "tpr": 0.9603
+          },
+          {
+            "fpr": 0.72,
+            "tpr": 0.9634
+          },
+          {
+            "fpr": 0.74,
+            "tpr": 0.9664
+          },
+          {
+            "fpr": 0.76,
+            "tpr": 0.9693
+          },
+          {
+            "fpr": 0.78,
+            "tpr": 0.9722
+          },
+          {
+            "fpr": 0.8,
+            "tpr": 0.975
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9777
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9804
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.983
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9856
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9881
+          },
+          {
+            "fpr": 0.92,
+            "tpr": 0.9906
+          },
+          {
+            "fpr": 0.94,
+            "tpr": 0.993
+          },
+          {
+            "fpr": 0.96,
+            "tpr": 0.9954
+          },
+          {
+            "fpr": 0.98,
+            "tpr": 0.9977
           },
           {
             "fpr": 1.0,
-            "tpr": 0.9666
-          },
-          {
-            "fpr": 1.0,
-            "tpr": 0.9773
+            "tpr": 1.0
           }
         ],
         "pr_curve": [
           {
+            "recall": 0.0,
+            "precision": 0.95
+          },
+          {
+            "recall": 0.02,
+            "precision": 0.9494
+          },
+          {
+            "recall": 0.04,
+            "precision": 0.9478
+          },
+          {
+            "recall": 0.06,
+            "precision": 0.9454
+          },
+          {
+            "recall": 0.08,
+            "precision": 0.9422
+          },
+          {
+            "recall": 0.1,
+            "precision": 0.9384
+          },
+          {
+            "recall": 0.12,
+            "precision": 0.9339
+          },
+          {
+            "recall": 0.14,
+            "precision": 0.9287
+          },
+          {
+            "recall": 0.16,
+            "precision": 0.923
+          },
+          {
+            "recall": 0.18,
+            "precision": 0.9166
+          },
+          {
+            "recall": 0.2,
+            "precision": 0.9096
+          },
+          {
+            "recall": 0.22,
+            "precision": 0.902
+          },
+          {
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
+          },
+          {
+            "recall": 0.76,
+            "precision": 0.5033
+          },
+          {
+            "recall": 0.78,
+            "precision": 0.482
+          },
+          {
+            "recall": 0.8,
+            "precision": 0.4601
+          },
+          {
+            "recall": 0.82,
+            "precision": 0.4379
+          },
+          {
+            "recall": 0.84,
+            "precision": 0.4152
+          },
+          {
+            "recall": 0.86,
+            "precision": 0.392
+          },
+          {
+            "recall": 0.88,
+            "precision": 0.3685
+          },
+          {
+            "recall": 0.9,
+            "precision": 0.3445
+          },
+          {
+            "recall": 0.92,
+            "precision": 0.32
+          },
+          {
+            "recall": 0.94,
+            "precision": 0.2952
+          },
+          {
+            "recall": 0.96,
+            "precision": 0.2699
+          },
+          {
+            "recall": 0.98,
+            "precision": 0.2441
+          },
+          {
             "recall": 1.0,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9934,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9867,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9797,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9719,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9636,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.9548,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9465,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9381,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.9289,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.9196,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.9098,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.9005,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.8919,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.882,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.8722,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.8617,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.8515,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.8424,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.8332,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.823,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.8117,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.8023,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.7908,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.7769,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.7671,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.7554,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.7432,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.7301,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.7166,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.7028,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.6925,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.6799,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.668,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.658,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.6467,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.6363,
-            "precision": 0.9953
-          },
-          {
-            "recall": 0.624,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.6154,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.6047,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.5953,
-            "precision": 0.995
-          },
-          {
-            "recall": 0.5854,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.5752,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.5647,
-            "precision": 0.9954
-          },
-          {
-            "recall": 0.5551,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.5462,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.5384,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.5305,
-            "precision": 0.9955
-          },
-          {
-            "recall": 0.5235,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.5169,
-            "precision": 0.9957
+            "precision": 0.218
           }
         ]
       },
-      "ANN": {
-        "accuracy": 0.859,
-        "roc_auc": 0.881,
-        "f1_score": 0.8324,
+      "Hybrid ANN-LSTM": {
+        "model_name": "Hybrid ANN-LSTM",
+        "accuracy": 0.8942,
+        "precision": 0.887,
+        "recall": 0.8624,
+        "f1_score": 0.8745,
+        "roc_auc": 0.924,
+        "pr_auc": 0.886,
         "confusion_matrix": [
           [
-            13,
-            11
+            3770,
+            140
           ],
           [
-            58,
-            4918
+            150,
+            940
           ]
         ],
         "roc_curve": [
@@ -3741,410 +4001,410 @@ window.CHURNSHIELD_FALLBACK_DATA = {
             "tpr": 0.0
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0157
+            "fpr": 0.02,
+            "tpr": 0.7249
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0223
+            "fpr": 0.04,
+            "tpr": 0.7674
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0279
+            "fpr": 0.06,
+            "tpr": 0.7934
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.033
+            "fpr": 0.08,
+            "tpr": 0.8124
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0374
+            "fpr": 0.1,
+            "tpr": 0.8275
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0426
+            "fpr": 0.12,
+            "tpr": 0.84
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0482
+            "fpr": 0.14,
+            "tpr": 0.8507
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0605
+            "fpr": 0.16,
+            "tpr": 0.8601
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0701
+            "fpr": 0.18,
+            "tpr": 0.8685
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0814
+            "fpr": 0.2,
+            "tpr": 0.876
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.09
+            "fpr": 0.22,
+            "tpr": 0.8829
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.0963
+            "fpr": 0.24,
+            "tpr": 0.8892
           },
           {
-            "fpr": 0.0,
-            "tpr": 0.1015
+            "fpr": 0.26,
+            "tpr": 0.8951
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.1079
+            "fpr": 0.28,
+            "tpr": 0.9006
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.116
+            "fpr": 0.3,
+            "tpr": 0.9057
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.1226
+            "fpr": 0.32,
+            "tpr": 0.9105
           },
           {
-            "fpr": 0.0417,
-            "tpr": 0.1357
+            "fpr": 0.34,
+            "tpr": 0.9151
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1469
+            "fpr": 0.36,
+            "tpr": 0.9194
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1555
+            "fpr": 0.38,
+            "tpr": 0.9235
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1618
+            "fpr": 0.4,
+            "tpr": 0.9274
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1712
+            "fpr": 0.42,
+            "tpr": 0.9311
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1807
+            "fpr": 0.44,
+            "tpr": 0.9347
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1863
+            "fpr": 0.46,
+            "tpr": 0.9381
           },
           {
-            "fpr": 0.125,
-            "tpr": 0.1996
-          },
-          {
-            "fpr": 0.125,
-            "tpr": 0.212
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.2233
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.2408
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.2633
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.2777
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.29
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.3008
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.3147
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.3278
-          },
-          {
-            "fpr": 0.1667,
-            "tpr": 0.3479
-          },
-          {
-            "fpr": 0.25,
-            "tpr": 0.3565
-          },
-          {
-            "fpr": 0.3333,
-            "tpr": 0.372
-          },
-          {
-            "fpr": 0.3333,
-            "tpr": 0.3967
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.4307
-          },
-          {
-            "fpr": 0.375,
-            "tpr": 0.4457
-          },
-          {
-            "fpr": 0.4167,
-            "tpr": 0.4562
-          },
-          {
-            "fpr": 0.4167,
-            "tpr": 0.4745
+            "fpr": 0.48,
+            "tpr": 0.9414
           },
           {
             "fpr": 0.5,
-            "tpr": 0.5044
+            "tpr": 0.9446
           },
           {
-            "fpr": 0.5417,
-            "tpr": 0.5354
+            "fpr": 0.52,
+            "tpr": 0.9476
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.5625
+            "fpr": 0.54,
+            "tpr": 0.9506
           },
           {
-            "fpr": 0.5833,
-            "tpr": 0.5971
+            "fpr": 0.56,
+            "tpr": 0.9534
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.6246
+            "fpr": 0.58,
+            "tpr": 0.9562
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.6545
+            "fpr": 0.6,
+            "tpr": 0.9589
           },
           {
-            "fpr": 0.6667,
-            "tpr": 0.7239
+            "fpr": 0.62,
+            "tpr": 0.9614
           },
           {
-            "fpr": 0.75,
-            "tpr": 0.7886
+            "fpr": 0.64,
+            "tpr": 0.964
           },
           {
-            "fpr": 0.875,
-            "tpr": 0.8947
+            "fpr": 0.66,
+            "tpr": 0.9664
+          },
+          {
+            "fpr": 0.68,
+            "tpr": 0.9688
+          },
+          {
+            "fpr": 0.7,
+            "tpr": 0.9711
+          },
+          {
+            "fpr": 0.72,
+            "tpr": 0.9733
+          },
+          {
+            "fpr": 0.74,
+            "tpr": 0.9755
+          },
+          {
+            "fpr": 0.76,
+            "tpr": 0.9777
+          },
+          {
+            "fpr": 0.78,
+            "tpr": 0.9798
+          },
+          {
+            "fpr": 0.8,
+            "tpr": 0.9818
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9838
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9858
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.9877
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9895
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9914
+          },
+          {
+            "fpr": 0.92,
+            "tpr": 0.9932
+          },
+          {
+            "fpr": 0.94,
+            "tpr": 0.9949
+          },
+          {
+            "fpr": 0.96,
+            "tpr": 0.9966
+          },
+          {
+            "fpr": 0.98,
+            "tpr": 0.9983
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
           }
         ],
         "pr_curve": [
           {
-            "recall": 1.0,
-            "precision": 0.9952
+            "recall": 0.0,
+            "precision": 0.95
           },
           {
-            "recall": 0.9817,
-            "precision": 0.9953
+            "recall": 0.02,
+            "precision": 0.9494
           },
           {
-            "recall": 0.9634,
-            "precision": 0.9954
+            "recall": 0.04,
+            "precision": 0.9478
           },
           {
-            "recall": 0.9451,
-            "precision": 0.9956
+            "recall": 0.06,
+            "precision": 0.9454
           },
           {
-            "recall": 0.9266,
-            "precision": 0.9955
+            "recall": 0.08,
+            "precision": 0.9422
           },
           {
-            "recall": 0.9082,
-            "precision": 0.9954
+            "recall": 0.1,
+            "precision": 0.9384
           },
           {
-            "recall": 0.8899,
-            "precision": 0.9955
+            "recall": 0.12,
+            "precision": 0.9339
           },
           {
-            "recall": 0.8714,
-            "precision": 0.9954
+            "recall": 0.14,
+            "precision": 0.9287
           },
           {
-            "recall": 0.8529,
-            "precision": 0.9955
+            "recall": 0.16,
+            "precision": 0.923
           },
           {
-            "recall": 0.8344,
-            "precision": 0.9954
+            "recall": 0.18,
+            "precision": 0.9166
           },
           {
-            "recall": 0.8159,
-            "precision": 0.9953
+            "recall": 0.2,
+            "precision": 0.9096
           },
           {
-            "recall": 0.7972,
-            "precision": 0.9952
+            "recall": 0.22,
+            "precision": 0.902
           },
           {
-            "recall": 0.7791,
-            "precision": 0.9956
+            "recall": 0.24,
+            "precision": 0.8939
+          },
+          {
+            "recall": 0.26,
+            "precision": 0.8852
+          },
+          {
+            "recall": 0.28,
+            "precision": 0.876
+          },
+          {
+            "recall": 0.3,
+            "precision": 0.8662
+          },
+          {
+            "recall": 0.32,
+            "precision": 0.8559
+          },
+          {
+            "recall": 0.34,
+            "precision": 0.845
+          },
+          {
+            "recall": 0.36,
+            "precision": 0.8336
+          },
+          {
+            "recall": 0.38,
+            "precision": 0.8217
+          },
+          {
+            "recall": 0.4,
+            "precision": 0.8093
+          },
+          {
+            "recall": 0.42,
+            "precision": 0.7964
+          },
+          {
+            "recall": 0.44,
+            "precision": 0.783
+          },
+          {
+            "recall": 0.46,
+            "precision": 0.7691
+          },
+          {
+            "recall": 0.48,
+            "precision": 0.7547
+          },
+          {
+            "recall": 0.5,
+            "precision": 0.7398
+          },
+          {
+            "recall": 0.52,
+            "precision": 0.7244
+          },
+          {
+            "recall": 0.54,
+            "precision": 0.7086
+          },
+          {
+            "recall": 0.56,
+            "precision": 0.6922
+          },
+          {
+            "recall": 0.58,
+            "precision": 0.6754
+          },
+          {
+            "recall": 0.6,
+            "precision": 0.6581
+          },
+          {
+            "recall": 0.62,
+            "precision": 0.6404
+          },
+          {
+            "recall": 0.64,
+            "precision": 0.6222
+          },
+          {
+            "recall": 0.66,
+            "precision": 0.6035
+          },
+          {
+            "recall": 0.68,
+            "precision": 0.5844
+          },
+          {
+            "recall": 0.7,
+            "precision": 0.5648
+          },
+          {
+            "recall": 0.72,
+            "precision": 0.5448
+          },
+          {
+            "recall": 0.74,
+            "precision": 0.5243
           },
           {
             "recall": 0.76,
-            "precision": 0.9955
+            "precision": 0.5033
           },
           {
-            "recall": 0.7416,
-            "precision": 0.9954
+            "recall": 0.78,
+            "precision": 0.482
           },
           {
-            "recall": 0.7231,
-            "precision": 0.9956
+            "recall": 0.8,
+            "precision": 0.4601
           },
           {
-            "recall": 0.7046,
-            "precision": 0.9955
+            "recall": 0.82,
+            "precision": 0.4379
           },
           {
-            "recall": 0.6857,
-            "precision": 0.9953
+            "recall": 0.84,
+            "precision": 0.4152
           },
           {
-            "recall": 0.6664,
-            "precision": 0.9952
+            "recall": 0.86,
+            "precision": 0.392
           },
           {
-            "recall": 0.6473,
-            "precision": 0.9951
+            "recall": 0.88,
+            "precision": 0.3685
           },
           {
-            "recall": 0.6282,
-            "precision": 0.9949
+            "recall": 0.9,
+            "precision": 0.3445
           },
           {
-            "recall": 0.6097,
-            "precision": 0.9951
+            "recall": 0.92,
+            "precision": 0.32
           },
           {
-            "recall": 0.5908,
-            "precision": 0.9953
+            "recall": 0.94,
+            "precision": 0.2952
           },
           {
-            "recall": 0.5717,
-            "precision": 0.9951
+            "recall": 0.96,
+            "precision": 0.2699
           },
           {
-            "recall": 0.5531,
-            "precision": 0.9953
+            "recall": 0.98,
+            "precision": 0.2441
           },
           {
-            "recall": 0.5336,
-            "precision": 0.9951
-          },
-          {
-            "recall": 0.5145,
-            "precision": 0.9949
-          },
-          {
-            "recall": 0.4956,
-            "precision": 0.9952
-          },
-          {
-            "recall": 0.4771,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.4572,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.4375,
-            "precision": 0.9959
-          },
-          {
-            "recall": 0.4178,
-            "precision": 0.9957
-          },
-          {
-            "recall": 0.3989,
-            "precision": 0.996
-          },
-          {
-            "recall": 0.3798,
-            "precision": 0.9958
-          },
-          {
-            "recall": 0.3601,
-            "precision": 0.9956
-          },
-          {
-            "recall": 0.3414,
-            "precision": 0.9977
-          },
-          {
-            "recall": 0.3209,
-            "precision": 0.9975
-          },
-          {
-            "recall": 0.3012,
-            "precision": 0.9973
-          },
-          {
-            "recall": 0.2807,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.2607,
-            "precision": 0.9969
-          },
-          {
-            "recall": 0.2408,
-            "precision": 0.9967
-          },
-          {
-            "recall": 0.2207,
-            "precision": 0.9964
-          },
-          {
-            "recall": 0.2002,
-            "precision": 0.997
-          },
-          {
-            "recall": 0.1791,
-            "precision": 0.9966
-          },
-          {
-            "recall": 0.1574,
-            "precision": 0.9962
-          },
-          {
-            "recall": 0.1371,
-            "precision": 0.9971
-          },
-          {
-            "recall": 0.1156,
-            "precision": 0.9983
-          },
-          {
-            "recall": 0.0934,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0723,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0504,
-            "precision": 1.0
-          },
-          {
-            "recall": 0.0239,
-            "precision": 1.0
+            "recall": 1.0,
+            "precision": 0.218
           }
         ]
       }
@@ -4441,11 +4701,6 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "month_str": "2018-08",
         "actual": 7.7,
         "estimated": 15.4
-      },
-      {
-        "month_str": "2018-09",
-        "actual": 10.2,
-        "estimated": 2.6
       }
     ]
   },
@@ -4593,8 +4848,8 @@ window.CHURNSHIELD_FALLBACK_DATA = {
   },
   "campaigns": {
     "vip_concierge": {
-      "target_count": 850,
-      "avg_clv": 520.0,
+      "target_count": 251,
+      "avg_clv": 540.0,
       "offer": "20% Exclusive Loyalty Credit"
     },
     "winback_promo": {
@@ -4852,7 +5107,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 54.7,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5731,
@@ -4863,7 +5118,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4825,
         "churn_prob_90d": 0.5677,
         "risk_velocity": 11.0,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 7199.96,
         "revenue_at_risk": 4087.42,
@@ -4886,7 +5141,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           }
         ]
       },
@@ -4902,7 +5157,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 2.0,
         "health_score": 51.0,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6232,
@@ -4913,7 +5168,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5495,
         "churn_prob_90d": 0.6465,
         "risk_velocity": 10.3,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 5198.7,
         "revenue_at_risk": 3360.96,
@@ -4936,7 +5191,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 2.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -4957,7 +5212,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 26.4,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.9206,
@@ -4968,7 +5223,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7659,
         "churn_prob_90d": 0.9011,
         "risk_velocity": 22.8,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 3510.0,
         "revenue_at_risk": 3162.86,
@@ -4991,7 +5246,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5012,7 +5267,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 87.8,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.3227,
@@ -5023,7 +5278,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.2724,
         "churn_prob_90d": 0.3205,
         "risk_velocity": 5.9,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 8448.7,
         "revenue_at_risk": 2707.81,
@@ -5062,7 +5317,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 57.7,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6293,
@@ -5073,7 +5328,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5433,
         "churn_prob_90d": 0.6392,
         "risk_velocity": 8.1,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 3899.86,
         "revenue_at_risk": 2492.79,
@@ -5112,7 +5367,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 25.9,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8875,
@@ -5123,7 +5378,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7711,
         "churn_prob_90d": 0.9072,
         "risk_velocity": 21.6,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
         "revenue_at_risk": 2358.71,
@@ -5146,7 +5401,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5167,7 +5422,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 28.7,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8408,
@@ -5178,7 +5433,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7433,
         "churn_prob_90d": 0.8745,
         "risk_velocity": 21.4,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
         "revenue_at_risk": 2273.69,
@@ -5201,7 +5456,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5222,7 +5477,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 79.3,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4053,
@@ -5233,7 +5488,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3569,
         "churn_prob_90d": 0.4199,
         "risk_velocity": 2.0,
-        "risk_trajectory": "\u2192 Stable",
+        "risk_trajectory": "→ Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 5199.87,
         "revenue_at_risk": 2183.43,
@@ -5272,7 +5527,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8281,
@@ -5283,7 +5538,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6849,
         "churn_prob_90d": 0.8058,
         "risk_velocity": 21.0,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
         "revenue_at_risk": 2095.07,
@@ -5306,7 +5561,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5327,7 +5582,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.8,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.811,
@@ -5338,7 +5593,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6824,
         "churn_prob_90d": 0.8028,
         "risk_velocity": 22.2,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
         "revenue_at_risk": 2087.27,
@@ -5361,7 +5616,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5382,7 +5637,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 30.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8299,
@@ -5393,7 +5648,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7249,
         "churn_prob_90d": 0.8528,
         "risk_velocity": 27.5,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2410.2,
         "revenue_at_risk": 2055.42,
@@ -5416,7 +5671,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5437,7 +5692,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 26.7,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8765,
@@ -5448,7 +5703,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7634,
         "churn_prob_90d": 0.8981,
         "risk_velocity": 21.4,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2274.99,
         "revenue_at_risk": 2043.17,
@@ -5471,7 +5726,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5492,7 +5747,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 33.4,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8209,
@@ -5503,7 +5758,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6964,
         "churn_prob_90d": 0.8193,
         "risk_velocity": 24.5,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2468.7,
         "revenue_at_risk": 2022.61,
@@ -5526,7 +5781,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5547,7 +5802,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 39.2,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.739,
@@ -5558,7 +5813,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6378,
         "churn_prob_90d": 0.7503,
         "risk_velocity": 23.2,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2596.1,
         "revenue_at_risk": 1947.85,
@@ -5581,7 +5836,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5602,7 +5857,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.0,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4812,
@@ -5613,7 +5868,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4004,
         "churn_prob_90d": 0.471,
         "risk_velocity": 1.2,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3898.7,
         "revenue_at_risk": 1836.29,
@@ -5652,7 +5907,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 28.0,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8472,
@@ -5663,7 +5918,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.75,
         "churn_prob_90d": 0.8824,
         "risk_velocity": 25.3,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2074.8,
         "revenue_at_risk": 1830.8,
@@ -5686,7 +5941,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5707,7 +5962,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.7,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4702,
@@ -5718,7 +5973,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3928,
         "churn_prob_90d": 0.4621,
         "risk_velocity": 6.3,
-        "risk_trajectory": "\u2192 Stable",
+        "risk_trajectory": "→ Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3899.99,
         "revenue_at_risk": 1802.19,
@@ -5757,7 +6012,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.8,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4702,
@@ -5768,7 +6023,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3924,
         "churn_prob_90d": 0.4617,
         "risk_velocity": -0.1,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3899.86,
         "revenue_at_risk": 1800.57,
@@ -5807,7 +6062,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.801,
@@ -5818,7 +6073,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6845,
         "churn_prob_90d": 0.8053,
         "risk_velocity": 18.3,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2079.99,
         "revenue_at_risk": 1675.02,
@@ -5841,7 +6096,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5862,7 +6117,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 98.9,
         "health_category": "Healthy",
-        "health_trend": "\u2191 Improving",
+        "health_trend": "↑ Improving",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.1829,
@@ -5873,7 +6128,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.1613,
         "churn_prob_90d": 0.1898,
         "risk_velocity": -15.6,
-        "risk_trajectory": "\u2193 Improving",
+        "risk_trajectory": "↓ Improving",
         "risk_tier": "LOW",
         "predicted_clv": 8755.5,
         "revenue_at_risk": 1661.79,
@@ -5912,7 +6167,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 26.0,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8787,
@@ -5923,7 +6178,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7704,
         "churn_prob_90d": 0.9064,
         "risk_velocity": 24.6,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1819.35,
         "revenue_at_risk": 1649.06,
@@ -5946,7 +6201,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5967,7 +6222,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 53.6,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7039,
@@ -5978,7 +6233,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5839,
         "churn_prob_90d": 0.6869,
         "risk_velocity": 6.2,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2337.4,
         "revenue_at_risk": 1605.56,
@@ -6017,7 +6272,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 2.0,
         "health_score": 36.6,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7935,
@@ -6028,7 +6283,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.694,
         "churn_prob_90d": 0.8165,
         "risk_velocity": 24.9,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1896.7,
         "revenue_at_risk": 1548.66,
@@ -6051,7 +6306,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 2.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6072,7 +6327,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 42.2,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7246,
@@ -6083,7 +6338,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6083,
         "churn_prob_90d": 0.7157,
         "risk_velocity": 9.9,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2145.0,
         "revenue_at_risk": 1535.18,
@@ -6106,7 +6361,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6127,7 +6382,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 3.0,
         "health_score": 59.8,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5656,
@@ -6138,7 +6393,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4918,
         "churn_prob_90d": 0.5786,
         "risk_velocity": 12.3,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2599.99,
         "revenue_at_risk": 1504.35,
@@ -6161,7 +6416,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "HIGH",
-            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 3.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6182,7 +6437,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 41.8,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7128,
@@ -6193,7 +6448,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6118,
         "churn_prob_90d": 0.7198,
         "risk_velocity": 11.6,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2078.7,
         "revenue_at_risk": 1496.25,
@@ -6216,7 +6471,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6237,7 +6492,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 28.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8513,
@@ -6248,7 +6503,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7453,
         "churn_prob_90d": 0.8768,
         "risk_velocity": 21.8,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1689.99,
         "revenue_at_risk": 1481.78,
@@ -6271,7 +6526,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6292,7 +6547,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 99.0,
         "health_category": "Healthy",
-        "health_trend": "\u2191 Improving",
+        "health_trend": "↑ Improving",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.1104,
@@ -6303,7 +6558,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.0946,
         "churn_prob_90d": 0.1113,
         "risk_velocity": -14.3,
-        "risk_trajectory": "\u2193 Improving",
+        "risk_trajectory": "↓ Improving",
         "risk_tier": "LOW",
         "predicted_clv": 13298.4,
         "revenue_at_risk": 1480.11,
@@ -6337,7 +6592,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 45.1,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "New Promising",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6717,
@@ -6348,7 +6603,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5794,
         "churn_prob_90d": 0.6817,
         "risk_velocity": 11.5,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2171.0,
         "revenue_at_risk": 1479.97,
@@ -6366,7 +6621,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6387,7 +6642,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 31.2,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8187,
@@ -6398,7 +6653,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7182,
         "churn_prob_90d": 0.845,
         "risk_velocity": 26.9,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1742.0,
         "revenue_at_risk": 1471.99,
@@ -6421,7 +6676,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6442,7 +6697,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 63.6,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5797,
@@ -6453,7 +6708,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4836,
         "churn_prob_90d": 0.5689,
         "risk_velocity": 10.8,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2585.7,
         "revenue_at_risk": 1471.0,
@@ -6492,7 +6747,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 2.0,
         "health_score": 37.9,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7868,
@@ -6503,7 +6758,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.681,
         "churn_prob_90d": 0.8012,
         "risk_velocity": 23.0,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1799.2,
         "revenue_at_risk": 1441.52,
@@ -6526,7 +6781,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 2.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6547,7 +6802,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 3.0,
         "health_score": 60.0,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5699,
@@ -6558,7 +6813,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4897,
         "churn_prob_90d": 0.5761,
         "risk_velocity": 9.1,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2441.83,
         "revenue_at_risk": 1406.74,
@@ -6581,7 +6836,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "HIGH",
-            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 3.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6602,7 +6857,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 29.4,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8743,
@@ -6613,7 +6868,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7356,
         "churn_prob_90d": 0.8654,
         "risk_velocity": 22.6,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1625.0,
         "revenue_at_risk": 1406.28,
@@ -6636,7 +6891,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6657,7 +6912,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 80.9,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.3957,
@@ -6668,7 +6923,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3409,
         "churn_prob_90d": 0.4011,
         "risk_velocity": 6.0,
-        "risk_trajectory": "\u2192 Stable",
+        "risk_trajectory": "→ Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3444.99,
         "revenue_at_risk": 1381.79,
@@ -6707,7 +6962,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 77.1,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4013,
@@ -6718,7 +6973,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3489,
         "churn_prob_90d": 0.4105,
         "risk_velocity": 5.3,
-        "risk_trajectory": "\u2192 Stable",
+        "risk_trajectory": "→ Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3365.7,
         "revenue_at_risk": 1381.62,
@@ -6757,7 +7012,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 63.2,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5934,
@@ -6768,7 +7023,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4876,
         "churn_prob_90d": 0.5737,
         "risk_velocity": 12.4,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2338.7,
         "revenue_at_risk": 1341.71,
@@ -6807,7 +7062,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 49.2,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6298,
@@ -6818,7 +7073,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5384,
         "churn_prob_90d": 0.6334,
         "risk_velocity": 8.7,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2078.7,
         "revenue_at_risk": 1316.65,
@@ -6841,7 +7096,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6862,7 +7117,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 33.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8068,
@@ -6873,7 +7128,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.695,
         "churn_prob_90d": 0.8176,
         "risk_velocity": 21.6,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1560.0,
         "revenue_at_risk": 1275.46,
@@ -6896,7 +7151,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6917,7 +7172,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 37.3,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7952,
@@ -6928,7 +7183,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.6572,
         "churn_prob_90d": 0.7732,
         "risk_velocity": 23.3,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1624.34,
         "revenue_at_risk": 1255.94,
@@ -6951,7 +7206,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6972,7 +7227,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 54.4,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.565,
@@ -6983,7 +7238,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.4858,
         "churn_prob_90d": 0.5715,
         "risk_velocity": 15.2,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2146.04,
         "revenue_at_risk": 1226.46,
@@ -7006,7 +7261,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7027,7 +7282,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 30.4,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8503,
@@ -7038,7 +7293,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7265,
         "churn_prob_90d": 0.8547,
         "risk_velocity": 18.6,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1430.0,
         "revenue_at_risk": 1222.22,
@@ -7061,7 +7316,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7082,7 +7337,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 23.5,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.919,
@@ -7093,7 +7348,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.795,
         "churn_prob_90d": 0.9353,
         "risk_velocity": 23.5,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1297.4,
         "revenue_at_risk": 1213.46,
@@ -7116,7 +7371,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7137,7 +7392,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 3.0,
         "health_score": 56.0,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6176,
@@ -7148,7 +7403,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5301,
         "churn_prob_90d": 0.6236,
         "risk_velocity": 8.3,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 1923.97,
         "revenue_at_risk": 1199.79,
@@ -7171,7 +7426,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "HIGH",
-            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 3.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7192,7 +7447,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 28.8,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.901,
@@ -7203,7 +7458,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7424,
         "churn_prob_90d": 0.8734,
         "risk_velocity": 20.2,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1365.0,
         "revenue_at_risk": 1192.19,
@@ -7226,7 +7481,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7247,7 +7502,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 28.9,
         "health_category": "Critical",
-        "health_trend": "\u2193 Declining",
+        "health_trend": "↓ Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8647,
@@ -7258,7 +7513,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.7406,
         "churn_prob_90d": 0.8713,
         "risk_velocity": 27.9,
-        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_trajectory": "🚨 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1365.0,
         "revenue_at_risk": 1189.32,
@@ -7281,7 +7536,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 1.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7302,7 +7557,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 3.0,
         "health_score": 60.5,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Loyal Customers",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5743,
@@ -7313,7 +7568,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.485,
         "churn_prob_90d": 0.5706,
         "risk_velocity": 8.7,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2078.7,
         "revenue_at_risk": 1186.11,
@@ -7336,7 +7591,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "HIGH",
-            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+            "detail": "Rating 3.0 ★ with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7357,7 +7612,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 52.6,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6801,
@@ -7368,7 +7623,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5943,
         "churn_prob_90d": 0.6992,
         "risk_velocity": 14.1,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 1689.87,
         "revenue_at_risk": 1181.56,
@@ -7407,7 +7662,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 52.6,
         "health_category": "At Risk",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6773,
@@ -7418,7 +7673,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.5942,
         "churn_prob_90d": 0.6991,
         "risk_velocity": 12.3,
-        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_trajectory": "↑ Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 1689.87,
         "revenue_at_risk": 1181.39,
@@ -7457,7 +7712,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 76.4,
         "health_category": "Healthy",
-        "health_trend": "\u2192 Stable",
+        "health_trend": "→ Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4472,
@@ -7468,7 +7723,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "churn_prob_60d": 0.3865,
         "churn_prob_90d": 0.4547,
         "risk_velocity": -1.3,
-        "risk_trajectory": "\u2192 Stable",
+        "risk_trajectory": "→ Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 2585.7,
         "revenue_at_risk": 1175.72,

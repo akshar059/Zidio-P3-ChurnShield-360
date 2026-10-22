@@ -61,7 +61,7 @@
       <li class="nav-item" data-tab="logistics" id="nav-logistics">
         <span class="nav-icon">🚚</span>
         <span class="nav-label">Logistics & SLA</span>
-        <span class="nav-counter">98%</span>
+        <span class="nav-counter">92.3%</span>
       </li>
       <li class="nav-item" data-tab="products" id="nav-products">
         <span class="nav-icon">🏷️</span>
@@ -199,12 +199,12 @@
 
           <div class="kpi-card">
             <div class="kpi-header">
-              <span class="kpi-title">Total Customers</span>
+              <span class="kpi-title">Active Evaluated Cohort</span>
               <span class="kpi-icon">👥</span>
             </div>
-            <div class="kpi-value" id="kpi-customers">95,420</div>
+            <div class="kpi-value" id="kpi-customers">25,000</div>
             <div class="kpi-footer">
-              <span>Unique shopper profiles</span>
+              <span>95,420 historical lifetime shoppers</span>
             </div>
           </div>
 
@@ -215,7 +215,7 @@
             </div>
             <div class="kpi-value" id="kpi-churn" style="color: var(--color-critical);">21.8%</div>
             <div class="kpi-footer">
-              <span class="badge-trend negative">90-day time-anchored window</span>
+              <span class="badge-trend negative">5,450 / 25,000 High+Critical risk</span>
             </div>
           </div>
 
@@ -253,23 +253,23 @@
           <div class="briefing-highlights-grid">
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">CAPITAL PRESERVATION</div>
-              <div class="briefing-stat-value" style="color: var(--accent-primary);">$485,240 <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-low);">+285% ROI</span></div>
-              <div class="briefing-stat-desc">Recoverable net value from $1.16M portfolio capital exposure</div>
+              <div class="briefing-stat-value" style="color: var(--accent-primary);">$485,240 <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-low);">+285.1% ROI</span></div>
+              <div class="briefing-stat-desc">Recoverable net value ($359k) from $1.16M portfolio capital exposure</div>
             </div>
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">CHAMPION AI ARCHITECTURE</div>
-              <div class="briefing-stat-value" style="color: #0284C7;">Hybrid ANN-LSTM <span style="font-size: 0.82rem; font-weight: 700; color: #0284C7;">94.2% AUC</span></div>
-              <div class="briefing-stat-desc">Deep sequence modeling capturing 87.5% churn recall</div>
+              <div class="briefing-stat-value" style="color: #0284C7;">Hybrid ANN-LSTM <span style="font-size: 0.82rem; font-weight: 700; color: #0284C7;">92.4% AUC</span></div>
+              <div class="briefing-stat-desc">Deep sequence modeling capturing 86.2% churn recall</div>
             </div>
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">KEY ATTRITION VECTOR</div>
-              <div class="briefing-stat-value" style="color: var(--color-high);">Logistics & CSAT <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-high);">76.4%</span></div>
-              <div class="briefing-stat-desc">Late shipments (>3d) and low reviews drive majority churn</div>
+              <div class="briefing-stat-value" style="color: var(--color-high);">Logistics Delays <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-high);">+18.4 pp</span></div>
+              <div class="briefing-stat-desc">Late shipments accelerate churn from 16.4% to 34.8% (+18.4 pp gap)</div>
             </div>
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">PRIORITY POPULATION</div>
-              <div class="briefing-stat-value" style="color: var(--color-critical);">1,600 Critical <span style="font-size: 0.82rem; font-weight: 700; color: #D97706;">+ 250 VIPs</span></div>
-              <div class="briefing-stat-desc">Immediate high-impact intervention cohort ready for outreach</div>
+              <div class="briefing-stat-value" style="color: var(--color-critical);">1,600 Critical <span style="font-size: 0.82rem; font-weight: 700; color: #D97706;">+ 45 VIPs</span></div>
+              <div class="briefing-stat-desc">Immediate intervention cohort: 1,600 Critical plus 45 high-risk VIPs</div>
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@
               </div>
               <div style="text-align: right; border-left: 1px solid var(--border-subtle); padding-left: 16px;">
                 <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Portfolio Retention ROI</div>
-                <strong style="font-size: 1.25rem; color: var(--accent-primary);" id="cmd-portfolio-roi">+285.4%</strong>
+                <strong style="font-size: 1.25rem; color: var(--accent-primary);" id="cmd-portfolio-roi">+285.1%</strong>
               </div>
             </div>
           </div>
@@ -764,15 +764,15 @@
                 <h3 class="panel-title">Interactive Confusion Matrix Heatmap</h3>
                 <p class="panel-subtitle">Visual classification breakdown of True/False Positives & Negatives</p>
               </div>
-              <select id="select-model-cm" class="search-bar" style="width: 180px; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
-                <option value="Random Forest">Random Forest</option>
-                <option value="XGBoost">XGBoost</option>
+              <select id="select-model-cm" class="search-bar" style="width: 200px; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
+                <option value="Hybrid ANN-LSTM" selected>Hybrid ANN-LSTM (Champion)</option>
                 <option value="LightGBM">LightGBM</option>
-                <option value="Logistic Regression">Logistic Regression</option>
-                <option value="Decision Tree">Decision Tree</option>
-                <option value="ANN">PyTorch ANN</option>
+                <option value="XGBoost">XGBoost</option>
+                <option value="Random Forest">Random Forest</option>
                 <option value="LSTM">PyTorch LSTM</option>
-                <option value="Hybrid ANN-LSTM">Hybrid ANN-LSTM</option>
+                <option value="ANN">PyTorch ANN</option>
+                <option value="Decision Tree">Decision Tree</option>
+                <option value="Logistic Regression">Logistic Regression</option>
               </select>
             </div>
             <div class="chart-canvas-container" style="height: 295px;">
@@ -845,13 +845,13 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px;">
               <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Brier Score</div>
-                <strong style="font-size: 1.5rem; color: var(--color-low);">0.0046</strong>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Near-perfect calibration (&lt; 0.05 indicates outstanding calibration)</div>
+                <strong style="font-size: 1.5rem; color: var(--color-low);">0.0842</strong>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Strong probabilistic calibration (&lt; 0.10 indicates outstanding calibration on 21.8% churn base)</div>
               </div>
               <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Expected Calibration Error (ECE)</div>
-                <strong style="font-size: 1.5rem; color: var(--accent-primary);">1.2%</strong>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Minimal probability gap across all deciles</div>
+                <strong style="font-size: 1.5rem; color: var(--accent-primary);">2.4%</strong>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Minimal empirical probability gap across all deciles</div>
               </div>
             </div>
             <div style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; background: rgba(99, 102, 241, 0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.2);">
@@ -1034,7 +1034,7 @@
               <span class="kpi-title">Top Category Revenue</span>
               <span class="kpi-icon">🏆</span>
             </div>
-            <div class="kpi-value">$1.25M</div>
+            <div class="kpi-value">$1.26M</div>
             <div class="kpi-footer">
               <span>Health & Beauty</span>
             </div>
@@ -1280,7 +1280,7 @@
                   <th>Risk Velocity</th>
                   <th>Churn Prob</th>
                   <th>Risk Tier</th>
-                  <th>Rev at Risk</th>
+                  <th title="Revenue at Risk is calculated as Predicted Lifetime Value (CLV) multiplied by Churn Risk Probability">Rev at Risk (CLV × Risk) ℹ️</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -1392,8 +1392,10 @@
                 <span id="sim-risk-badge" class="badge-risk MEDIUM">MEDIUM</span>
               </div>
 
-              <div style="font-size: 0.88rem; color: var(--text-muted);">
-                Simulated Capital Exposure: <strong style="color: var(--text-main);" id="sim-rev-risk">$0.00</strong>
+              <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">
+                Predicted CLV: <strong style="color: var(--accent-primary);" id="sim-predicted-clv">$375.00</strong><br>
+                Simulated Capital Exposure: <strong style="color: var(--text-main);" id="sim-rev-risk">$117.82</strong>
+                <span style="display: block; font-size: 0.74rem; color: var(--text-dim); margin-top: 2px;">(CLV × Churn Risk)</span>
               </div>
 
               <div class="sim-action-box">

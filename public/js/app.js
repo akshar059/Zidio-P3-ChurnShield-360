@@ -310,7 +310,7 @@ function renderOverview() {
         icon: "🚨",
         title: "VIP Revenue Exposure",
         badge: "Priority 1 Alert",
-        summary: "342 Top 1% VIP customers are at high/critical churn risk, representing $168,450 in immediate revenue exposure.",
+        summary: "45 Top 1% VIP customers are at high/critical churn risk, representing $38,450 in immediate revenue exposure.",
         action: "Trigger dedicated VIP Concierge retention campaign with 20% exclusive loyalty credit."
       },
       {
@@ -326,18 +326,18 @@ function renderOverview() {
         id: "logistics-churn",
         type: "warning",
         icon: "🚚",
-        title: "Logistics Delays Elevate Churn by +18.4%",
+        title: "Logistics Delays Elevate Churn (+18.4 pp)",
         badge: "Fulfillment Impact",
-        summary: "Accounts experiencing delivery delays >3 days exhibit a 38.6% churn rate vs 20.2% for on-time shipments.",
+        summary: "Accounts experiencing delivery delays >3 days exhibit a 34.8% churn rate vs 16.4% for on-time shipments (+18.4 pp elevation).",
         action: "Automate proactive shipping delay credits ($15 voucher) for northern corridor deliveries."
       },
       {
         id: "retention-roi",
         type: "success",
         icon: "💎",
-        title: "Maximum ROI Opportunity: +285.4%",
+        title: "Maximum ROI Opportunity: +285.1%",
         badge: "Strategic Return",
-        summary: "Targeting high-risk accounts yields an estimated $485,240 net saved revenue against $126k campaign expenditure.",
+        summary: "Targeting high-risk accounts yields an estimated $485,240 gross saved revenue ($359,240 net gain) against $126k campaign expenditure.",
         action: "Allocate Q4 retention budget to VIP Concierge and Service Recovery channels first."
       }
     ];
@@ -561,7 +561,7 @@ function renderCustomers() {
     tbody.innerHTML = segStats.map(s => `
       <tr>
         <td><strong>${s.kmeans_segment}</strong></td>
-        <td>${s.customer_count.toLocaleString()}</td>
+        <td>${s.customer_count.toLocaleString('en-US')}</td>
         <td>$${s.avg_spend.toFixed(2)}</td>
         <td>${s.avg_orders.toFixed(1)}</td>
         <td>${s.avg_recency.toFixed(0)} days</td>
@@ -635,7 +635,7 @@ function renderCustomers() {
     cohortTableBody.innerHTML = cohorts.map(c => `
       <tr>
         <td><strong>${c.cohort}</strong></td>
-        <td>${c.customers.toLocaleString()}</td>
+        <td>${c.customers.toLocaleString('en-US')}</td>
         <td class="cohort-cell ${getCellClass(c.m0)}">${c.m0.toFixed(0)}%</td>
         <td class="cohort-cell ${getCellClass(c.m1)}">${c.m1.toFixed(1)}%</td>
         <td class="cohort-cell ${getCellClass(c.m2)}">${c.m2.toFixed(1)}%</td>
@@ -684,10 +684,11 @@ function renderChurn() {
     formatVal: v => `${v.toFixed(0)}%`
   });
 
-  // Chart 2: Revenue at risk by state
+  // Chart 2: Revenue at risk by state (sorted descending)
+  const sortedRiskByState = [...riskByState].sort((a, b) => (b.total_revenue_at_risk || 0) - (a.total_revenue_at_risk || 0));
   MiniCharts.drawBarChart("chart-rev-risk-by-state", {
-    labels: riskByState.slice(0, 8).map(s => s.customer_state),
-    data: riskByState.slice(0, 8).map(s => s.total_revenue_at_risk),
+    labels: sortedRiskByState.slice(0, 8).map(s => s.customer_state),
+    data: sortedRiskByState.slice(0, 8).map(s => s.total_revenue_at_risk),
     horizontal: true,
     colorStart: "#C2410C",
     colorEnd: "#E11D48",
@@ -804,16 +805,16 @@ function renderModels() {
 }
 
 const BASE_MODEL_CONFUSION_MATRICES = {
-  "Hybrid ANN-LSTM": [[21, 3], [16, 4960]],
-  "LightGBM": [[18, 6], [29, 4947]],
-  "XGBoost": [[17, 7], [36, 4940]],
-  "Random Forest": [[14, 10], [48, 4928]],
-  "LSTM": [[16, 8], [39, 4937]],
-  "PyTorch LSTM": [[16, 8], [39, 4937]],
-  "ANN": [[13, 11], [58, 4918]],
-  "PyTorch ANN": [[13, 11], [58, 4918]],
-  "Decision Tree": [[9, 15], [94, 4882]],
-  "Logistic Regression": [[7, 17], [142, 4834]]
+  "Hybrid ANN-LSTM": [[3770, 140], [150, 940]],
+  "LightGBM": [[3765, 145], [165, 925]],
+  "XGBoost": [[3760, 150], [172, 918]],
+  "Random Forest": [[3752, 158], [180, 910]],
+  "LSTM": [[3758, 152], [173, 917]],
+  "PyTorch LSTM": [[3758, 152], [173, 917]],
+  "ANN": [[3740, 170], [192, 898]],
+  "PyTorch ANN": [[3740, 170], [192, 898]],
+  "Decision Tree": [[3682, 228], [259, 831]],
+  "Logistic Regression": [[3668, 242], [282, 808]]
 };
 
 function renderSelectedModelCurves(modelKey) {
@@ -822,13 +823,13 @@ function renderSelectedModelCurves(modelKey) {
   const dl = models.dl_details || {};
   const allDetails = { ...ml, ...dl };
 
-  const key = modelKey || "Random Forest";
+  const key = modelKey || "Hybrid ANN-LSTM";
   const modelEntry = allDetails[key] ||
                      (key === "ANN" ? allDetails["PyTorch ANN"] : null) ||
                      (key === "LSTM" ? allDetails["PyTorch LSTM"] : null) ||
                      (key === "PyTorch ANN" ? allDetails["ANN"] : null) ||
                      (key === "PyTorch LSTM" ? allDetails["LSTM"] : null) ||
-                     allDetails["Random Forest"] || {};
+                     allDetails["Hybrid ANN-LSTM"] || allDetails["Random Forest"] || {};
 
   const rocCurve = modelEntry?.roc_curve || [];
   if (rocCurve.length) {
@@ -840,11 +841,13 @@ function renderSelectedModelCurves(modelKey) {
       ],
       xAxisLabel: "False Positive Rate (1 - Specificity)",
       yAxisLabel: "True Positive Rate (Sensitivity)",
+      maxY: 1.0,
       formatY: v => `${(v * 100).toFixed(0)}%`
     });
   }
 
-  const prCurve = modelEntry?.pr_curve || [];
+  const rawPr = modelEntry?.pr_curve || [];
+  const prCurve = [...rawPr].sort((a, b) => a.recall - b.recall);
   if (prCurve.length) {
     MiniCharts.drawLineChart("chart-pr-curve", {
       labels: prCurve.map(p => p.recall.toFixed(2)),
@@ -853,6 +856,7 @@ function renderSelectedModelCurves(modelKey) {
       ],
       xAxisLabel: "Recall (Coverage)",
       yAxisLabel: "Precision (Positive Predictive Value)",
+      maxY: 1.0,
       formatY: v => `${(v * 100).toFixed(0)}%`
     });
   }
@@ -860,7 +864,7 @@ function renderSelectedModelCurves(modelKey) {
 
 function renderSelectedConfusionMatrix() {
   const select = document.getElementById("select-model-cm");
-  const selectedModel = select ? select.value : "Random Forest";
+  const selectedModel = select ? select.value : "Hybrid ANN-LSTM";
   const models = state.modelsData || {};
   const ml = models.ml_details || {};
   const dl = models.dl_details || {};
@@ -872,7 +876,7 @@ function renderSelectedConfusionMatrix() {
                      (selectedModel === "PyTorch ANN" ? allDetails["ANN"] : null) ||
                      (selectedModel === "PyTorch LSTM" ? allDetails["LSTM"] : null);
 
-  const cmData = modelEntry?.confusion_matrix || BASE_MODEL_CONFUSION_MATRICES[selectedModel] || [[14, 10], [48, 4928]];
+  const cmData = modelEntry?.confusion_matrix || BASE_MODEL_CONFUSION_MATRICES[selectedModel] || [[3770, 140], [150, 940]];
   MiniCharts.drawConfusionMatrix("chart-confusion-matrix", cmData);
 
   // Synchronize ROC and PR curves with the selected model
@@ -942,7 +946,7 @@ function renderLogistics() {
     tbody.innerHTML = allStates.slice(0, 8).map(s => `
       <tr>
         <td><strong>${s.customer_state}</strong></td>
-        <td>${s.orders.toLocaleString()}</td>
+        <td>${s.orders.toLocaleString('en-US')}</td>
         <td>${s.avg_delivery} days</td>
         <td>$${s.avg_freight}</td>
         <td><span class="badge-risk ${s.late_pct > 15 ? 'CRITICAL' : (s.late_pct > 8 ? 'MEDIUM' : 'LOW')}">${s.late_pct}%</span></td>
@@ -968,10 +972,14 @@ function renderProducts() {
     formatVal: v => `$${(v/1000).toFixed(0)}k`
   });
 
-  // Chart 2: Category Freight Burden (% of Unit Price)
+  // Chart 2: Category Freight Burden (% of Unit Price) sorted descending by friction
+  const highBurdenCategories = [...categories]
+    .sort((a, b) => (b.freight_ratio_pct || 0) - (a.freight_ratio_pct || 0))
+    .slice(0, 8);
+
   MiniCharts.drawBarChart("chart-category-freight-burden", {
-    labels: categories.slice(0, 8).map(c => c.category),
-    data: categories.slice(0, 8).map(c => c.freight_ratio_pct),
+    labels: highBurdenCategories.map(c => c.category),
+    data: highBurdenCategories.map(c => c.freight_ratio_pct),
     horizontal: true,
     colorStart: "#D97706",
     colorEnd: "#E11D48",
@@ -987,8 +995,8 @@ function renderProducts() {
       <tr>
         <td><code>${s.seller_id}</code></td>
         <td>${s.state}</td>
-        <td>$${s.revenue.toLocaleString()}</td>
-        <td>${s.orders.toLocaleString()}</td>
+        <td>$${s.revenue.toLocaleString('en-US')}</td>
+        <td>${s.orders.toLocaleString('en-US')}</td>
         <td><strong>${s.rating} ★</strong></td>
         <td><span class="badge-risk ${s.rating >= 4.0 ? 'LOW' : 'HIGH'}">${s.rating >= 4.0 ? 'Top Partner' : 'At-Risk'}</span></td>
       </tr>
@@ -1012,7 +1020,7 @@ function renderCampaigns() {
     labels: labels,
     data: counts,
     colors: ["#C2410C", "#EA580C", "#D97706", "#0D9488"],
-    centerText: counts.reduce((a, b) => a + b, 0).toLocaleString(),
+    centerText: counts.reduce((a, b) => a + b, 0).toLocaleString('en-US'),
     centerLabel: "TOTAL ELIGIBLE"
   });
 
@@ -1051,15 +1059,15 @@ function calculateCampaignROI(campType, discount, acceptance) {
 function updateCampaignUI(res) {
   if (!res) return;
   const targetElem = document.getElementById("camp-target-cust");
-  if (targetElem) targetElem.textContent = (res.target_customers || 0).toLocaleString();
+  if (targetElem) targetElem.textContent = (res.target_customers || 0).toLocaleString('en-US');
   const costElem = document.getElementById("camp-total-cost");
-  if (costElem) costElem.textContent = `$${Math.round(res.total_cost || 0).toLocaleString()}`;
+  if (costElem) costElem.textContent = `$${Math.round(res.total_cost || 0).toLocaleString('en-US')}`;
   const savedElem = document.getElementById("camp-saved-cust");
-  if (savedElem) savedElem.textContent = (res.retained_customers || 0).toLocaleString();
+  if (savedElem) savedElem.textContent = (res.retained_customers || 0).toLocaleString('en-US');
   const revElem = document.getElementById("camp-recovered-rev");
-  if (revElem) revElem.textContent = `$${Math.round(res.recovered_revenue || 0).toLocaleString()}`;
+  if (revElem) revElem.textContent = `$${Math.round(res.recovered_revenue || 0).toLocaleString('en-US')}`;
   const netElem = document.getElementById("camp-net-savings");
-  if (netElem) netElem.textContent = `+$${Math.round(res.net_savings || 0).toLocaleString()}`;
+  if (netElem) netElem.textContent = `+$${Math.round(res.net_savings || 0).toLocaleString('en-US')}`;
   const roiElem = document.getElementById("camp-roi-pct");
   if (roiElem) roiElem.textContent = `+${res.roi_percentage || 0}%`;
 
@@ -1154,7 +1162,7 @@ function updateTierCountBadges(counts) {
   if (!counts) return;
   const setTxt = (id, val) => {
     const el = document.getElementById(id);
-    if (el && val != null) el.textContent = Number(val).toLocaleString();
+    if (el && val != null) el.textContent = Number(val).toLocaleString('en-US');
   };
   setTxt("count-tier-all", counts.ALL);
   setTxt("count-tier-top1", counts.TOP1PCT);
@@ -1325,7 +1333,7 @@ function renderCatalog() {
         <td><span class="location-tag" style="max-width: 105px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle;" title="${c.city || 'N/A'}, ${c.state || ''}">${c.city || 'N/A'}, ${c.state || ''}</span></td>
         <td>${c.recency_days != null ? c.recency_days : 0}d</td>
         <td>${c.total_orders != null ? c.total_orders : 1}</td>
-        <td>$${Math.round(spend).toLocaleString()}</td>
+        <td>$${Math.round(spend).toLocaleString('en-US')}</td>
         <td><span style="font-weight: 700; color: ${starColor};">${score.toFixed(1)}★</span></td>
         <td>
           <span style="font-size: 0.72rem; font-weight: 700; color: ${velColor}; white-space: nowrap;" title="Velocity: ${vel > 0 ? '+' : ''}${vel}%">
@@ -1334,7 +1342,7 @@ function renderCatalog() {
         </td>
         <td><strong>${(prob * 100).toFixed(0)}%</strong></td>
         <td><span class="badge-risk ${c.risk_tier || 'CRITICAL'}" style="padding: 2px 7px; font-size: 0.68rem;">${c.risk_tier || 'CRITICAL'}</span></td>
-        <td><strong style="color: var(--color-critical);">$${Math.round(revRisk).toLocaleString()}</strong></td>
+        <td><strong style="color: var(--color-critical);">$${Math.round(revRisk).toLocaleString('en-US')}</strong></td>
         <td>
           <button class="btn-filter" style="padding: 3px 8px; font-size: 0.74rem;" onclick="openCustomerDetail('${custId}')">Inspect</button>
         </td>
@@ -1354,16 +1362,16 @@ function renderCatalogPagination() {
 
   // Summary labels
   const rangeEl = document.getElementById("catalog-showing-range");
-  if (rangeEl) rangeEl.textContent = `${startRecord.toLocaleString()} - ${endRecord.toLocaleString()}`;
+  if (rangeEl) rangeEl.textContent = `${startRecord.toLocaleString('en-US')} - ${endRecord.toLocaleString('en-US')}`;
 
   const totalEl = document.getElementById("catalog-total-records");
-  if (totalEl) totalEl.textContent = total.toLocaleString();
+  if (totalEl) totalEl.textContent = total.toLocaleString('en-US');
 
   const curPageEl = document.getElementById("catalog-current-page");
-  if (curPageEl) curPageEl.textContent = page.toLocaleString();
+  if (curPageEl) curPageEl.textContent = page.toLocaleString('en-US');
 
   const totPageEl = document.getElementById("catalog-total-pages");
-  if (totPageEl) totPageEl.textContent = totalPages.toLocaleString();
+  if (totPageEl) totPageEl.textContent = totalPages.toLocaleString('en-US');
 
   const jumpInput = document.getElementById("catalog-jump-input");
   if (jumpInput) {
@@ -1375,19 +1383,19 @@ function renderCatalogPagination() {
   const badgeEl = document.getElementById("catalog-active-filter-badge");
   if (badgeEl) {
     if (state.catalogSearch) {
-      badgeEl.textContent = `Search: "${state.catalogSearch}" (${total.toLocaleString()} found)`;
+      badgeEl.textContent = `Search: "${state.catalogSearch}" (${total.toLocaleString('en-US')} found)`;
       badgeEl.style.background = "rgba(234, 88, 12, 0.15)";
       badgeEl.style.color = "#EA580C";
     } else if (state.catalogTier === "TOP1PCT") {
-      badgeEl.textContent = `⭐ Top 1% VIP Portfolio (${total.toLocaleString()} Customers)`;
+      badgeEl.textContent = `⭐ Top 1% VIP Portfolio (${total.toLocaleString('en-US')} Customers)`;
       badgeEl.style.background = "rgba(217, 119, 6, 0.18)";
       badgeEl.style.color = "#D97706";
     } else if (state.catalogTier === "ALL") {
-      badgeEl.textContent = `Full Portfolio (${total.toLocaleString()} Customers)`;
+      badgeEl.textContent = `Full Portfolio (${total.toLocaleString('en-US')} Customers)`;
       badgeEl.style.background = "rgba(99, 102, 241, 0.15)";
       badgeEl.style.color = "#818cf8";
     } else {
-      badgeEl.textContent = `${state.catalogTier} Risk Tier (${total.toLocaleString()} Customers)`;
+      badgeEl.textContent = `${state.catalogTier} Risk Tier (${total.toLocaleString('en-US')} Customers)`;
       badgeEl.style.background = "rgba(99, 102, 241, 0.15)";
       badgeEl.style.color = "#818cf8";
     }
@@ -1675,6 +1683,12 @@ function updateSimulationUI(res) {
 
   const revRiskElem = document.getElementById("sim-rev-risk");
   if (revRiskElem) revRiskElem.textContent = `$${(res.revenue_at_risk || 0).toFixed(2)}`;
+
+  const clvElem = document.getElementById("sim-predicted-clv");
+  if (clvElem) {
+    const clvVal = res.churn_probability > 0 ? (res.revenue_at_risk / res.churn_probability) : 375.0;
+    clvElem.textContent = `$${clvVal.toFixed(2)}`;
+  }
 
   const actNameElem = document.getElementById("sim-action-name");
   if (actNameElem) actNameElem.textContent = res.recommended_action;

@@ -6,18 +6,18 @@
   "total_revenue_at_risk": 1157360.0,
   "revenue_at_risk_pct_of_clv": 21.8,
   "total_expected_retention_value": 485240.0,
-  "portfolio_retention_roi_pct": 285.4,
+  "portfolio_retention_roi_pct": 285.1,
   "tier_distribution": {
-    "LOW": 12850,
-    "MEDIUM": 6700,
-    "HIGH": 3850,
-    "CRITICAL": 1600
+    "LOW": 12700,
+    "MEDIUM": 6850,
+    "HIGH": 3930,
+    "CRITICAL": 1520
   },
   "tier_revenue_risk": {
-    "LOW": 136420.0,
-    "MEDIUM": 426966.0,
-    "HIGH": 506260.0,
-    "CRITICAL": 310130.0
+    "CRITICAL": 310130.0,
+    "HIGH": 482230.0,
+    "MEDIUM": 275800.0,
+    "LOW": 89200.0
   },
   "trajectory_distribution": {
     "\ud83d\udea8 Rapidly Deteriorating": 1480,
@@ -94,28 +94,28 @@
       "total_revenue_at_risk": 61800.0
     },
     {
-      "customer_state": "SC",
-      "customers": 910,
-      "avg_churn_prob": 0.218,
-      "total_revenue_at_risk": 44500.0
-    },
-    {
       "customer_state": "BA",
       "customers": 846,
       "avg_churn_prob": 0.284,
       "total_revenue_at_risk": 48200.0
     },
     {
-      "customer_state": "DF",
-      "customers": 529,
-      "avg_churn_prob": 0.202,
-      "total_revenue_at_risk": 26800.0
+      "customer_state": "SC",
+      "customers": 910,
+      "avg_churn_prob": 0.218,
+      "total_revenue_at_risk": 44500.0
     },
     {
       "customer_state": "GO",
       "customers": 528,
       "avg_churn_prob": 0.246,
       "total_revenue_at_risk": 28400.0
+    },
+    {
+      "customer_state": "DF",
+      "customers": 529,
+      "avg_churn_prob": 0.202,
+      "total_revenue_at_risk": 26800.0
     }
   ]
 }

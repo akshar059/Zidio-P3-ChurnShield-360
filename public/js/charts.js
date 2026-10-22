@@ -82,14 +82,14 @@ class MiniCharts {
     tt.style.opacity = "1";
 
     const offset = 14;
-    let left = e.clientX + offset;
-    let top = e.clientY + offset;
     const ttRect = tt.getBoundingClientRect();
+    let left = e.clientX + offset;
+    let top = e.clientY - ttRect.height - offset;
+    if (top < 10) {
+      top = e.clientY + offset;
+    }
     if (left + ttRect.width > window.innerWidth - 12) {
       left = e.clientX - ttRect.width - offset;
-    }
-    if (top + ttRect.height > window.innerHeight - 12) {
-      top = e.clientY - ttRect.height - offset;
     }
     tt.style.left = `${Math.max(10, left)}px`;
     tt.style.top = `${Math.max(10, top)}px`;
@@ -178,7 +178,13 @@ class MiniCharts {
     if (minY === Infinity) minY = 0;
     if (minY > 0) minY = 0;
     if (maxY === minY) maxY = minY + 10;
-    maxY *= 1.12;
+    if (options.maxY !== undefined) {
+      maxY = options.maxY;
+    } else if (options.isPercentage) {
+      maxY = Math.min(100, Math.ceil((maxY * 1.05) / 10) * 10 || 100);
+    } else {
+      maxY *= 1.12;
+    }
 
     ctx.clearRect(0, 0, width, height);
 
@@ -426,7 +432,7 @@ class MiniCharts {
       datasets.forEach(ds => {
         const val = ds.data ? ds.data[idx] : null;
         if (val !== null && val !== undefined) {
-          const formatted = options.formatY ? options.formatY(val) : (val >= 1000 ? `$${(val/1000).toFixed(1)}k` : val.toLocaleString());
+          const formatted = options.formatY ? options.formatY(val) : (val >= 1000 ? `$${(val/1000).toFixed(1)}k` : val.toLocaleString('en-US'));
           tooltipRows.push({
             color: ds.color || "#C2410C",
             label: ds.label || "Value",
@@ -535,7 +541,7 @@ class MiniCharts {
         ctx.fillStyle = theme.text;
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
-        const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString();
+        const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString('en-US');
         ctx.fillText(valStr, padding.left + barW + 8, y + barH / 2);
       });
 
@@ -577,7 +583,8 @@ class MiniCharts {
 
       const padding = { top: topPad, right: paddingRight, bottom: padBottom, left: paddingLeft };
       const chartH = height - padding.top - padding.bottom;
-      const maxVal = Math.max(...data) * 1.15 || 1;
+      let maxVal = options.maxVal || (Math.max(...data) * (options.isPercentage ? 1.0 : 1.15) || 1);
+      if (options.isPercentage && maxVal > 100) maxVal = 100;
       const barW = Math.max(5, Math.min(needsRotation ? 20 : 28, step * 0.58));
 
       // Render Top Legend for Vertical Bar Chart
@@ -639,10 +646,11 @@ class MiniCharts {
           ctx.fillStyle = theme.text;
           ctx.font = fontStr;
 
-          // Ellipsis truncate if excessively long
+          // Ellipsis truncate only if excessively long (e.g. >130px)
           let displayLbl = String(lbl);
-          if (ctx.measureText(displayLbl).width > 70) {
-            while (displayLbl.length > 3 && ctx.measureText(displayLbl + "…").width > 70) {
+          const maxAllowedW = Math.max(130, step * 1.5);
+          if (ctx.measureText(displayLbl).width > maxAllowedW) {
+            while (displayLbl.length > 3 && ctx.measureText(displayLbl + "…").width > maxAllowedW) {
               displayLbl = displayLbl.slice(0, -1);
             }
             displayLbl += "…";
@@ -699,7 +707,7 @@ class MiniCharts {
         const idx = Math.floor((mouseY - topPad) / gap);
         if (idx >= 0 && idx < labels.length) {
           const val = data[idx];
-          const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString();
+          const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString('en-US');
           const rawLbl = String(labels[idx]);
           const displayTitle = MiniCharts.BRAZIL_STATES[rawLbl] ? `${MiniCharts.BRAZIL_STATES[rawLbl]} (${rawLbl})` : rawLbl;
           MiniCharts.showTooltip(e, displayTitle, [{
@@ -727,7 +735,7 @@ class MiniCharts {
         const idx = Math.floor((mouseX - paddingLeft) / step);
         if (idx >= 0 && idx < labels.length) {
           const val = data[idx];
-          const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString();
+          const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString('en-US');
           const rawLbl = String(labels[idx]);
           const displayTitle = MiniCharts.BRAZIL_STATES[rawLbl] ? `${MiniCharts.BRAZIL_STATES[rawLbl]} (${rawLbl})` : rawLbl;
           MiniCharts.showTooltip(e, displayTitle, [{
@@ -870,7 +878,7 @@ class MiniCharts {
           return {
             color: s.color,
             label: s.label,
-            val: options.formatVal ? options.formatVal(val) : val.toLocaleString()
+            val: options.formatVal ? options.formatVal(val) : val.toLocaleString('en-US')
           };
         });
         MiniCharts.showTooltip(e, String(labels[gIdx]), rows);
@@ -927,7 +935,7 @@ class MiniCharts {
     ctx.font = `bold ${Math.max(14, Math.round(outerR * 0.34))}px Outfit, sans-serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(options.centerText || total.toLocaleString(), cx, cy - 5);
+    ctx.fillText(options.centerText || total.toLocaleString('en-US'), cx, cy - 5);
 
     ctx.fillStyle = theme.textDim;
     ctx.font = "9.5px Inter, sans-serif";
@@ -1060,7 +1068,7 @@ class MiniCharts {
           MiniCharts.showTooltip(e, String(labels[matchedIdx] || "Segment"), [{
             color: colors[matchedIdx % colors.length],
             label: "Total Volume",
-            val: `${val.toLocaleString()} (${pct}%)`
+            val: `${val.toLocaleString('en-US')} (${pct}%)`
           }]);
           return;
         }
@@ -1232,7 +1240,7 @@ class MiniCharts {
       ctx.font = `bold ${numFontSize}px Outfit, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(cell.val.toLocaleString(), cx, cy - size * 0.14);
+      ctx.fillText(cell.val.toLocaleString('en-US'), cx, cy - size * 0.14);
 
       // Clean Title with Tag (e.g. "True Retained (TN)")
       const titleFontSize = Math.min(10.5, Math.max(9, Math.round(size * 0.105)));
@@ -1418,7 +1426,7 @@ class MiniCharts {
         MiniCharts.showTooltip(e, `Bin #${closest.idx + 1} (${predPct}% Pred)`, [
           { color: "#4F46E5", label: "Model Empirical Churn", val: `${actPct}%` },
           { color: "#A8A29E", label: "Ideal Calibration", val: `${predPct}%` },
-          { color: "var(--text-dim)", label: "Sample Count", val: (b.count || 0).toLocaleString() }
+          { color: "var(--text-dim)", label: "Sample Count", val: (b.count || 0).toLocaleString('en-US') }
         ]);
       } else {
         MiniCharts.hideTooltip();

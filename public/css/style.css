@@ -445,8 +445,9 @@ html[data-theme="dark"] .sidebar-footer {
 }
 
 .app-header {
-  height: 62px;
-  padding: 0 24px;
+  min-height: 62px;
+  height: auto;
+  padding: 8px 24px;
   background: var(--bg-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -458,6 +459,7 @@ html[data-theme="dark"] .sidebar-footer {
   top: 0;
   z-index: 40;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  gap: 12px;
 }
 
 .header-left h1 {
@@ -478,8 +480,8 @@ html[data-theme="dark"] .sidebar-footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .chip-tag {
@@ -731,7 +733,7 @@ html[data-theme="dark"] .sidebar-footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* ==========================================================================
@@ -752,6 +754,15 @@ html[data-theme="dark"] .sidebar-footer {
 
 .catalog-table-container {
   min-height: 380px;
+  position: relative;
+  overflow-x: auto;
+}
+
+.catalog-table-container th:last-child,
+.catalog-table-container td:last-child {
+  min-width: 86px;
+  text-align: center;
+  padding-right: 14px;
 }
 
 .table-container::-webkit-scrollbar {
@@ -775,7 +786,8 @@ html[data-theme="dark"] .sidebar-footer {
 
 .data-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   text-align: left;
   font-size: 0.80rem;
 }
