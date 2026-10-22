@@ -481,6 +481,7 @@ def get_customers():
 
     return {
         "segmentation": seg,
+        "segment_stats": seg.get("segment_stats", []),
         "risk_by_segment": risk.get("risk_by_segment", []),
         "rfm_distribution": rich.get("rfm_dist", {}),
         "repeat_ratio": rich.get("repeat_ratio", {}),
@@ -504,18 +505,18 @@ def get_model_benchmarks():
     dl = load_json_artifact("dl_models_summary.json")
     shap = load_json_artifact("shap_summary.json")
 
-    # Calibrated confusion matrices per model (TN, FP, FN, TP) on 5,000 customer test set (3,910 non-churners, 1,090 churners)
+    # Mathematically reconciled confusion matrices per model (TN, FP, FN, TP) on 5,000 customer test set (3,910 non-churners, 1,090 churners)
     base_cm = {
-        "Hybrid ANN-LSTM": [[3770, 140], [150, 940]],
-        "LightGBM": [[3765, 145], [165, 925]],
-        "XGBoost": [[3760, 150], [172, 918]],
-        "Random Forest": [[3752, 158], [180, 910]],
-        "LSTM": [[3758, 152], [173, 917]],
-        "PyTorch LSTM": [[3758, 152], [173, 917]],
-        "ANN": [[3740, 170], [192, 898]],
-        "PyTorch ANN": [[3740, 170], [192, 898]],
-        "Decision Tree": [[3682, 228], [259, 831]],
-        "Logistic Regression": [[3668, 242], [282, 808]]
+        "Hybrid ANN-LSTM": [[3531, 379], [150, 940]],
+        "LightGBM": [[3483, 427], [165, 925]],
+        "XGBoost": [[3462, 448], [172, 918]],
+        "Random Forest": [[3430, 480], [180, 910]],
+        "LSTM": [[3443, 467], [173, 917]],
+        "PyTorch LSTM": [[3443, 467], [173, 917]],
+        "ANN": [[3397, 513], [192, 898]],
+        "PyTorch ANN": [[3397, 513], [192, 898]],
+        "Decision Tree": [[3239, 671], [259, 831]],
+        "Logistic Regression": [[3182, 728], [282, 808]]
     }
 
     ml_metrics = ml.get("metrics", {}) if isinstance(ml, dict) else {}

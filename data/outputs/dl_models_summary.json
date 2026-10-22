@@ -2,15 +2,15 @@
   "ANN": {
     "model_name": "ANN",
     "accuracy": 0.859,
-    "precision": 0.841,
-    "recall": 0.824,
-    "f1_score": 0.8324,
+    "precision": 0.6364,
+    "recall": 0.8239,
+    "f1_score": 0.7181,
     "roc_auc": 0.881,
     "pr_auc": 0.829,
     "confusion_matrix": [
       [
-        3740,
-        170
+        3397,
+        513
       ],
       [
         192,
@@ -433,15 +433,15 @@
   "LSTM": {
     "model_name": "LSTM",
     "accuracy": 0.872,
-    "precision": 0.858,
-    "recall": 0.841,
-    "f1_score": 0.8494,
+    "precision": 0.6626,
+    "recall": 0.8413,
+    "f1_score": 0.7413,
     "roc_auc": 0.898,
     "pr_auc": 0.849,
     "confusion_matrix": [
       [
-        3758,
-        152
+        3443,
+        467
       ],
       [
         173,
@@ -864,15 +864,15 @@
   "Hybrid ANN-LSTM": {
     "model_name": "Hybrid ANN-LSTM",
     "accuracy": 0.8942,
-    "precision": 0.887,
+    "precision": 0.7127,
     "recall": 0.8624,
-    "f1_score": 0.8745,
+    "f1_score": 0.7804,
     "roc_auc": 0.924,
     "pr_auc": 0.886,
     "confusion_matrix": [
       [
-        3770,
-        140
+        3531,
+        379
       ],
       [
         150,

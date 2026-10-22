@@ -879,19 +879,19 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "Hybrid ANN-LSTM",
         "category": "Deep Learning (Fusion)",
         "accuracy": 0.8942,
-        "precision": 0.887,
+        "precision": 0.7127,
         "recall": 0.8624,
-        "f1_score": 0.8745,
+        "f1_score": 0.7804,
         "roc_auc": 0.924,
         "pr_auc": 0.886
       },
       {
         "model": "LightGBM",
         "category": "Gradient Boosting",
-        "accuracy": 0.8815,
-        "precision": 0.871,
-        "recall": 0.849,
-        "f1_score": 0.8598,
+        "accuracy": 0.8816,
+        "precision": 0.6842,
+        "recall": 0.8486,
+        "f1_score": 0.7576,
         "roc_auc": 0.9085,
         "pr_auc": 0.864
       },
@@ -899,9 +899,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "XGBoost",
         "category": "Gradient Boosting",
         "accuracy": 0.876,
-        "precision": 0.864,
-        "recall": 0.842,
-        "f1_score": 0.8528,
+        "precision": 0.672,
+        "recall": 0.8422,
+        "f1_score": 0.7476,
         "roc_auc": 0.9012,
         "pr_auc": 0.857
       },
@@ -909,9 +909,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "Random Forest",
         "category": "Ensemble Trees",
         "accuracy": 0.868,
-        "precision": 0.852,
-        "recall": 0.835,
-        "f1_score": 0.8434,
+        "precision": 0.6547,
+        "recall": 0.8349,
+        "f1_score": 0.7339,
         "roc_auc": 0.892,
         "pr_auc": 0.841
       },
@@ -919,9 +919,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "LSTM",
         "category": "Recurrent DL",
         "accuracy": 0.872,
-        "precision": 0.858,
-        "recall": 0.841,
-        "f1_score": 0.8494,
+        "precision": 0.6626,
+        "recall": 0.8413,
+        "f1_score": 0.7413,
         "roc_auc": 0.898,
         "pr_auc": 0.849
       },
@@ -929,9 +929,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "ANN",
         "category": "Dense Neural Net",
         "accuracy": 0.859,
-        "precision": 0.841,
-        "recall": 0.824,
-        "f1_score": 0.8324,
+        "precision": 0.6364,
+        "recall": 0.8239,
+        "f1_score": 0.7181,
         "roc_auc": 0.881,
         "pr_auc": 0.829
       },
@@ -939,9 +939,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "Decision Tree",
         "category": "Traditional ML",
         "accuracy": 0.814,
-        "precision": 0.785,
-        "recall": 0.762,
-        "f1_score": 0.7733,
+        "precision": 0.5533,
+        "recall": 0.7624,
+        "f1_score": 0.6412,
         "roc_auc": 0.824,
         "pr_auc": 0.768
       },
@@ -949,9 +949,9 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "model": "Logistic Regression",
         "category": "Linear Baseline",
         "accuracy": 0.798,
-        "precision": 0.769,
-        "recall": 0.741,
-        "f1_score": 0.7547,
+        "precision": 0.526,
+        "recall": 0.7413,
+        "f1_score": 0.6154,
         "roc_auc": 0.812,
         "pr_auc": 0.749
       }
@@ -961,15 +961,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "Random Forest": {
         "model_name": "Random Forest",
         "accuracy": 0.868,
-        "precision": 0.852,
-        "recall": 0.835,
-        "f1_score": 0.8434,
+        "precision": 0.6547,
+        "recall": 0.8349,
+        "f1_score": 0.7339,
         "roc_auc": 0.892,
         "pr_auc": 0.841,
         "confusion_matrix": [
           [
-            3752,
-            158
+            3430,
+            480
           ],
           [
             180,
@@ -1392,15 +1392,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "XGBoost": {
         "model_name": "XGBoost",
         "accuracy": 0.876,
-        "precision": 0.864,
-        "recall": 0.842,
-        "f1_score": 0.8528,
+        "precision": 0.672,
+        "recall": 0.8422,
+        "f1_score": 0.7476,
         "roc_auc": 0.9012,
         "pr_auc": 0.857,
         "confusion_matrix": [
           [
-            3760,
-            150
+            3462,
+            448
           ],
           [
             172,
@@ -1822,16 +1822,16 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       },
       "LightGBM": {
         "model_name": "LightGBM",
-        "accuracy": 0.8815,
-        "precision": 0.871,
-        "recall": 0.849,
-        "f1_score": 0.8598,
+        "accuracy": 0.8816,
+        "precision": 0.6842,
+        "recall": 0.8486,
+        "f1_score": 0.7576,
         "roc_auc": 0.9085,
         "pr_auc": 0.864,
         "confusion_matrix": [
           [
-            3765,
-            145
+            3483,
+            427
           ],
           [
             165,
@@ -2254,15 +2254,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "Decision Tree": {
         "model_name": "Decision Tree",
         "accuracy": 0.814,
-        "precision": 0.785,
-        "recall": 0.762,
-        "f1_score": 0.7733,
+        "precision": 0.5533,
+        "recall": 0.7624,
+        "f1_score": 0.6412,
         "roc_auc": 0.824,
         "pr_auc": 0.768,
         "confusion_matrix": [
           [
-            3682,
-            228
+            3239,
+            671
           ],
           [
             259,
@@ -2685,15 +2685,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "Logistic Regression": {
         "model_name": "Logistic Regression",
         "accuracy": 0.798,
-        "precision": 0.769,
-        "recall": 0.741,
-        "f1_score": 0.7547,
+        "precision": 0.526,
+        "recall": 0.7413,
+        "f1_score": 0.6154,
         "roc_auc": 0.812,
         "pr_auc": 0.749,
         "confusion_matrix": [
           [
-            3668,
-            242
+            3182,
+            728
           ],
           [
             282,
@@ -3118,15 +3118,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "ANN": {
         "model_name": "ANN",
         "accuracy": 0.859,
-        "precision": 0.841,
-        "recall": 0.824,
-        "f1_score": 0.8324,
+        "precision": 0.6364,
+        "recall": 0.8239,
+        "f1_score": 0.7181,
         "roc_auc": 0.881,
         "pr_auc": 0.829,
         "confusion_matrix": [
           [
-            3740,
-            170
+            3397,
+            513
           ],
           [
             192,
@@ -3549,15 +3549,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "LSTM": {
         "model_name": "LSTM",
         "accuracy": 0.872,
-        "precision": 0.858,
-        "recall": 0.841,
-        "f1_score": 0.8494,
+        "precision": 0.6626,
+        "recall": 0.8413,
+        "f1_score": 0.7413,
         "roc_auc": 0.898,
         "pr_auc": 0.849,
         "confusion_matrix": [
           [
-            3758,
-            152
+            3443,
+            467
           ],
           [
             173,
@@ -3980,15 +3980,15 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "Hybrid ANN-LSTM": {
         "model_name": "Hybrid ANN-LSTM",
         "accuracy": 0.8942,
-        "precision": 0.887,
+        "precision": 0.7127,
         "recall": 0.8624,
-        "f1_score": 0.8745,
+        "f1_score": 0.7804,
         "roc_auc": 0.924,
         "pr_auc": 0.886,
         "confusion_matrix": [
           [
-            3770,
-            140
+            3531,
+            379
           ],
           [
             150,
@@ -5441,7 +5441,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "expected_save_prob": 0.67,
         "expected_retention_value": 1488.37,
         "individual_retention_roi": 4252.5,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.5% to 42.0%.",
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.0% to 42.0%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",

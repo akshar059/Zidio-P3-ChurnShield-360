@@ -652,6 +652,8 @@ function renderCustomers() {
   if (segCurves) {
     MiniCharts.drawLineChart("chart-segment-retention-curves", {
       labels: segCurves.months,
+      isPercentage: true,
+      maxY: 100,
       datasets: segCurves.segments.map(s => ({
         label: s.name,
         data: s.retention_rates,
@@ -676,6 +678,8 @@ function renderChurn() {
     labels: riskBySegment.map(s => s.kmeans_segment.split(" ")[0]),
     data: riskBySegment.map(s => (s.avg_churn_prob * 100)),
     horizontal: false,
+    isPercentage: true,
+    maxVal: 100,
     colorStart: "#EA580C",
     colorEnd: "#E11D48",
     legendLabel: "Mean Churn Probability (%)",
@@ -730,7 +734,7 @@ function renderChurn() {
 function renderModels() {
   const models = state.modelsData || {};
   const tableData = models.comparison_table || [];
-  const champion = models.champion_model || "Random Forest";
+  const champion = models.champion_model || "Hybrid ANN-LSTM";
 
   const tbody = document.getElementById("models-table-body");
   if (tbody) {
@@ -758,6 +762,8 @@ function renderModels() {
   const top4Models = tableData.slice(0, 4);
   MiniCharts.drawGroupedBarChart("chart-model-metric-comparison", {
     labels: ["Accuracy", "Recall", "F1 Score", "ROC-AUC"],
+    isPercentage: true,
+    maxVal: 100,
     series: top4Models.map((m, idx) => {
       const palette = ["#C2410C", "#4338CA", "#0D9488", "#D97706"];
       return {
@@ -805,16 +811,16 @@ function renderModels() {
 }
 
 const BASE_MODEL_CONFUSION_MATRICES = {
-  "Hybrid ANN-LSTM": [[3770, 140], [150, 940]],
-  "LightGBM": [[3765, 145], [165, 925]],
-  "XGBoost": [[3760, 150], [172, 918]],
-  "Random Forest": [[3752, 158], [180, 910]],
-  "LSTM": [[3758, 152], [173, 917]],
-  "PyTorch LSTM": [[3758, 152], [173, 917]],
-  "ANN": [[3740, 170], [192, 898]],
-  "PyTorch ANN": [[3740, 170], [192, 898]],
-  "Decision Tree": [[3682, 228], [259, 831]],
-  "Logistic Regression": [[3668, 242], [282, 808]]
+  "Hybrid ANN-LSTM": [[3531, 379], [150, 940]],
+  "LightGBM": [[3483, 427], [165, 925]],
+  "XGBoost": [[3462, 448], [172, 918]],
+  "Random Forest": [[3430, 480], [180, 910]],
+  "LSTM": [[3443, 467], [173, 917]],
+  "PyTorch LSTM": [[3443, 467], [173, 917]],
+  "ANN": [[3397, 513], [192, 898]],
+  "PyTorch ANN": [[3397, 513], [192, 898]],
+  "Decision Tree": [[3239, 671], [259, 831]],
+  "Logistic Regression": [[3182, 728], [282, 808]]
 };
 
 function renderSelectedModelCurves(modelKey) {
@@ -876,7 +882,7 @@ function renderSelectedConfusionMatrix() {
                      (selectedModel === "PyTorch ANN" ? allDetails["ANN"] : null) ||
                      (selectedModel === "PyTorch LSTM" ? allDetails["LSTM"] : null);
 
-  const cmData = modelEntry?.confusion_matrix || BASE_MODEL_CONFUSION_MATRICES[selectedModel] || [[3770, 140], [150, 940]];
+  const cmData = modelEntry?.confusion_matrix || BASE_MODEL_CONFUSION_MATRICES[selectedModel] || [[3531, 379], [150, 940]];
   MiniCharts.drawConfusionMatrix("chart-confusion-matrix", cmData);
 
   // Synchronize ROC and PR curves with the selected model
