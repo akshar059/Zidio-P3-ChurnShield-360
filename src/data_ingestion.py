@@ -3,10 +3,8 @@ Data Ingestion and Quality Validation Module
 Handles multi-CSV ingestion, schema validation, referential integrity, and data quality reporting.
 """
 
-import os
 import json
 import pandas as pd
-import numpy as np
 from pathlib import Path
 from .config import DATASET_DIR, DATA_FILES, DATA_OUTPUTS_DIR
 

@@ -5,7 +5,6 @@ and projects future sales trends using Time Series Forecasting.
 """
 
 import pandas as pd
-import numpy as np
 import json
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from .config import DATA_OUTPUTS_DIR

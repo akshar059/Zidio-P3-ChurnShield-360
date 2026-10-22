@@ -7,11 +7,10 @@ logistics operations, product/seller intelligence, and retention campaign ROI si
 import os
 import json
 import math
-from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import pandas as pd
 import numpy as np
@@ -26,6 +25,11 @@ app = FastAPI(
     description="Enterprise API serving RFM, K-Means, ML, ANN, LSTM, Hybrid DL, and Risk Engine",
     version="1.0.0"
 )
+
+@app.get("/health")
+@app.get("/api/health")
+def health_check():
+    return {"status": "ok", "service": "churnshield-360"}
 
 # Helper to load JSON artifacts
 def load_json_artifact(filename: str) -> dict:

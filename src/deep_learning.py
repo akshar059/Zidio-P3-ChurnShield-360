@@ -271,10 +271,7 @@ def train_and_evaluate_deep_learning(
     train_loader = DataLoader(train_ds, batch_size=DL_BATCH_SIZE, shuffle=True)
     test_loader = DataLoader(test_ds, batch_size=DL_BATCH_SIZE, shuffle=False)
 
-    # Class weight calculation
-    pos_count = float(y_train.sum())
-    neg_count = float(len(y_train) - pos_count)
-    pos_weight = torch.tensor([neg_count / max(pos_count, 1.0)])
+    # Loss criterion
     criterion = nn.BCELoss()
 
     static_dim = X_train_static.shape[1]
@@ -299,7 +296,7 @@ def train_and_evaluate_deep_learning(
         if epoch % 5 == 0 or epoch == DL_EPOCHS:
             print(f" -> ANN Epoch {epoch}/{DL_EPOCHS} | Train Loss: {total_loss / len(train_loader):.4f}")
 
-    ann_metrics, ann_probs = evaluate_torch_model(ann, test_loader, "ANN", "ann")
+    ann_metrics, _ = evaluate_torch_model(ann, test_loader, "ANN", "ann")
     results["ANN"] = ann_metrics
     models_dict["ANN"] = ann
 
@@ -321,7 +318,7 @@ def train_and_evaluate_deep_learning(
         if epoch % 5 == 0 or epoch == DL_EPOCHS:
             print(f" -> LSTM Epoch {epoch}/{DL_EPOCHS} | Train Loss: {total_loss / len(train_loader):.4f}")
 
-    lstm_metrics, lstm_probs = evaluate_torch_model(lstm, test_loader, "LSTM", "lstm")
+    lstm_metrics, _ = evaluate_torch_model(lstm, test_loader, "LSTM", "lstm")
     results["LSTM"] = lstm_metrics
     models_dict["LSTM"] = lstm
 
@@ -343,7 +340,7 @@ def train_and_evaluate_deep_learning(
         if epoch % 5 == 0 or epoch == DL_EPOCHS:
             print(f" -> Hybrid Epoch {epoch}/{DL_EPOCHS} | Train Loss: {total_loss / len(train_loader):.4f}")
 
-    hybrid_metrics, hybrid_probs = evaluate_torch_model(hybrid, test_loader, "Hybrid ANN-LSTM", "hybrid")
+    hybrid_metrics, _ = evaluate_torch_model(hybrid, test_loader, "Hybrid ANN-LSTM", "hybrid")
     results["Hybrid ANN-LSTM"] = hybrid_metrics
     models_dict["Hybrid ANN-LSTM"] = hybrid
 

@@ -25,16 +25,12 @@ def compute_risk_scoring_and_revenue_at_risk(
     df = cust_df.copy()
     df["churn_probability"] = np.round(churn_probs, 4)
     
-    # Risk Tier assignment
+    # Risk Tier assignment using configured RISK_TIERS
     def assign_risk_tier(prob):
-        if prob <= 0.30:
-            return "LOW"
-        elif prob <= 0.60:
-            return "MEDIUM"
-        elif prob <= 0.80:
-            return "HIGH"
-        else:
-            return "CRITICAL"
+        for tier, (low, high) in RISK_TIERS.items():
+            if low <= prob <= high:
+                return tier
+        return "CRITICAL"
 
     df["risk_tier"] = df["churn_probability"].apply(assign_risk_tier)
 

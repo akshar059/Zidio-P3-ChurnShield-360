@@ -5,8 +5,7 @@ spending trends, customer health score, and CLV metrics.
 """
 
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
+from datetime import timedelta
 from .config import DATA_PROCESSED_DIR
 
 def calculate_rfm_scores(df: pd.DataFrame) -> pd.DataFrame:

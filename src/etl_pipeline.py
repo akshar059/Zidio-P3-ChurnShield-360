@@ -4,8 +4,6 @@ Joins Customers, Orders, Order Items, Payments, Reviews, Products, and Sellers
 into unified analytical datasets.
 """
 
-import pandas as pd
-from pathlib import Path
 from .config import DATA_PROCESSED_DIR
 
 def build_master_analytical_tables(datasets: dict) -> dict:

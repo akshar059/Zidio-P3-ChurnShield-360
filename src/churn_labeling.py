@@ -5,9 +5,8 @@ Avoids future lookahead data leakage.
 """
 
 import pandas as pd
-import numpy as np
 from datetime import timedelta
-from .config import PREDICTION_WINDOW_DAYS, DATA_PROCESSED_DIR
+from .config import PREDICTION_WINDOW_DAYS
 
 def create_time_based_churn_dataset(master_sales: pd.DataFrame, window_days: int = PREDICTION_WINDOW_DAYS) -> tuple[pd.DataFrame, pd.Timestamp, pd.Timestamp]:
     """

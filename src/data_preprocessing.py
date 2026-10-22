@@ -5,7 +5,6 @@ outlier capping, and category translation.
 """
 
 import pandas as pd
-import numpy as np
 from .config import ORDER_DATE_COLS
 
 def preprocess_datasets(datasets: dict) -> dict:

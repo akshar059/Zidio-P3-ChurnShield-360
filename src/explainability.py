@@ -8,7 +8,7 @@ import json
 import numpy as np
 import pandas as pd
 import shap
-from .config import DATA_OUTPUTS_DIR, RANDOM_STATE
+from .config import DATA_OUTPUTS_DIR
 
 def compute_shap_and_explainability(
     model, preprocessor, X_train_sample: pd.DataFrame, feature_names: list

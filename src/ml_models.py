@@ -12,8 +12,6 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
