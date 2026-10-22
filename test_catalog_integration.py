@@ -5,7 +5,7 @@ base = "http://localhost:8000"
 
 def get_json(url_path):
     try:
-        req = urllib.request.urlopen(f"{base}{url_path}")
+        req = urllib.request.urlopen(f"{base}{url_path}", timeout=0.3)
         return json.loads(req.read().decode("utf-8"))
     except Exception:
         from fastapi.testclient import TestClient
@@ -16,7 +16,7 @@ def get_json(url_path):
 
 def get_text(url_path):
     try:
-        req = urllib.request.urlopen(f"{base}{url_path}")
+        req = urllib.request.urlopen(f"{base}{url_path}", timeout=0.3)
         return req.read().decode("utf-8")
     except Exception:
         from fastapi.testclient import TestClient
