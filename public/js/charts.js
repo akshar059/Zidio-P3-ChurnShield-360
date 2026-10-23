@@ -7,16 +7,30 @@ class MiniCharts {
   static getRetinaContext(canvas) {
     if (!canvas) return { ctx: null, width: 0, height: 0 };
     const rect = canvas.getBoundingClientRect();
-    if (!rect || rect.width <= 0 || rect.height <= 0) {
-      return { ctx: null, width: 0, height: 0 };
+    let width = (rect && rect.width > 0) ? rect.width : 0;
+    let height = (rect && rect.height > 0) ? rect.height : 0;
+
+    // Robust fallback to parent container or offset dimensions if DOM layout is still computing
+    if (width <= 0 || height <= 0) {
+      if (canvas.parentElement) {
+        const parentRect = canvas.parentElement.getBoundingClientRect();
+        width = parentRect.width || canvas.parentElement.clientWidth;
+        height = parentRect.height || canvas.parentElement.clientHeight;
+      }
+      if (width <= 0) width = canvas.offsetWidth || 400;
+      if (height <= 0) height = canvas.offsetHeight || 250;
     }
+
+    if (width <= 10) width = 360;
+    if (height <= 10) height = 240;
+
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
     const ctx = canvas.getContext("2d");
     if (!ctx) return { ctx: null, width: 0, height: 0 };
     ctx.scale(dpr, dpr);
-    return { ctx, width: rect.width, height: rect.height };
+    return { ctx, width, height };
   }
 
   static BRAZIL_STATES = {

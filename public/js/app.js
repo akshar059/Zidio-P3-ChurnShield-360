@@ -37,6 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
   initStateFromFallback();
   renderAllViews();
   loadAllData();
+  // Multi-pass rendering to ensure canvas matches final container dimensions after CSS layout
+  setTimeout(() => renderActiveTabCharts(), 100);
+  setTimeout(() => renderActiveTabCharts(), 300);
+});
+
+window.addEventListener("resize", () => {
+  clearTimeout(window._chartResizeTimeout);
+  window._chartResizeTimeout = setTimeout(() => {
+    renderActiveTabCharts();
+  }, 100);
 });
 
 // -------------------------------------------------------------
@@ -185,6 +195,7 @@ function switchTab(tabName) {
   document.getElementById("page-subtitle").textContent = headerInfo.subtitle;
 
   setTimeout(() => renderActiveTabCharts(), 50);
+  setTimeout(() => renderActiveTabCharts(), 200);
 }
 
 // -------------------------------------------------------------
