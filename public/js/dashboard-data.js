@@ -710,49 +710,57 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "customer_state": "SP",
         "customers": 10580,
         "churn_rate": 18.4,
-        "revenue_at_risk": 442650.0
+        "revenue_at_risk": 442650.0,
+        "total_revenue_at_risk": 442650.0
       },
       {
         "customer_state": "RJ",
         "customers": 3280,
         "churn_rate": 26.2,
-        "revenue_at_risk": 178920.0
+        "revenue_at_risk": 178920.0,
+        "total_revenue_at_risk": 178920.0
       },
       {
         "customer_state": "MG",
         "customers": 2940,
         "churn_rate": 23.8,
-        "revenue_at_risk": 154200.0
+        "revenue_at_risk": 154200.0,
+        "total_revenue_at_risk": 154200.0
       },
       {
         "customer_state": "RS",
         "customers": 1380,
         "churn_rate": 21.5,
-        "revenue_at_risk": 74500.0
+        "revenue_at_risk": 74500.0,
+        "total_revenue_at_risk": 74500.0
       },
       {
         "customer_state": "PR",
         "customers": 1290,
         "churn_rate": 20.9,
-        "revenue_at_risk": 68100.0
+        "revenue_at_risk": 68100.0,
+        "total_revenue_at_risk": 68100.0
       },
       {
         "customer_state": "SC",
         "customers": 920,
         "churn_rate": 22.4,
-        "revenue_at_risk": 51200.0
+        "revenue_at_risk": 51200.0,
+        "total_revenue_at_risk": 51200.0
       },
       {
         "customer_state": "BA",
         "customers": 860,
         "churn_rate": 27.8,
-        "revenue_at_risk": 48300.0
+        "revenue_at_risk": 48300.0,
+        "total_revenue_at_risk": 48300.0
       },
       {
         "customer_state": "DF",
         "customers": 520,
         "churn_rate": 22.1,
-        "revenue_at_risk": 29800.0
+        "revenue_at_risk": 29800.0,
+        "total_revenue_at_risk": 29800.0
       }
     ],
     "churn_by_review": {
