@@ -1490,6 +1490,9 @@ class MiniCharts {
         MiniCharts.hideTooltip();
       }
     };
+    canvas._chartLeaveHandler = () => MiniCharts.hideTooltip();
+  }
+
   static drawRocCurve(canvasId, options) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
