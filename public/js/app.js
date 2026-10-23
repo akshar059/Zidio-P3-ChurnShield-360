@@ -748,11 +748,12 @@ function renderChurn() {
 
   // Chart 1: Churn by segment
   const cleanRiskLabels = riskBySegment.map(s => {
-    const raw = s.kmeans_segment || "";
+    const raw = s.kmeans_segment || s.segment || "";
     if (raw.includes("Champion")) return "Champions";
     if (raw.includes("Loyal")) return "Loyal Regulars";
     if (raw.includes("Promising")) return "Promising";
-    if (raw.includes("At Risk")) return "At-Risk";
+    if (raw.includes("Attention") || raw.includes("Lapsing")) return "Need Attention";
+    if (raw.includes("At Risk") || raw.includes("At-Risk")) return "At-Risk";
     if (raw.includes("Cannot Lose")) return "Cannot Lose";
     return raw;
   });
@@ -772,10 +773,11 @@ function renderChurn() {
   });
 
   // Chart 2: Revenue at risk by state (sorted descending)
-  const sortedRiskByState = [...riskByState].sort((a, b) => (b.total_revenue_at_risk || 0) - (a.total_revenue_at_risk || 0));
+  const getRiskVal = s => Number(s.revenue_at_risk ?? s.total_revenue_at_risk ?? 0);
+  const sortedRiskByState = [...riskByState].sort((a, b) => getRiskVal(b) - getRiskVal(a));
   MiniCharts.drawBarChart("chart-rev-risk-by-state", {
     labels: sortedRiskByState.slice(0, 8).map(s => s.customer_state),
-    data: sortedRiskByState.slice(0, 8).map(s => s.total_revenue_at_risk),
+    data: sortedRiskByState.slice(0, 8).map(s => getRiskVal(s)),
     horizontal: true,
     colorStart: "#C2410C",
     colorEnd: "#E11D48",
@@ -786,7 +788,7 @@ function renderChurn() {
   });
 
   // Chart 3: Churn by Review Score
-  const churnRev = churn.churn_by_review || { "1 Star": 48.2, "2 Stars": 38.6, "3 Stars": 27.4, "4 Stars": 18.2, "5 Stars": 11.5 };
+  const churnRev = churn.churn_by_review || { "1 Star": 48.2, "2 Stars": 38.6, "3 Stars": 27.4, "4 Stars": 18.2, "5 Stars": 13.8 };
   MiniCharts.drawBarChart("chart-churn-by-review", {
     labels: Object.keys(churnRev),
     data: Object.values(churnRev),
@@ -800,7 +802,7 @@ function renderChurn() {
   });
 
   // Chart 4: Churn by Delivery Delay
-  const churnDelay = churn.churn_by_delay || { "On-Time / Early": 16.4, "1-3 Days Late": 24.8, "4-7 Days Late": 36.5, ">7 Days Late": 52.8 };
+  const churnDelay = churn.churn_by_delay || { "On-Time Deliveries": 16.4, "1 - 3 Days Late": 24.8, "4 - 7 Days Late": 36.5, "> 7 Days Late": 52.8 };
   MiniCharts.drawBarChart("chart-churn-by-delay", {
     labels: Object.keys(churnDelay),
     data: Object.values(churnDelay),

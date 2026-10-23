@@ -521,8 +521,14 @@ class MiniCharts {
     const theme = this.getThemeColors();
 
     const labels = options.labels || [];
-    const data = options.data || [];
-    if (!labels.length || !data.length) return;
+    const rawData = options.data || [];
+    if (!labels.length || !rawData.length) return;
+
+    // Defensively sanitize and cast all data elements to finite numbers
+    const cleanData = rawData.map(v => {
+      const num = Number(v);
+      return Number.isFinite(num) ? num : 0;
+    });
 
     ctx.clearRect(0, 0, width, height);
 
@@ -544,7 +550,8 @@ class MiniCharts {
       const padding = { top: topPad, right: 40, bottom: botPad, left: leftPad };
       const chartW = width - padding.left - padding.right;
       const chartH = height - padding.top - padding.bottom;
-      const maxVal = Math.max(...data) * 1.15 || 1;
+      let maxVal = options.maxVal || (Math.max(...cleanData, 0) * (options.isPercentage ? 1.0 : 1.15));
+      if (!Number.isFinite(maxVal) || maxVal <= 0) maxVal = 1;
       const gap = chartH / labels.length;
       const barH = Math.min(20, gap * 0.62);
 
@@ -578,9 +585,10 @@ class MiniCharts {
       }
 
       labels.forEach((lbl, i) => {
-        const val = data[i];
+        const val = cleanData[i] || 0;
         const y = padding.top + i * gap + (gap - barH) / 2;
-        const barW = (val / maxVal) * chartW;
+        const barW = Math.max(0, (val / maxVal) * chartW);
+        const safeBarW = Number.isFinite(barW) ? barW : 0;
 
         // Truncate category label if too long so it never bleeds into canvas edge
         ctx.fillStyle = theme.text;
@@ -597,13 +605,14 @@ class MiniCharts {
         }
         ctx.fillText(displayLbl, padding.left - 10, y + barH / 2);
 
-        // Bar
-        const grad = ctx.createLinearGradient(padding.left, 0, padding.left + barW, 0);
+        // Bar with guarded gradient coordinate
+        const gradEnd = padding.left + Math.max(safeBarW, 3);
+        const grad = ctx.createLinearGradient(padding.left, 0, Number.isFinite(gradEnd) ? gradEnd : padding.left + 10, 0);
         grad.addColorStop(0, options.colorStart || "#D97706");
         grad.addColorStop(1, options.colorEnd || "#EA580C");
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(padding.left, y, Math.max(barW, 3), barH, 4);
+        ctx.roundRect(padding.left, y, Math.max(safeBarW, 3), barH, 4);
         ctx.fill();
 
         // Value text
@@ -611,7 +620,7 @@ class MiniCharts {
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         const valStr = options.formatVal ? options.formatVal(val) : val.toLocaleString('en-US');
-        ctx.fillText(valStr, padding.left + barW + 8, y + barH / 2);
+        ctx.fillText(valStr, padding.left + safeBarW + 8, y + barH / 2);
       });
 
       // Render X-Axis Title (Centered at bottom with bottom baseline so it never clips)
@@ -647,12 +656,14 @@ class MiniCharts {
 
       // If rotation is needed, use a steeper angle (-68° to -55°) to eliminate horizontal label overlap
       const rotAngle = step < 26 ? -Math.PI / 2.65 : -Math.PI / 3.2; // ~-68° or ~-56°
-      const xTitleExtra = xAxisLabel ? 26 : 0;
-      const padBottom = (needsRotation ? Math.min(76, Math.max(48, maxLblW * Math.sin(Math.abs(rotAngle)) + 16)) : 34) + xTitleExtra;
+      const rotatedDepth = needsRotation ? (maxLblW * Math.sin(Math.abs(rotAngle))) : 0;
+      const xTitleExtra = xAxisLabel ? 28 : 0;
+      const padBottom = (needsRotation ? Math.max(52, rotatedDepth + 16) : 34) + xTitleExtra;
 
       const padding = { top: topPad, right: paddingRight, bottom: padBottom, left: paddingLeft };
       const chartH = height - padding.top - padding.bottom;
-      let maxVal = options.maxVal || (Math.max(...data) * (options.isPercentage ? 1.0 : 1.15) || 1);
+      let maxVal = options.maxVal || (Math.max(...cleanData, 0) * (options.isPercentage ? 1.0 : 1.15));
+      if (!Number.isFinite(maxVal) || maxVal <= 0) maxVal = 1;
       if (options.isPercentage && maxVal > 100) maxVal = 100;
       const barW = Math.max(5, Math.min(needsRotation ? 20 : 28, step * 0.58));
 
@@ -691,18 +702,20 @@ class MiniCharts {
       }
 
       labels.forEach((lbl, i) => {
-        const val = data[i];
-        const barH = (val / maxVal) * chartH;
+        const val = cleanData[i] || 0;
+        const barH = Math.max(0, (val / maxVal) * chartH);
+        const safeBarH = Number.isFinite(barH) ? barH : 0;
         const x = padding.left + i * step + (step - barW) / 2;
-        const y = padding.top + chartH - barH;
+        const y = padding.top + chartH - safeBarH;
 
-        // Bar gradient
-        const grad = ctx.createLinearGradient(0, y, 0, padding.top + chartH);
+        // Bar gradient with guarded coordinate
+        const gradY = Number.isFinite(y) ? y : padding.top;
+        const grad = ctx.createLinearGradient(0, gradY, 0, padding.top + chartH);
         grad.addColorStop(0, options.colorStart || "#D97706");
         grad.addColorStop(1, options.colorEnd || "#C2410C");
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(x, y, barW, barH, [4, 4, 0, 0]);
+        ctx.roundRect(x, y, barW, safeBarH, [4, 4, 0, 0]);
         ctx.fill();
 
         // Label rendering: Horizontal if fits, or steep collision-free angle if rotation required
@@ -715,9 +728,9 @@ class MiniCharts {
           ctx.fillStyle = theme.text;
           ctx.font = fontStr;
 
-          // Ellipsis truncate only if excessively long (e.g. >130px)
+          // Ellipsis truncate only if excessively long
           let displayLbl = String(lbl);
-          const maxAllowedW = Math.max(130, step * 1.5);
+          const maxAllowedW = Math.max(100, step * 1.5);
           if (ctx.measureText(displayLbl).width > maxAllowedW) {
             while (displayLbl.length > 3 && ctx.measureText(displayLbl + "…").width > maxAllowedW) {
               displayLbl = displayLbl.slice(0, -1);
