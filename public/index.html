@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Light Warm Professional Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body>
 
@@ -147,6 +147,11 @@
         <div class="chip-tag header-cohort-chip" id="header-cohort-chip">
           <span>Cohort:</span>
           <strong>2016-2018</strong>
+        </div>
+
+        <div class="chip-tag currency-chip" id="header-currency-chip" title="Underlying Dataset Base Currency: Brazilian Real (R$)">
+          <span>Currency:</span>
+          <strong style="color: var(--color-low);">R$ (BRL)</strong>
         </div>
 
         <!-- Presentation Mode Button -->
@@ -448,22 +453,16 @@
           </div>
         </div>
 
-        <!-- Row 3: Day of Week, Top Categories, States, Payments -->
-        <div class="grid-4">
+        <!-- Row 3: Top Categories & Geographic Sales (Dual Column Grid) -->
+        <div class="grid-2">
           <div class="glass-panel">
             <div class="panel-header">
-              <h3 class="panel-title">Day-of-Week Shopping Peak</h3>
+              <div>
+                <h3 class="panel-title">Top 10 Product Categories</h3>
+                <p class="panel-subtitle">Revenue powerhouse product categories across Brazilian marketplace</p>
+              </div>
             </div>
-            <div class="chart-canvas-container" style="height: 250px;">
-              <canvas id="chart-dow-sales"></canvas>
-            </div>
-          </div>
-
-          <div class="glass-panel">
-            <div class="panel-header">
-              <h3 class="panel-title">Top 10 Product Categories</h3>
-            </div>
-            <div class="chart-canvas-container" style="height: 250px;">
+            <div class="chart-canvas-container" style="height: 270px;">
               <canvas id="chart-top-categories"></canvas>
             </div>
           </div>
@@ -475,10 +474,10 @@
                 <p class="panel-subtitle">Regional revenue concentration across top Brazilian states</p>
               </div>
             </div>
-            <div class="chart-canvas-container" style="height: 250px;">
+            <div class="chart-canvas-container" style="height: 230px;">
               <canvas id="chart-state-sales"></canvas>
             </div>
-            <!-- State Abbreviations Legend -->
+            <!-- State Abbreviations Legend (Matching 8 Plotted States) -->
             <div class="state-legend-strip">
               <span class="state-legend-pill" title="São Paulo"><strong>SP:</strong> São Paulo</span>
               <span class="state-legend-pill" title="Rio de Janeiro"><strong>RJ:</strong> Rio de Janeiro</span>
@@ -487,19 +486,33 @@
               <span class="state-legend-pill" title="Paraná"><strong>PR:</strong> Paraná</span>
               <span class="state-legend-pill" title="Santa Catarina"><strong>SC:</strong> Santa Catarina</span>
               <span class="state-legend-pill" title="Bahia"><strong>BA:</strong> Bahia</span>
-              <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília (DF)</span>
-              <span class="state-legend-pill" title="Goiás"><strong>GO:</strong> Goiás</span>
-              <span class="state-legend-pill" title="Espírito Santo"><strong>ES:</strong> Espírito Santo</span>
-              <span class="state-legend-pill" title="Pernambuco"><strong>PE:</strong> Pernambuco</span>
-              <span class="state-legend-pill" title="Ceará"><strong>CE:</strong> Ceará</span>
+              <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Day of Week Peak & Payment Breakdown -->
+        <div class="grid-2">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Day-of-Week Shopping Peak</h3>
+                <p class="panel-subtitle">Order volume seasonality across weekly transaction cycles</p>
+              </div>
+            </div>
+            <div class="chart-canvas-container" style="height: 260px;">
+              <canvas id="chart-dow-sales"></canvas>
             </div>
           </div>
 
           <div class="glass-panel">
             <div class="panel-header">
-              <h3 class="panel-title">Payment Method Share</h3>
+              <div>
+                <h3 class="panel-title">Payment Method Share</h3>
+                <p class="panel-subtitle">Marketplace transaction distribution across payment modalities</p>
+              </div>
             </div>
-            <div class="chart-canvas-container" style="height: 250px;">
+            <div class="chart-canvas-container" style="height: 260px;">
               <canvas id="chart-payments-donut"></canvas>
             </div>
           </div>
@@ -669,7 +682,7 @@
             <div class="chart-canvas-container" style="height: 260px;">
               <canvas id="chart-rev-risk-by-state"></canvas>
             </div>
-            <!-- Top States Legend -->
+            <!-- Top States Legend (Matching 8 Plotted States) -->
             <div class="state-legend-strip">
               <span class="state-legend-pill" title="São Paulo"><strong>SP:</strong> São Paulo</span>
               <span class="state-legend-pill" title="Rio de Janeiro"><strong>RJ:</strong> Rio de Janeiro</span>
@@ -679,8 +692,6 @@
               <span class="state-legend-pill" title="Santa Catarina"><strong>SC:</strong> Santa Catarina</span>
               <span class="state-legend-pill" title="Bahia"><strong>BA:</strong> Bahia</span>
               <span class="state-legend-pill" title="Distrito Federal / Brasília"><strong>DF:</strong> Brasília</span>
-              <span class="state-legend-pill" title="Goiás"><strong>GO:</strong> Goiás</span>
-              <span class="state-legend-pill" title="Espírito Santo"><strong>ES:</strong> Espírito Santo</span>
             </div>
           </div>
         </div>
@@ -764,7 +775,7 @@
                 <h3 class="panel-title">Interactive Confusion Matrix Heatmap</h3>
                 <p class="panel-subtitle">Visual classification breakdown of True/False Positives & Negatives</p>
               </div>
-              <select id="select-model-cm" class="search-bar" style="width: 280px; max-width: 100%; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
+              <select id="select-model-cm" class="search-bar" style="min-width: 310px; width: auto; max-width: 100%; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
                 <option value="Hybrid ANN-LSTM" selected>Hybrid ANN-LSTM (Champion)</option>
                 <option value="LightGBM">LightGBM</option>
                 <option value="XGBoost">XGBoost</option>
@@ -786,8 +797,8 @@
           <div class="glass-panel">
             <div class="panel-header">
               <div>
-                <h3 class="panel-title">SHAP Global Churn Drivers</h3>
-                <p class="panel-subtitle">Mean absolute SHAP value impact</p>
+                <h3 class="panel-title" id="shap-chart-title">SHAP Global Churn Drivers</h3>
+                <p class="panel-subtitle" id="shap-chart-subtitle">Mean absolute SHAP value impact (Hybrid ANN-LSTM)</p>
               </div>
             </div>
             <div class="chart-canvas-container" style="height: 260px;">
@@ -798,8 +809,8 @@
           <div class="glass-panel">
             <div class="panel-header">
               <div>
-                <h3 class="panel-title">Champion Model ROC Curve</h3>
-                <p class="panel-subtitle">True Positive vs False Positive Rate</p>
+                <h3 class="panel-title" id="roc-chart-title">Hybrid ANN-LSTM ROC Curve</h3>
+                <p class="panel-subtitle" id="roc-chart-subtitle">True Positive vs False Positive Rate (AUC: 92.40%)</p>
               </div>
             </div>
             <div class="chart-canvas-container" style="height: 260px;">
@@ -810,8 +821,8 @@
           <div class="glass-panel">
             <div class="panel-header">
               <div>
-                <h3 class="panel-title">Precision-Recall (PR) Curve</h3>
-                <p class="panel-subtitle">Precision vs Recall trade-off</p>
+                <h3 class="panel-title" id="pr-chart-title">Hybrid ANN-LSTM Precision-Recall Curve</h3>
+                <p class="panel-subtitle" id="pr-chart-subtitle">Precision vs Recall trade-off (PR-AUC: 88.60%)</p>
               </div>
             </div>
             <div class="chart-canvas-container" style="height: 260px;">
@@ -825,10 +836,10 @@
           <div class="glass-panel">
             <div class="panel-header">
               <div>
-                <h3 class="panel-title">Model Probability Calibration Curve (Reliability Diagram)</h3>
-                <p class="panel-subtitle">Predicted churn probability vs observed empirical churn rate across 10 deciles</p>
+                <h3 class="panel-title" id="calib-chart-title">Model Probability Calibration Curve (Reliability Diagram)</h3>
+                <p class="panel-subtitle" id="calib-chart-subtitle">Predicted churn probability vs observed empirical churn rate across 10 deciles</p>
               </div>
-              <span class="badge-risk LOW" style="font-size: 0.72rem;">Platt-Calibrated</span>
+              <span class="badge-risk LOW" id="calib-status-badge" style="font-size: 0.72rem;">Platt-Calibrated</span>
             </div>
             <div class="chart-canvas-container" style="height: 260px;">
               <canvas id="chart-calibration-curve"></canvas>
@@ -845,12 +856,12 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px;">
               <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Brier Score</div>
-                <strong style="font-size: 1.5rem; color: var(--color-low);">0.0842</strong>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Strong probabilistic calibration (&lt; 0.10 indicates outstanding calibration on 21.8% churn base)</div>
+                <strong style="font-size: 1.5rem; color: var(--color-low);" id="brier-score-val">0.0842</strong>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;" id="brier-score-desc">Strong probabilistic calibration (0.084 vs 0.170 no-skill baseline, 50.6% error reduction)</div>
               </div>
               <div style="background: var(--bg-secondary); padding: 14px; border-radius: 8px; border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;">Expected Calibration Error (ECE)</div>
-                <strong style="font-size: 1.5rem; color: var(--accent-primary);">2.4%</strong>
+                <strong style="font-size: 1.5rem; color: var(--accent-primary);" id="ece-score-val">2.4%</strong>
                 <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Minimal empirical probability gap across all deciles</div>
               </div>
             </div>
@@ -1045,7 +1056,7 @@
           <div class="glass-panel">
             <div class="panel-header">
               <div>
-                <h3 class="panel-title">Top Product Categories by Total Revenue ($k)</h3>
+                <h3 class="panel-title">Top Product Categories by Total Revenue</h3>
                 <p class="panel-subtitle">Revenue powerhouse product categories across marketplace</p>
               </div>
             </div>
@@ -1071,7 +1082,7 @@
           <div class="panel-header">
             <div>
               <h3 class="panel-title">Top Marketplace Merchant Sellers Performance</h3>
-              <p class="panel-subtitle">High-revenue sellers with order volume and average review rating</p>
+              <p class="panel-subtitle">High-revenue sellers with order volume, category specializations, and unit order ticket values</p>
             </div>
           </div>
           <div class="table-container">
@@ -1079,9 +1090,11 @@
               <thead>
                 <tr>
                   <th>Seller ID</th>
+                  <th>Primary Category</th>
                   <th>State</th>
                   <th>Total Revenue</th>
                   <th>Total Orders</th>
+                  <th>Avg Order Value</th>
                   <th>Average Rating</th>
                   <th>Reliability</th>
                 </tr>
@@ -1224,10 +1237,10 @@
               <input type="text" id="customer-search-input" class="search-bar" style="width: 165px; padding: 4px 8px; font-size: 0.76rem;" placeholder="Search ID, City, State..." oninput="debounceSearchCatalog()">
               <button class="btn-filter btn-tier-filter active" data-tier="ALL" onclick="filterCatalog('ALL')">All <span class="tier-count-badge" id="count-tier-all">25,000</span></button>
               <button class="btn-filter btn-tier-filter" data-tier="TOP1PCT" onclick="filterCatalog('TOP1PCT')" style="border-color: #D97706; color: #D97706; font-weight: 700;">⭐ VIPs <span class="tier-count-badge" id="count-tier-top1">251</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="CRITICAL" onclick="filterCatalog('CRITICAL')">Critical <span class="tier-count-badge" id="count-tier-critical">1,074</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="HIGH" onclick="filterCatalog('HIGH')">High <span class="tier-count-badge" id="count-tier-high">2,657</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="MEDIUM" onclick="filterCatalog('MEDIUM')">Medium <span class="tier-count-badge" id="count-tier-medium">7,302</span></button>
-              <button class="btn-filter btn-tier-filter" data-tier="LOW" onclick="filterCatalog('LOW')">Low <span class="tier-count-badge" id="count-tier-low">13,967</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="CRITICAL" onclick="filterCatalog('CRITICAL')">Critical <span class="tier-count-badge" id="count-tier-critical">1,600</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="HIGH" onclick="filterCatalog('HIGH')">High <span class="tier-count-badge" id="count-tier-high">3,850</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="MEDIUM" onclick="filterCatalog('MEDIUM')">Medium <span class="tier-count-badge" id="count-tier-medium">6,700</span></button>
+              <button class="btn-filter btn-tier-filter" data-tier="LOW" onclick="filterCatalog('LOW')">Low <span class="tier-count-badge" id="count-tier-low">12,850</span></button>
             </div>
           </div>
 
@@ -1604,9 +1617,9 @@
   <!-- Interactive Floating Canvas Tooltip -->
   <div id="chart-floating-tooltip" class="chart-floating-tooltip" style="display: none;"></div>
 
-  <!-- Scripts -->
-  <script src="js/dashboard-data.js?v=2.2"></script>
-  <script src="js/charts.js?v=2.2"></script>
-  <script src="js/app.js?v=2.2"></script>
+  <!-- Scripts (Cache-Busted v3.0) -->
+  <script src="js/dashboard-data.js?v=3.0"></script>
+  <script src="js/charts.js?v=3.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 </body>
 </html>

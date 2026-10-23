@@ -8,10 +8,10 @@
   "total_expected_retention_value": 485240.0,
   "portfolio_retention_roi_pct": 285.1,
   "tier_distribution": {
-    "LOW": 12850,
-    "MEDIUM": 6700,
+    "CRITICAL": 1600,
     "HIGH": 3850,
-    "CRITICAL": 1600
+    "MEDIUM": 6700,
+    "LOW": 12850
   },
   "tier_revenue_risk": {
     "CRITICAL": 310130.0,
@@ -29,35 +29,35 @@
     {
       "kmeans_segment": "Champions & High CLV",
       "customers": 3120,
-      "avg_churn_prob": 0.124,
+      "avg_churn_prob": 0.08,
       "total_revenue_at_risk": 148800.0,
       "expected_retention_val": 98200.0
     },
     {
       "kmeans_segment": "Loyal Regulars",
       "customers": 5840,
-      "avg_churn_prob": 0.186,
+      "avg_churn_prob": 0.145,
       "total_revenue_at_risk": 233400.0,
       "expected_retention_val": 118500.0
     },
     {
       "kmeans_segment": "Recent Promising Buyers",
       "customers": 7240,
-      "avg_churn_prob": 0.242,
+      "avg_churn_prob": 0.2,
       "total_revenue_at_risk": 236500.0,
       "expected_retention_val": 104200.0
     },
     {
       "kmeans_segment": "Need Attention / Lapsing",
       "customers": 5180,
-      "avg_churn_prob": 0.368,
+      "avg_churn_prob": 0.28,
       "total_revenue_at_risk": 243800.0,
       "expected_retention_val": 92400.0
     },
     {
       "kmeans_segment": "At Risk / Hibernating",
       "customers": 3620,
-      "avg_churn_prob": 0.645,
+      "avg_churn_prob": 0.402,
       "total_revenue_at_risk": 294860.0,
       "expected_retention_val": 71940.0
     }

@@ -479,7 +479,9 @@ class MiniCharts {
       datasets.forEach(ds => {
         const val = ds.data ? ds.data[idx] : null;
         if (val !== null && val !== undefined) {
-          const formatted = options.formatY ? options.formatY(val) : (val >= 1000 ? `$${(val/1000).toFixed(1)}k` : val.toLocaleString('en-US'));
+          const isRight = ds.yAxis === 'right';
+          const formatter = isRight ? (options.formatYRight || options.formatY) : options.formatY;
+          const formatted = formatter ? formatter(val) : (val >= 1000 ? `$${(val/1000).toFixed(1)}k` : val.toLocaleString('en-US'));
           tooltipRows.push({
             color: ds.color || "#C2410C",
             label: ds.label || "Value",
@@ -524,7 +526,7 @@ class MiniCharts {
         const w = ctx.measureText(String(l)).width;
         if (w > maxLblW) maxLblW = w;
       });
-      const leftPad = options.leftPad || Math.min(185, Math.max(120, Math.ceil(maxLblW + 22)));
+      const leftPad = options.leftPad || Math.min(195, Math.max(140, Math.ceil(maxLblW + 24)));
       const padding = { top: topPad, right: 40, bottom: botPad, left: leftPad };
       const chartW = width - padding.left - padding.right;
       const chartH = height - padding.top - padding.bottom;
@@ -1488,9 +1490,326 @@ class MiniCharts {
         MiniCharts.hideTooltip();
       }
     };
-    canvas._chartLeaveHandler = () => {
-      MiniCharts.hideTooltip();
+  static drawRocCurve(canvasId, options) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const { ctx, width, height } = this.getRetinaContext(canvas);
+    if (!ctx || width <= 10 || height <= 10) return;
+    const theme = this.getThemeColors();
+
+    const padding = { top: 32, right: 30, bottom: 44, left: 56 };
+    const chartW = width - padding.left - padding.right;
+    const chartH = height - padding.top - padding.bottom;
+
+    const data = options.data || [];
+    if (!data.length) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    // Y Grid lines & Labels (0% to 100%)
+    ctx.strokeStyle = theme.grid;
+    ctx.fillStyle = theme.text;
+    ctx.font = "10px Inter, sans-serif";
+    ctx.textAlign = "right";
+    for (let i = 0; i <= 5; i++) {
+      const frac = i / 5;
+      const y = padding.top + chartH - frac * chartH;
+      ctx.beginPath();
+      ctx.moveTo(padding.left, y);
+      ctx.lineTo(width - padding.right, y);
+      ctx.stroke();
+      ctx.fillText(`${(frac * 100).toFixed(0)}%`, padding.left - 8, y + 3.5);
+    }
+
+    // X Axis labels (0% to 100%)
+    ctx.textAlign = "center";
+    for (let i = 0; i <= 5; i++) {
+      const frac = i / 5;
+      const x = padding.left + frac * chartW;
+      ctx.fillText(`${(frac * 100).toFixed(0)}%`, x, height - padding.bottom + 16);
+    }
+
+    // Axis Titles
+    ctx.fillStyle = theme.textDim;
+    ctx.font = "bold 9px Inter, sans-serif";
+    ctx.fillText("FALSE POSITIVE RATE (1 - SPECIFICITY)", padding.left + chartW / 2, height - 6);
+
+    ctx.save();
+    ctx.translate(14, padding.top + chartH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = "center";
+    ctx.fillText("TRUE POSITIVE RATE (RECALL)", 0, 0);
+    ctx.restore();
+
+    // 1. Diagonal Reference Line (Random Chance: AUC 0.50)
+    ctx.save();
+    ctx.strokeStyle = this.isLightTheme() ? "rgba(120, 113, 108, 0.45)" : "rgba(148, 163, 184, 0.35)";
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(padding.left, padding.top + chartH);
+    ctx.lineTo(padding.left + chartW, padding.top);
+    ctx.stroke();
+    ctx.restore();
+
+    // 2. Plot ROC Curve with exact FPR -> X and TPR -> Y mapping
+    ctx.save();
+    const curveColor = options.color || "#C2410C";
+    ctx.strokeStyle = curveColor;
+    ctx.lineWidth = 2.6;
+    ctx.beginPath();
+    const pts = data.map(pt => ({
+      x: padding.left + Math.max(0, Math.min(1, pt.fpr)) * chartW,
+      y: padding.top + chartH - Math.max(0, Math.min(1, pt.tpr)) * chartH,
+      fpr: pt.fpr,
+      tpr: pt.tpr
+    }));
+
+    pts.forEach((p, idx) => {
+      if (idx === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    });
+    ctx.stroke();
+
+    // Subtle area fill under ROC
+    if (pts.length > 1) {
+      ctx.lineTo(padding.left + chartW, padding.top + chartH);
+      ctx.lineTo(padding.left, padding.top + chartH);
+      ctx.closePath();
+      const grad = ctx.createLinearGradient(0, padding.top, 0, padding.top + chartH);
+      grad.addColorStop(0, "rgba(194, 65, 12, 0.14)");
+      grad.addColorStop(1, "rgba(194, 65, 12, 0.01)");
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // 3. Highlight Operating Point if provided
+    if (options.operatingPoint) {
+      const op = options.operatingPoint;
+      const opX = padding.left + Math.max(0, Math.min(1, op.fpr)) * chartW;
+      const opY = padding.top + chartH - Math.max(0, Math.min(1, op.tpr)) * chartH;
+
+      ctx.save();
+      // Outer glow
+      ctx.beginPath();
+      ctx.arc(opX, opY, 6.5, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(194, 65, 12, 0.25)";
+      ctx.fill();
+      // Center dot
+      ctx.beginPath();
+      ctx.arc(opX, opY, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = curveColor;
+      ctx.fill();
+      ctx.strokeStyle = "#FFFFFF";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // Top Right Legend
+    const modelName = options.label || "Model ROC";
+    ctx.font = "9.5px Inter, sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillStyle = theme.text;
+    ctx.fillText(modelName, width - padding.right, 14);
+    ctx.strokeStyle = curveColor;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(width - padding.right - ctx.measureText(modelName).width - 22, 11);
+    ctx.lineTo(width - padding.right - ctx.measureText(modelName).width - 6, 11);
+    ctx.stroke();
+
+    // Attach Hover Listener
+    this.attachHoverListeners(canvas);
+    canvas._chartHoverHandler = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      let closest = null;
+      let minD = Infinity;
+      pts.forEach(p => {
+        const d = Math.hypot(p.x - mouseX, p.y - mouseY);
+        if (d < minD && d < 32) {
+          minD = d;
+          closest = p;
+        }
+      });
+
+      if (closest) {
+        MiniCharts.showTooltip(e, modelName, [
+          { color: curveColor, label: "True Positive Rate (Recall)", val: `${(closest.tpr * 100).toFixed(1)}%` },
+          { color: "var(--text-dim)", label: "False Positive Rate", val: `${(closest.fpr * 100).toFixed(1)}%` },
+          { color: "var(--text-dim)", label: "Specificity", val: `${((1 - closest.fpr) * 100).toFixed(1)}%` }
+        ]);
+      } else {
+        MiniCharts.hideTooltip();
+      }
     };
+    canvas._chartLeaveHandler = () => MiniCharts.hideTooltip();
+  }
+
+  static drawPrCurve(canvasId, options) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const { ctx, width, height } = this.getRetinaContext(canvas);
+    if (!ctx || width <= 10 || height <= 10) return;
+    const theme = this.getThemeColors();
+
+    const padding = { top: 32, right: 30, bottom: 44, left: 56 };
+    const chartW = width - padding.left - padding.right;
+    const chartH = height - padding.top - padding.bottom;
+
+    const data = options.data || [];
+    if (!data.length) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    // Y Grid lines & Labels (0% to 100%)
+    ctx.strokeStyle = theme.grid;
+    ctx.fillStyle = theme.text;
+    ctx.font = "10px Inter, sans-serif";
+    ctx.textAlign = "right";
+    for (let i = 0; i <= 5; i++) {
+      const frac = i / 5;
+      const y = padding.top + chartH - frac * chartH;
+      ctx.beginPath();
+      ctx.moveTo(padding.left, y);
+      ctx.lineTo(width - padding.right, y);
+      ctx.stroke();
+      ctx.fillText(`${(frac * 100).toFixed(0)}%`, padding.left - 8, y + 3.5);
+    }
+
+    // X Axis labels (0% to 100%)
+    ctx.textAlign = "center";
+    for (let i = 0; i <= 5; i++) {
+      const frac = i / 5;
+      const x = padding.left + frac * chartW;
+      ctx.fillText(`${(frac * 100).toFixed(0)}%`, x, height - padding.bottom + 16);
+    }
+
+    // Axis Titles
+    ctx.fillStyle = theme.textDim;
+    ctx.font = "bold 9px Inter, sans-serif";
+    ctx.fillText("RECALL (CHURN COVERAGE)", padding.left + chartW / 2, height - 6);
+
+    ctx.save();
+    ctx.translate(14, padding.top + chartH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = "center";
+    ctx.fillText("PRECISION (PREDICTIVE VALUE)", 0, 0);
+    ctx.restore();
+
+    // 1. Horizontal Base Rate Reference Line (No-Skill: 21.8%)
+    const baseRate = options.baseRate !== undefined ? options.baseRate : 0.2180;
+    const baseRateY = padding.top + chartH - baseRate * chartH;
+    ctx.save();
+    ctx.strokeStyle = this.isLightTheme() ? "rgba(120, 113, 108, 0.45)" : "rgba(148, 163, 184, 0.35)";
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(padding.left, baseRateY);
+    ctx.lineTo(width - padding.right, baseRateY);
+    ctx.stroke();
+    ctx.restore();
+
+    // 2. Plot PR Curve with exact Recall -> X and Precision -> Y mapping
+    ctx.save();
+    const curveColor = options.color || "#4338CA";
+    ctx.strokeStyle = curveColor;
+    ctx.lineWidth = 2.6;
+    ctx.beginPath();
+    const pts = data.map(pt => ({
+      x: padding.left + Math.max(0, Math.min(1, pt.recall)) * chartW,
+      y: padding.top + chartH - Math.max(0, Math.min(1, pt.precision)) * chartH,
+      recall: pt.recall,
+      precision: pt.precision
+    }));
+
+    pts.forEach((p, idx) => {
+      if (idx === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    });
+    ctx.stroke();
+
+    // Subtle area fill under PR
+    if (pts.length > 1) {
+      ctx.lineTo(padding.left + chartW, padding.top + chartH);
+      ctx.lineTo(padding.left, padding.top + chartH);
+      ctx.closePath();
+      const grad = ctx.createLinearGradient(0, padding.top, 0, padding.top + chartH);
+      grad.addColorStop(0, "rgba(67, 56, 202, 0.14)");
+      grad.addColorStop(1, "rgba(67, 56, 202, 0.01)");
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // 3. Highlight Operating Point if provided
+    if (options.operatingPoint) {
+      const op = options.operatingPoint;
+      const opX = padding.left + Math.max(0, Math.min(1, op.recall)) * chartW;
+      const opY = padding.top + chartH - Math.max(0, Math.min(1, op.precision)) * chartH;
+
+      ctx.save();
+      // Outer glow
+      ctx.beginPath();
+      ctx.arc(opX, opY, 6.5, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(67, 56, 202, 0.25)";
+      ctx.fill();
+      // Center dot
+      ctx.beginPath();
+      ctx.arc(opX, opY, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = curveColor;
+      ctx.fill();
+      ctx.strokeStyle = "#FFFFFF";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // Top Right Legend
+    const modelName = options.label || "Model PR";
+    ctx.font = "9.5px Inter, sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillStyle = theme.text;
+    ctx.fillText(`${modelName} | Base: ${(baseRate * 100).toFixed(1)}%`, width - padding.right, 14);
+    ctx.strokeStyle = curveColor;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(width - padding.right - ctx.measureText(`${modelName} | Base: ${(baseRate * 100).toFixed(1)}%`).width - 22, 11);
+    ctx.lineTo(width - padding.right - ctx.measureText(`${modelName} | Base: ${(baseRate * 100).toFixed(1)}%`).width - 6, 11);
+    ctx.stroke();
+
+    // Attach Hover Listener
+    this.attachHoverListeners(canvas);
+    canvas._chartHoverHandler = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      let closest = null;
+      let minD = Infinity;
+      pts.forEach(p => {
+        const d = Math.hypot(p.x - mouseX, p.y - mouseY);
+        if (d < minD && d < 32) {
+          minD = d;
+          closest = p;
+        }
+      });
+
+      if (closest) {
+        MiniCharts.showTooltip(e, modelName, [
+          { color: curveColor, label: "Precision", val: `${(closest.precision * 100).toFixed(1)}%` },
+          { color: "var(--text-dim)", label: "Recall (Coverage)", val: `${(closest.recall * 100).toFixed(1)}%` },
+          { color: "var(--text-dim)", label: "Portfolio Base Rate", val: `${(baseRate * 100).toFixed(1)}%` }
+        ]);
+      } else {
+        MiniCharts.hideTooltip();
+      }
+    };
+    canvas._chartLeaveHandler = () => MiniCharts.hideTooltip();
   }
 }
 

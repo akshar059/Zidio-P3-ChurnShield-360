@@ -39,7 +39,7 @@
       "kmeans_segment": "Champions & High CLV",
       "customer_count": 3120,
       "avg_spend": 385.4,
-      "avg_orders": 2.1,
+      "avg_orders": 1.25,
       "avg_recency": 38.2,
       "avg_review": 4.82
     },
@@ -47,7 +47,7 @@
       "kmeans_segment": "Loyal Regulars",
       "customer_count": 5840,
       "avg_spend": 215.8,
-      "avg_orders": 1.6,
+      "avg_orders": 1.12,
       "avg_recency": 64.5,
       "avg_review": 4.54
     },
@@ -55,7 +55,7 @@
       "kmeans_segment": "Recent Promising Buyers",
       "customer_count": 7240,
       "avg_spend": 135.2,
-      "avg_orders": 1.1,
+      "avg_orders": 1.04,
       "avg_recency": 45.8,
       "avg_review": 4.28
     },
@@ -63,7 +63,7 @@
       "kmeans_segment": "Need Attention / Lapsing",
       "customer_count": 5180,
       "avg_spend": 128.6,
-      "avg_orders": 1.0,
+      "avg_orders": 1.01,
       "avg_recency": 118.4,
       "avg_review": 3.42
     },
