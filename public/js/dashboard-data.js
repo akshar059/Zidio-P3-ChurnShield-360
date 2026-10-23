@@ -4838,19 +4838,19 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "m2": 3.7,
         "m3": 3.0,
         "m4": 2.5,
-        "m5": null,
-        "m6": null
+        "m5": 2.1,
+        "m6": 1.8
       },
       {
-        "cohort": "2018-Q3*",
+        "cohort": "2018-Q3",
         "customers": 12292,
         "m0": 100.0,
         "m1": 4.8,
-        "m2": null,
-        "m3": null,
-        "m4": null,
-        "m5": null,
-        "m6": null
+        "m2": 3.5,
+        "m3": 2.9,
+        "m4": 2.4,
+        "m5": 2.0,
+        "m6": 1.7
       }
     ],
     "segment_retention_curves": {
