@@ -144,7 +144,9 @@ class MiniCharts {
 
     const hasLegend = legendItems.length > 0;
     const paddingLeft = yAxisLabel ? 76 : 66;
-    const paddingRight = 24;
+    const hasRightAxis = datasets.some(ds => ds.yAxis === 'right');
+    const rightAxisLabel = options.yAxisRightLabel || "";
+    const paddingRight = hasRightAxis ? (rightAxisLabel ? 68 : 55) : 24;
     const minLegendX = paddingLeft + 18; // Guaranteed minimum safety gap from Y-axis
     const availableLegendW = width - paddingRight - minLegendX;
     const totalLegendW = legendItems.reduce((acc, it) => acc + it.itemW + 12, -12);
@@ -165,9 +167,12 @@ class MiniCharts {
     const chartW = width - padding.left - padding.right;
     const chartH = height - padding.top - padding.bottom;
 
+    const leftDatasets = datasets.filter(ds => ds.yAxis !== 'right');
+    const rightDatasets = datasets.filter(ds => ds.yAxis === 'right');
+
     let minY = Infinity;
     let maxY = -Infinity;
-    datasets.forEach(ds => {
+    (leftDatasets.length ? leftDatasets : datasets).forEach(ds => {
       (ds.data || []).forEach(v => {
         if (v !== null && v !== undefined) {
           if (v < minY) minY = v;
@@ -186,9 +191,25 @@ class MiniCharts {
       maxY *= 1.12;
     }
 
+    let minYRight = 0;
+    let maxYRight = -Infinity;
+    if (hasRightAxis) {
+      rightDatasets.forEach(ds => {
+        (ds.data || []).forEach(v => {
+          if (v !== null && v !== undefined && v > maxYRight) maxYRight = v;
+        });
+      });
+      if (maxYRight <= 0) maxYRight = 100;
+      if (options.maxYRight !== undefined) {
+        maxYRight = options.maxYRight;
+      } else {
+        maxYRight *= 1.15;
+      }
+    }
+
     ctx.clearRect(0, 0, width, height);
 
-    // Draw Y grid lines
+    // Draw Y grid lines & Left Y-ticks
     const yTicks = 5;
     ctx.strokeStyle = theme.grid;
     ctx.fillStyle = theme.text;
@@ -205,6 +226,28 @@ class MiniCharts {
 
       const labelText = options.formatY ? options.formatY(val) : (val >= 1000 ? `$${(val/1000).toFixed(0)}k` : val.toFixed(0));
       ctx.fillText(labelText, padding.left - 10, y + 4);
+    }
+
+    // Draw Right Y-ticks if dual axis
+    if (hasRightAxis) {
+      ctx.textAlign = "left";
+      ctx.fillStyle = theme.textDim;
+      for (let i = 0; i <= yTicks; i++) {
+        const valR = minYRight + (maxYRight - minYRight) * (i / yTicks);
+        const y = padding.top + chartH - (i / yTicks) * chartH;
+        const labelTextR = options.formatYRight ? options.formatYRight(valR) : (valR >= 1000 ? `$${(valR/1000).toFixed(0)}k` : `$${valR.toFixed(0)}`);
+        ctx.fillText(labelTextR, width - padding.right + 8, y + 4);
+      }
+      if (rightAxisLabel) {
+        ctx.save();
+        ctx.translate(width - 12, padding.top + chartH / 2);
+        ctx.rotate(Math.PI / 2);
+        ctx.textAlign = "center";
+        ctx.fillStyle = theme.textDim;
+        ctx.font = "bold 9px Inter, sans-serif";
+        ctx.fillText(rightAxisLabel.toUpperCase(), 0, 0);
+        ctx.restore();
+      }
     }
 
     // Draw X labels with dynamic collision prevention
@@ -260,10 +303,14 @@ class MiniCharts {
       let started = false;
       let firstX = 0, firstY = 0, lastX = 0;
 
+      const isRight = ds.yAxis === 'right';
+      const curMinY = isRight ? minYRight : minY;
+      const curMaxY = isRight ? maxYRight : maxY;
+
       ds.data.forEach((val, i) => {
         if (val === null || val === undefined) return;
         const x = padding.left + i * xStep;
-        const normY = (val - minY) / (maxY - minY);
+        const normY = (val - curMinY) / (curMaxY - curMinY);
         const y = padding.top + chartH - normY * chartH;
         if (!started) {
           ctx.moveTo(x, y);
@@ -297,7 +344,7 @@ class MiniCharts {
           if (val === null || val === undefined) return;
           if (i % labelSkip === 0 || i === ds.data.length - 1) {
             const x = padding.left + i * xStep;
-            const normY = (val - minY) / (maxY - minY);
+            const normY = (val - curMinY) / (curMaxY - curMinY);
             const y = padding.top + chartH - normY * chartH;
             ctx.beginPath();
             ctx.arc(x, y, 3.5, 0, Math.PI * 2);
@@ -471,7 +518,13 @@ class MiniCharts {
       const hasBothHeaders = !!(legendText && yAxisLabel);
       const topPad = hasBothHeaders ? 40 : (legendText || yAxisLabel ? 26 : 16);
       const botPad = xAxisLabel ? 34 : 16;
-      const leftPad = 120;
+      ctx.font = "11px Inter, sans-serif";
+      let maxLblW = 0;
+      labels.forEach(l => {
+        const w = ctx.measureText(String(l)).width;
+        if (w > maxLblW) maxLblW = w;
+      });
+      const leftPad = options.leftPad || Math.min(185, Math.max(120, Math.ceil(maxLblW + 22)));
       const padding = { top: topPad, right: 40, bottom: botPad, left: leftPad };
       const chartW = width - padding.left - padding.right;
       const chartH = height - padding.top - padding.bottom;
@@ -778,13 +831,16 @@ class MiniCharts {
     const chartW = width - padding.left - padding.right;
     const chartH = height - padding.top - padding.bottom;
 
-    let maxVal = 0;
-    series.forEach(s => {
-      s.data.forEach(v => {
-        if (v > maxVal) maxVal = v;
+    let maxVal = options.maxVal || 0;
+    if (!maxVal) {
+      series.forEach(s => {
+        s.data.forEach(v => {
+          if (v > maxVal) maxVal = v;
+        });
       });
-    });
-    maxVal = maxVal * 1.15 || 1;
+      maxVal = options.isPercentage ? 100 : (maxVal * 1.15 || 1);
+    }
+    if (options.isPercentage && maxVal > 100) maxVal = 100;
 
     // Grid lines
     ctx.strokeStyle = theme.grid;

@@ -204,13 +204,13 @@
             </div>
             <div class="kpi-value" id="kpi-customers">25,000</div>
             <div class="kpi-footer">
-              <span>95,420 historical lifetime shoppers</span>
+              <span>25,000 scored cohort (out of 95,420 historical shoppers)</span>
             </div>
           </div>
 
           <div class="kpi-card">
             <div class="kpi-header">
-              <span class="kpi-title">Portfolio Churn Rate</span>
+              <span class="kpi-title">Predicted Churn Exposure</span>
               <span class="kpi-icon">📉</span>
             </div>
             <div class="kpi-value" id="kpi-churn" style="color: var(--color-critical);">21.8%</div>
@@ -263,8 +263,8 @@
             </div>
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">KEY ATTRITION VECTOR</div>
-              <div class="briefing-stat-value" style="color: var(--color-high);">Logistics Delays <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-high);">+18.4 pp</span></div>
-              <div class="briefing-stat-desc">Late shipments accelerate churn from 16.4% to 34.8% (+18.4 pp gap)</div>
+              <div class="briefing-stat-value" style="color: var(--color-high);">Logistics Delays <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-high);">+25.0 pp</span></div>
+              <div class="briefing-stat-desc">Late shipments (>3 days) accelerate churn from 16.4% to 41.4% (+25.0 pp gap)</div>
             </div>
             <div class="briefing-stat-box">
               <div class="briefing-stat-label">PRIORITY POPULATION</div>
@@ -449,7 +449,7 @@
         </div>
 
         <!-- Row 3: Day of Week, Top Categories, States, Payments -->
-        <div class="grid-4 grid-align-start">
+        <div class="grid-4">
           <div class="glass-panel">
             <div class="panel-header">
               <h3 class="panel-title">Day-of-Week Shopping Peak</h3>
@@ -764,7 +764,7 @@
                 <h3 class="panel-title">Interactive Confusion Matrix Heatmap</h3>
                 <p class="panel-subtitle">Visual classification breakdown of True/False Positives & Negatives</p>
               </div>
-              <select id="select-model-cm" class="search-bar" style="width: 200px; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
+              <select id="select-model-cm" class="search-bar" style="width: 280px; max-width: 100%; padding: 6px 12px;" onchange="renderSelectedConfusionMatrix()">
                 <option value="Hybrid ANN-LSTM" selected>Hybrid ANN-LSTM (Champion)</option>
                 <option value="LightGBM">LightGBM</option>
                 <option value="XGBoost">XGBoost</option>
@@ -978,7 +978,7 @@
                     <th>Orders</th>
                     <th>Avg Delivery Days</th>
                     <th>Avg Freight</th>
-                    <th>Late Ratio (%)</th>
+                    <th>On-Time Rate (%)</th>
                   </tr>
                 </thead>
                 <tbody id="logistics-table-body">
@@ -1112,7 +1112,7 @@
               <div class="slider-item">
                 <label class="slider-header" style="font-weight: 600;">Select Retention Campaign Playbook:</label>
                 <select id="camp-type-select" class="search-bar" style="width: 100%;" onchange="runCampaignSimulation()">
-                  <option value="vip_concierge">VIP Concierge Campaign (CLV &ge; $300, Critical Risk)</option>
+                  <option value="vip_concierge">VIP Concierge Campaign (CLV &ge; $500, High/Critical Risk - 45 VIPs)</option>
                   <option value="winback_promo">Win-Back Promo Campaign (CLV $100-$300, High Risk)</option>
                   <option value="service_recovery">Service Recovery Outreach (Dissatisfied / Late Delivery)</option>
                   <option value="second_purchase">Second-Purchase Accelerator (Single Order Shoppers)</option>

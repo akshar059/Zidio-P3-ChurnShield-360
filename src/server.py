@@ -44,17 +44,22 @@ _CACHED_ANALYTICS = {}
 _CUSTOMER_CATALOG_CACHE = None
 _CUSTOMER_LOOKUP_CACHE = {}
 
+_CATALOG_MTIME = 0
+
 def get_customer_catalog_cache():
-    global _CUSTOMER_CATALOG_CACHE, _CUSTOMER_LOOKUP_CACHE
-    if _CUSTOMER_CATALOG_CACHE is not None:
+    global _CUSTOMER_CATALOG_CACHE, _CUSTOMER_LOOKUP_CACHE, _CATALOG_MTIME
+    catalog_path = DATA_OUTPUTS_DIR / "customer_explorer_catalog.json"
+    mtime = catalog_path.stat().st_mtime if catalog_path.exists() else 0
+    if _CUSTOMER_CATALOG_CACHE is not None and mtime == _CATALOG_MTIME:
         return _CUSTOMER_CATALOG_CACHE, _CUSTOMER_LOOKUP_CACHE
     
-    catalog_path = DATA_OUTPUTS_DIR / "customer_explorer_catalog.json"
     if catalog_path.exists():
         with open(catalog_path, "r", encoding="utf-8") as f:
             _CUSTOMER_CATALOG_CACHE = json.load(f)
+            _CATALOG_MTIME = mtime
     else:
         _CUSTOMER_CATALOG_CACHE = []
+        _CATALOG_MTIME = 0
     
     _CUSTOMER_LOOKUP_CACHE = {c.get("customer_id", ""): c for c in _CUSTOMER_CATALOG_CACHE}
     return _CUSTOMER_CATALOG_CACHE, _CUSTOMER_LOOKUP_CACHE
@@ -95,19 +100,21 @@ def get_rich_analytics():
                 "Excellent": 4230
             }
 
-            # RFM segments
+            # RFM segments (distinct from K-Means)
             analytics["rfm_dist"] = {
-                "Champions": 3120,
-                "Loyal Customers": 5840,
-                "New Promising": 7240,
-                "At Risk": 5180,
-                "Cannot Lose Them": 3620
+                "At Risk": 6075,
+                "Loyal Customers": 5004,
+                "Champions": 3973,
+                "New Promising": 3890,
+                "Cannot Lose": 2360,
+                "Need Attention": 1997,
+                "Hibernating": 1701
             }
 
-            # Repeat buyers ratio (realistic e-commerce benchmark)
+            # Repeat buyers ratio (calibrated to actual master_sales.csv: 3.1% repeat buyers)
             analytics["repeat_ratio"] = {
-                "One-Time Buyers": 16040,
-                "Repeat Customers": 8960
+                "One-Time Buyers": 24225,
+                "Repeat Customers": 775
             }
 
             # Churn by review rating (realistic gradient)
@@ -136,9 +143,9 @@ def get_rich_analytics():
                 "> $1,000": 660
             }
 
-            # Realistic campaign audience sizing
+            # Realistic campaign audience sizing (45 High/Critical VIPs, exactly matching executive exposure)
             analytics["campaign_audiences"] = {
-                "vip_concierge": {"target_count": 251, "avg_clv": 540.0, "offer": "20% Exclusive Loyalty Credit"},
+                "vip_concierge": {"target_count": 45, "avg_clv": 854.44, "offer": "20% Exclusive Loyalty Credit"},
                 "winback_promo": {"target_count": 3200, "avg_clv": 210.0, "offer": "15% Re-Engagement Discount"},
                 "service_recovery": {"target_count": 1420, "avg_clv": 240.0, "offer": "$20 Apology Credit Voucher"},
                 "second_purchase": {"target_count": 4800, "avg_clv": 175.0, "offer": "15% Next-Order Accelerator"}
@@ -359,9 +366,9 @@ def get_executive_insights():
             "id": "logistics-churn",
             "type": "warning",
             "icon": "🚚",
-            "title": "Logistics Delays Elevate Churn by +18.4 pp",
+            "title": "Logistics Delays Elevate Churn to 41.4%",
             "badge": "Fulfillment Impact",
-            "summary": "Accounts experiencing delivery delays >3 days exhibit a 34.8% churn rate vs 16.4% for on-time shipments (+18.4 pp elevation).",
+            "summary": "Accounts experiencing delivery delays >3 days exhibit a 41.4% churn rate vs 16.4% for on-time shipments (+25.0 pp elevation).",
             "action": "Automate proactive shipping delay credits ($15 voucher) for northern corridor deliveries."
         },
         {
@@ -388,12 +395,14 @@ def get_executive_insights():
 @app.get("/api/cohort-retention")
 def get_cohort_retention():
     cohort_matrix = [
-        {"cohort": "2017-Q1", "customers": 4820, "m0": 100.0, "m1": 5.4, "m2": 3.9, "m3": 3.2, "m4": 2.7, "m5": 2.2, "m6": 1.9},
-        {"cohort": "2017-Q2", "customers": 8940, "m0": 100.0, "m1": 5.1, "m2": 3.7, "m3": 3.0, "m4": 2.5, "m5": 2.1, "m6": 1.8},
-        {"cohort": "2017-Q3", "customers": 12150, "m0": 100.0, "m1": 4.9, "m2": 3.6, "m3": 2.9, "m4": 2.4, "m5": 2.0, "m6": 1.7},
-        {"cohort": "2017-Q4", "customers": 16420, "m0": 100.0, "m1": 5.6, "m2": 4.1, "m3": 3.4, "m4": 2.8, "m5": 2.3, "m6": 2.0},
-        {"cohort": "2018-Q1", "customers": 20850, "m0": 100.0, "m1": 5.2, "m2": 3.8, "m3": 3.1, "m4": 2.6, "m5": 2.1, "m6": 1.8},
-        {"cohort": "2018-Q2", "customers": 19680, "m0": 100.0, "m1": 5.0, "m2": 3.7, "m3": 3.0, "m4": 2.5, "m5": 2.0, "m6": 1.7}
+        {"cohort": "2016-Q4", "customers": 309, "m0": 100.0, "m1": 5.8, "m2": 4.1, "m3": 3.3, "m4": 2.7, "m5": 2.2, "m6": 1.9},
+        {"cohort": "2017-Q1", "customers": 5054, "m0": 100.0, "m1": 5.4, "m2": 3.9, "m3": 3.2, "m4": 2.7, "m5": 2.2, "m6": 1.9},
+        {"cohort": "2017-Q2", "customers": 9013, "m0": 100.0, "m1": 5.1, "m2": 3.7, "m3": 3.0, "m4": 2.5, "m5": 2.1, "m6": 1.8},
+        {"cohort": "2017-Q3", "customers": 12082, "m0": 100.0, "m1": 4.9, "m2": 3.6, "m3": 2.9, "m4": 2.4, "m5": 2.0, "m6": 1.7},
+        {"cohort": "2017-Q4", "customers": 17071, "m0": 100.0, "m1": 5.6, "m2": 4.1, "m3": 3.4, "m4": 2.8, "m5": 2.3, "m6": 2.0},
+        {"cohort": "2018-Q1", "customers": 20352, "m0": 100.0, "m1": 5.2, "m2": 3.8, "m3": 3.1, "m4": 2.6, "m5": 2.1, "m6": 1.8},
+        {"cohort": "2018-Q2", "customers": 19247, "m0": 100.0, "m1": 5.0, "m2": 3.7, "m3": 3.0, "m4": 2.5, "m5": None, "m6": None},
+        {"cohort": "2018-Q3*", "customers": 12292, "m0": 100.0, "m1": 4.8, "m2": None, "m3": None, "m4": None, "m5": None, "m6": None}
     ]
     
     segment_retention_curves = {
@@ -812,4 +821,4 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     host = os.environ.get("HOST", "0.0.0.0")
     print(f"Starting server on http://{host}:{port} ...")
-    uvicorn.run("src.server:app", host=host, port=port, reload=False)
+    uvicorn.run(app, host=host, port=port)

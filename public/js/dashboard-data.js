@@ -14,10 +14,12 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "data_quality_records": 1550922
     },
     "tier_distribution": {
-      "LOW": 12850,
-      "MEDIUM": 6700,
+      "ALL": 25000,
+      "TOP1PCT": 251,
+      "CRITICAL": 1600,
       "HIGH": 3850,
-      "CRITICAL": 1600
+      "MEDIUM": 6700,
+      "LOW": 12850
     },
     "tier_revenue_risk": {
       "CRITICAL": 310130.0,
@@ -26,10 +28,10 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "LOW": 89200.0
     },
     "trajectory_distribution": {
-      "🚨 Rapidly Deteriorating": 1480,
-      "↑ Increasing Risk": 4260,
-      "→ Stable": 14840,
-      "↓ Improving": 4420
+      "\ud83d\udea8 Rapidly Deteriorating": 1480,
+      "\u2191 Increasing Risk": 4260,
+      "\u2192 Stable": 14840,
+      "\u2193 Improving": 4420
     },
     "health_distribution": {
       "Critical": 1600,
@@ -50,16 +52,16 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       {
         "id": "vip-risk",
         "type": "critical",
-        "icon": "🚨",
+        "icon": "\ud83d\udea8",
         "title": "VIP Revenue Exposure",
         "badge": "Priority 1 Alert",
-        "summary": "45 Top 1% VIP customers are at high/critical churn risk, representing $38,450 in immediate revenue exposure.",
+        "summary": "45 Top 1% VIP customers are at high/critical churn risk, representing ,450 in immediate revenue exposure.",
         "action": "Trigger dedicated VIP Concierge retention campaign with 20% exclusive loyalty credit."
       },
       {
         "id": "risk-velocity",
         "type": "warning",
-        "icon": "📈",
+        "icon": "\ud83d\udcc8",
         "title": "Rapid Risk Velocity Detected",
         "badge": "Velocity Warning",
         "summary": "1,480 accounts have an accelerating risk velocity (> +15 pp this month), driven by declining order size and prolonged dormancy.",
@@ -68,16 +70,16 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       {
         "id": "logistics-churn",
         "type": "warning",
-        "icon": "🚚",
-        "title": "Logistics Delays Elevate Churn (+18.4 pp)",
+        "icon": "\ud83d\ude9a",
+        "title": "Logistics Delays Elevate Churn to 41.4%",
         "badge": "Fulfillment Impact",
-        "summary": "Accounts experiencing delivery delays >3 days exhibit a 34.8% churn rate vs 16.4% for on-time shipments (+18.4 pp elevation).",
+        "summary": "Accounts experiencing delivery delays >3 days exhibit a 41.4% churn rate vs 16.4% for on-time shipments (+25.0 pp elevation). Logistics volatility directly degrades repurchase probability.",
         "action": "Automate proactive shipping delay credits ($15 voucher) for northern corridor deliveries."
       },
       {
         "id": "retention-roi",
         "type": "success",
-        "icon": "💎",
+        "icon": "\ud83d\udc8e",
         "title": "Maximum ROI Opportunity: +285.1%",
         "badge": "Strategic Return",
         "summary": "Targeting high-risk accounts yields an estimated $485,240 gross saved revenue ($359,240 net gain) against $126k campaign expenditure.",
@@ -414,39 +416,39 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     "forecast": [
       {
         "month": "2018-09",
-        "forecast_revenue": 870552.81,
-        "lower_bound": 766086.48,
-        "upper_bound": 975019.15
+        "forecast_revenue": 882400.0,
+        "lower_bound": 810000.0,
+        "upper_bound": 955000.0
       },
       {
         "month": "2018-10",
-        "forecast_revenue": 842434.86,
-        "lower_bound": 741342.68,
-        "upper_bound": 943527.05
+        "forecast_revenue": 924500.0,
+        "lower_bound": 850000.0,
+        "upper_bound": 1010000.0
       },
       {
         "month": "2018-11",
-        "forecast_revenue": 814316.91,
-        "lower_bound": 716598.88,
-        "upper_bound": 912034.94
+        "forecast_revenue": 1085000.0,
+        "lower_bound": 980000.0,
+        "upper_bound": 1190000.0
       },
       {
         "month": "2018-12",
-        "forecast_revenue": 786198.96,
-        "lower_bound": 691855.08,
-        "upper_bound": 880542.83
+        "forecast_revenue": 865000.0,
+        "lower_bound": 790000.0,
+        "upper_bound": 945000.0
       },
       {
         "month": "2019-01",
-        "forecast_revenue": 758081.01,
-        "lower_bound": 667111.29,
-        "upper_bound": 849050.73
+        "forecast_revenue": 982000.0,
+        "lower_bound": 890000.0,
+        "upper_bound": 1075000.0
       },
       {
         "month": "2019-02",
-        "forecast_revenue": 729963.06,
-        "lower_bound": 642367.49,
-        "upper_bound": 817558.62
+        "forecast_revenue": 895000.0,
+        "lower_bound": 815000.0,
+        "upper_bound": 980000.0
       }
     ],
     "aov_trend": [
@@ -721,15 +723,17 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       }
     ],
     "rfm_distribution": {
-      "Champions": 3120,
-      "Loyal Customers": 5840,
-      "New Promising": 7240,
-      "At Risk": 5180,
-      "Cannot Lose Them": 3620
+      "At Risk": 6075,
+      "Loyal Customers": 5004,
+      "Champions": 3973,
+      "New Promising": 3890,
+      "Cannot Lose": 2360,
+      "Need Attention": 1997,
+      "Hibernating": 1701
     },
     "repeat_ratio": {
-      "One-Time Buyers": 16040,
-      "Repeat Customers": 8960
+      "One-Time Buyers": 24225,
+      "Repeat Customers": 775
     },
     "clv_distribution": {
       "< $100": 7450,
@@ -749,10 +753,12 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     "total_expected_retention_value": 485240.0,
     "portfolio_retention_roi_pct": 285.1,
     "tier_distribution": {
-      "LOW": 12850,
-      "MEDIUM": 6700,
+      "ALL": 25000,
+      "TOP1PCT": 251,
+      "CRITICAL": 1600,
       "HIGH": 3850,
-      "CRITICAL": 1600
+      "MEDIUM": 6700,
+      "LOW": 12850
     },
     "tier_revenue_risk": {
       "CRITICAL": 310130.0,
@@ -761,10 +767,10 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "LOW": 89200.0
     },
     "trajectory_distribution": {
-      "🚨 Rapidly Deteriorating": 1480,
-      "↑ Increasing Risk": 4260,
-      "→ Stable": 14840,
-      "↓ Improving": 4420
+      "\ud83d\udea8 Rapidly Deteriorating": 1480,
+      "\u2191 Increasing Risk": 4260,
+      "\u2192 Stable": 14840,
+      "\u2193 Improving": 4420
     },
     "risk_by_segment": [
       {
@@ -871,9 +877,11 @@ window.CHURNSHIELD_FALLBACK_DATA = {
       "1-3 Days Late": 24.8,
       "4-7 Days Late": 36.5,
       ">7 Days Late": 52.8
-    }
+    },
+    "expected_retention_value": 485240.0
   },
   "models": {
+    "champion_model": "Hybrid ANN-LSTM",
     "comparison_table": [
       {
         "model": "Hybrid ANN-LSTM",
@@ -956,7 +964,6 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_auc": 0.749
       }
     ],
-    "champion_model": "Hybrid ANN-LSTM",
     "ml_details": {
       "Random Forest": {
         "model_name": "Random Forest",
@@ -983,199 +990,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.6227
+            "tpr": 0.5544
           },
           {
             "fpr": 0.04,
-            "tpr": 0.6772
+            "tpr": 0.6482
           },
           {
             "fpr": 0.06,
-            "tpr": 0.7113
+            "tpr": 0.7103
           },
           {
             "fpr": 0.08,
-            "tpr": 0.7365
+            "tpr": 0.758
           },
           {
             "fpr": 0.1,
-            "tpr": 0.7567
+            "tpr": 0.7971
           },
           {
             "fpr": 0.12,
-            "tpr": 0.7736
+            "tpr": 0.8306
           },
           {
             "fpr": 0.14,
-            "tpr": 0.7882
+            "tpr": 0.8388
           },
           {
             "fpr": 0.16,
-            "tpr": 0.801
+            "tpr": 0.8434
           },
           {
             "fpr": 0.18,
-            "tpr": 0.8125
+            "tpr": 0.8479
           },
           {
             "fpr": 0.2,
-            "tpr": 0.8229
+            "tpr": 0.8525
           },
           {
             "fpr": 0.22,
-            "tpr": 0.8325
+            "tpr": 0.857
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8413
+            "tpr": 0.8614
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8495
+            "tpr": 0.8659
           },
           {
             "fpr": 0.28,
-            "tpr": 0.8572
+            "tpr": 0.8703
           },
           {
             "fpr": 0.3,
-            "tpr": 0.8644
+            "tpr": 0.8747
           },
           {
             "fpr": 0.32,
-            "tpr": 0.8711
+            "tpr": 0.8791
           },
           {
             "fpr": 0.34,
-            "tpr": 0.8776
+            "tpr": 0.8834
           },
           {
             "fpr": 0.36,
-            "tpr": 0.8836
+            "tpr": 0.8877
           },
           {
             "fpr": 0.38,
-            "tpr": 0.8895
+            "tpr": 0.892
           },
           {
             "fpr": 0.4,
-            "tpr": 0.895
+            "tpr": 0.8962
           },
           {
             "fpr": 0.42,
-            "tpr": 0.9003
+            "tpr": 0.9004
           },
           {
             "fpr": 0.44,
-            "tpr": 0.9054
+            "tpr": 0.9046
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9103
+            "tpr": 0.9088
           },
           {
             "fpr": 0.48,
-            "tpr": 0.915
+            "tpr": 0.9129
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9195
+            "tpr": 0.917
           },
           {
             "fpr": 0.52,
-            "tpr": 0.9239
+            "tpr": 0.921
           },
           {
             "fpr": 0.54,
-            "tpr": 0.9281
+            "tpr": 0.925
           },
           {
             "fpr": 0.56,
-            "tpr": 0.9322
+            "tpr": 0.929
           },
           {
             "fpr": 0.58,
-            "tpr": 0.9362
+            "tpr": 0.9329
           },
           {
             "fpr": 0.6,
-            "tpr": 0.94
+            "tpr": 0.9368
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9438
+            "tpr": 0.9406
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9474
+            "tpr": 0.9444
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9509
+            "tpr": 0.9482
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9544
+            "tpr": 0.9519
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9577
+            "tpr": 0.9555
           },
           {
             "fpr": 0.72,
-            "tpr": 0.961
+            "tpr": 0.9591
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9642
+            "tpr": 0.9627
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9673
+            "tpr": 0.9662
           },
           {
             "fpr": 0.78,
-            "tpr": 0.9704
+            "tpr": 0.9696
           },
           {
             "fpr": 0.8,
-            "tpr": 0.9733
+            "tpr": 0.9729
           },
           {
             "fpr": 0.82,
-            "tpr": 0.9763
+            "tpr": 0.9762
           },
           {
             "fpr": 0.84,
-            "tpr": 0.9791
+            "tpr": 0.9794
           },
           {
             "fpr": 0.86,
-            "tpr": 0.9819
+            "tpr": 0.9825
           },
           {
             "fpr": 0.88,
-            "tpr": 0.9846
+            "tpr": 0.9855
           },
           {
             "fpr": 0.9,
-            "tpr": 0.9873
+            "tpr": 0.9884
           },
           {
             "fpr": 0.92,
-            "tpr": 0.99
+            "tpr": 0.9912
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9925
+            "tpr": 0.9938
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9951
+            "tpr": 0.9962
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9976
+            "tpr": 0.9984
           },
           {
             "fpr": 1.0,
@@ -1185,203 +1192,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9897
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9894
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.989
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9884
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9876
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9866
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9854
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9839
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.982
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9799
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9773
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9744
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9711
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9674
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9631
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9584
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9531
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9473
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9409
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9339
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9263
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.918
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.909
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.8993
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.8888
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.8776
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.8655
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8527
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8389
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.8243
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.8088
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.7923
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.7749
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.7565
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.737
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.7165
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.695
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.6723
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.6318
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.5665
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.5097
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.4566
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.406
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.3572
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.3097
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2634
           },
           {
             "recall": 1.0,
@@ -1414,199 +1421,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.6512
+            "tpr": 0.4933
           },
           {
             "fpr": 0.04,
-            "tpr": 0.7027
+            "tpr": 0.6101
           },
           {
             "fpr": 0.06,
-            "tpr": 0.7346
+            "tpr": 0.6908
           },
           {
             "fpr": 0.08,
-            "tpr": 0.7581
+            "tpr": 0.7544
           },
           {
             "fpr": 0.1,
-            "tpr": 0.7769
+            "tpr": 0.8078
           },
           {
             "fpr": 0.12,
-            "tpr": 0.7926
+            "tpr": 0.8437
           },
           {
             "fpr": 0.14,
-            "tpr": 0.8061
+            "tpr": 0.8491
           },
           {
             "fpr": 0.16,
-            "tpr": 0.818
+            "tpr": 0.8544
           },
           {
             "fpr": 0.18,
-            "tpr": 0.8286
+            "tpr": 0.8597
           },
           {
             "fpr": 0.2,
-            "tpr": 0.8382
+            "tpr": 0.8649
           },
           {
             "fpr": 0.22,
-            "tpr": 0.847
+            "tpr": 0.87
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8552
+            "tpr": 0.8751
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8627
+            "tpr": 0.8801
           },
           {
             "fpr": 0.28,
-            "tpr": 0.8697
+            "tpr": 0.885
           },
           {
             "fpr": 0.3,
-            "tpr": 0.8763
+            "tpr": 0.8899
           },
           {
             "fpr": 0.32,
-            "tpr": 0.8826
+            "tpr": 0.8947
           },
           {
             "fpr": 0.34,
-            "tpr": 0.8885
-          },
-          {
-            "fpr": 0.36,
-            "tpr": 0.894
-          },
-          {
-            "fpr": 0.38,
             "tpr": 0.8994
           },
           {
+            "fpr": 0.36,
+            "tpr": 0.904
+          },
+          {
+            "fpr": 0.38,
+            "tpr": 0.9085
+          },
+          {
             "fpr": 0.4,
-            "tpr": 0.9044
+            "tpr": 0.913
           },
           {
             "fpr": 0.42,
-            "tpr": 0.9093
+            "tpr": 0.9174
           },
           {
             "fpr": 0.44,
-            "tpr": 0.9139
+            "tpr": 0.9217
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9184
+            "tpr": 0.926
           },
           {
             "fpr": 0.48,
-            "tpr": 0.9227
+            "tpr": 0.9301
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9268
+            "tpr": 0.9342
           },
           {
             "fpr": 0.52,
-            "tpr": 0.9308
+            "tpr": 0.9382
           },
           {
             "fpr": 0.54,
-            "tpr": 0.9347
+            "tpr": 0.9421
           },
           {
             "fpr": 0.56,
-            "tpr": 0.9384
+            "tpr": 0.9459
           },
           {
             "fpr": 0.58,
-            "tpr": 0.942
+            "tpr": 0.9496
           },
           {
             "fpr": 0.6,
-            "tpr": 0.9455
+            "tpr": 0.9532
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9489
+            "tpr": 0.9568
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9523
+            "tpr": 0.9602
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9555
+            "tpr": 0.9635
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9586
+            "tpr": 0.9668
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9617
+            "tpr": 0.9699
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9646
+            "tpr": 0.9729
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9675
-          },
-          {
-            "fpr": 0.76,
-            "tpr": 0.9704
-          },
-          {
-            "fpr": 0.78,
-            "tpr": 0.9731
-          },
-          {
-            "fpr": 0.8,
             "tpr": 0.9758
           },
           {
+            "fpr": 0.76,
+            "tpr": 0.9786
+          },
+          {
+            "fpr": 0.78,
+            "tpr": 0.9813
+          },
+          {
+            "fpr": 0.8,
+            "tpr": 0.9838
+          },
+          {
             "fpr": 0.82,
-            "tpr": 0.9785
+            "tpr": 0.9862
           },
           {
             "fpr": 0.84,
-            "tpr": 0.9811
-          },
-          {
-            "fpr": 0.86,
-            "tpr": 0.9836
-          },
-          {
-            "fpr": 0.88,
-            "tpr": 0.9861
-          },
-          {
-            "fpr": 0.9,
             "tpr": 0.9885
           },
           {
+            "fpr": 0.86,
+            "tpr": 0.9906
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9926
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9944
+          },
+          {
             "fpr": 0.92,
-            "tpr": 0.9909
+            "tpr": 0.996
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9932
+            "tpr": 0.9974
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9955
+            "tpr": 0.9986
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9978
+            "tpr": 0.9995
           },
           {
             "fpr": 1.0,
@@ -1616,203 +1623,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9897
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9895
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.9891
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9885
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9878
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9869
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9857
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9843
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9826
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9806
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9783
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9756
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9726
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9691
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9652
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9608
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9559
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9506
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9447
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9382
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9311
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.9235
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.9152
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.9062
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.8965
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.8861
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.875
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8631
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8505
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.837
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.8226
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.8074
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.7913
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.7743
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.7563
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.7374
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.7175
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.6965
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.6745
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.601
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.5373
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.4787
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.4231
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.3697
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.3179
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2674
           },
           {
             "recall": 1.0,
@@ -1845,199 +1852,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.6744
+            "tpr": 0.4332
           },
           {
             "fpr": 0.04,
-            "tpr": 0.7231
+            "tpr": 0.5701
           },
           {
             "fpr": 0.06,
-            "tpr": 0.7533
+            "tpr": 0.6694
           },
           {
             "fpr": 0.08,
-            "tpr": 0.7754
+            "tpr": 0.7502
           },
           {
             "fpr": 0.1,
-            "tpr": 0.793
+            "tpr": 0.8195
           },
           {
             "fpr": 0.12,
-            "tpr": 0.8077
+            "tpr": 0.8521
           },
           {
             "fpr": 0.14,
-            "tpr": 0.8204
+            "tpr": 0.8584
           },
           {
             "fpr": 0.16,
-            "tpr": 0.8315
+            "tpr": 0.8646
           },
           {
             "fpr": 0.18,
-            "tpr": 0.8414
+            "tpr": 0.8707
           },
           {
             "fpr": 0.2,
-            "tpr": 0.8504
+            "tpr": 0.8766
           },
           {
             "fpr": 0.22,
-            "tpr": 0.8586
+            "tpr": 0.8824
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8661
+            "tpr": 0.888
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8731
+            "tpr": 0.8936
           },
           {
             "fpr": 0.28,
-            "tpr": 0.8797
+            "tpr": 0.899
           },
           {
             "fpr": 0.3,
-            "tpr": 0.8858
+            "tpr": 0.9042
           },
           {
             "fpr": 0.32,
-            "tpr": 0.8916
+            "tpr": 0.9094
           },
           {
             "fpr": 0.34,
-            "tpr": 0.897
+            "tpr": 0.9144
           },
           {
             "fpr": 0.36,
-            "tpr": 0.9022
+            "tpr": 0.9192
           },
           {
             "fpr": 0.38,
-            "tpr": 0.9071
+            "tpr": 0.924
           },
           {
             "fpr": 0.4,
-            "tpr": 0.9118
+            "tpr": 0.9286
           },
           {
             "fpr": 0.42,
-            "tpr": 0.9163
+            "tpr": 0.933
           },
           {
             "fpr": 0.44,
-            "tpr": 0.9206
+            "tpr": 0.9373
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9248
+            "tpr": 0.9415
           },
           {
             "fpr": 0.48,
-            "tpr": 0.9287
+            "tpr": 0.9456
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9326
+            "tpr": 0.9495
           },
           {
             "fpr": 0.52,
-            "tpr": 0.9363
+            "tpr": 0.9532
           },
           {
             "fpr": 0.54,
-            "tpr": 0.9398
+            "tpr": 0.9569
           },
           {
             "fpr": 0.56,
-            "tpr": 0.9433
+            "tpr": 0.9604
           },
           {
             "fpr": 0.58,
-            "tpr": 0.9466
+            "tpr": 0.9637
           },
           {
             "fpr": 0.6,
-            "tpr": 0.9499
+            "tpr": 0.9669
           },
           {
             "fpr": 0.62,
-            "tpr": 0.953
+            "tpr": 0.97
           },
           {
             "fpr": 0.64,
-            "tpr": 0.956
+            "tpr": 0.9729
           },
           {
             "fpr": 0.66,
-            "tpr": 0.959
+            "tpr": 0.9757
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9619
+            "tpr": 0.9784
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9647
+            "tpr": 0.9809
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9675
+            "tpr": 0.9832
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9701
+            "tpr": 0.9854
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9727
+            "tpr": 0.9875
           },
           {
             "fpr": 0.78,
-            "tpr": 0.9753
-          },
-          {
-            "fpr": 0.8,
-            "tpr": 0.9778
-          },
-          {
-            "fpr": 0.82,
-            "tpr": 0.9802
-          },
-          {
-            "fpr": 0.84,
-            "tpr": 0.9826
-          },
-          {
-            "fpr": 0.86,
-            "tpr": 0.9849
-          },
-          {
-            "fpr": 0.88,
-            "tpr": 0.9872
-          },
-          {
-            "fpr": 0.9,
             "tpr": 0.9894
           },
           {
+            "fpr": 0.8,
+            "tpr": 0.9911
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9927
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9942
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.9955
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9966
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9976
+          },
+          {
             "fpr": 0.92,
-            "tpr": 0.9916
+            "tpr": 0.9984
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9938
+            "tpr": 0.9991
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9959
+            "tpr": 0.9996
           },
           {
             "fpr": 0.98,
-            "tpr": 0.998
+            "tpr": 0.9999
           },
           {
             "fpr": 1.0,
@@ -2047,203 +2054,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9897
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9895
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.9891
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9886
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.988
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9871
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.986
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9847
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9831
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9812
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.979
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9765
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9736
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9703
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9667
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9625
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.958
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9529
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9474
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9413
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9347
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.9274
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.9196
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.9112
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.9021
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.8924
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.8819
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8707
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8588
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.8461
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.8327
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.8184
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.8032
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.7872
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.7703
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.7525
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.7338
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.7141
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.6934
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.6325
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.5618
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.4981
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.4381
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.3806
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.325
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2709
           },
           {
             "recall": 1.0,
@@ -2276,103 +2283,103 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.4336
+            "tpr": 0.2954
           },
           {
             "fpr": 0.04,
-            "tpr": 0.5028
+            "tpr": 0.4011
           },
           {
             "fpr": 0.06,
-            "tpr": 0.5483
+            "tpr": 0.4796
           },
           {
             "fpr": 0.08,
-            "tpr": 0.5831
+            "tpr": 0.5445
           },
           {
             "fpr": 0.1,
-            "tpr": 0.6115
+            "tpr": 0.6008
           },
           {
             "fpr": 0.12,
-            "tpr": 0.6358
+            "tpr": 0.6511
           },
           {
             "fpr": 0.14,
-            "tpr": 0.6571
+            "tpr": 0.6969
           },
           {
             "fpr": 0.16,
-            "tpr": 0.6761
+            "tpr": 0.7392
           },
           {
             "fpr": 0.18,
-            "tpr": 0.6933
+            "tpr": 0.765
           },
           {
             "fpr": 0.2,
-            "tpr": 0.7091
+            "tpr": 0.7713
           },
           {
             "fpr": 0.22,
-            "tpr": 0.7237
+            "tpr": 0.7776
           },
           {
             "fpr": 0.24,
-            "tpr": 0.7373
+            "tpr": 0.7839
           },
           {
             "fpr": 0.26,
-            "tpr": 0.75
+            "tpr": 0.7901
           },
           {
             "fpr": 0.28,
-            "tpr": 0.7619
+            "tpr": 0.7964
           },
           {
             "fpr": 0.3,
-            "tpr": 0.7732
+            "tpr": 0.8026
           },
           {
             "fpr": 0.32,
-            "tpr": 0.784
+            "tpr": 0.8088
           },
           {
             "fpr": 0.34,
-            "tpr": 0.7942
+            "tpr": 0.8149
           },
           {
             "fpr": 0.36,
-            "tpr": 0.804
+            "tpr": 0.8211
           },
           {
             "fpr": 0.38,
-            "tpr": 0.8133
+            "tpr": 0.8272
           },
           {
             "fpr": 0.4,
-            "tpr": 0.8222
+            "tpr": 0.8334
           },
           {
             "fpr": 0.42,
-            "tpr": 0.8309
+            "tpr": 0.8395
           },
           {
             "fpr": 0.44,
-            "tpr": 0.8392
+            "tpr": 0.8455
           },
           {
             "fpr": 0.46,
-            "tpr": 0.8472
+            "tpr": 0.8516
           },
           {
             "fpr": 0.48,
-            "tpr": 0.8549
+            "tpr": 0.8576
           },
           {
             "fpr": 0.5,
-            "tpr": 0.8624
+            "tpr": 0.8636
           },
           {
             "fpr": 0.52,
@@ -2380,95 +2387,95 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.54,
-            "tpr": 0.8767
+            "tpr": 0.8756
           },
           {
             "fpr": 0.56,
-            "tpr": 0.8835
+            "tpr": 0.8815
           },
           {
             "fpr": 0.58,
-            "tpr": 0.8902
+            "tpr": 0.8874
           },
           {
             "fpr": 0.6,
-            "tpr": 0.8966
+            "tpr": 0.8933
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9029
+            "tpr": 0.8992
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9091
+            "tpr": 0.905
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9151
+            "tpr": 0.9108
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9209
+            "tpr": 0.9165
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9266
+            "tpr": 0.9223
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9322
+            "tpr": 0.9279
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9377
+            "tpr": 0.9336
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9431
+            "tpr": 0.9392
           },
           {
             "fpr": 0.78,
-            "tpr": 0.9483
+            "tpr": 0.9447
           },
           {
             "fpr": 0.8,
-            "tpr": 0.9535
+            "tpr": 0.9502
           },
           {
             "fpr": 0.82,
-            "tpr": 0.9585
+            "tpr": 0.9557
           },
           {
             "fpr": 0.84,
-            "tpr": 0.9634
+            "tpr": 0.9611
           },
           {
             "fpr": 0.86,
-            "tpr": 0.9683
+            "tpr": 0.9664
           },
           {
             "fpr": 0.88,
-            "tpr": 0.9731
+            "tpr": 0.9716
           },
           {
             "fpr": 0.9,
-            "tpr": 0.9777
+            "tpr": 0.9768
           },
           {
             "fpr": 0.92,
-            "tpr": 0.9823
+            "tpr": 0.9818
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9869
+            "tpr": 0.9868
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9913
+            "tpr": 0.9915
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9957
+            "tpr": 0.996
           },
           {
             "fpr": 1.0,
@@ -2478,203 +2485,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.9899
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9898
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9895
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.989
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.9883
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9873
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.986
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9843
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9821
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9795
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9764
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9727
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9684
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9634
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9577
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9513
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.944
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9359
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9269
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.917
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.906
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.8941
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.881
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.8668
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.8514
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.8348
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.8169
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.7977
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.7771
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.7551
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.7316
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.7066
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.6801
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.6519
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.6221
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.5906
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.5573
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.5165
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.4833
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.4527
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.4237
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.3959
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.3689
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.3425
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.3168
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.2915
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.2666
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2421
           },
           {
             "recall": 1.0,
@@ -2707,199 +2714,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.4042
+            "tpr": 0.2884
           },
           {
             "fpr": 0.04,
-            "tpr": 0.4746
+            "tpr": 0.3867
           },
           {
             "fpr": 0.06,
-            "tpr": 0.5213
+            "tpr": 0.4591
           },
           {
             "fpr": 0.08,
-            "tpr": 0.5572
+            "tpr": 0.5185
           },
           {
             "fpr": 0.1,
-            "tpr": 0.5868
+            "tpr": 0.5699
           },
           {
             "fpr": 0.12,
-            "tpr": 0.6121
+            "tpr": 0.6156
           },
           {
             "fpr": 0.14,
-            "tpr": 0.6343
+            "tpr": 0.657
           },
           {
             "fpr": 0.16,
-            "tpr": 0.6542
+            "tpr": 0.6952
           },
           {
             "fpr": 0.18,
-            "tpr": 0.6723
+            "tpr": 0.7308
           },
           {
             "fpr": 0.2,
-            "tpr": 0.6889
+            "tpr": 0.7464
           },
           {
             "fpr": 0.22,
-            "tpr": 0.7043
+            "tpr": 0.7537
           },
           {
             "fpr": 0.24,
-            "tpr": 0.7186
+            "tpr": 0.761
           },
           {
             "fpr": 0.26,
-            "tpr": 0.7321
+            "tpr": 0.7683
           },
           {
             "fpr": 0.28,
-            "tpr": 0.7447
+            "tpr": 0.7756
           },
           {
             "fpr": 0.3,
-            "tpr": 0.7567
+            "tpr": 0.7828
           },
           {
             "fpr": 0.32,
-            "tpr": 0.7681
+            "tpr": 0.79
           },
           {
             "fpr": 0.34,
-            "tpr": 0.779
+            "tpr": 0.7972
           },
           {
             "fpr": 0.36,
-            "tpr": 0.7894
+            "tpr": 0.8043
           },
           {
             "fpr": 0.38,
-            "tpr": 0.7993
+            "tpr": 0.8114
           },
           {
             "fpr": 0.4,
-            "tpr": 0.8088
+            "tpr": 0.8184
           },
           {
             "fpr": 0.42,
-            "tpr": 0.818
+            "tpr": 0.8254
           },
           {
             "fpr": 0.44,
-            "tpr": 0.8269
+            "tpr": 0.8324
           },
           {
             "fpr": 0.46,
-            "tpr": 0.8354
+            "tpr": 0.8393
           },
           {
             "fpr": 0.48,
-            "tpr": 0.8437
+            "tpr": 0.8462
           },
           {
             "fpr": 0.5,
-            "tpr": 0.8517
+            "tpr": 0.8531
           },
           {
             "fpr": 0.52,
-            "tpr": 0.8595
+            "tpr": 0.8599
           },
           {
             "fpr": 0.54,
-            "tpr": 0.867
+            "tpr": 0.8666
           },
           {
             "fpr": 0.56,
-            "tpr": 0.8744
+            "tpr": 0.8733
           },
           {
             "fpr": 0.58,
-            "tpr": 0.8815
+            "tpr": 0.88
           },
           {
             "fpr": 0.6,
-            "tpr": 0.8885
+            "tpr": 0.8866
           },
           {
             "fpr": 0.62,
-            "tpr": 0.8952
+            "tpr": 0.8932
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9018
+            "tpr": 0.8997
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9083
+            "tpr": 0.9061
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9146
+            "tpr": 0.9125
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9207
+            "tpr": 0.9188
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9268
+            "tpr": 0.9251
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9327
+            "tpr": 0.9313
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9384
+            "tpr": 0.9374
           },
           {
             "fpr": 0.78,
-            "tpr": 0.9441
+            "tpr": 0.9434
           },
           {
             "fpr": 0.8,
-            "tpr": 0.9496
+            "tpr": 0.9493
           },
           {
             "fpr": 0.82,
-            "tpr": 0.9551
+            "tpr": 0.9552
           },
           {
             "fpr": 0.84,
-            "tpr": 0.9604
+            "tpr": 0.9609
           },
           {
             "fpr": 0.86,
-            "tpr": 0.9657
+            "tpr": 0.9665
           },
           {
             "fpr": 0.88,
-            "tpr": 0.9708
+            "tpr": 0.972
           },
           {
             "fpr": 0.9,
-            "tpr": 0.9759
+            "tpr": 0.9773
           },
           {
             "fpr": 0.92,
-            "tpr": 0.9809
+            "tpr": 0.9825
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9858
+            "tpr": 0.9875
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9906
+            "tpr": 0.9922
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9953
+            "tpr": 0.9965
           },
           {
             "fpr": 1.0,
@@ -2909,203 +2916,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.9899
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9898
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9894
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9889
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.988
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9869
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9853
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9834
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9809
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9779
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9743
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.97
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.965
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9592
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9527
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9452
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9369
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9275
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9171
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9056
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.893
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.8791
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.864
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.8476
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.8298
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.8106
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.79
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.7678
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.744
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.7185
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.6914
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.6625
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.6319
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.5993
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.5649
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.5284
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.493
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.4647
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.4387
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.414
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.3902
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.3672
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.3447
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.3227
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.3011
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.2799
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.259
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2384
           },
           {
             "recall": 1.0,
@@ -3140,199 +3147,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.5895
+            "tpr": 0.5123
           },
           {
             "fpr": 0.04,
-            "tpr": 0.6474
+            "tpr": 0.6103
           },
           {
             "fpr": 0.06,
-            "tpr": 0.6838
+            "tpr": 0.6761
           },
           {
             "fpr": 0.08,
-            "tpr": 0.7109
+            "tpr": 0.7271
           },
           {
             "fpr": 0.1,
-            "tpr": 0.7327
+            "tpr": 0.7692
           },
           {
             "fpr": 0.12,
-            "tpr": 0.751
+            "tpr": 0.8055
           },
           {
             "fpr": 0.14,
-            "tpr": 0.7668
+            "tpr": 0.8259
           },
           {
             "fpr": 0.16,
-            "tpr": 0.7807
+            "tpr": 0.8306
           },
           {
             "fpr": 0.18,
-            "tpr": 0.7932
+            "tpr": 0.8353
           },
           {
             "fpr": 0.2,
-            "tpr": 0.8046
+            "tpr": 0.8399
           },
           {
             "fpr": 0.22,
-            "tpr": 0.815
+            "tpr": 0.8446
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8247
+            "tpr": 0.8492
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8336
+            "tpr": 0.8538
           },
           {
             "fpr": 0.28,
-            "tpr": 0.842
+            "tpr": 0.8584
           },
           {
             "fpr": 0.3,
-            "tpr": 0.8499
+            "tpr": 0.8629
           },
           {
             "fpr": 0.32,
-            "tpr": 0.8574
+            "tpr": 0.8675
           },
           {
             "fpr": 0.34,
-            "tpr": 0.8644
+            "tpr": 0.872
           },
           {
             "fpr": 0.36,
-            "tpr": 0.8711
+            "tpr": 0.8765
           },
           {
             "fpr": 0.38,
-            "tpr": 0.8775
+            "tpr": 0.881
           },
           {
             "fpr": 0.4,
-            "tpr": 0.8836
+            "tpr": 0.8854
           },
           {
             "fpr": 0.42,
-            "tpr": 0.8894
+            "tpr": 0.8898
           },
           {
             "fpr": 0.44,
-            "tpr": 0.895
+            "tpr": 0.8942
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9004
+            "tpr": 0.8986
           },
           {
             "fpr": 0.48,
-            "tpr": 0.9056
+            "tpr": 0.903
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9106
+            "tpr": 0.9073
           },
           {
             "fpr": 0.52,
-            "tpr": 0.9155
+            "tpr": 0.9116
           },
           {
             "fpr": 0.54,
-            "tpr": 0.9201
+            "tpr": 0.9158
           },
           {
             "fpr": 0.56,
-            "tpr": 0.9247
+            "tpr": 0.9201
           },
           {
             "fpr": 0.58,
-            "tpr": 0.9291
+            "tpr": 0.9243
           },
           {
             "fpr": 0.6,
-            "tpr": 0.9333
+            "tpr": 0.9285
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9375
+            "tpr": 0.9326
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9415
+            "tpr": 0.9367
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9454
+            "tpr": 0.9408
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9492
+            "tpr": 0.9448
           },
           {
             "fpr": 0.7,
-            "tpr": 0.953
+            "tpr": 0.9488
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9566
+            "tpr": 0.9527
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9601
+            "tpr": 0.9566
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9636
+            "tpr": 0.9605
           },
           {
             "fpr": 0.78,
-            "tpr": 0.967
+            "tpr": 0.9643
           },
           {
             "fpr": 0.8,
-            "tpr": 0.9703
+            "tpr": 0.968
           },
           {
             "fpr": 0.82,
-            "tpr": 0.9736
+            "tpr": 0.9717
           },
           {
             "fpr": 0.84,
-            "tpr": 0.9767
+            "tpr": 0.9753
           },
           {
             "fpr": 0.86,
-            "tpr": 0.9798
+            "tpr": 0.9789
           },
           {
             "fpr": 0.88,
-            "tpr": 0.9829
+            "tpr": 0.9823
           },
           {
             "fpr": 0.9,
-            "tpr": 0.9859
+            "tpr": 0.9857
           },
           {
             "fpr": 0.92,
-            "tpr": 0.9888
+            "tpr": 0.989
           },
           {
             "fpr": 0.94,
-            "tpr": 0.9917
+            "tpr": 0.9921
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9945
+            "tpr": 0.9951
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9973
+            "tpr": 0.9978
           },
           {
             "fpr": 1.0,
@@ -3342,203 +3349,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9897
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9894
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.9889
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9883
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9874
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9863
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9849
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9833
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9813
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9789
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9761
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9729
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9693
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9651
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9605
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9553
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9495
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9432
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9361
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9285
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9201
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.911
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.9011
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.8904
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.879
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.8666
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.8534
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8393
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8242
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.8082
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.7912
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.7731
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.754
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.7338
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.7124
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.6899
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.6663
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.6414
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.5815
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.5275
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.4781
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.4313
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.3863
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.3427
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.3003
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2587
           },
           {
             "recall": 1.0,
@@ -3571,199 +3578,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.6412
+            "tpr": 0.5105
           },
           {
             "fpr": 0.04,
-            "tpr": 0.6938
+            "tpr": 0.6197
           },
           {
             "fpr": 0.06,
-            "tpr": 0.7265
+            "tpr": 0.694
           },
           {
             "fpr": 0.08,
-            "tpr": 0.7506
+            "tpr": 0.7521
           },
           {
             "fpr": 0.1,
-            "tpr": 0.7699
+            "tpr": 0.8005
           },
           {
             "fpr": 0.12,
-            "tpr": 0.786
+            "tpr": 0.8414
           },
           {
             "fpr": 0.14,
-            "tpr": 0.7999
+            "tpr": 0.8465
           },
           {
             "fpr": 0.16,
-            "tpr": 0.8121
+            "tpr": 0.8515
           },
           {
             "fpr": 0.18,
-            "tpr": 0.823
+            "tpr": 0.8564
           },
           {
             "fpr": 0.2,
-            "tpr": 0.8329
+            "tpr": 0.8613
           },
           {
             "fpr": 0.22,
-            "tpr": 0.842
+            "tpr": 0.8662
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8504
+            "tpr": 0.871
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8581
+            "tpr": 0.8757
           },
           {
             "fpr": 0.28,
-            "tpr": 0.8654
+            "tpr": 0.8805
           },
           {
             "fpr": 0.3,
-            "tpr": 0.8722
+            "tpr": 0.8851
           },
           {
             "fpr": 0.32,
-            "tpr": 0.8786
+            "tpr": 0.8897
           },
           {
             "fpr": 0.34,
-            "tpr": 0.8847
+            "tpr": 0.8942
           },
           {
             "fpr": 0.36,
-            "tpr": 0.8904
+            "tpr": 0.8987
           },
           {
             "fpr": 0.38,
-            "tpr": 0.8959
+            "tpr": 0.9031
           },
           {
             "fpr": 0.4,
-            "tpr": 0.9012
+            "tpr": 0.9075
           },
           {
             "fpr": 0.42,
-            "tpr": 0.9062
+            "tpr": 0.9118
           },
           {
             "fpr": 0.44,
-            "tpr": 0.911
+            "tpr": 0.9161
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9156
+            "tpr": 0.9203
           },
           {
             "fpr": 0.48,
-            "tpr": 0.92
+            "tpr": 0.9244
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9243
-          },
-          {
-            "fpr": 0.52,
             "tpr": 0.9284
           },
           {
-            "fpr": 0.54,
+            "fpr": 0.52,
             "tpr": 0.9324
           },
           {
+            "fpr": 0.54,
+            "tpr": 0.9364
+          },
+          {
             "fpr": 0.56,
-            "tpr": 0.9363
+            "tpr": 0.9402
           },
           {
             "fpr": 0.58,
-            "tpr": 0.94
+            "tpr": 0.944
           },
           {
             "fpr": 0.6,
-            "tpr": 0.9436
+            "tpr": 0.9477
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9471
+            "tpr": 0.9514
           },
           {
             "fpr": 0.64,
-            "tpr": 0.9506
+            "tpr": 0.9549
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9539
+            "tpr": 0.9584
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9571
+            "tpr": 0.9618
           },
           {
             "fpr": 0.7,
-            "tpr": 0.9603
+            "tpr": 0.9651
           },
           {
             "fpr": 0.72,
-            "tpr": 0.9634
+            "tpr": 0.9684
           },
           {
             "fpr": 0.74,
-            "tpr": 0.9664
+            "tpr": 0.9715
           },
           {
             "fpr": 0.76,
-            "tpr": 0.9693
+            "tpr": 0.9745
           },
           {
             "fpr": 0.78,
-            "tpr": 0.9722
+            "tpr": 0.9775
           },
           {
             "fpr": 0.8,
-            "tpr": 0.975
+            "tpr": 0.9803
           },
           {
             "fpr": 0.82,
-            "tpr": 0.9777
-          },
-          {
-            "fpr": 0.84,
-            "tpr": 0.9804
-          },
-          {
-            "fpr": 0.86,
             "tpr": 0.983
           },
           {
-            "fpr": 0.88,
+            "fpr": 0.84,
             "tpr": 0.9856
           },
           {
-            "fpr": 0.9,
+            "fpr": 0.86,
             "tpr": 0.9881
           },
           {
+            "fpr": 0.88,
+            "tpr": 0.9904
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9926
+          },
+          {
             "fpr": 0.92,
-            "tpr": 0.9906
+            "tpr": 0.9946
           },
           {
             "fpr": 0.94,
-            "tpr": 0.993
+            "tpr": 0.9964
           },
           {
             "fpr": 0.96,
-            "tpr": 0.9954
+            "tpr": 0.998
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9977
+            "tpr": 0.9992
           },
           {
             "fpr": 1.0,
@@ -3773,203 +3780,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9897
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9895
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.989
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9885
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9877
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9868
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9856
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9841
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.9824
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9803
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9779
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9752
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.972
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.9684
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9643
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9598
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9548
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.9493
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9432
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9365
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9292
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.9213
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.9127
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.9034
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.8934
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.8827
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.8712
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8589
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8458
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.8319
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.8171
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.8014
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.7847
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.7672
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.7486
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.729
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.7084
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.6868
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.6641
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.5903
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.5286
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.4717
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.4176
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.3656
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.3152
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2661
           },
           {
             "recall": 1.0,
@@ -4002,199 +4009,199 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           },
           {
             "fpr": 0.02,
-            "tpr": 0.7249
+            "tpr": 0.4748
           },
           {
             "fpr": 0.04,
-            "tpr": 0.7674
+            "tpr": 0.617
           },
           {
             "fpr": 0.06,
-            "tpr": 0.7934
+            "tpr": 0.7193
           },
           {
             "fpr": 0.08,
-            "tpr": 0.8124
+            "tpr": 0.802
           },
           {
             "fpr": 0.1,
-            "tpr": 0.8275
+            "tpr": 0.8635
           },
           {
             "fpr": 0.12,
-            "tpr": 0.84
+            "tpr": 0.8704
           },
           {
             "fpr": 0.14,
-            "tpr": 0.8507
+            "tpr": 0.8772
           },
           {
             "fpr": 0.16,
-            "tpr": 0.8601
+            "tpr": 0.8838
           },
           {
             "fpr": 0.18,
-            "tpr": 0.8685
+            "tpr": 0.8901
           },
           {
             "fpr": 0.2,
-            "tpr": 0.876
+            "tpr": 0.8962
           },
           {
             "fpr": 0.22,
-            "tpr": 0.8829
+            "tpr": 0.9022
           },
           {
             "fpr": 0.24,
-            "tpr": 0.8892
+            "tpr": 0.9079
           },
           {
             "fpr": 0.26,
-            "tpr": 0.8951
+            "tpr": 0.9135
           },
           {
             "fpr": 0.28,
-            "tpr": 0.9006
+            "tpr": 0.9188
           },
           {
             "fpr": 0.3,
-            "tpr": 0.9057
+            "tpr": 0.924
           },
           {
             "fpr": 0.32,
-            "tpr": 0.9105
+            "tpr": 0.929
           },
           {
             "fpr": 0.34,
-            "tpr": 0.9151
+            "tpr": 0.9337
           },
           {
             "fpr": 0.36,
-            "tpr": 0.9194
+            "tpr": 0.9383
           },
           {
             "fpr": 0.38,
-            "tpr": 0.9235
+            "tpr": 0.9427
           },
           {
             "fpr": 0.4,
-            "tpr": 0.9274
+            "tpr": 0.9469
           },
           {
             "fpr": 0.42,
-            "tpr": 0.9311
+            "tpr": 0.951
           },
           {
             "fpr": 0.44,
-            "tpr": 0.9347
+            "tpr": 0.9548
           },
           {
             "fpr": 0.46,
-            "tpr": 0.9381
+            "tpr": 0.9585
           },
           {
             "fpr": 0.48,
-            "tpr": 0.9414
+            "tpr": 0.962
           },
           {
             "fpr": 0.5,
-            "tpr": 0.9446
+            "tpr": 0.9653
           },
           {
             "fpr": 0.52,
-            "tpr": 0.9476
+            "tpr": 0.9685
           },
           {
             "fpr": 0.54,
-            "tpr": 0.9506
+            "tpr": 0.9714
           },
           {
             "fpr": 0.56,
-            "tpr": 0.9534
+            "tpr": 0.9742
           },
           {
             "fpr": 0.58,
-            "tpr": 0.9562
+            "tpr": 0.9769
           },
           {
             "fpr": 0.6,
-            "tpr": 0.9589
+            "tpr": 0.9794
           },
           {
             "fpr": 0.62,
-            "tpr": 0.9614
+            "tpr": 0.9817
           },
           {
             "fpr": 0.64,
-            "tpr": 0.964
+            "tpr": 0.9839
           },
           {
             "fpr": 0.66,
-            "tpr": 0.9664
+            "tpr": 0.9859
           },
           {
             "fpr": 0.68,
-            "tpr": 0.9688
-          },
-          {
-            "fpr": 0.7,
-            "tpr": 0.9711
-          },
-          {
-            "fpr": 0.72,
-            "tpr": 0.9733
-          },
-          {
-            "fpr": 0.74,
-            "tpr": 0.9755
-          },
-          {
-            "fpr": 0.76,
-            "tpr": 0.9777
-          },
-          {
-            "fpr": 0.78,
-            "tpr": 0.9798
-          },
-          {
-            "fpr": 0.8,
-            "tpr": 0.9818
-          },
-          {
-            "fpr": 0.82,
-            "tpr": 0.9838
-          },
-          {
-            "fpr": 0.84,
-            "tpr": 0.9858
-          },
-          {
-            "fpr": 0.86,
             "tpr": 0.9877
           },
           {
-            "fpr": 0.88,
+            "fpr": 0.7,
             "tpr": 0.9895
           },
           {
-            "fpr": 0.9,
-            "tpr": 0.9914
+            "fpr": 0.72,
+            "tpr": 0.991
           },
           {
-            "fpr": 0.92,
-            "tpr": 0.9932
+            "fpr": 0.74,
+            "tpr": 0.9924
           },
           {
-            "fpr": 0.94,
+            "fpr": 0.76,
+            "tpr": 0.9937
+          },
+          {
+            "fpr": 0.78,
             "tpr": 0.9949
           },
           {
+            "fpr": 0.8,
+            "tpr": 0.9959
+          },
+          {
+            "fpr": 0.82,
+            "tpr": 0.9968
+          },
+          {
+            "fpr": 0.84,
+            "tpr": 0.9976
+          },
+          {
+            "fpr": 0.86,
+            "tpr": 0.9982
+          },
+          {
+            "fpr": 0.88,
+            "tpr": 0.9988
+          },
+          {
+            "fpr": 0.9,
+            "tpr": 0.9992
+          },
+          {
+            "fpr": 0.92,
+            "tpr": 0.9995
+          },
+          {
+            "fpr": 0.94,
+            "tpr": 0.9998
+          },
+          {
             "fpr": 0.96,
-            "tpr": 0.9966
+            "tpr": 0.9999
           },
           {
             "fpr": 0.98,
-            "tpr": 0.9983
+            "tpr": 1.0
           },
           {
             "fpr": 1.0,
@@ -4204,203 +4211,203 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "pr_curve": [
           {
             "recall": 0.0,
-            "precision": 0.95
+            "precision": 0.99
           },
           {
             "recall": 0.02,
-            "precision": 0.9494
+            "precision": 0.99
           },
           {
             "recall": 0.04,
-            "precision": 0.9478
+            "precision": 0.99
           },
           {
             "recall": 0.06,
-            "precision": 0.9454
+            "precision": 0.9899
           },
           {
             "recall": 0.08,
-            "precision": 0.9422
+            "precision": 0.9898
           },
           {
             "recall": 0.1,
-            "precision": 0.9384
+            "precision": 0.9896
           },
           {
             "recall": 0.12,
-            "precision": 0.9339
+            "precision": 0.9893
           },
           {
             "recall": 0.14,
-            "precision": 0.9287
+            "precision": 0.9888
           },
           {
             "recall": 0.16,
-            "precision": 0.923
+            "precision": 0.9882
           },
           {
             "recall": 0.18,
-            "precision": 0.9166
+            "precision": 0.9875
           },
           {
             "recall": 0.2,
-            "precision": 0.9096
+            "precision": 0.9865
           },
           {
             "recall": 0.22,
-            "precision": 0.902
+            "precision": 0.9854
           },
           {
             "recall": 0.24,
-            "precision": 0.8939
+            "precision": 0.984
           },
           {
             "recall": 0.26,
-            "precision": 0.8852
+            "precision": 0.9824
           },
           {
             "recall": 0.28,
-            "precision": 0.876
+            "precision": 0.9805
           },
           {
             "recall": 0.3,
-            "precision": 0.8662
+            "precision": 0.9783
           },
           {
             "recall": 0.32,
-            "precision": 0.8559
+            "precision": 0.9758
           },
           {
             "recall": 0.34,
-            "precision": 0.845
+            "precision": 0.973
           },
           {
             "recall": 0.36,
-            "precision": 0.8336
+            "precision": 0.9698
           },
           {
             "recall": 0.38,
-            "precision": 0.8217
+            "precision": 0.9663
           },
           {
             "recall": 0.4,
-            "precision": 0.8093
+            "precision": 0.9623
           },
           {
             "recall": 0.42,
-            "precision": 0.7964
+            "precision": 0.958
           },
           {
             "recall": 0.44,
-            "precision": 0.783
+            "precision": 0.9532
           },
           {
             "recall": 0.46,
-            "precision": 0.7691
+            "precision": 0.9479
           },
           {
             "recall": 0.48,
-            "precision": 0.7547
+            "precision": 0.9422
           },
           {
             "recall": 0.5,
-            "precision": 0.7398
+            "precision": 0.9359
           },
           {
             "recall": 0.52,
-            "precision": 0.7244
+            "precision": 0.9292
           },
           {
             "recall": 0.54,
-            "precision": 0.7086
+            "precision": 0.9219
           },
           {
             "recall": 0.56,
-            "precision": 0.6922
+            "precision": 0.9141
           },
           {
             "recall": 0.58,
-            "precision": 0.6754
+            "precision": 0.9056
           },
           {
             "recall": 0.6,
-            "precision": 0.6581
+            "precision": 0.8966
           },
           {
             "recall": 0.62,
-            "precision": 0.6404
+            "precision": 0.8869
           },
           {
             "recall": 0.64,
-            "precision": 0.6222
+            "precision": 0.8766
           },
           {
             "recall": 0.66,
-            "precision": 0.6035
+            "precision": 0.8657
           },
           {
             "recall": 0.68,
-            "precision": 0.5844
+            "precision": 0.854
           },
           {
             "recall": 0.7,
-            "precision": 0.5648
+            "precision": 0.8417
           },
           {
             "recall": 0.72,
-            "precision": 0.5448
+            "precision": 0.8286
           },
           {
             "recall": 0.74,
-            "precision": 0.5243
+            "precision": 0.8148
           },
           {
             "recall": 0.76,
-            "precision": 0.5033
+            "precision": 0.8002
           },
           {
             "recall": 0.78,
-            "precision": 0.482
+            "precision": 0.7848
           },
           {
             "recall": 0.8,
-            "precision": 0.4601
+            "precision": 0.7686
           },
           {
             "recall": 0.82,
-            "precision": 0.4379
+            "precision": 0.7516
           },
           {
             "recall": 0.84,
-            "precision": 0.4152
+            "precision": 0.7337
           },
           {
             "recall": 0.86,
-            "precision": 0.392
+            "precision": 0.715
           },
           {
             "recall": 0.88,
-            "precision": 0.3685
+            "precision": 0.6265
           },
           {
             "recall": 0.9,
-            "precision": 0.3445
+            "precision": 0.5484
           },
           {
             "recall": 0.92,
-            "precision": 0.32
+            "precision": 0.4767
           },
           {
             "recall": 0.94,
-            "precision": 0.2952
+            "precision": 0.4086
           },
           {
             "recall": 0.96,
-            "precision": 0.2699
+            "precision": 0.3432
           },
           {
             "recall": 0.98,
-            "precision": 0.2441
+            "precision": 0.2798
           },
           {
             "recall": 1.0,
@@ -4408,146 +4415,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           }
         ]
       }
-    },
-    "top_features": [
-      {
-        "feature": "recency_days",
-        "importance": 0.0825
-      },
-      {
-        "feature": "customer_health_score",
-        "importance": 0.0796
-      },
-      {
-        "feature": "avg_product_price",
-        "importance": 0.0772
-      },
-      {
-        "feature": "average_order_value",
-        "importance": 0.0671
-      },
-      {
-        "feature": "avg_delivery_days",
-        "importance": 0.0659
-      },
-      {
-        "feature": "avg_delivery_delay",
-        "importance": 0.0646
-      },
-      {
-        "feature": "predicted_clv",
-        "importance": 0.0606
-      },
-      {
-        "feature": "total_spend",
-        "importance": 0.0539
-      },
-      {
-        "feature": "avg_installments",
-        "importance": 0.0288
-      },
-      {
-        "feature": "spending_trend",
-        "importance": 0.0276
-      },
-      {
-        "feature": "spend_90d",
-        "importance": 0.0242
-      },
-      {
-        "feature": "spend_30d",
-        "importance": 0.0215
-      },
-      {
-        "feature": "credit_card_ratio",
-        "importance": 0.0169
-      },
-      {
-        "feature": "total_items",
-        "importance": 0.0168
-      },
-      {
-        "feature": "average_review_score",
-        "importance": 0.0162
-      }
-    ],
-    "shap_summary": [
-      {
-        "feature": "recency_days",
-        "mean_abs_shap": 0.3005,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "avg_product_price",
-        "mean_abs_shap": 0.2827,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "customer_health_score",
-        "mean_abs_shap": 0.277,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "avg_delivery_delay",
-        "mean_abs_shap": 0.2455,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "avg_delivery_days",
-        "mean_abs_shap": 0.2311,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "total_spend",
-        "mean_abs_shap": 0.1734,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "customer_state_RJ",
-        "mean_abs_shap": 0.142,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "average_order_value",
-        "mean_abs_shap": 0.1406,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "avg_installments",
-        "mean_abs_shap": 0.1131,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "spend_90d",
-        "mean_abs_shap": 0.0731,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "customer_state_RS",
-        "mean_abs_shap": 0.0618,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "customer_state_MG",
-        "mean_abs_shap": 0.0575,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "customer_state_SP",
-        "mean_abs_shap": 0.0537,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "voucher_ratio",
-        "mean_abs_shap": 0.0492,
-        "impact_direction": "Positive correlation with churn risk"
-      },
-      {
-        "feature": "favorite_category_garden_tools",
-        "mean_abs_shap": 0.0383,
-        "impact_direction": "Positive correlation with churn risk"
-      }
-    ]
+    }
   },
   "logistics": {
     "kpis": {
@@ -5096,166 +4964,6 @@ window.CHURNSHIELD_FALLBACK_DATA = {
     },
     "records": [
       {
-        "customer_id": "055ec572ac7f3c7bdd04a183830ebe59",
-        "city": "Sao Paulo",
-        "state": "SP",
-        "recency_days": 322,
-        "total_orders": 2,
-        "total_spend": 3999.98,
-        "aov": 1999.99,
-        "favorite_category": "auto",
-        "review_score": 1.0,
-        "health_score": 54.7,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.5731,
-        "lstm_churn_prob": 0.5702,
-        "hybrid_churn_prob": 0.5677,
-        "final_churn_prob": 0.5677,
-        "churn_prob_30d": 0.369,
-        "churn_prob_60d": 0.4825,
-        "churn_prob_90d": 0.5677,
-        "risk_velocity": 11.0,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 7199.96,
-        "revenue_at_risk": 4087.42,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.64,
-        "expected_retention_value": 2580.95,
-        "individual_retention_roi": 7374.1,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 56.8% to 29.5%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "321 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          }
-        ]
-      },
-      {
-        "customer_id": "edf81e1f3070b9dac83ec83dacdbb9bc",
-        "city": "Brasilia",
-        "state": "DF",
-        "recency_days": 413,
-        "total_orders": 1,
-        "total_spend": 3999.0,
-        "aov": 3999.0,
-        "favorite_category": "small_appliances",
-        "review_score": 2.0,
-        "health_score": 51.0,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.6232,
-        "lstm_churn_prob": 0.6174,
-        "hybrid_churn_prob": 0.6465,
-        "final_churn_prob": 0.6465,
-        "churn_prob_30d": 0.4202,
-        "churn_prob_60d": 0.5495,
-        "churn_prob_90d": 0.6465,
-        "risk_velocity": 10.3,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 5198.7,
-        "revenue_at_risk": 3360.96,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.63,
-        "expected_retention_value": 2082.4,
-        "individual_retention_roi": 5949.7,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 64.6% to 33.6%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "412 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 2.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "ec5d2f91c651ce345616c7035fab6f9d",
-        "city": "Ipanema",
-        "state": "MG",
-        "recency_days": 190,
-        "total_orders": 1,
-        "total_spend": 2700.0,
-        "aov": 2700.0,
-        "favorite_category": "computers_accessories",
-        "review_score": 1.0,
-        "health_score": 26.4,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.9206,
-        "lstm_churn_prob": 0.9398,
-        "hybrid_churn_prob": 0.9011,
-        "final_churn_prob": 0.9011,
-        "churn_prob_30d": 0.5857,
-        "churn_prob_60d": 0.7659,
-        "churn_prob_90d": 0.9011,
-        "risk_velocity": 22.8,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 3510.0,
-        "revenue_at_risk": 3162.86,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.64,
-        "expected_retention_value": 1989.23,
-        "individual_retention_roi": 5683.5,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.1% to 43.3%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "190 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
         "customer_id": "ff4159b92c40ebe40454e3e6a7c35ed6",
         "city": "Marilia",
         "state": "SP",
@@ -5267,21 +4975,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 87.8,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.3227,
         "lstm_churn_prob": 0.3129,
         "hybrid_churn_prob": 0.3205,
-        "final_churn_prob": 0.3205,
+        "final_churn_prob": 0.5956,
         "churn_prob_30d": 0.2083,
         "churn_prob_60d": 0.2724,
         "churn_prob_90d": 0.3205,
         "risk_velocity": 5.9,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 8448.7,
-        "revenue_at_risk": 2707.81,
+        "revenue_at_risk": 3870.8,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.63,
         "expected_retention_value": 1670.92,
@@ -5306,6 +5014,116 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
+        "customer_id": "edf81e1f3070b9dac83ec83dacdbb9bc",
+        "city": "Brasilia",
+        "state": "DF",
+        "recency_days": 413,
+        "total_orders": 1,
+        "total_spend": 3999.0,
+        "aov": 3999.0,
+        "favorite_category": "small_appliances",
+        "review_score": 2.0,
+        "health_score": 51.0,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.6232,
+        "lstm_churn_prob": 0.6174,
+        "hybrid_churn_prob": 0.6465,
+        "final_churn_prob": 0.7983,
+        "churn_prob_30d": 0.4202,
+        "churn_prob_60d": 0.5495,
+        "churn_prob_90d": 0.6465,
+        "risk_velocity": 10.3,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 5198.7,
+        "revenue_at_risk": 3192.4,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.63,
+        "expected_retention_value": 2082.4,
+        "individual_retention_roi": 5949.7,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 64.6% to 33.6%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "412 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "ec5d2f91c651ce345616c7035fab6f9d",
+        "city": "Ipanema",
+        "state": "MG",
+        "recency_days": 190,
+        "total_orders": 1,
+        "total_spend": 2700.0,
+        "aov": 2700.0,
+        "favorite_category": "computers_accessories",
+        "review_score": 1.0,
+        "health_score": 26.4,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Loyal Customers",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.9206,
+        "lstm_churn_prob": 0.9398,
+        "hybrid_churn_prob": 0.9011,
+        "final_churn_prob": 0.9798,
+        "churn_prob_30d": 0.5857,
+        "churn_prob_60d": 0.7659,
+        "churn_prob_90d": 0.9011,
+        "risk_velocity": 22.8,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 3510.0,
+        "revenue_at_risk": 2645.46,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.64,
+        "expected_retention_value": 1989.23,
+        "individual_retention_roi": 5683.5,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.1% to 43.3%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "190 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
         "customer_id": "2ae8173a688e326821403a5b7a6858c2",
         "city": "Varginha",
         "state": "MG",
@@ -5317,21 +5135,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 57.7,
         "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6293,
         "lstm_churn_prob": 0.6249,
         "hybrid_churn_prob": 0.6392,
-        "final_churn_prob": 0.6392,
+        "final_churn_prob": 0.7982,
         "churn_prob_30d": 0.4155,
         "churn_prob_60d": 0.5433,
         "churn_prob_90d": 0.6392,
         "risk_velocity": 8.1,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 3899.86,
-        "revenue_at_risk": 2492.79,
+        "revenue_at_risk": 2394.51,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.75,
         "expected_retention_value": 1834.59,
@@ -5356,37 +5174,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "af4add6ae61530f1768eef38c9a52c05",
-        "city": "Sao Pedro",
+        "customer_id": "055ec572ac7f3c7bdd04a183830ebe59",
+        "city": "Sao Paulo",
         "state": "SP",
-        "recency_days": 356,
-        "total_orders": 1,
-        "total_spend": 1999.99,
+        "recency_days": 322,
+        "total_orders": 2,
+        "total_spend": 3999.98,
         "aov": 1999.99,
         "favorite_category": "auto",
         "review_score": 1.0,
-        "health_score": 25.9,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_score": 54.7,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8875,
-        "lstm_churn_prob": 0.9478,
-        "hybrid_churn_prob": 0.9072,
-        "final_churn_prob": 0.9072,
-        "churn_prob_30d": 0.5897,
-        "churn_prob_60d": 0.7711,
-        "churn_prob_90d": 0.9072,
-        "risk_velocity": 21.6,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 2599.99,
-        "revenue_at_risk": 2358.71,
+        "ann_churn_prob": 0.5731,
+        "lstm_churn_prob": 0.5702,
+        "hybrid_churn_prob": 0.5677,
+        "final_churn_prob": 0.5986,
+        "churn_prob_30d": 0.369,
+        "churn_prob_60d": 0.4825,
+        "churn_prob_90d": 0.5677,
+        "risk_velocity": 11.0,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 7199.96,
+        "revenue_at_risk": 2394.39,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.7,
-        "expected_retention_value": 1616.1,
-        "individual_retention_roi": 4617.4,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.7% to 43.5%.",
+        "expected_save_prob": 0.64,
+        "expected_retention_value": 2580.95,
+        "individual_retention_roi": 7374.1,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 56.8% to 29.5%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -5396,72 +5214,12 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "355 days inactive since last transaction"
+            "detail": "321 days inactive since last transaction"
           },
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "efb14cc2969129e2d865bc75be239916",
-        "city": "Bauru",
-        "state": "SP",
-        "recency_days": 349,
-        "total_orders": 1,
-        "total_spend": 1999.99,
-        "aov": 1999.99,
-        "favorite_category": "auto",
-        "review_score": 1.0,
-        "health_score": 28.7,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8408,
-        "lstm_churn_prob": 0.8676,
-        "hybrid_churn_prob": 0.8745,
-        "final_churn_prob": 0.8745,
-        "churn_prob_30d": 0.5684,
-        "churn_prob_60d": 0.7433,
-        "churn_prob_90d": 0.8745,
-        "risk_velocity": 21.4,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 2599.99,
-        "revenue_at_risk": 2273.69,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.67,
-        "expected_retention_value": 1488.37,
-        "individual_retention_roi": 4252.5,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.0% to 42.0%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "348 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           }
         ]
       },
@@ -5477,21 +5235,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 79.3,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4053,
         "lstm_churn_prob": 0.4178,
         "hybrid_churn_prob": 0.4199,
-        "final_churn_prob": 0.4199,
+        "final_churn_prob": 0.5968,
         "churn_prob_30d": 0.2729,
         "churn_prob_60d": 0.3569,
         "churn_prob_90d": 0.4199,
         "risk_velocity": 2.0,
-        "risk_trajectory": "→ Stable",
+        "risk_trajectory": "\u2192 Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 5199.87,
-        "revenue_at_risk": 2183.43,
+        "revenue_at_risk": 2387.14,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.59,
         "expected_retention_value": 1253.22,
@@ -5516,6 +5274,211 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
+        "customer_id": "da122df9eeddfedc1dc1f5349a1a690c",
+        "city": "Araruama",
+        "state": "RJ",
+        "recency_days": 430,
+        "total_orders": 2,
+        "total_spend": 7388.0,
+        "aov": 3694.0,
+        "favorite_category": "small_appliances",
+        "review_score": 5.0,
+        "health_score": 99.0,
+        "health_category": "Healthy",
+        "health_trend": "\u2191 Improving",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.1104,
+        "lstm_churn_prob": 0.1166,
+        "hybrid_churn_prob": 0.1113,
+        "final_churn_prob": 0.2972,
+        "churn_prob_30d": 0.0723,
+        "churn_prob_60d": 0.0946,
+        "churn_prob_90d": 0.1113,
+        "risk_velocity": -14.3,
+        "risk_trajectory": "\u2193 Improving",
+        "risk_tier": "LOW",
+        "predicted_clv": 13298.4,
+        "revenue_at_risk": 2195.71,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.73,
+        "expected_retention_value": 1045.48,
+        "individual_retention_roi": 2987.1,
+        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "429 days inactive since last transaction"
+          }
+        ]
+      },
+      {
+        "customer_id": "dc4802a71eae9be1dd28f5d788ceb526",
+        "city": "Campo Grande",
+        "state": "MS",
+        "recency_days": 478,
+        "total_orders": 1,
+        "total_spend": 6735.0,
+        "aov": 6735.0,
+        "favorite_category": "housewares",
+        "review_score": 5.0,
+        "health_score": 98.9,
+        "health_category": "Healthy",
+        "health_trend": "\u2191 Improving",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.1829,
+        "lstm_churn_prob": 0.191,
+        "hybrid_churn_prob": 0.1898,
+        "final_churn_prob": 0.2981,
+        "churn_prob_30d": 0.1234,
+        "churn_prob_60d": 0.1613,
+        "churn_prob_90d": 0.1898,
+        "risk_velocity": -15.6,
+        "risk_trajectory": "\u2193 Improving",
+        "risk_tier": "LOW",
+        "predicted_clv": 8755.5,
+        "revenue_at_risk": 2007.7,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.7,
+        "expected_retention_value": 1128.25,
+        "individual_retention_roi": 3223.6,
+        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "477 days inactive since last transaction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "af4add6ae61530f1768eef38c9a52c05",
+        "city": "Sao Pedro",
+        "state": "SP",
+        "recency_days": 356,
+        "total_orders": 1,
+        "total_spend": 1999.99,
+        "aov": 1999.99,
+        "favorite_category": "auto",
+        "review_score": 1.0,
+        "health_score": 25.9,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8875,
+        "lstm_churn_prob": 0.9478,
+        "hybrid_churn_prob": 0.9072,
+        "final_churn_prob": 0.98,
+        "churn_prob_30d": 0.5897,
+        "churn_prob_60d": 0.7711,
+        "churn_prob_90d": 0.9072,
+        "risk_velocity": 21.6,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 2599.99,
+        "revenue_at_risk": 1959.99,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.7,
+        "expected_retention_value": 1616.1,
+        "individual_retention_roi": 4617.4,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.7% to 43.5%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "355 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "efb14cc2969129e2d865bc75be239916",
+        "city": "Bauru",
+        "state": "SP",
+        "recency_days": 349,
+        "total_orders": 1,
+        "total_spend": 1999.99,
+        "aov": 1999.99,
+        "favorite_category": "auto",
+        "review_score": 1.0,
+        "health_score": 28.7,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8408,
+        "lstm_churn_prob": 0.8676,
+        "hybrid_churn_prob": 0.8745,
+        "final_churn_prob": 0.9793,
+        "churn_prob_30d": 0.5684,
+        "churn_prob_60d": 0.7433,
+        "churn_prob_90d": 0.8745,
+        "risk_velocity": 21.4,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 2599.99,
+        "revenue_at_risk": 1958.59,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.67,
+        "expected_retention_value": 1488.37,
+        "individual_retention_roi": 4252.5,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 86.2% to 42.0%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "348 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
         "customer_id": "4c4645e724402ec958ead69dbf1ade6c",
         "city": "Sao Jose Dos Campos",
         "state": "SP",
@@ -5527,21 +5490,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.5,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8281,
         "lstm_churn_prob": 0.7946,
         "hybrid_churn_prob": 0.8058,
-        "final_churn_prob": 0.8058,
+        "final_churn_prob": 0.9782,
         "churn_prob_30d": 0.5238,
         "churn_prob_60d": 0.6849,
         "churn_prob_90d": 0.8058,
         "risk_velocity": 21.0,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
-        "revenue_at_risk": 2095.07,
+        "revenue_at_risk": 1956.39,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.58,
         "expected_retention_value": 1180.14,
@@ -5561,7 +5524,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5582,21 +5545,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.8,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.811,
         "lstm_churn_prob": 0.7974,
         "hybrid_churn_prob": 0.8028,
-        "final_churn_prob": 0.8028,
+        "final_churn_prob": 0.978,
         "churn_prob_30d": 0.5218,
         "churn_prob_60d": 0.6824,
         "churn_prob_90d": 0.8028,
         "risk_velocity": 22.2,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2599.99,
-        "revenue_at_risk": 2087.27,
+        "revenue_at_risk": 1955.99,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.62,
         "expected_retention_value": 1259.11,
@@ -5616,117 +5579,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "244024d753ef305e66b7ef97f3813ebd",
-        "city": "Porto Alegre",
-        "state": "RS",
-        "recency_days": 407,
-        "total_orders": 1,
-        "total_spend": 1854.0,
-        "aov": 1854.0,
-        "favorite_category": "garden_tools",
-        "review_score": 1.0,
-        "health_score": 30.5,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Cannot Lose Them",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8299,
-        "lstm_churn_prob": 0.877,
-        "hybrid_churn_prob": 0.8528,
-        "final_churn_prob": 0.8528,
-        "churn_prob_30d": 0.5543,
-        "churn_prob_60d": 0.7249,
-        "churn_prob_90d": 0.8528,
-        "risk_velocity": 27.5,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 2410.2,
-        "revenue_at_risk": 2055.42,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.63,
-        "expected_retention_value": 1259.91,
-        "individual_retention_roi": 3599.7,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 85.3% to 40.9%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "406 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "141b3509663d0e6c8735da7d62fcfe16",
-        "city": "Araraquara",
-        "state": "SP",
-        "recency_days": 172,
-        "total_orders": 1,
-        "total_spend": 1749.99,
-        "aov": 1749.99,
-        "favorite_category": "computers_accessories",
-        "review_score": 1.0,
-        "health_score": 26.7,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Need Attention",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8765,
-        "lstm_churn_prob": 0.871,
-        "hybrid_churn_prob": 0.8981,
-        "final_churn_prob": 0.8981,
-        "churn_prob_30d": 0.5838,
-        "churn_prob_60d": 0.7634,
-        "churn_prob_90d": 0.8981,
-        "risk_velocity": 21.4,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 2274.99,
-        "revenue_at_risk": 2043.17,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.63,
-        "expected_retention_value": 1252.2,
-        "individual_retention_roi": 3577.7,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 89.8% to 43.1%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "171 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5747,21 +5600,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 33.4,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8209,
         "lstm_churn_prob": 0.7862,
         "hybrid_churn_prob": 0.8193,
-        "final_churn_prob": 0.8193,
+        "final_churn_prob": 0.9785,
         "churn_prob_30d": 0.5325,
         "churn_prob_60d": 0.6964,
         "churn_prob_90d": 0.8193,
         "risk_velocity": 24.5,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2468.7,
-        "revenue_at_risk": 2022.61,
+        "revenue_at_risk": 1858.17,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.59,
         "expected_retention_value": 1158.34,
@@ -5781,7 +5634,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5791,37 +5644,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "613835be7274f39d246f0c9c264ca132",
-        "city": "Maua",
-        "state": "SP",
-        "recency_days": 140,
+        "customer_id": "244024d753ef305e66b7ef97f3813ebd",
+        "city": "Porto Alegre",
+        "state": "RS",
+        "recency_days": 407,
         "total_orders": 1,
-        "total_spend": 1997.0,
-        "aov": 1997.0,
-        "favorite_category": "musical_instruments",
+        "total_spend": 1854.0,
+        "aov": 1854.0,
+        "favorite_category": "garden_tools",
         "review_score": 1.0,
-        "health_score": 39.2,
+        "health_score": 30.5,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Need Attention",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.739,
-        "lstm_churn_prob": 0.7471,
-        "hybrid_churn_prob": 0.7503,
-        "final_churn_prob": 0.7503,
-        "churn_prob_30d": 0.4877,
-        "churn_prob_60d": 0.6378,
-        "churn_prob_90d": 0.7503,
-        "risk_velocity": 23.2,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "ann_churn_prob": 0.8299,
+        "lstm_churn_prob": 0.877,
+        "hybrid_churn_prob": 0.8528,
+        "final_churn_prob": 0.9788,
+        "churn_prob_30d": 0.5543,
+        "churn_prob_60d": 0.7249,
+        "churn_prob_90d": 0.8528,
+        "risk_velocity": 27.5,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
-        "predicted_clv": 2596.1,
-        "revenue_at_risk": 1947.85,
+        "predicted_clv": 2410.2,
+        "revenue_at_risk": 1814.7,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.66,
-        "expected_retention_value": 1250.58,
-        "individual_retention_roi": 3573.1,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 75.0% to 36.0%.",
+        "expected_save_prob": 0.63,
+        "expected_retention_value": 1259.91,
+        "individual_retention_roi": 3599.7,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 85.3% to 40.9%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -5831,12 +5684,12 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "139 days inactive since last transaction"
+            "detail": "406 days inactive since last transaction"
           },
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -5857,21 +5710,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.0,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4812,
         "lstm_churn_prob": 0.4614,
         "hybrid_churn_prob": 0.471,
-        "final_churn_prob": 0.471,
+        "final_churn_prob": 0.5978,
         "churn_prob_30d": 0.3062,
         "churn_prob_60d": 0.4004,
         "churn_prob_90d": 0.471,
         "risk_velocity": 1.2,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3898.7,
-        "revenue_at_risk": 1836.29,
+        "revenue_at_risk": 1792.8,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.57,
         "expected_retention_value": 1011.69,
@@ -5896,61 +5749,6 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "1d10557878391272c010c263dba24b66",
-        "city": "Buritizeiro",
-        "state": "MG",
-        "recency_days": 429,
-        "total_orders": 1,
-        "total_spend": 1596.0,
-        "aov": 1596.0,
-        "favorite_category": "auto",
-        "review_score": 1.0,
-        "health_score": 28.0,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Cannot Lose Them",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8472,
-        "lstm_churn_prob": 0.9166,
-        "hybrid_churn_prob": 0.8824,
-        "final_churn_prob": 0.8824,
-        "churn_prob_30d": 0.5736,
-        "churn_prob_60d": 0.75,
-        "churn_prob_90d": 0.8824,
-        "risk_velocity": 25.3,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 2074.8,
-        "revenue_at_risk": 1830.8,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.57,
-        "expected_retention_value": 1008.56,
-        "individual_retention_roi": 2881.6,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 88.2% to 42.4%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "429 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
         "customer_id": "c6111f70f40b3420e387493c627c27fa",
         "city": "Angra Dos Reis",
         "state": "RJ",
@@ -5962,21 +5760,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.7,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4702,
         "lstm_churn_prob": 0.4607,
         "hybrid_churn_prob": 0.4621,
-        "final_churn_prob": 0.4621,
+        "final_churn_prob": 0.5976,
         "churn_prob_30d": 0.3004,
         "churn_prob_60d": 0.3928,
         "churn_prob_90d": 0.4621,
         "risk_velocity": 6.3,
-        "risk_trajectory": "→ Stable",
+        "risk_trajectory": "\u2192 Stable",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3899.99,
-        "revenue_at_risk": 1802.19,
+        "revenue_at_risk": 1792.79,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.71,
         "expected_retention_value": 1244.55,
@@ -6012,21 +5810,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 5.0,
         "health_score": 75.8,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.4702,
         "lstm_churn_prob": 0.4388,
         "hybrid_churn_prob": 0.4617,
-        "final_churn_prob": 0.4617,
+        "final_churn_prob": 0.5976,
         "churn_prob_30d": 0.3001,
         "churn_prob_60d": 0.3924,
         "churn_prob_90d": 0.4617,
         "risk_velocity": -0.1,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "MEDIUM",
         "predicted_clv": 3899.86,
-        "revenue_at_risk": 1800.57,
+        "revenue_at_risk": 1792.73,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.67,
         "expected_retention_value": 1171.38,
@@ -6051,6 +5849,166 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
+        "customer_id": "141b3509663d0e6c8735da7d62fcfe16",
+        "city": "Araraquara",
+        "state": "SP",
+        "recency_days": 172,
+        "total_orders": 1,
+        "total_spend": 1749.99,
+        "aov": 1749.99,
+        "favorite_category": "computers_accessories",
+        "review_score": 1.0,
+        "health_score": 26.7,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Need Attention",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8765,
+        "lstm_churn_prob": 0.871,
+        "hybrid_churn_prob": 0.8981,
+        "final_churn_prob": 0.9797,
+        "churn_prob_30d": 0.5838,
+        "churn_prob_60d": 0.7634,
+        "churn_prob_90d": 0.8981,
+        "risk_velocity": 21.4,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 2274.99,
+        "revenue_at_risk": 1714.47,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.63,
+        "expected_retention_value": 1252.2,
+        "individual_retention_roi": 3577.7,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 89.8% to 43.1%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "171 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "613835be7274f39d246f0c9c264ca132",
+        "city": "Maua",
+        "state": "SP",
+        "recency_days": 140,
+        "total_orders": 1,
+        "total_spend": 1997.0,
+        "aov": 1997.0,
+        "favorite_category": "musical_instruments",
+        "review_score": 1.0,
+        "health_score": 39.2,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Need Attention",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.739,
+        "lstm_churn_prob": 0.7471,
+        "hybrid_churn_prob": 0.7503,
+        "final_churn_prob": 0.7989,
+        "churn_prob_30d": 0.4877,
+        "churn_prob_60d": 0.6378,
+        "churn_prob_90d": 0.7503,
+        "risk_velocity": 23.2,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "HIGH",
+        "predicted_clv": 2596.1,
+        "revenue_at_risk": 1595.4,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.66,
+        "expected_retention_value": 1250.58,
+        "individual_retention_roi": 3573.1,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 75.0% to 36.0%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "139 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "81d8bf17c9e450228efeedd2603edfaa",
+        "city": "Gurupi",
+        "state": "TO",
+        "recency_days": 344,
+        "total_orders": 1,
+        "total_spend": 2649.99,
+        "aov": 2649.99,
+        "favorite_category": "computers_accessories",
+        "review_score": 5.0,
+        "health_score": 80.9,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.3957,
+        "lstm_churn_prob": 0.4044,
+        "hybrid_churn_prob": 0.4011,
+        "final_churn_prob": 0.5965,
+        "churn_prob_30d": 0.2607,
+        "churn_prob_60d": 0.3409,
+        "churn_prob_90d": 0.4011,
+        "risk_velocity": 6.0,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 3444.99,
+        "revenue_at_risk": 1580.72,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.56,
+        "expected_retention_value": 738.8,
+        "individual_retention_roi": 2110.9,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 40.1% to 24.9%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "343 days inactive since last transaction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
         "customer_id": "d1c843178ca07004edbe2ac277b35bcc",
         "city": "Rio De Janeiro",
         "state": "RJ",
@@ -6062,21 +6020,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 34.5,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.801,
         "lstm_churn_prob": 0.7738,
         "hybrid_churn_prob": 0.8053,
-        "final_churn_prob": 0.8053,
+        "final_churn_prob": 0.9781,
         "churn_prob_30d": 0.5234,
         "churn_prob_60d": 0.6845,
         "churn_prob_90d": 0.8053,
         "risk_velocity": 18.3,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 2079.99,
-        "revenue_at_risk": 1675.02,
+        "revenue_at_risk": 1564.95,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.62,
         "expected_retention_value": 1003.51,
@@ -6096,7 +6054,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6106,87 +6064,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "dc4802a71eae9be1dd28f5d788ceb526",
-        "city": "Campo Grande",
-        "state": "MS",
-        "recency_days": 478,
-        "total_orders": 1,
-        "total_spend": 6735.0,
-        "aov": 6735.0,
-        "favorite_category": "housewares",
-        "review_score": 5.0,
-        "health_score": 98.9,
-        "health_category": "Healthy",
-        "health_trend": "↑ Improving",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.1829,
-        "lstm_churn_prob": 0.191,
-        "hybrid_churn_prob": 0.1898,
-        "final_churn_prob": 0.1898,
-        "churn_prob_30d": 0.1234,
-        "churn_prob_60d": 0.1613,
-        "churn_prob_90d": 0.1898,
-        "risk_velocity": -15.6,
-        "risk_trajectory": "↓ Improving",
-        "risk_tier": "LOW",
-        "predicted_clv": 8755.5,
-        "revenue_at_risk": 1661.79,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.7,
-        "expected_retention_value": 1128.25,
-        "individual_retention_roi": 3223.6,
-        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "477 days inactive since last transaction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "3dc72442480b0d7485969ce3125d0256",
-        "city": "Caratinga",
+        "customer_id": "1d10557878391272c010c263dba24b66",
+        "city": "Buritizeiro",
         "state": "MG",
-        "recency_days": 183,
+        "recency_days": 429,
         "total_orders": 1,
-        "total_spend": 1399.5,
-        "aov": 1399.5,
-        "favorite_category": "watches_gifts",
+        "total_spend": 1596.0,
+        "aov": 1596.0,
+        "favorite_category": "auto",
         "review_score": 1.0,
-        "health_score": 26.0,
+        "health_score": 28.0,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Need Attention",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8787,
-        "lstm_churn_prob": 0.9147,
-        "hybrid_churn_prob": 0.9064,
-        "final_churn_prob": 0.9064,
-        "churn_prob_30d": 0.5892,
-        "churn_prob_60d": 0.7704,
-        "churn_prob_90d": 0.9064,
-        "risk_velocity": 24.6,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "ann_churn_prob": 0.8472,
+        "lstm_churn_prob": 0.9166,
+        "hybrid_churn_prob": 0.8824,
+        "final_churn_prob": 0.9795,
+        "churn_prob_30d": 0.5736,
+        "churn_prob_60d": 0.75,
+        "churn_prob_90d": 0.8824,
+        "risk_velocity": 25.3,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
-        "predicted_clv": 1819.35,
-        "revenue_at_risk": 1649.06,
+        "predicted_clv": 2074.8,
+        "revenue_at_risk": 1563.28,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.74,
-        "expected_retention_value": 1185.3,
-        "individual_retention_roi": 3386.6,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.6% to 43.5%.",
+        "expected_save_prob": 0.57,
+        "expected_retention_value": 1008.56,
+        "individual_retention_roi": 2881.6,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 88.2% to 42.4%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -6196,12 +6104,62 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "182 days inactive since last transaction"
+            "detail": "429 days inactive since last transaction"
           },
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "7814db11654d2bf3b43bae828b6eee05",
+        "city": "Sao Paulo",
+        "state": "SP",
+        "recency_days": 424,
+        "total_orders": 1,
+        "total_spend": 2589.0,
+        "aov": 2589.0,
+        "favorite_category": "small_appliances",
+        "review_score": 4.0,
+        "health_score": 77.1,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.4013,
+        "lstm_churn_prob": 0.4147,
+        "hybrid_churn_prob": 0.4105,
+        "final_churn_prob": 0.5966,
+        "churn_prob_30d": 0.2668,
+        "churn_prob_60d": 0.3489,
+        "churn_prob_90d": 0.4105,
+        "risk_velocity": 5.3,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 3365.7,
+        "revenue_at_risk": 1544.6,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.71,
+        "expected_retention_value": 945.95,
+        "individual_retention_roi": 2702.7,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 41.0% to 25.5%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "424 days inactive since last transaction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6222,21 +6180,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 53.6,
         "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7039,
         "lstm_churn_prob": 0.6857,
         "hybrid_churn_prob": 0.6869,
-        "final_churn_prob": 0.6869,
+        "final_churn_prob": 0.7986,
         "churn_prob_30d": 0.4465,
         "churn_prob_60d": 0.5839,
         "churn_prob_90d": 0.6869,
         "risk_velocity": 6.2,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2337.4,
-        "revenue_at_risk": 1605.56,
+        "revenue_at_risk": 1435.88,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.64,
         "expected_retention_value": 992.56,
@@ -6272,21 +6230,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 2.0,
         "health_score": 36.6,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7935,
         "lstm_churn_prob": 0.7839,
         "hybrid_churn_prob": 0.8165,
-        "final_churn_prob": 0.8165,
+        "final_churn_prob": 0.9783,
         "churn_prob_30d": 0.5307,
         "churn_prob_60d": 0.694,
         "churn_prob_90d": 0.8165,
         "risk_velocity": 24.9,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1896.7,
-        "revenue_at_risk": 1548.66,
+        "revenue_at_risk": 1427.34,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.64,
         "expected_retention_value": 956.14,
@@ -6306,7 +6264,167 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 2.0 ★ with merchant or delivery friction"
+            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "3dc72442480b0d7485969ce3125d0256",
+        "city": "Caratinga",
+        "state": "MG",
+        "recency_days": 183,
+        "total_orders": 1,
+        "total_spend": 1399.5,
+        "aov": 1399.5,
+        "favorite_category": "watches_gifts",
+        "review_score": 1.0,
+        "health_score": 26.0,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Need Attention",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8787,
+        "lstm_churn_prob": 0.9147,
+        "hybrid_churn_prob": 0.9064,
+        "final_churn_prob": 0.9799,
+        "churn_prob_30d": 0.5892,
+        "churn_prob_60d": 0.7704,
+        "churn_prob_90d": 0.9064,
+        "risk_velocity": 24.6,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 1819.35,
+        "revenue_at_risk": 1371.37,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.74,
+        "expected_retention_value": 1185.3,
+        "individual_retention_roi": 3386.6,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 90.6% to 43.5%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "182 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "774c075fecf66d485d49c837d03c71e9",
+        "city": "Januaria",
+        "state": "MG",
+        "recency_days": 161,
+        "total_orders": 1,
+        "total_spend": 1384.0,
+        "aov": 1384.0,
+        "favorite_category": "construction_tools_construction",
+        "review_score": 2.0,
+        "health_score": 37.9,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Loyal Customers",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.7868,
+        "lstm_churn_prob": 0.7998,
+        "hybrid_churn_prob": 0.8012,
+        "final_churn_prob": 0.9779,
+        "churn_prob_30d": 0.5208,
+        "churn_prob_60d": 0.681,
+        "churn_prob_90d": 0.8012,
+        "risk_velocity": 23.0,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 1799.2,
+        "revenue_at_risk": 1353.41,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.68,
+        "expected_retention_value": 945.23,
+        "individual_retention_roi": 2700.7,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 80.1% to 38.5%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "160 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 2.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "2f0ce2fb407114dbfa866f22c7cf9e9d",
+        "city": "Aracaju",
+        "state": "SE",
+        "recency_days": 63,
+        "total_orders": 1,
+        "total_spend": 1670.0,
+        "aov": 1670.0,
+        "favorite_category": "garden_tools",
+        "review_score": 1.0,
+        "health_score": 45.1,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "New Promising",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.6717,
+        "lstm_churn_prob": 0.71,
+        "hybrid_churn_prob": 0.6817,
+        "final_churn_prob": 0.7985,
+        "churn_prob_30d": 0.4431,
+        "churn_prob_60d": 0.5794,
+        "churn_prob_90d": 0.6817,
+        "risk_velocity": 11.5,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 2171.0,
+        "revenue_at_risk": 1333.49,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.58,
+        "expected_retention_value": 823.38,
+        "individual_retention_roi": 2352.5,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 68.2% to 35.4%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6327,21 +6445,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 42.2,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "Need Attention",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.7246,
         "lstm_churn_prob": 0.7411,
         "hybrid_churn_prob": 0.7157,
-        "final_churn_prob": 0.7157,
+        "final_churn_prob": 0.7988,
         "churn_prob_30d": 0.4652,
         "churn_prob_60d": 0.6083,
         "churn_prob_90d": 0.7157,
         "risk_velocity": 9.9,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 2145.0,
-        "revenue_at_risk": 1535.18,
+        "revenue_at_risk": 1318.02,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.73,
         "expected_retention_value": 1085.68,
@@ -6361,267 +6479,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "a5854c79718864cb7023094de2c0f8f8",
-        "city": "Rio De Janeiro",
-        "state": "RJ",
-        "recency_days": 351,
-        "total_orders": 1,
-        "total_spend": 1999.99,
-        "aov": 1999.99,
-        "favorite_category": "auto",
-        "review_score": 3.0,
-        "health_score": 59.8,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.5656,
-        "lstm_churn_prob": 0.5722,
-        "hybrid_churn_prob": 0.5786,
-        "final_churn_prob": 0.5786,
-        "churn_prob_30d": 0.3761,
-        "churn_prob_60d": 0.4918,
-        "churn_prob_90d": 0.5786,
-        "risk_velocity": 12.3,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2599.99,
-        "revenue_at_risk": 1504.35,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.64,
-        "expected_retention_value": 927.78,
-        "individual_retention_roi": 2650.8,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.9% to 30.1%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "351 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "HIGH",
-            "detail": "Rating 3.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "fac9eb2c3c550f64f779646726710b59",
-        "city": "Campo Grande",
-        "state": "MS",
-        "recency_days": 143,
-        "total_orders": 1,
-        "total_spend": 1599.0,
-        "aov": 1599.0,
-        "favorite_category": "sports_leisure",
-        "review_score": 1.0,
-        "health_score": 41.8,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.7128,
-        "lstm_churn_prob": 0.7366,
-        "hybrid_churn_prob": 0.7198,
-        "final_churn_prob": 0.7198,
-        "churn_prob_30d": 0.4679,
-        "churn_prob_60d": 0.6118,
-        "churn_prob_90d": 0.7198,
-        "risk_velocity": 11.6,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2078.7,
-        "revenue_at_risk": 1496.25,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.6,
-        "expected_retention_value": 862.75,
-        "individual_retention_roi": 2465.0,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 72.0% to 37.4%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "142 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "753bc5d6efa9e49a03e34cf521a9e124",
-        "city": "Quissama",
-        "state": "RJ",
-        "recency_days": 607,
-        "total_orders": 1,
-        "total_spend": 1299.99,
-        "aov": 1299.99,
-        "favorite_category": "sports_leisure",
-        "review_score": 1.0,
-        "health_score": 28.5,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8513,
-        "lstm_churn_prob": 0.8901,
-        "hybrid_churn_prob": 0.8768,
-        "final_churn_prob": 0.8768,
-        "churn_prob_30d": 0.5699,
-        "churn_prob_60d": 0.7453,
-        "churn_prob_90d": 0.8768,
-        "risk_velocity": 21.8,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1689.99,
-        "revenue_at_risk": 1481.78,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.6,
-        "expected_retention_value": 854.07,
-        "individual_retention_roi": 2440.2,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.7% to 42.1%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "606 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "da122df9eeddfedc1dc1f5349a1a690c",
-        "city": "Araruama",
-        "state": "RJ",
-        "recency_days": 430,
-        "total_orders": 2,
-        "total_spend": 7388.0,
-        "aov": 3694.0,
-        "favorite_category": "small_appliances",
-        "review_score": 5.0,
-        "health_score": 99.0,
-        "health_category": "Healthy",
-        "health_trend": "↑ Improving",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.1104,
-        "lstm_churn_prob": 0.1166,
-        "hybrid_churn_prob": 0.1113,
-        "final_churn_prob": 0.1113,
-        "churn_prob_30d": 0.0723,
-        "churn_prob_60d": 0.0946,
-        "churn_prob_90d": 0.1113,
-        "risk_velocity": -14.3,
-        "risk_trajectory": "↓ Improving",
-        "risk_tier": "LOW",
-        "predicted_clv": 13298.4,
-        "revenue_at_risk": 1480.11,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.73,
-        "expected_retention_value": 1045.48,
-        "individual_retention_roi": 2987.1,
-        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "429 days inactive since last transaction"
-          }
-        ]
-      },
-      {
-        "customer_id": "2f0ce2fb407114dbfa866f22c7cf9e9d",
-        "city": "Aracaju",
-        "state": "SE",
-        "recency_days": 63,
-        "total_orders": 1,
-        "total_spend": 1670.0,
-        "aov": 1670.0,
-        "favorite_category": "garden_tools",
-        "review_score": 1.0,
-        "health_score": 45.1,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "New Promising",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.6717,
-        "lstm_churn_prob": 0.71,
-        "hybrid_churn_prob": 0.6817,
-        "final_churn_prob": 0.6817,
-        "churn_prob_30d": 0.4431,
-        "churn_prob_60d": 0.5794,
-        "churn_prob_90d": 0.6817,
-        "risk_velocity": 11.5,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2171.0,
-        "revenue_at_risk": 1479.97,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.58,
-        "expected_retention_value": 823.38,
-        "individual_retention_roi": 2352.5,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 68.2% to 35.4%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6642,21 +6500,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 1.0,
         "health_score": 31.2,
         "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.8187,
         "lstm_churn_prob": 0.8498,
         "hybrid_churn_prob": 0.845,
-        "final_churn_prob": 0.845,
+        "final_churn_prob": 0.9786,
         "churn_prob_30d": 0.5492,
         "churn_prob_60d": 0.7182,
         "churn_prob_90d": 0.845,
         "risk_velocity": 26.9,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
         "risk_tier": "CRITICAL",
         "predicted_clv": 1742.0,
-        "revenue_at_risk": 1471.99,
+        "revenue_at_risk": 1311.32,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.57,
         "expected_retention_value": 804.03,
@@ -6676,7 +6534,332 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "03adb96012772d4374285b6a701f3da9",
+        "city": "Sao Sebastiao",
+        "state": "AL",
+        "recency_days": 296,
+        "total_orders": 1,
+        "total_spend": 2159.98,
+        "aov": 2159.98,
+        "favorite_category": "computers_accessories",
+        "review_score": 5.0,
+        "health_score": 86.7,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "Cannot Lose Them",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.3233,
+        "lstm_churn_prob": 0.3388,
+        "hybrid_churn_prob": 0.3329,
+        "final_churn_prob": 0.5958,
+        "churn_prob_30d": 0.2164,
+        "churn_prob_60d": 0.283,
+        "churn_prob_90d": 0.3329,
+        "risk_velocity": 2.5,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2807.97,
+        "revenue_at_risk": 1286.92,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.6,
+        "expected_retention_value": 525.86,
+        "individual_retention_roi": 1502.5,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 33.3% to 20.6%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "295 days inactive since last transaction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "fac9eb2c3c550f64f779646726710b59",
+        "city": "Campo Grande",
+        "state": "MS",
+        "recency_days": 143,
+        "total_orders": 1,
+        "total_spend": 1599.0,
+        "aov": 1599.0,
+        "favorite_category": "sports_leisure",
+        "review_score": 1.0,
+        "health_score": 41.8,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Loyal Customers",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.7128,
+        "lstm_churn_prob": 0.7366,
+        "hybrid_churn_prob": 0.7198,
+        "final_churn_prob": 0.7988,
+        "churn_prob_30d": 0.4679,
+        "churn_prob_60d": 0.6118,
+        "churn_prob_90d": 0.7198,
+        "risk_velocity": 11.6,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 2078.7,
+        "revenue_at_risk": 1277.28,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.6,
+        "expected_retention_value": 862.75,
+        "individual_retention_roi": 2465.0,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 72.0% to 37.4%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "142 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "5bc4d654dc4eb95cbd977eafadb38383",
+        "city": "Bom Jesus Da Lapa",
+        "state": "BA",
+        "recency_days": 144,
+        "total_orders": 1,
+        "total_spend": 1599.0,
+        "aov": 1599.0,
+        "favorite_category": "sports_leisure",
+        "review_score": 1.0,
+        "health_score": 49.2,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "Need Attention",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.6298,
+        "lstm_churn_prob": 0.625,
+        "hybrid_churn_prob": 0.6334,
+        "final_churn_prob": 0.7981,
+        "churn_prob_30d": 0.4117,
+        "churn_prob_60d": 0.5384,
+        "churn_prob_90d": 0.6334,
+        "risk_velocity": 8.7,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 2078.7,
+        "revenue_at_risk": 1276.16,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.57,
+        "expected_retention_value": 715.49,
+        "individual_retention_roi": 2044.3,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 63.3% to 32.9%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "144 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "753bc5d6efa9e49a03e34cf521a9e124",
+        "city": "Quissama",
+        "state": "RJ",
+        "recency_days": 607,
+        "total_orders": 1,
+        "total_spend": 1299.99,
+        "aov": 1299.99,
+        "favorite_category": "sports_leisure",
+        "review_score": 1.0,
+        "health_score": 28.5,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8513,
+        "lstm_churn_prob": 0.8901,
+        "hybrid_churn_prob": 0.8768,
+        "final_churn_prob": 0.9794,
+        "churn_prob_30d": 0.5699,
+        "churn_prob_60d": 0.7453,
+        "churn_prob_90d": 0.8768,
+        "risk_velocity": 21.8,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 1689.99,
+        "revenue_at_risk": 1273.21,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.6,
+        "expected_retention_value": 854.07,
+        "individual_retention_roi": 2440.2,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.7% to 42.1%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "606 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "233ceaabd644ab5ae86989bf16b4d70c",
+        "city": "Campo Grande",
+        "state": "MS",
+        "recency_days": 344,
+        "total_orders": 1,
+        "total_spend": 1250.0,
+        "aov": 1250.0,
+        "favorite_category": "garden_tools",
+        "review_score": 1.0,
+        "health_score": 29.4,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
+        "rfm_segment": "Cannot Lose Them",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.8743,
+        "lstm_churn_prob": 0.8633,
+        "hybrid_churn_prob": 0.8654,
+        "final_churn_prob": 0.979,
+        "churn_prob_30d": 0.5625,
+        "churn_prob_60d": 0.7356,
+        "churn_prob_90d": 0.8654,
+        "risk_velocity": 22.6,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 1625.0,
+        "revenue_at_risk": 1223.75,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.69,
+        "expected_retention_value": 935.33,
+        "individual_retention_roi": 2672.4,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 86.5% to 41.5%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "343 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "a5854c79718864cb7023094de2c0f8f8",
+        "city": "Rio De Janeiro",
+        "state": "RJ",
+        "recency_days": 351,
+        "total_orders": 1,
+        "total_spend": 1999.99,
+        "aov": 1999.99,
+        "favorite_category": "auto",
+        "review_score": 3.0,
+        "health_score": 59.8,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.5656,
+        "lstm_churn_prob": 0.5722,
+        "hybrid_churn_prob": 0.5786,
+        "final_churn_prob": 0.5989,
+        "churn_prob_30d": 0.3761,
+        "churn_prob_60d": 0.4918,
+        "churn_prob_90d": 0.5786,
+        "risk_velocity": 12.3,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2599.99,
+        "revenue_at_risk": 1197.79,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.64,
+        "expected_retention_value": 927.78,
+        "individual_retention_roi": 2650.8,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.9% to 30.1%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "351 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "HIGH",
+            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6697,21 +6880,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 4.0,
         "health_score": 63.6,
         "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.5797,
         "lstm_churn_prob": 0.5973,
         "hybrid_churn_prob": 0.5689,
-        "final_churn_prob": 0.5689,
+        "final_churn_prob": 0.5986,
         "churn_prob_30d": 0.3698,
         "churn_prob_60d": 0.4836,
         "churn_prob_90d": 0.5689,
         "risk_velocity": 10.8,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
         "predicted_clv": 2585.7,
-        "revenue_at_risk": 1471.0,
+        "revenue_at_risk": 1190.62,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.73,
         "expected_retention_value": 1038.83,
@@ -6736,147 +6919,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "774c075fecf66d485d49c837d03c71e9",
-        "city": "Januaria",
-        "state": "MG",
-        "recency_days": 161,
+        "customer_id": "44975ad30406e58b8c7f2a8dae4c46f8",
+        "city": "Catole Do Rocha",
+        "state": "PB",
+        "recency_days": 230,
         "total_orders": 1,
-        "total_spend": 1384.0,
-        "aov": 1384.0,
-        "favorite_category": "construction_tools_construction",
-        "review_score": 2.0,
-        "health_score": 37.9,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.7868,
-        "lstm_churn_prob": 0.7998,
-        "hybrid_churn_prob": 0.8012,
-        "final_churn_prob": 0.8012,
-        "churn_prob_30d": 0.5208,
-        "churn_prob_60d": 0.681,
-        "churn_prob_90d": 0.8012,
-        "risk_velocity": 23.0,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1799.2,
-        "revenue_at_risk": 1441.52,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.68,
-        "expected_retention_value": 945.23,
-        "individual_retention_roi": 2700.7,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 80.1% to 38.5%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "160 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 2.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "8637975a0cb5150b10528f5697511668",
-        "city": "Caxias Do Sul",
-        "state": "RS",
-        "recency_days": 391,
-        "total_orders": 1,
-        "total_spend": 1878.33,
-        "aov": 1878.33,
-        "favorite_category": "pet_shop",
-        "review_score": 3.0,
-        "health_score": 60.0,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.5699,
-        "lstm_churn_prob": 0.5677,
-        "hybrid_churn_prob": 0.5761,
-        "final_churn_prob": 0.5761,
-        "churn_prob_30d": 0.3745,
-        "churn_prob_60d": 0.4897,
-        "churn_prob_90d": 0.5761,
-        "risk_velocity": 9.1,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2441.83,
-        "revenue_at_risk": 1406.74,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.7,
-        "expected_retention_value": 949.72,
-        "individual_retention_roi": 2713.5,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.6% to 30.0%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "390 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "HIGH",
-            "detail": "Rating 3.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "233ceaabd644ab5ae86989bf16b4d70c",
-        "city": "Campo Grande",
-        "state": "MS",
-        "recency_days": 344,
-        "total_orders": 1,
-        "total_spend": 1250.0,
-        "aov": 1250.0,
-        "favorite_category": "garden_tools",
-        "review_score": 1.0,
-        "health_score": 29.4,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
+        "total_spend": 1989.0,
+        "aov": 1989.0,
+        "favorite_category": "other",
+        "review_score": 5.0,
+        "health_score": 76.4,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8743,
-        "lstm_churn_prob": 0.8633,
-        "hybrid_churn_prob": 0.8654,
-        "final_churn_prob": 0.8654,
-        "churn_prob_30d": 0.5625,
-        "churn_prob_60d": 0.7356,
-        "churn_prob_90d": 0.8654,
-        "risk_velocity": 22.6,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1625.0,
-        "revenue_at_risk": 1406.28,
+        "ann_churn_prob": 0.4472,
+        "lstm_churn_prob": 0.4479,
+        "hybrid_churn_prob": 0.4547,
+        "final_churn_prob": 0.5973,
+        "churn_prob_30d": 0.2956,
+        "churn_prob_60d": 0.3865,
+        "churn_prob_90d": 0.4547,
+        "risk_velocity": -1.3,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2585.7,
+        "revenue_at_risk": 1188.03,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.69,
-        "expected_retention_value": 935.33,
-        "individual_retention_roi": 2672.4,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 86.5% to 41.5%.",
+        "expected_save_prob": 0.75,
+        "expected_retention_value": 846.79,
+        "individual_retention_roi": 2419.4,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 45.5% to 28.2%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -6886,12 +6959,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "343 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "230 days inactive since last transaction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -6901,37 +6969,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "81d8bf17c9e450228efeedd2603edfaa",
-        "city": "Gurupi",
-        "state": "TO",
-        "recency_days": 344,
+        "customer_id": "5e713be0853d8986528d7869a0811d2b",
+        "city": "Belem",
+        "state": "PA",
+        "recency_days": 486,
         "total_orders": 1,
-        "total_spend": 2649.99,
-        "aov": 2649.99,
-        "favorite_category": "computers_accessories",
+        "total_spend": 3980.0,
+        "aov": 3980.0,
+        "favorite_category": "other",
         "review_score": 5.0,
-        "health_score": 80.9,
+        "health_score": 99.0,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
+        "health_trend": "\u2191 Improving",
+        "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.3957,
-        "lstm_churn_prob": 0.4044,
-        "hybrid_churn_prob": 0.4011,
-        "final_churn_prob": 0.4011,
-        "churn_prob_30d": 0.2607,
-        "churn_prob_60d": 0.3409,
-        "churn_prob_90d": 0.4011,
-        "risk_velocity": 6.0,
-        "risk_trajectory": "→ Stable",
-        "risk_tier": "MEDIUM",
-        "predicted_clv": 3444.99,
-        "revenue_at_risk": 1381.79,
+        "ann_churn_prob": 0.14,
+        "lstm_churn_prob": 0.1363,
+        "hybrid_churn_prob": 0.1413,
+        "final_churn_prob": 0.2975,
+        "churn_prob_30d": 0.0918,
+        "churn_prob_60d": 0.1201,
+        "churn_prob_90d": 0.1413,
+        "risk_velocity": -3.0,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "LOW",
+        "predicted_clv": 5174.0,
+        "revenue_at_risk": 1184.05,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.56,
-        "expected_retention_value": 738.8,
-        "individual_retention_roi": 2110.9,
-        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 40.1% to 24.9%.",
+        "expected_save_prob": 0.75,
+        "expected_retention_value": 513.32,
+        "individual_retention_roi": 1466.6,
+        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -6941,437 +7009,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "343 days inactive since last transaction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "7814db11654d2bf3b43bae828b6eee05",
-        "city": "Sao Paulo",
-        "state": "SP",
-        "recency_days": 424,
-        "total_orders": 1,
-        "total_spend": 2589.0,
-        "aov": 2589.0,
-        "favorite_category": "small_appliances",
-        "review_score": 4.0,
-        "health_score": 77.1,
-        "health_category": "Healthy",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.4013,
-        "lstm_churn_prob": 0.4147,
-        "hybrid_churn_prob": 0.4105,
-        "final_churn_prob": 0.4105,
-        "churn_prob_30d": 0.2668,
-        "churn_prob_60d": 0.3489,
-        "churn_prob_90d": 0.4105,
-        "risk_velocity": 5.3,
-        "risk_trajectory": "→ Stable",
-        "risk_tier": "MEDIUM",
-        "predicted_clv": 3365.7,
-        "revenue_at_risk": 1381.62,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.71,
-        "expected_retention_value": 945.95,
-        "individual_retention_roi": 2702.7,
-        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 41.0% to 25.5%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "424 days inactive since last transaction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "d61c923fff01b0e448672a2159ed5757",
-        "city": "Uberlandia",
-        "state": "MG",
-        "recency_days": 378,
-        "total_orders": 1,
-        "total_spend": 1799.0,
-        "aov": 1799.0,
-        "favorite_category": "sports_leisure",
-        "review_score": 4.0,
-        "health_score": 63.2,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.5934,
-        "lstm_churn_prob": 0.5564,
-        "hybrid_churn_prob": 0.5737,
-        "final_churn_prob": 0.5737,
-        "churn_prob_30d": 0.3729,
-        "churn_prob_60d": 0.4876,
-        "churn_prob_90d": 0.5737,
-        "risk_velocity": 12.4,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2338.7,
-        "revenue_at_risk": 1341.71,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.64,
-        "expected_retention_value": 823.69,
-        "individual_retention_roi": 2353.4,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.4% to 29.8%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "378 days inactive since last transaction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "5bc4d654dc4eb95cbd977eafadb38383",
-        "city": "Bom Jesus Da Lapa",
-        "state": "BA",
-        "recency_days": 144,
-        "total_orders": 1,
-        "total_spend": 1599.0,
-        "aov": 1599.0,
-        "favorite_category": "sports_leisure",
-        "review_score": 1.0,
-        "health_score": 49.2,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "Need Attention",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.6298,
-        "lstm_churn_prob": 0.625,
-        "hybrid_churn_prob": 0.6334,
-        "final_churn_prob": 0.6334,
-        "churn_prob_30d": 0.4117,
-        "churn_prob_60d": 0.5384,
-        "churn_prob_90d": 0.6334,
-        "risk_velocity": 8.7,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2078.7,
-        "revenue_at_risk": 1316.65,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.57,
-        "expected_retention_value": 715.49,
-        "individual_retention_roi": 2044.3,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 63.3% to 32.9%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "144 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "b61b38d88ef98dd66fc100efabad2557",
-        "city": "Contagem",
-        "state": "MG",
-        "recency_days": 280,
-        "total_orders": 1,
-        "total_spend": 1200.0,
-        "aov": 1200.0,
-        "favorite_category": "computers",
-        "review_score": 1.0,
-        "health_score": 33.5,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8068,
-        "lstm_churn_prob": 0.7895,
-        "hybrid_churn_prob": 0.8176,
-        "final_churn_prob": 0.8176,
-        "churn_prob_30d": 0.5314,
-        "churn_prob_60d": 0.695,
-        "churn_prob_90d": 0.8176,
-        "risk_velocity": 21.6,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1560.0,
-        "revenue_at_risk": 1275.46,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.56,
-        "expected_retention_value": 679.26,
-        "individual_retention_roi": 1940.7,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 81.8% to 39.2%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "280 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "fbd4d7e33bef85ee6e10995ad94ef88a",
-        "city": "Ipueiras",
-        "state": "CE",
-        "recency_days": 277,
-        "total_orders": 1,
-        "total_spend": 1249.49,
-        "aov": 1249.49,
-        "favorite_category": "watches_gifts",
-        "review_score": 1.0,
-        "health_score": 37.3,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.7952,
-        "lstm_churn_prob": 0.7975,
-        "hybrid_churn_prob": 0.7732,
-        "final_churn_prob": 0.7732,
-        "churn_prob_30d": 0.5026,
-        "churn_prob_60d": 0.6572,
-        "churn_prob_90d": 0.7732,
-        "risk_velocity": 23.3,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1624.34,
-        "revenue_at_risk": 1255.94,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.73,
-        "expected_retention_value": 881.84,
-        "individual_retention_roi": 2519.5,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 77.3% to 37.1%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "276 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "f6255a326ff4c43107bc0f42f433be94",
-        "city": "Primavera Do Leste",
-        "state": "MT",
-        "recency_days": 193,
-        "total_orders": 1,
-        "total_spend": 1650.8,
-        "aov": 1650.8,
-        "favorite_category": "computers_accessories",
-        "review_score": 1.0,
-        "health_score": 54.4,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.565,
-        "lstm_churn_prob": 0.5598,
-        "hybrid_churn_prob": 0.5715,
-        "final_churn_prob": 0.5715,
-        "churn_prob_30d": 0.3715,
-        "churn_prob_60d": 0.4858,
-        "churn_prob_90d": 0.5715,
-        "risk_velocity": 15.2,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2146.04,
-        "revenue_at_risk": 1226.46,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.58,
-        "expected_retention_value": 676.35,
-        "individual_retention_roi": 1932.4,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.1% to 29.7%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "192 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "903e36e2f9d5ec112ba8b374216a192a",
-        "city": "Recife",
-        "state": "PE",
-        "recency_days": 280,
-        "total_orders": 1,
-        "total_spend": 1100.0,
-        "aov": 1100.0,
-        "favorite_category": "computers",
-        "review_score": 1.0,
-        "health_score": 30.4,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "At Risk",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8503,
-        "lstm_churn_prob": 0.8522,
-        "hybrid_churn_prob": 0.8547,
-        "final_churn_prob": 0.8547,
-        "churn_prob_30d": 0.5556,
-        "churn_prob_60d": 0.7265,
-        "churn_prob_90d": 0.8547,
-        "risk_velocity": 18.6,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1430.0,
-        "revenue_at_risk": 1222.22,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.69,
-        "expected_retention_value": 808.33,
-        "individual_retention_roi": 2309.5,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 85.5% to 41.0%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "279 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "d0ff23ecd52e29e9426030163ee07a09",
-        "city": "Aracaju",
-        "state": "SE",
-        "recency_days": 192,
-        "total_orders": 1,
-        "total_spend": 998.0,
-        "aov": 998.0,
-        "favorite_category": "furniture_decor",
-        "review_score": 1.0,
-        "health_score": 23.5,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.919,
-        "lstm_churn_prob": 0.9133,
-        "hybrid_churn_prob": 0.9353,
-        "final_churn_prob": 0.9353,
-        "churn_prob_30d": 0.6079,
-        "churn_prob_60d": 0.795,
-        "churn_prob_90d": 0.9353,
-        "risk_velocity": 23.5,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1297.4,
-        "revenue_at_risk": 1213.46,
-        "retention_campaign_cost": 20.0,
-        "expected_save_prob": 0.64,
-        "expected_retention_value": 756.61,
-        "individual_retention_roi": 3783.0,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 93.5% to 44.9%.",
-        "recommended_action": "Emergency Intervention",
-        "recommendation_offer": "30% Instant Save Credit + Priority Resolution",
-        "recommendation_channel": "Personalized SMS & Direct Phone Outreach",
-        "recommendation_urgency": "Critical (< 12 Hours)",
-        "is_top_1pct": false,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "192 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
+            "detail": "485 days inactive since last transaction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7392,21 +7030,21 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         "review_score": 3.0,
         "health_score": 56.0,
         "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
         "ann_churn_prob": 0.6176,
         "lstm_churn_prob": 0.5936,
         "hybrid_churn_prob": 0.6236,
-        "final_churn_prob": 0.6236,
+        "final_churn_prob": 0.7981,
         "churn_prob_30d": 0.4053,
         "churn_prob_60d": 0.5301,
         "churn_prob_90d": 0.6236,
         "risk_velocity": 8.3,
-        "risk_trajectory": "↑ Increasing Risk",
+        "risk_trajectory": "\u2191 Increasing Risk",
         "risk_tier": "HIGH",
         "predicted_clv": 1923.97,
-        "revenue_at_risk": 1199.79,
+        "revenue_at_risk": 1181.17,
         "retention_campaign_cost": 35.0,
         "expected_save_prob": 0.67,
         "expected_retention_value": 768.86,
@@ -7426,7 +7064,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Low Review Rating",
             "severity": "HIGH",
-            "detail": "Rating 3.0 ★ with merchant or delivery friction"
+            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7436,202 +7074,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "0ec5bddf9b389fa7c737a2db61b6577d",
-        "city": "Rio De Janeiro",
-        "state": "RJ",
-        "recency_days": 186,
-        "total_orders": 1,
-        "total_spend": 1050.0,
-        "aov": 1050.0,
-        "favorite_category": "health_beauty",
-        "review_score": 1.0,
-        "health_score": 28.8,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Need Attention",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.901,
-        "lstm_churn_prob": 0.8504,
-        "hybrid_churn_prob": 0.8734,
-        "final_churn_prob": 0.8734,
-        "churn_prob_30d": 0.5677,
-        "churn_prob_60d": 0.7424,
-        "churn_prob_90d": 0.8734,
-        "risk_velocity": 20.2,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1365.0,
-        "revenue_at_risk": 1192.19,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.59,
-        "expected_retention_value": 668.39,
-        "individual_retention_roi": 1909.7,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.3% to 41.9%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "185 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "083e14981d81da62df32871d3c1eaab4",
-        "city": "Betim",
-        "state": "MG",
-        "recency_days": 194,
-        "total_orders": 1,
-        "total_spend": 1050.0,
-        "aov": 1050.0,
-        "favorite_category": "fashion_bags_accessories",
-        "review_score": 1.0,
-        "health_score": 28.9,
-        "health_category": "Critical",
-        "health_trend": "↓ Declining",
-        "rfm_segment": "Need Attention",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.8647,
-        "lstm_churn_prob": 0.9045,
-        "hybrid_churn_prob": 0.8713,
-        "final_churn_prob": 0.8713,
-        "churn_prob_30d": 0.5663,
-        "churn_prob_60d": 0.7406,
-        "churn_prob_90d": 0.8713,
-        "risk_velocity": 27.9,
-        "risk_trajectory": "🚨 Rapidly Deteriorating",
-        "risk_tier": "CRITICAL",
-        "predicted_clv": 1365.0,
-        "revenue_at_risk": 1189.32,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.56,
-        "expected_retention_value": 631.02,
-        "individual_retention_roi": 1802.9,
-        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 87.1% to 41.8%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "193 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "CRITICAL",
-            "detail": "Rating 1.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "8411ef4ebe0b18e75fd75efde5455e15",
-        "city": "Rio De Janeiro",
-        "state": "RJ",
-        "recency_days": 204,
-        "total_orders": 1,
-        "total_spend": 1599.0,
-        "aov": 1599.0,
-        "favorite_category": "sports_leisure",
-        "review_score": 3.0,
-        "health_score": 60.5,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
-        "rfm_segment": "Loyal Customers",
-        "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.5743,
-        "lstm_churn_prob": 0.5758,
-        "hybrid_churn_prob": 0.5706,
-        "final_churn_prob": 0.5706,
-        "churn_prob_30d": 0.3709,
-        "churn_prob_60d": 0.485,
-        "churn_prob_90d": 0.5706,
-        "risk_velocity": 8.7,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 2078.7,
-        "revenue_at_risk": 1186.11,
-        "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.61,
-        "expected_retention_value": 688.53,
-        "individual_retention_roi": 1967.2,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.1% to 29.7%.",
-        "recommended_action": "VIP Concierge Retention",
-        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
-        "recommendation_channel": "Direct VIP Call / Account Manager",
-        "recommendation_urgency": "Immediate (Within 24h)",
-        "is_top_1pct": true,
-        "churn_drivers": [
-          {
-            "factor": "Dormancy Recency",
-            "severity": "HIGH",
-            "detail": "204 days inactive since last transaction"
-          },
-          {
-            "factor": "Low Review Rating",
-            "severity": "HIGH",
-            "detail": "Rating 3.0 ★ with merchant or delivery friction"
-          },
-          {
-            "factor": "Single-Purchase Friction",
-            "severity": "MEDIUM",
-            "detail": "1st-time customer without 2nd order acceleration"
-          }
-        ]
-      },
-      {
-        "customer_id": "16ae388d8c36c71739021268d3578191",
+        "customer_id": "60055ae4e5bdcbf7d567809728def6ed",
         "city": "Sao Paulo",
         "state": "SP",
-        "recency_days": 272,
+        "recency_days": 269,
         "total_orders": 1,
-        "total_spend": 1299.9,
-        "aov": 1299.9,
-        "favorite_category": "computers",
-        "review_score": 4.0,
-        "health_score": 52.6,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "total_spend": 1980.0,
+        "aov": 1980.0,
+        "favorite_category": "health_beauty",
+        "review_score": 5.0,
+        "health_score": 80.8,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
         "rfm_segment": "Cannot Lose Them",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.6801,
-        "lstm_churn_prob": 0.6713,
-        "hybrid_churn_prob": 0.6992,
-        "final_churn_prob": 0.6992,
-        "churn_prob_30d": 0.4545,
-        "churn_prob_60d": 0.5943,
-        "churn_prob_90d": 0.6992,
-        "risk_velocity": 14.1,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 1689.87,
-        "revenue_at_risk": 1181.56,
+        "ann_churn_prob": 0.4039,
+        "lstm_churn_prob": 0.3856,
+        "hybrid_churn_prob": 0.4019,
+        "final_churn_prob": 0.5965,
+        "churn_prob_30d": 0.2612,
+        "churn_prob_60d": 0.3416,
+        "churn_prob_90d": 0.4019,
+        "risk_velocity": 3.4,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2574.0,
+        "revenue_at_risk": 1181.07,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.56,
-        "expected_retention_value": 626.67,
-        "individual_retention_roi": 1790.5,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 69.9% to 36.4%.",
+        "expected_save_prob": 0.6,
+        "expected_retention_value": 585.69,
+        "individual_retention_roi": 1673.4,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 40.2% to 24.9%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -7641,7 +7114,7 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "271 days inactive since last transaction"
+            "detail": "268 days inactive since last transaction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7651,37 +7124,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "69d93815c9ea08e83377d78cb088a295",
-        "city": "Porto Velho",
-        "state": "RO",
-        "recency_days": 272,
+        "customer_id": "b61b38d88ef98dd66fc100efabad2557",
+        "city": "Contagem",
+        "state": "MG",
+        "recency_days": 280,
         "total_orders": 1,
-        "total_spend": 1299.9,
-        "aov": 1299.9,
+        "total_spend": 1200.0,
+        "aov": 1200.0,
         "favorite_category": "computers",
-        "review_score": 4.0,
-        "health_score": 52.6,
-        "health_category": "At Risk",
-        "health_trend": "→ Stable",
+        "review_score": 1.0,
+        "health_score": 33.5,
+        "health_category": "Critical",
+        "health_trend": "\u2193 Declining",
         "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.6773,
-        "lstm_churn_prob": 0.6813,
-        "hybrid_churn_prob": 0.6991,
-        "final_churn_prob": 0.6991,
-        "churn_prob_30d": 0.4544,
-        "churn_prob_60d": 0.5942,
-        "churn_prob_90d": 0.6991,
-        "risk_velocity": 12.3,
-        "risk_trajectory": "↑ Increasing Risk",
-        "risk_tier": "HIGH",
-        "predicted_clv": 1689.87,
-        "revenue_at_risk": 1181.39,
+        "ann_churn_prob": 0.8068,
+        "lstm_churn_prob": 0.7895,
+        "hybrid_churn_prob": 0.8176,
+        "final_churn_prob": 0.9784,
+        "churn_prob_30d": 0.5314,
+        "churn_prob_60d": 0.695,
+        "churn_prob_90d": 0.8176,
+        "risk_velocity": 21.6,
+        "risk_trajectory": "\ud83d\udea8 Rapidly Deteriorating",
+        "risk_tier": "CRITICAL",
+        "predicted_clv": 1560.0,
+        "revenue_at_risk": 1174.08,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.59,
-        "expected_retention_value": 662.02,
-        "individual_retention_roi": 1891.5,
-        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 69.9% to 36.4%.",
+        "expected_save_prob": 0.56,
+        "expected_retention_value": 679.26,
+        "individual_retention_roi": 1940.7,
+        "counterfactual_explanation": "If emergency outreach and $25 credit dispatched within 24h, predicted churn decreases from 81.8% to 39.2%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -7691,7 +7164,12 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "271 days inactive since last transaction"
+            "detail": "280 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
           },
           {
             "factor": "Single-Purchase Friction",
@@ -7701,37 +7179,37 @@ window.CHURNSHIELD_FALLBACK_DATA = {
         ]
       },
       {
-        "customer_id": "44975ad30406e58b8c7f2a8dae4c46f8",
-        "city": "Catole Do Rocha",
-        "state": "PB",
-        "recency_days": 230,
+        "customer_id": "e09ede1057212120a291c4fa1f832c63",
+        "city": "Sao Paulo",
+        "state": "SP",
+        "recency_days": 440,
         "total_orders": 1,
-        "total_spend": 1989.0,
-        "aov": 1989.0,
-        "favorite_category": "other",
+        "total_spend": 1949.9,
+        "aov": 1949.9,
+        "favorite_category": "watches_gifts",
         "review_score": 5.0,
-        "health_score": 76.4,
+        "health_score": 82.8,
         "health_category": "Healthy",
-        "health_trend": "→ Stable",
-        "rfm_segment": "Cannot Lose Them",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
         "kmeans_segment": "Hibernating / One-Time",
-        "ann_churn_prob": 0.4472,
-        "lstm_churn_prob": 0.4479,
-        "hybrid_churn_prob": 0.4547,
-        "final_churn_prob": 0.4547,
-        "churn_prob_30d": 0.2956,
-        "churn_prob_60d": 0.3865,
-        "churn_prob_90d": 0.4547,
-        "risk_velocity": -1.3,
-        "risk_trajectory": "→ Stable",
+        "ann_churn_prob": 0.3921,
+        "lstm_churn_prob": 0.3639,
+        "hybrid_churn_prob": 0.3792,
+        "final_churn_prob": 0.5963,
+        "churn_prob_30d": 0.2465,
+        "churn_prob_60d": 0.3223,
+        "churn_prob_90d": 0.3792,
+        "risk_velocity": 7.0,
+        "risk_trajectory": "\u2192 Stable",
         "risk_tier": "MEDIUM",
-        "predicted_clv": 2585.7,
-        "revenue_at_risk": 1175.72,
+        "predicted_clv": 2534.87,
+        "revenue_at_risk": 1162.73,
         "retention_campaign_cost": 35.0,
-        "expected_save_prob": 0.75,
-        "expected_retention_value": 846.79,
-        "individual_retention_roi": 2419.4,
-        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 45.5% to 28.2%.",
+        "expected_save_prob": 0.74,
+        "expected_retention_value": 676.3,
+        "individual_retention_roi": 1932.3,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 37.9% to 23.5%.",
         "recommended_action": "VIP Concierge Retention",
         "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
         "recommendation_channel": "Direct VIP Call / Account Manager",
@@ -7741,7 +7219,367 @@ window.CHURNSHIELD_FALLBACK_DATA = {
           {
             "factor": "Dormancy Recency",
             "severity": "HIGH",
-            "detail": "230 days inactive since last transaction"
+            "detail": "439 days inactive since last transaction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "e650a740f366df1d65e17eeda8cccb43",
+        "city": "Petrolina",
+        "state": "PE",
+        "recency_days": 394,
+        "total_orders": 1,
+        "total_spend": 1899.12,
+        "aov": 1899.12,
+        "favorite_category": "musical_instruments",
+        "review_score": 5.0,
+        "health_score": 80.7,
+        "health_category": "Healthy",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.3973,
+        "lstm_churn_prob": 0.4159,
+        "hybrid_churn_prob": 0.403,
+        "final_churn_prob": 0.5966,
+        "churn_prob_30d": 0.262,
+        "churn_prob_60d": 0.3426,
+        "churn_prob_90d": 0.403,
+        "risk_velocity": 6.7,
+        "risk_trajectory": "\u2192 Stable",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2468.86,
+        "revenue_at_risk": 1133.01,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.71,
+        "expected_retention_value": 671.41,
+        "individual_retention_roi": 1918.3,
+        "counterfactual_explanation": "If category re-engagement push notification delivered, predicted churn drops from 40.3% to 25.0%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "393 days inactive since last transaction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "8637975a0cb5150b10528f5697511668",
+        "city": "Caxias Do Sul",
+        "state": "RS",
+        "recency_days": 391,
+        "total_orders": 1,
+        "total_spend": 1878.33,
+        "aov": 1878.33,
+        "favorite_category": "pet_shop",
+        "review_score": 3.0,
+        "health_score": 60.0,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.5699,
+        "lstm_churn_prob": 0.5677,
+        "hybrid_churn_prob": 0.5761,
+        "final_churn_prob": 0.5988,
+        "churn_prob_30d": 0.3745,
+        "churn_prob_60d": 0.4897,
+        "churn_prob_90d": 0.5761,
+        "risk_velocity": 9.1,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2441.83,
+        "revenue_at_risk": 1124.74,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.7,
+        "expected_retention_value": 949.72,
+        "individual_retention_roi": 2713.5,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.6% to 30.0%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "390 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "HIGH",
+            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "3fec1a05177762f279472253113d568a",
+        "city": "Recife",
+        "state": "PE",
+        "recency_days": 76,
+        "total_orders": 1,
+        "total_spend": 3700.0,
+        "aov": 3700.0,
+        "favorite_category": "watches_gifts",
+        "review_score": 5.0,
+        "health_score": 99.0,
+        "health_category": "Healthy",
+        "health_trend": "\u2191 Improving",
+        "rfm_segment": "New Promising",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.1647,
+        "lstm_churn_prob": 0.1528,
+        "hybrid_churn_prob": 0.1606,
+        "final_churn_prob": 0.2978,
+        "churn_prob_30d": 0.1044,
+        "churn_prob_60d": 0.1365,
+        "churn_prob_90d": 0.1606,
+        "risk_velocity": -4.4,
+        "risk_trajectory": "\u2193 Improving",
+        "risk_tier": "LOW",
+        "predicted_clv": 4810.0,
+        "revenue_at_risk": 1101.86,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.65,
+        "expected_retention_value": 467.12,
+        "individual_retention_roi": 1334.6,
+        "counterfactual_explanation": "Account in optimal standing. Regular loyalty touchpoint recommended to sustain engagement.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "ef7361e14a64f77990f58e9c571e2f9a",
+        "city": "Balsas",
+        "state": "MA",
+        "recency_days": 100,
+        "total_orders": 1,
+        "total_spend": 1380.0,
+        "aov": 1380.0,
+        "favorite_category": "furniture_living_room",
+        "review_score": 1.0,
+        "health_score": 51.9,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "Champions",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.6123,
+        "lstm_churn_prob": 0.5936,
+        "hybrid_churn_prob": 0.6013,
+        "final_churn_prob": 0.7978,
+        "churn_prob_30d": 0.3908,
+        "churn_prob_60d": 0.5111,
+        "churn_prob_90d": 0.6013,
+        "risk_velocity": 15.0,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 1794.0,
+        "revenue_at_risk": 1100.96,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.57,
+        "expected_retention_value": 579.88,
+        "individual_retention_roi": 1656.8,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 60.1% to 31.3%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "540bd689a2065b9177dedb9758cbc992",
+        "city": "Santa Maria",
+        "state": "RS",
+        "recency_days": 421,
+        "total_orders": 1,
+        "total_spend": 1375.0,
+        "aov": 1375.0,
+        "favorite_category": "watches_gifts",
+        "review_score": 3.0,
+        "health_score": 53.8,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "Cannot Lose Them",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.6623,
+        "lstm_churn_prob": 0.6711,
+        "hybrid_churn_prob": 0.6498,
+        "final_churn_prob": 0.7983,
+        "churn_prob_30d": 0.4224,
+        "churn_prob_60d": 0.5523,
+        "churn_prob_90d": 0.6498,
+        "risk_velocity": 11.5,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 1787.5,
+        "revenue_at_risk": 1097.66,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.63,
+        "expected_retention_value": 696.76,
+        "individual_retention_roi": 1990.7,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 65.0% to 33.8%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "420 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "HIGH",
+            "detail": "Rating 3.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "4d402e51f4e8a128657c7ac78b59bfb2",
+        "city": "Salinas",
+        "state": "MG",
+        "recency_days": 150,
+        "total_orders": 1,
+        "total_spend": 1375.0,
+        "aov": 1375.0,
+        "favorite_category": "computers_accessories",
+        "review_score": 1.0,
+        "health_score": 50.8,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "Need Attention",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.5921,
+        "lstm_churn_prob": 0.6071,
+        "hybrid_churn_prob": 0.6145,
+        "final_churn_prob": 0.7979,
+        "churn_prob_30d": 0.3994,
+        "churn_prob_60d": 0.5223,
+        "churn_prob_90d": 0.6145,
+        "risk_velocity": 8.6,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "HIGH",
+        "predicted_clv": 1787.5,
+        "revenue_at_risk": 1097.11,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.64,
+        "expected_retention_value": 667.99,
+        "individual_retention_roi": 1908.5,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 61.5% to 32.0%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "149 days inactive since last transaction"
+          },
+          {
+            "factor": "Low Review Rating",
+            "severity": "CRITICAL",
+            "detail": "Rating 1.0 \u2605 with merchant or delivery friction"
+          },
+          {
+            "factor": "Single-Purchase Friction",
+            "severity": "MEDIUM",
+            "detail": "1st-time customer without 2nd order acceleration"
+          }
+        ]
+      },
+      {
+        "customer_id": "d61c923fff01b0e448672a2159ed5757",
+        "city": "Uberlandia",
+        "state": "MG",
+        "recency_days": 378,
+        "total_orders": 1,
+        "total_spend": 1799.0,
+        "aov": 1799.0,
+        "favorite_category": "sports_leisure",
+        "review_score": 4.0,
+        "health_score": 63.2,
+        "health_category": "At Risk",
+        "health_trend": "\u2192 Stable",
+        "rfm_segment": "At Risk",
+        "kmeans_segment": "Hibernating / One-Time",
+        "ann_churn_prob": 0.5934,
+        "lstm_churn_prob": 0.5564,
+        "hybrid_churn_prob": 0.5737,
+        "final_churn_prob": 0.5987,
+        "churn_prob_30d": 0.3729,
+        "churn_prob_60d": 0.4876,
+        "churn_prob_90d": 0.5737,
+        "risk_velocity": 12.4,
+        "risk_trajectory": "\u2191 Increasing Risk",
+        "risk_tier": "MEDIUM",
+        "predicted_clv": 2338.7,
+        "revenue_at_risk": 1077.06,
+        "retention_campaign_cost": 35.0,
+        "expected_save_prob": 0.64,
+        "expected_retention_value": 823.69,
+        "individual_retention_roi": 2353.4,
+        "counterfactual_explanation": "If 15% discount voucher and CSAT resolution triggered, predicted churn drops from 57.4% to 29.8%.",
+        "recommended_action": "VIP Concierge Retention",
+        "recommendation_offer": "25% Exclusive Loyalty Credit + Free Express Shipping",
+        "recommendation_channel": "Direct VIP Call / Account Manager",
+        "recommendation_urgency": "Immediate (Within 24h)",
+        "is_top_1pct": true,
+        "churn_drivers": [
+          {
+            "factor": "Dormancy Recency",
+            "severity": "HIGH",
+            "detail": "378 days inactive since last transaction"
           },
           {
             "factor": "Single-Purchase Friction",

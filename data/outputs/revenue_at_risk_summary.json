@@ -8,10 +8,10 @@
   "total_expected_retention_value": 485240.0,
   "portfolio_retention_roi_pct": 285.1,
   "tier_distribution": {
-    "LOW": 12700,
-    "MEDIUM": 6850,
-    "HIGH": 3930,
-    "CRITICAL": 1520
+    "LOW": 12850,
+    "MEDIUM": 6700,
+    "HIGH": 3850,
+    "CRITICAL": 1600
   },
   "tier_revenue_risk": {
     "CRITICAL": 310130.0,
